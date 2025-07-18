@@ -1,0 +1,20 @@
+{
+  "$schema": "./node_modules/@tramvai/cli/schema.json",
+  "projects": {
+    "realcapoeira-front" : {
+      "name": "realcapoeira-front",
+      "root": "src",
+      "type": "application",
+      "sourceMap": {
+        "development": false,
+        "production": true
+      },
+      "postcss": {
+        "config": "src/postcss"
+      },
+      "fileSystemPages": {
+        "enabled": true
+      }
+    }
+  }
+}
