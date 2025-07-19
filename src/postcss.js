@@ -1,3 +1,7 @@
+// const path = require('path');
+
+// const customMedia = path.resolve(__dirname, 'src/styles/media.css');
+
 module.exports = {
   plugins: [
     require('postcss-nested'),
@@ -8,5 +12,8 @@ module.exports = {
     require('postcss-custom-media')({
       preserve: false,
     }),
+    // require('@csstools/postcss-global-data')({
+    //   files: [customMedia],
+    // }),
   ],
 };

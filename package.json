@@ -9,6 +9,7 @@
     "lint": "eslint --ext .ts,.tsx --ignore-path .gitignore ."
   },
   "dependencies": {
+    "@csstools/postcss-global-data": "^2.1.1",
     "@tramvai/core": "^4.41.104",
     "@tramvai/module-common": "^4.41.104",
     "@tramvai/module-error-interceptor": "^4.41.104",

@@ -12,6 +12,8 @@ import {
   LAYOUT_OPTIONS,
 } from '@tramvai/tokens-render';
 import { Layout } from '~shared/layout';
+import { getFontsProviders } from './app/fonts/fonts';
+import './app/styles/index.css';
 
 createApp({
   name: 'realcapoeira-front',
@@ -44,5 +46,6 @@ createApp({
         },
       },
     },
+    ...getFontsProviders(),
   ],
 });

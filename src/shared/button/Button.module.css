@@ -1,0 +1,26 @@
+.Button {
+  width: auto;
+  height: 44px;
+  border-radius: 24px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 16px;
+  padding: 0 16px;
+  font-family: 'TT Hoves', sans-serif;
+  font-weight: 500;
+}
+
+.black {
+  background-color: #000;
+  color: #fff;
+}
+
+.yellow {
+  background-color: #FFD700;
+  color: #000;
+}
