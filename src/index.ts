@@ -9,8 +9,11 @@ import {
   RENDER_SLOTS,
   ResourceType,
   ResourceSlot,
+  LAYOUT_OPTIONS,
 } from '@tramvai/tokens-render';
 import { HeaderModule } from '~shared/header';
+import { FooterModule } from '~shared/footer';
+import { Layout } from '~shared/layout';
 
 createApp({
   name: 'realcapoeira-front',
@@ -22,6 +25,7 @@ createApp({
     ServerModule,
     ErrorInterceptorModule,
     HeaderModule,
+    FooterModule,
   ],
   providers: [
     {
@@ -32,6 +36,16 @@ createApp({
         slot: ResourceSlot.HEAD_META,
         payload:
           '<meta name="viewport" content="width=device-width, initial-scale=1">',
+      },
+    },
+    {
+      provide: LAYOUT_OPTIONS,
+      useValue: {
+        // React components
+        components: {
+          // global layout component
+          layout: Layout,
+        },
       },
     },
   ],

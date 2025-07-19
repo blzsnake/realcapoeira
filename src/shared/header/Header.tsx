@@ -4,7 +4,7 @@ export function Header() {
   return (
     <header className={styles.Header}>
       <h1>
-        Tramvai{' '}
+        Header{' '}
         <span role="img" aria-label="Salute">
           🥳
         </span>
