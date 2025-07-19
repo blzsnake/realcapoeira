@@ -1,3 +1,25 @@
 .Header {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
   color: #444;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: #fff;
+  padding-top: 16px;
+  margin-bottom: 16px;
+}
+
+.Contents {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 24px;
+}
+
+.Contents svg,
+.Contents p {
+  cursor: pointer;
 }

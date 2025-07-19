@@ -11,8 +11,6 @@ import {
   ResourceSlot,
   LAYOUT_OPTIONS,
 } from '@tramvai/tokens-render';
-import { HeaderModule } from '~shared/header';
-import { FooterModule } from '~shared/footer';
 import { Layout } from '~shared/layout';
 
 createApp({
@@ -24,8 +22,6 @@ createApp({
     SeoModule,
     ServerModule,
     ErrorInterceptorModule,
-    HeaderModule,
-    FooterModule,
   ],
   providers: [
     {

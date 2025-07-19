@@ -1,3 +1,17 @@
-.Header {
-  color: #444;
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+.Layout {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.LayoutContent {
+  max-width: 1360px;
+  width: 100%;
 }
