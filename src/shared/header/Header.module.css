@@ -1,3 +1,17 @@
 .Header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   color: #444;
+}
+
+.Contents {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 24px;
+
+  * {
+    cursor: pointer;
+  }
 }
