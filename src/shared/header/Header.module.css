@@ -10,8 +10,9 @@
   align-items: center;
   justify-content: flex-start;
   gap: 24px;
+}
 
-  * {
-    cursor: pointer;
-  }
+.Contents svg,
+.Contents p {
+  cursor: pointer;
 }
