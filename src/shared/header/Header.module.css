@@ -5,10 +5,11 @@
   justify-content: space-between;
   color: #444;
   position: sticky;
-  top: 16px;
+  top: 0;
   z-index: 1000;
   background: #fff;
-  margin: 0 40px 16px;
+  padding-top: 16px;
+  margin-bottom: 16px;
 }
 
 .Contents {
