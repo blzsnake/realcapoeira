@@ -4,7 +4,7 @@ import styles from './index.module.css';
 
 export function IndexPage() {
   return (
-    <main>
+    <main style={{ height: 1500 }}>
       <p>Main Page</p>
       <ul>
         <li>

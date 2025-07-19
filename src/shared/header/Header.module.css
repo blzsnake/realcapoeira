@@ -1,8 +1,14 @@
 .Header {
   display: flex;
+  width: 100%;
   align-items: center;
   justify-content: space-between;
   color: #444;
+  position: sticky;
+  top: 16px;
+  z-index: 1000;
+  background: #fff;
+  margin: 0 40px 16px;
 }
 
 .Contents {
