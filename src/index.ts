@@ -12,8 +12,10 @@ import {
   LAYOUT_OPTIONS,
 } from '@tramvai/tokens-render';
 import { Layout } from '~shared/layout';
-import { getFontsProviders } from './app/fonts/fonts';
 import './app/styles/index.css';
+import { HeaderModule } from '~shared/header';
+import { FooterModule } from '~shared/footer';
+import { getFontsProviders } from './app/fonts/fonts';
 
 createApp({
   name: 'realcapoeira-front',
@@ -24,6 +26,8 @@ createApp({
     SeoModule,
     ServerModule,
     ErrorInterceptorModule,
+    HeaderModule,
+    FooterModule,
   ],
   providers: [
     {

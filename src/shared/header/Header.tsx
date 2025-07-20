@@ -15,37 +15,39 @@ export function Header() {
   const logoSize = isDesktop ? 64 : 48;
 
   return (
-    <header className={styles.Header}>
-      <div className={styles.Contents}>
-        <Link url="/" aria-label="На главную">
-          <Logo width={logoSize} height={logoSize} />
-        </Link>
+    <header className={styles.HeaderWrap}>
+      <div className={styles.Header}>
+        <div className={styles.Contents}>
+          <Link url="/" aria-label="На главную">
+            <Logo width={logoSize} height={logoSize} />
+          </Link>
+          {isDesktop && (
+            <nav className={styles.Contents}>
+              <Link url="/" aria-label="О школе">
+                <p>О школе</p>
+              </Link>
+              <Link url="/" aria-label="Что такое капоэйра">
+                <p>Что такое капоэйра</p>
+              </Link>
+              <Link url="/" aria-label="Филиалы">
+                <p>Филиалы</p>
+              </Link>
+              <Link url="/" aria-label="Инструкторы">
+                <p>Инструкторы</p>
+              </Link>
+              <Link url="/" aria-label="Контакты">
+                <p>Контакты</p>
+              </Link>
+            </nav>
+          )}
+        </div>
+        {!isDesktop && <Menu width={24} height={24} />}
         {isDesktop && (
-          <nav className={styles.Contents}>
-            <Link url="/" aria-label="О школе">
-              <p>О школе</p>
-            </Link>
-            <Link url="/" aria-label="Что такое капоэйра">
-              <p>Что такое капоэйра</p>
-            </Link>
-            <Link url="/" aria-label="Филиалы">
-              <p>Филиалы</p>
-            </Link>
-            <Link url="/" aria-label="Инструкторы">
-              <p>Инструкторы</p>
-            </Link>
-            <Link url="/" aria-label="Контакты">
-              <p>Контакты</p>
-            </Link>
-          </nav>
+          <Button color="yellow" className={styles.Button}>
+            Записаться на занятие
+          </Button>
         )}
       </div>
-      {!isDesktop && <Menu width={24} height={24} />}
-      {isDesktop && (
-        <Button color="yellow" className={styles.Button}>
-          Записаться на занятие
-        </Button>
-      )}
     </header>
   );
 }

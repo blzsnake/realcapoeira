@@ -1,12 +1,20 @@
-.Header {
+.HeaderWrap {
+  width: 100vw;
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  color: #444;
+  background: #f6f4f3;
   position: sticky;
   top: 0;
   z-index: 1000;
-  background: #fff;
+}
+
+.Header {
+  display: flex;
+  width: 100%;
+  max-width: 1360px;
+  margin: 0 auto;
+  align-items: center;
+  justify-content: space-between;
+  color: #444;
   padding: 16px 40px;
 }
 
@@ -20,4 +28,14 @@
 .Contents svg,
 .Contents p {
   cursor: pointer;
+  transition: text-shadow 0.2s ease;
+}
+
+/* хак, чтобы текст не разъезжался */
+.Contents p:hover {
+  text-shadow:
+    0.3px 0 currentColor,
+    -0.3px 0 currentColor,
+    0 0.3px currentColor,
+    0 -0.3px currentColor;
 }
