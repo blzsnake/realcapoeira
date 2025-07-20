@@ -1,0 +1,61 @@
+.SchoolPhoto {
+  background-color: #f6f4f3;
+  height: 526px;
+  position: relative;
+  overflow: hidden;
+  padding-top: 24px;
+}
+
+.Heading {
+  position: relative;
+  text-align: center;
+  margin: 0 auto;
+  font-weight: 600;
+  font-size: 40px;
+  padding: 0 20px 0;
+  min-width: 350px;
+  
+}
+
+.Image {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  height: 100%;
+  width: auto;
+  z-index: 1000;
+}
+
+@media (min-width: 1024px) {
+  .SchoolPhoto {
+    height: 720px;
+  }
+  .Heading {
+    color: #FDCF2B;
+    font-size: 120px;
+  }
+  .Image {
+    max-height: 570px;
+  }
+}
+
+@media (min-width: 1440px) {
+  .SchoolPhoto {
+    height: 926px;
+  }
+  .Heading {
+    font-size: 148px;
+  }
+  .Image {
+    max-height: 800px;
+  }
+}
+
+@media (max-width: 1023px) {
+  .Image {
+    top: 140px;
+    bottom: auto;
+    height: 324px;
+  }
+}
