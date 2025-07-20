@@ -1,18 +1,26 @@
-import { BrowserView, isBrowser, MobileView } from 'react-device-detect';
+// Components
 import { Link } from '@tramvai/module-router';
 import { Button } from '~shared/button/Button';
+// Hooks
+import { useMediaQuery } from 'react-responsive';
+// Assets
 import Logo from './assets/rc_logo.svg?react';
 import Menu from './assets/menu.svg?react';
+// Styles
 import styles from './Header.module.css';
 
 export function Header() {
+  const isDesktop = useMediaQuery({ minWidth: 1440 });
+
+  const logoSize = isDesktop ? 64 : 48;
+
   return (
     <header className={styles.Header}>
       <div className={styles.Contents}>
         <Link url="/" aria-label="На главную">
-          <Logo width={isBrowser ? 64 : 48} height={isBrowser ? 64 : 48} />
+          <Logo width={logoSize} height={logoSize} />
         </Link>
-        <BrowserView>
+        {isDesktop && (
           <nav className={styles.Contents}>
             <Link url="/" aria-label="О школе">
               <p>О школе</p>
@@ -30,16 +38,14 @@ export function Header() {
               <p>Контакты</p>
             </Link>
           </nav>
-        </BrowserView>
+        )}
       </div>
-      <MobileView>
-        <Menu />
-      </MobileView>
-      <BrowserView>
+      {!isDesktop && <Menu width={24} height={24} />}
+      {isDesktop && (
         <Button color="yellow" className={styles.Button}>
           Записаться на занятие
         </Button>
-      </BrowserView>
+      )}
     </header>
   );
 }
