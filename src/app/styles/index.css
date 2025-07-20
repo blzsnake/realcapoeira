@@ -1,23 +1,20 @@
 @font-face {
   font-family: 'TT Hoves';
-  src:
-    url('../fonts/TT_Hoves_Pro_Regular.woff2') format('woff2');
+  src: url('../fonts/TT_Hoves_Pro_Regular.woff2') format('woff2');
   font-display: swap;
   font-weight: normal;
 }
 
 @font-face {
   font-family: 'TT Hoves';
-  src:
-    url('../fonts/TT_Hoves_Pro_Medium.woff2') format('woff2');
+  src: url('../fonts/TT_Hoves_Pro_Medium.woff2') format('woff2');
   font-display: swap;
   font-weight: 500;
 }
 
 @font-face {
   font-family: 'TT Hoves';
-  src:
-    url('../fonts/TT_Hoves_Pro_DemiBold.woff2') format('woff2');
+  src: url('../fonts/TT_Hoves_Pro_DemiBold.woff2') format('woff2');
   font-display: swap;
   font-weight: 600;
 }
@@ -30,6 +27,9 @@ body {
   padding: 0;
   text-size-adjust: 100%;
   position: relative;
-
   scroll-behavior: smooth;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
 }
