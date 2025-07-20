@@ -1,0 +1,1 @@
+export { SchoolPhoto } from './SchoolPhoto';

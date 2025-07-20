@@ -1,19 +1,22 @@
 import { Link } from '@tramvai/module-router';
 
 import styles from './index.module.css';
+import { SchoolPhoto } from './ui/SchoolPhoto';
 
 export function IndexPage() {
   return (
-    <main style={{ height: 1500 }}>
-      <p>Main Page</p>
-      <ul>
-        <li>
-          <Link url="/filials">Filials</Link>
-        </li>
-        <li>
-          <Link url="/contacts">Contacts</Link>
-        </li>
-      </ul>
+    <main>
+      <SchoolPhoto />
+      <div className={styles.Content}>
+        <ul>
+          <li>
+            <Link url="/filials">Filials</Link>
+          </li>
+          <li>
+            <Link url="/contacts">Contacts</Link>
+          </li>
+        </ul>
+      </div>
     </main>
   );
 }

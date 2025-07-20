@@ -15,7 +15,13 @@
   align-items: center;
   justify-content: space-between;
   color: #444;
-  padding: 16px 40px;
+  padding: 20px;
+}
+
+@media (min-width: 1440px) {
+  .Header {
+    padding: 16px 40px;
+  }
 }
 
 .Contents {
