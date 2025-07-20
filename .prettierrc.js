@@ -1,1 +1,6 @@
-module.exports = require('prettier-config-tinkoff');
+const base = require('prettier-config-tinkoff');
+
+module.exports = {
+  ...base,
+  endOfLine: 'auto',
+};

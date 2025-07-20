@@ -1,5 +1,6 @@
 import { BrowserView, isBrowser, MobileView } from 'react-device-detect';
 import { Link } from '@tramvai/module-router';
+import { Button } from '~shared/button/Button';
 import Logo from './assets/rc_logo.svg?react';
 import Menu from './assets/menu.svg?react';
 import styles from './Header.module.css';
@@ -35,7 +36,9 @@ export function Header() {
         <Menu />
       </MobileView>
       <BrowserView>
-        <button type="button">Записаться на занятие</button>
+        <Button color="yellow" className={styles.Button}>
+          Записаться на занятие
+        </Button>
       </BrowserView>
     </header>
   );
