@@ -1,8 +1,6 @@
 // Components
 import { Link } from '@tramvai/module-router';
 import { Button } from '~shared/button/Button';
-// Hooks
-import { useMediaQuery } from 'react-responsive';
 // Assets
 import Logo from './assets/rc_logo.svg?react';
 import Menu from './assets/menu.svg?react';
@@ -10,19 +8,15 @@ import Menu from './assets/menu.svg?react';
 import styles from './Header.module.css';
 
 export function Header() {
-  const isDesktop = useMediaQuery({ minWidth: 1440 });
-
-  const logoSize = isDesktop ? 64 : 48;
-
   return (
     <header className={styles.HeaderWrap}>
       <div className={styles.Header}>
-        <div className={styles.Contents}>
+        <div className={styles.ContentWrapper}>
           <Link url="/" aria-label="На главную">
-            <Logo width={logoSize} height={logoSize} />
+            <Logo />
           </Link>
-          {isDesktop && (
-            <nav className={styles.Contents}>
+          <div className="isDesktop">
+            <nav className={`${styles.Contents} isDesktop`}>
               <Link url="/" aria-label="О школе">
                 <p>О школе</p>
               </Link>
@@ -39,14 +33,15 @@ export function Header() {
                 <p>Контакты</p>
               </Link>
             </nav>
-          )}
+          </div>
         </div>
-        {!isDesktop && <Menu width={24} height={24} />}
-        {isDesktop && (
+        <Menu width={24} height={24} className="isTablet" />
+
+        <div className="isDesktop">
           <Button color="yellow" className={styles.Button}>
             Записаться на занятие
           </Button>
-        )}
+        </div>
       </div>
     </header>
   );

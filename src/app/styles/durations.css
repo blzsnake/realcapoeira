@@ -1,0 +1,10 @@
+:root {
+  --hover-duration: 0.2s;
+  --spinner-duration: 1.2s;
+  --component-transform-duration: 0.3s;
+  --height-duration: 0.3s;
+  --nav-menu-duration: 0.4s;
+  --dropdown-duration: 0.3s;
+  --main-notifier-duration: 0.25s;
+  --circular-progress-bar-duration: 1s;
+}

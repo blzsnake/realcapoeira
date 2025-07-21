@@ -18,12 +18,7 @@
   padding: 20px;
 }
 
-@media (min-width: 1440px) {
-  .Header {
-    padding: 16px 40px;
-  }
-}
-
+.ContentWrapper,
 .Contents {
   display: flex;
   align-items: center;
@@ -31,17 +26,36 @@
   gap: 24px;
 }
 
-.Contents svg,
-.Contents p {
-  cursor: pointer;
-  transition: text-shadow 0.2s ease;
-}
-
-/* хак, чтобы текст не разъезжался */
-.Contents p:hover {
+.Contents {
+  p {
+    cursor: pointer;
+    transition: text-shadow 0.2s ease;
+  }
+  p:hover {
   text-shadow:
     0.3px 0 currentColor,
     -0.3px 0 currentColor,
     0 0.3px currentColor,
     0 -0.3px currentColor;
+}
+}
+
+.ContentWrapper {
+  svg {
+    width: 48px;
+    height: 48px;
+    cursor: pointer;
+    transition: text-shadow 0.2s ease;
+  }
+}
+
+@media (min-width: 1440px) {
+  .Header {
+    padding: 16px 40px;
+  }
+
+  .ContentWrapper svg {
+    width: 64px;
+    height: 64px;
+  }
 }

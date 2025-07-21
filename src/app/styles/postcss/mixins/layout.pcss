@@ -1,0 +1,25 @@
+@define-mixin layout {
+  padding: 0 var(--padding-page-mobile-small);
+
+  @media (--mobile) {
+    padding: 0 var(--padding-page-mobile);
+  }
+
+  @media (--tablet) {
+    padding: 0 var(--padding-page-tablet);
+  }
+
+  @media (--laptop) {
+    padding: 0 var(--padding-page-laptop);
+  }
+
+  @media (--laptop-large) {
+    padding: 0 var(--padding-page-laptop-large);
+  }
+
+  @media (--desktop) {
+    margin: 0 auto;
+    max-width: var(--desctop-layout-width);
+    padding: 0 var(--padding-page-desktop);
+  }
+}
