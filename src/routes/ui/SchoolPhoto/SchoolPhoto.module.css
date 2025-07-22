@@ -1,3 +1,8 @@
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
 .SchoolPhoto {
   display: flex;
   flex-direction: column;
@@ -25,13 +30,15 @@
   padding: 0 20px 0;
   min-width: 350px;
   line-height: 1;
+  opacity: 0;
+  animation: fadeIn 1s ease-in-out forwards;
+  animation-delay: 1s;
 }
 
 .ButtonsBlockMobile {
   width: fit-content;
   display: flex;
   gap: 16px;
-  z-index: 5000;
 }
 
 .Button {
@@ -46,6 +53,9 @@
   height: 343px;
   width: auto;
   margin-top: 20px;
+  opacity: 0;
+  animation: fadeIn 1s ease-in-out forwards;
+  animation-delay: 3s;
 }
 
 .ButtonsBlockWeb {
@@ -58,14 +68,22 @@
   }
   .ButtonsBlockWeb {
     display: flex;
+    align-items: center;
     gap: 24px;
     padding: 8px;
     border-radius: 100px;
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
-    z-index: 5000;
+    z-index: var(--upper-middle-z-index);
     position: absolute;
-    bottom: 20px;
+    bottom: 32px;
+
+    svg {
+      cursor: pointer;
+    }
+  }
+  .Button {
+    width: 215px !important;
   }
   .SchoolPhoto {
     height: 720px;
@@ -82,7 +100,7 @@
     transform: translateX(-50%);
     height: 100%;
     width: auto;
-    z-index: 1000;
+    z-index: var(--middle-z-index);
   }
 }
 
@@ -95,5 +113,8 @@
   }
   .Image {
     max-height: 800px;
+  }
+  .ButtonsBlockWeb {
+    bottom: 40px;
   }
 }
