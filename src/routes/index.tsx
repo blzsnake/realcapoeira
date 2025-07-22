@@ -1,21 +1,13 @@
-import { Link } from '@tramvai/module-router';
-
-import styles from './index.module.css';
 import { SchoolPhoto } from './ui/SchoolPhoto';
+import { Events } from './ui/Events';
+import styles from './index.module.css';
 
 export function IndexPage() {
   return (
     <main>
       <SchoolPhoto />
       <div className={styles.Content}>
-        <ul>
-          <li>
-            <Link url="/filials">Filials</Link>
-          </li>
-          <li>
-            <Link url="/contacts">Contacts</Link>
-          </li>
-        </ul>
+        <Events />
       </div>
     </main>
   );
