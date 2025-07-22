@@ -1,9 +1,19 @@
 .SchoolPhoto {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   background-color: #f6f4f3;
   height: 526px;
   position: relative;
   overflow: hidden;
   padding-top: 24px;
+}
+
+.HeadingBlock {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
 }
 
 .Heading {
@@ -14,29 +24,65 @@
   font-size: 40px;
   padding: 0 20px 0;
   min-width: 350px;
-  
+  line-height: 1;
+}
+
+.ButtonsBlockMobile {
+  width: fit-content;
+  display: flex;
+  gap: 16px;
+  z-index: 5000;
+}
+
+.Button {
+  border-radius: 28px !important;
+  padding: 13px 20px !important;
+  width: 160px !important;
+  height: 56px !important;
 }
 
 .Image {
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  height: 100%;
+  position: relative;
+  height: 343px;
   width: auto;
-  z-index: 1000;
+  margin-top: 20px;
+}
+
+.ButtonsBlockWeb {
+  display: none;
 }
 
 @media (min-width: 1024px) {
+  .ButtonsBlockMobile {
+    display: none;
+  }
+  .ButtonsBlockWeb {
+    display: flex;
+    gap: 24px;
+    padding: 8px;
+    border-radius: 100px;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    z-index: 5000;
+    position: absolute;
+    bottom: 20px;
+  }
   .SchoolPhoto {
     height: 720px;
   }
   .Heading {
-    color: #FDCF2B;
+    color: #fdcf2b;
     font-size: 120px;
   }
   .Image {
     max-height: 570px;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    height: 100%;
+    width: auto;
+    z-index: 1000;
   }
 }
 
@@ -49,13 +95,5 @@
   }
   .Image {
     max-height: 800px;
-  }
-}
-
-@media (max-width: 1023px) {
-  .Image {
-    top: 140px;
-    bottom: auto;
-    height: 324px;
   }
 }
