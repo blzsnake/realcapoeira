@@ -54,6 +54,7 @@ body {
   margin: 0;
   text-size-adjust: 100%;
   position: relative;
+  overflow-x: hidden;
 
   scroll-behavior: smooth;
 }

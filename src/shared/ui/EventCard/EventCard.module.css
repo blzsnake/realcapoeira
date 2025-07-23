@@ -4,11 +4,13 @@
   padding: 24px;
   display: flex;
   flex-direction: column;
+  flex-shrink: 0;
   gap: 16px;
   align-items: start;
   justify-content: center;
   background-color: var(--gray);
   border-radius: 16px;
+  cursor: pointer;
 }
 
 .Dates {

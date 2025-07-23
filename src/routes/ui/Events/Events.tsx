@@ -11,8 +11,10 @@ const mockProps = {
   },
   title: 'Семинар от бразильских мастеров',
   description:
-    'Berimbau me chama — это 3 дня мастер-классов для взрослых и детей',
+    'Berimbau me chama — это 3 дня мастер‑классов для взрослых и детей',
 };
+
+const mockEvents = Array(4).fill(mockProps);
 
 function ButtonsBlock() {
   return (
@@ -33,7 +35,13 @@ export function Events() {
           События
         </Typography>
       </div>
-      <EventCard {...mockProps} />
+
+      <div className={styles.Cards}>
+        {mockEvents.map((evt) => (
+          <EventCard key={evt.title} {...evt} />
+        ))}
+      </div>
+
       <ButtonsBlock />
     </div>
   );

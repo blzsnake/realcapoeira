@@ -25,6 +25,18 @@
   width: 270px !important;
 }
 
+.Cards {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  margin-right: -40px;
+}
+.Cards::-webkit-scrollbar {
+  display: none;
+}
+
 @media (min-width: 1024px) {
   .Events {
     margin-top: 60px;
