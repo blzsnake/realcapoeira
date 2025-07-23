@@ -1,0 +1,52 @@
+.Typography {
+  overflow-wrap: break-word;
+}
+
+p {
+  padding: 0;
+  margin: 0;
+}
+
+.clickable {
+  cursor: pointer;
+}
+
+.regular {
+  font-weight: 400;
+}
+
+.medium {
+  font-weight: 500;
+}
+
+.demiBold {
+  font-weight: 600;
+}
+
+.black {
+  color: var(--black);
+}
+
+.white {
+  color: var(--white);
+}
+
+.blue {
+  color: var(--color-blue);
+}
+
+.red {
+  color: var(--color-red);
+}
+
+.orange {
+  color: var(--color-orange);
+}
+
+.yellow {
+  color: var(--color-yellow);
+}
+
+.green {
+  color: var(--color-green);
+}

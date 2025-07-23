@@ -1,0 +1,19 @@
+.Events {
+  width: 100%;
+  margin-top: 48px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+@media (min-width: 1024px) {
+  .Events {
+    margin-top: 60px;
+  }
+}
+
+@media (min-width: 1440px) {
+  .Events {
+    margin-top: 100px;
+  }
+}

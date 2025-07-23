@@ -1,41 +1,12 @@
 :root {
-  --gray-black: #202123;
-  --gray-black-transparent-32: rgba(32, 33, 35, 0.32);
-  --gray-dark-gray: #54585c;
-  --gray-dark-gray-2: #8a9095;
-  --gray-gray: #b6bec5;
-  --gray-gray-light: #e4e8ed;
-  --gray-gray-light-2: #ebeef3;
-  --gray-background: #f1f4f8;
-  --gray-white: #fff;
-  --gray-dark-transparent-12: rgb(38 38 38 / 12%);
-  --gray-dark-icon:#313235;
+  --black: #000000;
+  --white: #fff;
 
   --color-blue: #136be1;
-  --color-blue-transparent-12: rgb(19 107 225 / 12%);
-  --color-blue-transparent-50: rgb(19 107 225 / 50%);
   --color-red: #e73232;
-  --color-red-transparent-12: rgb(231 50 50 / 12%);
-  --color-red-transparent-20: rgb(231 50 50 / 20%);
   --color-orange: #ff8610;
-  --color-orange-transparent-16: rgb(255 134 16 / 16%);
-  --color-transparent-green-16: rgba(39, 174, 96, 0.16);
-  --color-yellow: #fbbc05;
-  --color-yellow-light: #fae18d;
-  --color-yellow-transparent-16: rgb(251 188 5 / 16%);
+  --color-yellow: #FDCF2B;
   --color-green: #27ae60;
-  --color-green-light: #e5f5ec;
-  --color-green-transparent-16: rgb(39 174 96 / 16%);
-  --background-sale-orange: #fff2e4;
-
-  --selection-pink: #fce3ff;
-  --selection-red: #ffdada;
-  --selection-orange: rgba(255, 134, 16, 0.16);
-  --selection-yellow: #fff0b2;
-  --selection-green: #c2f2d0;
-  --selection-blue-light: #c8ebff;
-  --selection-blue: #c2dbff;
-  --selection-purple: #ead4ff;
 
   --color-hover-blue-secondary: #1d75eb;
   --color-hover-orange-secondary: #ff901a;
@@ -43,21 +14,4 @@
   --color-hover-red-secondary: #f13c3c;
   --color-hover-blue-transparent-20: rgb(19 107 225 / 20%);
   --color-hover-orange-transparent-20: rgb(255 134 16 / 20%);
-
-  --color-white-transparent-16: rgb(255 255 255 / 16%);
-  --color-white-transparent-24: rgb(255 255 255 / 24%);
-  --color-black-transparent-24: rgb(32 33 35 / 24%);
-
-  --divider-default: #DAE1E8;
-
-  --button-transparent-warning-body-normal: rgba(231, 50, 50, 0.12);
-  --button-transparent-brand-body-normal: rgba(19, 107, 225, 0.12);
-
-  --button-transparent-neutral-body-normal: rgba(20, 20, 20, 0.08);
-
-  --background-secondary: #EAEEF2;
-
-  --text-primary: #141414;
-
-  --input-border-focus:#136BE1;
 }
