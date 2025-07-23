@@ -1,4 +1,4 @@
-import { Button } from '~shared/button/Button';
+import { Button } from '~shared/ui/button/Button';
 import styles from './SchoolPhoto.module.css';
 import AllCrew from '../../../app/assets/AllCrew.png';
 import ArrowDown from '../../../app/assets/ArrowDown.svg?react';

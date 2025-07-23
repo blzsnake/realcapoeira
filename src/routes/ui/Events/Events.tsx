@@ -1,4 +1,4 @@
-import { Typography } from '~shared/typography';
+import { Typography } from '~shared/ui/typography';
 import styles from './Events.module.css';
 
 export function Events() {

@@ -7,10 +7,6 @@ p {
   margin: 0;
 }
 
-.clickable {
-  cursor: pointer;
-}
-
 .regular {
   font-weight: 400;
 }

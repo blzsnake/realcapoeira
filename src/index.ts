@@ -11,10 +11,10 @@ import {
   ResourceSlot,
   LAYOUT_OPTIONS,
 } from '@tramvai/tokens-render';
-import { Layout } from '~shared/layout';
+import { Layout } from '~shared/ui/layout';
 import './app/styles/index.css';
-import { HeaderModule } from '~shared/header';
-import { FooterModule } from '~shared/footer';
+import { HeaderModule } from '~shared/ui/header';
+import { FooterModule } from '~shared/ui/footer';
 import { getFontsProviders } from './app/fonts/fonts';
 
 createApp({
