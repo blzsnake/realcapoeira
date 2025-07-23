@@ -47,10 +47,16 @@
   .Button {
     width: 210px !important;
   }
+  .Cards {
+    gap: 16px;
+  }
 }
 
 @media (min-width: 1440px) {
   .Events {
     margin-top: 100px;
+  }
+  .Cards {
+    gap: 24px;
   }
 }
