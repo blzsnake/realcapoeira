@@ -1,6 +1,4 @@
 :root {
-  /* TODO заменить пиксели на что то типа --heading-l-size: clump(20px,2vw,32px);
-	что бы шрифты лучше тянулись  */
   --heading-l-size: 32px;
   --heading-l-line-height: normal;
   --heading-m-size: 24px;
