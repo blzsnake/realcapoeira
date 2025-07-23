@@ -1,5 +1,6 @@
 import { SchoolPhoto } from './ui/SchoolPhoto';
 import { Events } from './ui/Events';
+import { About } from './ui/About';
 import styles from './index.module.css';
 
 export function IndexPage() {
@@ -8,6 +9,7 @@ export function IndexPage() {
       <SchoolPhoto />
       <div className={styles.Content}>
         <Events />
+        <About />
       </div>
     </main>
   );
