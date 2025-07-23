@@ -21,6 +21,7 @@
     "@tramvai/state": "^4.41.104",
     "@tramvai/tokens-render": "^4.41.104",
     "@tramvai/tokens-router": "^4.41.104",
+    "classnames": "^2.5.1",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
     "react-responsive": "^10.0.1",

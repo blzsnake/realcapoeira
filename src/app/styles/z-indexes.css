@@ -1,0 +1,9 @@
+:root {
+  --lowest-z-index: 1;
+  --low-z-index: 10;
+  --lower-middle-z-index: 100;
+  --middle-z-index: 1000;
+  --upper-middle-z-index: 5000;
+  --high-z-index: 9999;
+  --highes-z-index: 10000;
+}

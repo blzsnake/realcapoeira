@@ -1,0 +1,29 @@
+@define-mixin vertical-gap {
+  & > * {
+    margin-bottom: var(--gap-blocks-mobile-small);
+
+    @media (--mobile) {
+      margin-bottom: var(--gap-blocks-mobile);
+    }
+
+    @media (--tablet) {
+      margin-bottom: var(--gap-blocks-tablet);
+    }
+
+    @media (--laptop) {
+      margin-bottom: var(--gap-blocks-laptop);
+    }
+
+    @media (--laptop-large) {
+      margin-bottom: var(--gap-blocks-laptop-large);
+    }
+
+    @media (--desktop) {
+      margin-bottom: var(--gap-blocks-desktop);
+    }
+  }
+
+  & > *:last-child {
+    margin-bottom: 0;
+  }
+}

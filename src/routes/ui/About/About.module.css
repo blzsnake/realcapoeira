@@ -1,0 +1,9 @@
+.Heading {
+  font-size: 28px;
+}
+
+@media (min-width: 1024px) {
+  .Heading {
+    font-size: 40px;
+  }
+}

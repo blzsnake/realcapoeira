@@ -1,0 +1,68 @@
+.Events {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.HeadingBlock {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  :last-child {
+    display: none;
+  }
+}
+
+.Heading {
+  font-size: 28px;
+}
+
+.ButtonsBlock {
+  display: flex;
+  gap: 16px;
+}
+
+.Button {
+  width: 270px !important;
+}
+
+.Cards {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  margin-right: -40px;
+}
+
+.Cards::-webkit-scrollbar {
+  display: none;
+}
+
+@media (min-width: 1024px) {
+  .HeadingBlock {
+    :last-child {
+      display: flex;
+    }
+  }
+  .Heading {
+    font-size: 40px;
+  }
+  .Button {
+    width: 210px !important;
+  }
+  .Cards {
+    gap: 16px;
+  }
+  .BottomButtons {
+    display: none;
+  }
+}
+
+@media (min-width: 1440px) {
+  .Cards {
+    gap: 24px;
+  }
+}

@@ -1,0 +1,18 @@
+:root {
+  --black: #000000;
+  --white: #fff;
+  --gray: #f6f4f3;
+
+  --color-blue: #136be1;
+  --color-red: #e73232;
+  --color-orange: #ff8610;
+  --color-yellow: #fdcf2b;
+  --color-green: #27ae60;
+
+  --color-hover-blue-secondary: #1d75eb;
+  --color-hover-orange-secondary: #ff901a;
+  --color-hover-green-secondary: #31b86a;
+  --color-hover-red-secondary: #f13c3c;
+  --color-hover-blue-transparent-20: rgb(19 107 225 / 20%);
+  --color-hover-orange-transparent-20: rgb(255 134 16 / 20%);
+}

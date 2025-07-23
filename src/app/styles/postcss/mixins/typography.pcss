@@ -1,0 +1,6 @@
+@define-mixin typography $group, $size, $weight: normal {
+  font-size: var(--$(group)-$(size)-size);
+  line-height: var(--$(group)-$(size)-line-height);
+  font-weight: $weight;
+  overflow-wrap: break-word;
+}

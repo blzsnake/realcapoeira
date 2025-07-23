@@ -1,5 +1,18 @@
+@import url('./colors.css');
+@import url('./durations.css');
+@import url('./elevations.css');
+@import url('./layout.css');
+@import url('./radii.css');
+@import url('./shadow.css');
+@import url('./sizes.css');
+@import url('./spacings.css');
+@import url('./typography.css');
+@import url('./z-indexes.css');
+
 @font-face {
   font-family: 'TT Hoves';
+
+  /* TODO выложить на CDN */
   src: url('../fonts/TT_Hoves_Pro_Regular.woff2') format('woff2');
   font-display: swap;
   font-weight: normal;
@@ -19,17 +32,92 @@
   font-weight: 600;
 }
 
+* {
+  box-sizing: border-box;
+  margin: 0;
+}
+
 html,
 body {
-  font-family: 'TT Hoves', sans-serif;
+  font-family:
+    'TT Hoves',
+    -apple-system,
+    BlinkMacSystemFont,
+    'Segoe UI',
+    Roboto,
+    Oxygen-Sans,
+    Ubuntu,
+    Cantarell,
+    'Helvetica Neue',
+    sans-serif;
   font-weight: normal;
   margin: 0;
-  padding: 0;
   text-size-adjust: 100%;
   position: relative;
+  overflow-x: hidden;
+
   scroll-behavior: smooth;
 }
 
-*, *::before, *::after {
-  box-sizing: border-box;
+:global(.isDesktop) {
+  display: none;
+}
+
+:global(.isTablet) {
+  display: block;
+}
+
+:global(.isMobile) {
+  display: block;
+}
+
+@media (min-width: 1024px) {
+  :global(.isTablet) {
+    display: block;
+  }
+  :global(.isMobile) {
+    display: none;
+  }
+}
+
+@media (min-width: 1440px) {
+  :global(.isDesktop) {
+    display: block;
+  }
+  :global(.isTablet) {
+    display: none;
+  }
+  :global(.isMobile) {
+    display: none;
+  }
+}
+
+h1 {
+  margin: 0;
+}
+
+button {
+  padding: 0;
+  border: none;
+  outline: none;
+  background: none;
+  line-height: 0;
+  font-family: inherit;
+}
+
+a {
+  text-decoration: none;
+  color: var(--color-blue);
+
+  &:hover {
+    color: var(--selection-blue);
+  }
+}
+
+button {
+  padding: 0;
+  border: none;
+  outline: none;
+  background: none;
+  line-height: 0;
 }

@@ -1,0 +1,38 @@
+:root {
+  --heading-l-size: 32px;
+  --heading-l-line-height: normal;
+  --heading-m-size: 24px;
+  --heading-m-line-height: 28px;
+  --heading-s-size: 22px;
+  --heading-s-line-height: 24px;
+  --text-large-size: 20px;
+  --text-large-line-height: 24px;
+  --text-extra-large-size: 32px;
+  --text-base-size: 18px;
+  --text-base-line-height: 22px;
+  --text-small-size: 16px;
+  --text-small-line-height: 18px;
+  --text-extra-small-size: 14px;
+  --text-extra-small-line-height: 16px;
+
+  --text-mobile-small-size: 12px;
+
+
+  /*h2*/
+  --typography-h2-font-size: 20px;
+  --typography-h2-lihe-height: 24px;
+
+  /*h3*/
+  --typography-h3-font-size: 18px;
+  --typography-h3-lihe-height: 22px;
+
+  @media(--tablet) {
+    /*h2*/
+    --typography-h2-font-size: 24px;
+    --typography-h2-lihe-height: 28px;
+
+    /*h3*/
+    --typography-h3-font-size: 22px;
+    --typography-h3-lihe-height: 24px;
+  }
+}

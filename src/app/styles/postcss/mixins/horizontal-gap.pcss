@@ -1,0 +1,29 @@
+@define-mixin horizontal-gap {
+  & > * {
+    margin-right: var(--gap-blocks-mobile-small);
+
+    @media (--mobile) {
+      margin-right: var(--gap-blocks-mobile);
+    }
+
+    @media (--tablet) {
+      margin-right: var(--gap-blocks-tablet);
+    }
+
+    @media (--laptop) {
+      margin-right: var(--gap-blocks-laptop);
+    }
+
+    @media (--laptop-large) {
+      margin-right: var(--gap-blocks-laptop-large);
+    }
+
+    @media (--desktop) {
+      margin-right: var(--gap-blocks-desktop);
+    }
+  }
+
+  & > *:last-child {
+    margin-right: 0;
+  }
+}

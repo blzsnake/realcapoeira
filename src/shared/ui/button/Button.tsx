@@ -10,7 +10,7 @@ export function Button({
   return (
     <button
       type="button"
-      className={`${styles.Button} ${styles[color]} ${className}`}
+      className={`${className} ${styles.Button} ${styles[color]}`}
       onClick={onClick}
     >
       {children}

@@ -1,0 +1,19 @@
+:root {
+  --padding-page-mobile-small: 16px;
+  --gap-blocks-mobile-small: 12px;
+
+  --padding-page-mobile: 20px;
+  --gap-blocks-mobile: 16px;
+
+  --padding-page-tablet: 24px;
+  --gap-blocks-tablet: 20px;
+
+  --padding-page-laptop: 40px;
+  --gap-blocks-laptop: 24px;
+
+  --padding-page-laptop-large: 48px;
+  --gap-blocks-laptop-large: 24px;
+
+  --padding-page-desktop: 48px;
+  --gap-blocks-desktop: 24px;
+}
