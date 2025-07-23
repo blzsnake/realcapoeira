@@ -11,7 +11,7 @@ export function EventCard({
   description,
 }: TEventCardProps) {
   return (
-    <div className={styles.EventCard} onClick={onClick}>
+    <article className={styles.EventCard} onClick={onClick}>
       <Typography className={styles.Dates}>
         {getDatesString(dateFrom, dateTo)}
       </Typography>
@@ -19,6 +19,6 @@ export function EventCard({
         {title}
       </Typography>
       <Typography className={styles.Description}>{description}</Typography>
-    </div>
+    </article>
   );
 }

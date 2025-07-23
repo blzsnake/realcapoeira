@@ -1,9 +1,72 @@
+.About {
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+}
+
+.Column {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
 .Heading {
   font-size: 28px;
+}
+
+.Author {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+
+.Image {
+  width: 92px;
+}
+
+.AuthorColumn {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.AuthorName {
+  font-size: 20px;
+  line-height: 120%;
+}
+
+.AuthorInfo {
+  font-size: 15px;
+  line-height: 120%;
+}
+
+.CapoeiraInfo {
+  font-size: 18px;
+  line-height: 24px;
+}
+
+.Button {
+  height: 56px !important;
+  width: 177px !important;
 }
 
 @media (min-width: 1024px) {
   .Heading {
     font-size: 40px;
+  }
+  .CapoeiraInfo {
+    font-size: 24px;
+    line-height: 120%;
+  }
+}
+
+@media (min-width: 1440px) {
+  .About {
+    flex-direction: row;
+    gap: 24px;
+
+    .Column {
+      width: 50%;
+    }
   }
 }
