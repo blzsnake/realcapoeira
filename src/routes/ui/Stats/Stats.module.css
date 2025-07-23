@@ -1,0 +1,57 @@
+.Stats {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+}
+
+.Items {
+  display: flex;
+  gap: 48px;
+  margin-top: 16px;
+}
+
+.Caption {
+  font-size: 20px;
+  line-height: 120%;
+}
+
+.Number {
+  font-size: 64px;
+  line-height: 120%;
+}
+
+@media (min-width: 1024px) {
+  .Stats {
+    flex-direction: row;
+    justify-content: flex-start;
+    gap: 24%;
+    margin: 0 auto;
+  }
+
+  .Item {
+    min-width: 198px;
+  }
+
+  .Items {
+    display: contents;
+    margin-top: 0;
+  }
+}
+
+@media (min-width: 1440px) {
+  .Stats {
+    gap: 16%;
+  }
+  
+  .Caption {
+    font-size: 28px;
+    line-height: 120%;
+  }
+  
+  .Number {
+    font-size: 120px;
+    line-height: 120%;
+  }
+}
