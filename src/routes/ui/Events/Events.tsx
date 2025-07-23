@@ -8,7 +8,7 @@ function ButtonsBlock() {
       <Button color="yellow" className={styles.Button}>
         Все новости в Telegram
       </Button>
-      <Button className={styles.Button}>VK</Button>
+      <Button>VK</Button>
     </div>
   );
 }
@@ -21,6 +21,7 @@ export function Events() {
           События
         </Typography>
       </div>
+      <p>слайдер</p>
       <ButtonsBlock />
     </div>
   );

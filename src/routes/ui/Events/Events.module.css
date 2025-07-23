@@ -21,12 +21,19 @@
   gap: 16px;
 }
 
+.Button {
+  width: 270px !important;
+}
+
 @media (min-width: 1024px) {
   .Events {
     margin-top: 60px;
   }
   .Heading {
     font-size: 40px;
+  }
+  .Button {
+    width: 210px !important;
   }
 }
 
