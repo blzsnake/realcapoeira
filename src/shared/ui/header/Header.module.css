@@ -1,7 +1,7 @@
 .HeaderWrap {
   width: 100vw;
   display: flex;
-  background: #f6f4f3;
+  background: var(--gray);
   position: sticky;
   top: 0;
   z-index: 1000;

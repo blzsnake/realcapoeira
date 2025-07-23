@@ -2,8 +2,8 @@
 import { Link } from '@tramvai/module-router';
 import { Button } from '~shared/ui/button/Button';
 // Assets
-import Logo from './assets/rc_logo.svg?react';
-import Menu from './assets/menu.svg?react';
+import Logo from '../../../app/assets/RCLogo.svg?react';
+import Menu from '../../../app/assets/Menu.svg?react';
 // Styles
 import styles from './Header.module.css';
 

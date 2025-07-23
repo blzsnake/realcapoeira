@@ -7,7 +7,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: #f6f4f3;
+  background-color: var(--gray);
   height: 526px;
   position: relative;
   overflow: hidden;

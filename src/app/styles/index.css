@@ -46,7 +46,6 @@ body {
   margin: 0;
   text-size-adjust: 100%;
   position: relative;
-  overflow-y: hidden;
 
   scroll-behavior: smooth;
 }

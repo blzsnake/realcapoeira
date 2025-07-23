@@ -1,0 +1,28 @@
+.EventCard {
+  width: 320px;
+  height: 192px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  align-items: start;
+  justify-content: center;
+  background-color: var(--gray);
+  border-radius: 16px;
+}
+
+.Dates {
+  font-size: 18px;
+  line-height: 24px;
+}
+
+.Title {
+  font-size: 20px;
+  line-height: 120%;
+}
+
+.Description {
+  font-size: 15px;
+  line-height: 120%;
+}
+
