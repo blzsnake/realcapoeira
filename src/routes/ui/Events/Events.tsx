@@ -34,6 +34,7 @@ export function Events() {
         <Typography component="h2" weight="demiBold" className={styles.Heading}>
           События
         </Typography>
+        <ButtonsBlock />
       </div>
 
       <div className={styles.Cards}>
@@ -42,7 +43,9 @@ export function Events() {
         ))}
       </div>
 
-      <ButtonsBlock />
+      <div className={styles.BottomButtons}>
+        <ButtonsBlock />
+      </div>
     </div>
   );
 }

@@ -10,6 +10,10 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+
+  :last-child {
+    display: none;
+  }
 }
 
 .Heading {
@@ -33,6 +37,7 @@
   scrollbar-width: none;
   margin-right: -40px;
 }
+
 .Cards::-webkit-scrollbar {
   display: none;
 }
@@ -40,6 +45,11 @@
 @media (min-width: 1024px) {
   .Events {
     margin-top: 60px;
+  }
+  .HeadingBlock {
+    :last-child {
+      display: flex;
+    }
   }
   .Heading {
     font-size: 40px;
@@ -49,6 +59,9 @@
   }
   .Cards {
     gap: 16px;
+  }
+  .BottomButtons {
+    display: none;
   }
 }
 
