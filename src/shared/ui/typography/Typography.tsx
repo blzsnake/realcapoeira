@@ -8,11 +8,9 @@ export const Typography = forwardRef<HTMLDivElement, ITypographyProps>(
   (
     {
       component = 'p',
-      size,
       weight = 'regular',
       color = 'black',
       className,
-      style,
       children,
       ...props
     },
@@ -25,20 +23,10 @@ export const Typography = forwardRef<HTMLDivElement, ITypographyProps>(
       className
     );
 
-    const combinedStyle: React.CSSProperties = {
-      ...style,
-      ...(size !== undefined ? { fontSize: `${size}px` } : {}),
-    };
-
     const Component = component as ElementType;
 
     return (
-      <Component
-        {...(props as any)}
-        ref={ref}
-        className={typographyStyles}
-        style={combinedStyle}
-      >
+      <Component {...(props as any)} ref={ref} className={typographyStyles}>
         {children}
       </Component>
     );

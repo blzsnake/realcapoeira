@@ -4,7 +4,6 @@ export interface ITypographyProps extends HTMLAttributes<HTMLElement> {
   component?: TComponent;
   weight?: TWeight;
   color?: TColor;
-  size?: number;
 }
 
 export type TColor =
