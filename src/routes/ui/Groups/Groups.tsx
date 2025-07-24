@@ -1,9 +1,9 @@
 import { Typography } from '~shared/ui/typography';
 import styles from './Groups.module.css';
-import Baby from '../../../app/assets/Baby.png';
-import Kid from '../../../app/assets/Kid.png';
-import Teen from '../../../app/assets/Teen.png';
-import Adult from '../../../app/assets/Adult.png';
+import Baby from '../../../app/assets/Baby.svg';
+import Kid from '../../../app/assets/Kid.svg';
+import Teen from '../../../app/assets/Teen.svg';
+import Adult from '../../../app/assets/Adult.svg';
 
 export function Groups() {
   return (
