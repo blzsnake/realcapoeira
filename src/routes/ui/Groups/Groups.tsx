@@ -1,9 +1,11 @@
 import { Typography } from '~shared/ui/typography';
-import styles from './Groups.module.css';
 import Baby from '../../../app/assets/Baby.svg';
 import Kid from '../../../app/assets/Kid.svg';
 import Teen from '../../../app/assets/Teen.svg';
 import Adult from '../../../app/assets/Adult.svg';
+import ArrowRight from '../../../app/assets/ArrowRight.svg?react';
+import ArrowCircle from '../../../app/assets/ArrowCircle.svg?react';
+import styles from './Groups.module.css';
 
 export function Groups() {
   return (
@@ -23,6 +25,8 @@ export function Groups() {
             </Typography>
           </div>
           <img src={Baby} alt="Дети 3-6 лет" className={styles.Image} />
+          <ArrowRight width={24} height={24} className={styles.ArrowRight} />
+          <ArrowCircle width={46} height={46} className={styles.ArrowCircle} />
         </div>
         <div className={styles.Card}>
           <div className={styles.InfoWrap}>
@@ -35,6 +39,8 @@ export function Groups() {
             </Typography>
           </div>
           <img src={Kid} alt="Дети 7–10 лет" className={styles.Image} />
+          <ArrowRight width={24} height={24} className={styles.ArrowRight} />
+          <ArrowCircle width={46} height={46} className={styles.ArrowCircle} />
         </div>
         <div className={styles.Card}>
           <div className={styles.InfoWrap}>
@@ -47,6 +53,8 @@ export function Groups() {
             </Typography>
           </div>
           <img src={Teen} alt="Дети 11–15 лет" className={styles.Image} />
+          <ArrowRight width={24} height={24} className={styles.ArrowRight} />
+          <ArrowCircle width={46} height={46} className={styles.ArrowCircle} />
         </div>
         <div className={styles.Card}>
           <div className={styles.InfoWrap}>
@@ -63,6 +71,8 @@ export function Groups() {
             alt="Взрослые и подростки 16+"
             className={styles.Image}
           />
+          <ArrowRight width={24} height={24} className={styles.ArrowRight} />
+          <ArrowCircle width={46} height={46} className={styles.ArrowCircle} />
         </div>
       </div>
     </div>

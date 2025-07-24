@@ -32,14 +32,22 @@
   transition: background 0.3s ease;
   border-radius: 20px;
   cursor: pointer;
+  position: relative;
+}
+
+.ArrowRight {
+  position: absolute;
+  right: 16px;
+  bottom: 16px;
+  cursor: pointer;
+}
+
+.ArrowCircle {
+  display: none;
 }
 
 .Card:hover {
-  background-image: radial-gradient(
-    circle at 80% 90%,
-    #FDE74C 0%,
-    #F6F4F3 80%
-  );
+  background-image: radial-gradient(circle at 80% 90%, #fde74c 0%, #f6f4f3 80%);
 }
 
 .InfoWrap {
@@ -82,6 +90,18 @@
   .Card {
     padding: 24px;
     gap: 24px;
+  }
+
+  .ArrowRight {
+    display: none;
+  }
+
+  .ArrowCircle {
+    display: flex;
+    position: absolute;
+    right: 16px;
+    bottom: 16px;
+    cursor: pointer;
   }
 
   .Title {
