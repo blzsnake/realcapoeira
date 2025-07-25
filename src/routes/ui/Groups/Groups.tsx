@@ -24,7 +24,9 @@ export function Groups() {
               малышей слышать свое тело
             </Typography>
           </div>
+
           <Baby />
+
           {/* <img src={Baby} alt="Дети 3-6 лет" className={styles.Image} /> */}
           <ArrowRight width={24} height={24} className={styles.ArrowRight} />
           <ArrowCircle width={46} height={46} className={styles.ArrowCircle} />

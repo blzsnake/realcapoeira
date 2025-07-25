@@ -13,8 +13,8 @@ export function IndexPage() {
         <Events />
         <About />
         <Stats />
+        <Groups />
       </div>
-      <Groups />
     </main>
   );
 }
