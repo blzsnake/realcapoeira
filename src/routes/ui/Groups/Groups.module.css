@@ -150,23 +150,45 @@
 
   .Grid > *:nth-child(1) {
     grid-area: a;
-  }
-  .Grid > *:nth-child(2) {
-    grid-area: b;
-  }
-  .Grid > *:nth-child(3) {
-    grid-area: c;
-  }
-  .Grid > *:nth-child(4) {
-    grid-area: d;
+    height: 450px;
   }
 
-  .Card:nth-child(3) {
+  .Grid > *:nth-child(2) {
+    grid-area: b;
+    height: 450px;
+  }
+
+  .Grid > *:nth-child(3) {
+    grid-area: c;
     flex-direction: row;
     gap: 0px;
-    :first-child {
-      margin-right: -150px;
+    height: 400px;
+    width: 783px;
+
+    .Web {
+      margin-left: -110px;
     }
+  }
+
+  .Grid > *:nth-child(4) {
+    grid-area: d;
+
+    .Web {
+      height: 521px;
+    }
+  }
+
+  .Card:nth-of-type(3) {
+    padding-right: 0px;
+    padding-top: 0px;
+
+    .InfoWrap {
+      padding-top: 20px;
+    }
+  }
+
+  .ThirdCard {
+    max-width: 366px;
   }
 
   .Mobile {

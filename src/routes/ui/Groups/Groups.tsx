@@ -1,3 +1,4 @@
+import classNames from 'classnames';
 import { Typography } from '~shared/ui/typography';
 import BabyMobile from '../../../app/assets/BabyMobile.svg?react';
 import BabyTablet from '../../../app/assets/BabyTablet.svg?react';
@@ -55,7 +56,7 @@ export function Groups() {
           <ArrowCircle width={46} height={46} className={styles.ArrowCircle} />
         </div>
         <div className={styles.Card}>
-          <div className={styles.InfoWrap}>
+          <div className={classNames(styles.InfoWrap, styles.ThirdCard)}>
             <Typography className={styles.Title} weight="demiBold">
               Дети 11–15 лет
             </Typography>
