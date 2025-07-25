@@ -1,8 +1,8 @@
 import { Typography } from '~shared/ui/typography';
-import Baby from '../../../app/assets/Baby.svg';
-import Kid from '../../../app/assets/Kid.svg';
-import Teen from '../../../app/assets/Teen.svg';
-import Adult from '../../../app/assets/Adult.svg';
+import Baby from '../../../app/assets/Baby.svg?react';
+import Kid from '../../../app/assets/Kid.svg?react';
+import Teen from '../../../app/assets/Teen.svg?react';
+import Adult from '../../../app/assets/Adult.svg?react';
 import ArrowRight from '../../../app/assets/ArrowRight.svg?react';
 import ArrowCircle from '../../../app/assets/ArrowCircle.svg?react';
 import styles from './Groups.module.css';
@@ -24,7 +24,8 @@ export function Groups() {
               малышей слышать свое тело
             </Typography>
           </div>
-          <img src={Baby} alt="Дети 3-6 лет" className={styles.Image} />
+          <Baby />
+          {/* <img src={Baby} alt="Дети 3-6 лет" className={styles.Image} /> */}
           <ArrowRight width={24} height={24} className={styles.ArrowRight} />
           <ArrowCircle width={46} height={46} className={styles.ArrowCircle} />
         </div>
@@ -38,7 +39,8 @@ export function Groups() {
               собраннее
             </Typography>
           </div>
-          <img src={Kid} alt="Дети 7–10 лет" className={styles.Image} />
+          <Kid />
+          {/* <img src={Kid} alt="Дети 7–10 лет" className={styles.Image} /> */}
           <ArrowRight width={24} height={24} className={styles.ArrowRight} />
           <ArrowCircle width={46} height={46} className={styles.ArrowCircle} />
         </div>
@@ -52,7 +54,8 @@ export function Groups() {
               Осваивают технику ударов и акробатические элементы
             </Typography>
           </div>
-          <img src={Teen} alt="Дети 11–15 лет" className={styles.Image} />
+          <Teen />
+          {/* <img src={Teen} alt="Дети 11–15 лет" className={styles.Image} /> */}
           <ArrowRight width={24} height={24} className={styles.ArrowRight} />
           <ArrowCircle width={46} height={46} className={styles.ArrowCircle} />
         </div>
@@ -66,11 +69,12 @@ export function Groups() {
               еще помогают стать увереннее в себе и смотреть на мир шире
             </Typography>
           </div>
-          <img
+          <Adult />
+          {/* <img
             src={Adult}
             alt="Взрослые и подростки 16+"
             className={styles.Image}
-          />
+          /> */}
           <ArrowRight width={24} height={24} className={styles.ArrowRight} />
           <ArrowCircle width={46} height={46} className={styles.ArrowCircle} />
         </div>
