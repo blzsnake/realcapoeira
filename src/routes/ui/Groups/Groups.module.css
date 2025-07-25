@@ -17,6 +17,7 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 8px;
+  margin: 0 -20px;
 }
 
 .Card {
@@ -73,12 +74,12 @@
 
 @media (min-width: 1024px) {
   .Groups {
-    padding: 0 20px;
     gap: 40px;
   }
 
   .Grid {
     gap: 16px;
+    margin: 0;
   }
 
   .Heading {
