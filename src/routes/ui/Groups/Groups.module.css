@@ -65,11 +65,16 @@
   display: none;
 }
 
-.Image {
-  svg {
-    width: 100%;
-    height: 140px;
-  }
+.Mobile {
+  display: flex;
+}
+
+.Tablet {
+  display: none;
+}
+
+.Web {
+  display: none;
 }
 
 @media (min-width: 1024px) {
@@ -115,6 +120,18 @@
     font-size: 18px;
     line-height: 24px;
   }
+
+  .Mobile {
+    display: none;
+  }
+
+  .Tablet {
+    display: flex;
+  }
+
+  .Web {
+    display: none;
+  }
 }
 
 @media (min-width: 1440px) {
@@ -150,5 +167,17 @@
     :first-child {
       margin-right: -150px;
     }
+  }
+
+  .Mobile {
+    display: none;
+  }
+
+  .Tablet {
+    display: none;
+  }
+
+  .Web {
+    display: flex;
   }
 }

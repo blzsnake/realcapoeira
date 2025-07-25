@@ -1,8 +1,16 @@
 import { Typography } from '~shared/ui/typography';
-import Baby from '../../../app/assets/Baby.svg?react';
-import Kid from '../../../app/assets/Kid.svg?react';
-import Teen from '../../../app/assets/Teen.svg?react';
-import Adult from '../../../app/assets/Adult.svg?react';
+import BabyMobile from '../../../app/assets/BabyMobile.svg?react';
+import BabyTablet from '../../../app/assets/BabyTablet.svg?react';
+import BabyWeb from '../../../app/assets/BabyWeb.svg?react';
+import KidMobile from '../../../app/assets/KidMobile.svg?react';
+import KidTablet from '../../../app/assets/KidTablet.svg?react';
+import KidWeb from '../../../app/assets/KidWeb.svg?react';
+import TeenMobile from '../../../app/assets/TeenMobile.svg?react';
+import TeenTablet from '../../../app/assets/TeenTablet.svg?react';
+import TeenWeb from '../../../app/assets/TeenWeb.svg?react';
+import AdultMobile from '../../../app/assets/AdultMobile.svg?react';
+import AdultTablet from '../../../app/assets/AdultTablet.svg?react';
+import AdultWeb from '../../../app/assets/AdultWeb.svg?react';
 import ArrowRight from '../../../app/assets/ArrowRight.svg?react';
 import ArrowCircle from '../../../app/assets/ArrowCircle.svg?react';
 import styles from './Groups.module.css';
@@ -24,10 +32,9 @@ export function Groups() {
               малышей слышать свое тело
             </Typography>
           </div>
-
-          <Baby />
-
-          {/* <img src={Baby} alt="Дети 3-6 лет" className={styles.Image} /> */}
+          <BabyMobile className={styles.Mobile} />
+          <BabyTablet className={styles.Tablet} />
+          <BabyWeb className={styles.Web} />
           <ArrowRight width={24} height={24} className={styles.ArrowRight} />
           <ArrowCircle width={46} height={46} className={styles.ArrowCircle} />
         </div>
@@ -41,8 +48,9 @@ export function Groups() {
               собраннее
             </Typography>
           </div>
-          <Kid />
-          {/* <img src={Kid} alt="Дети 7–10 лет" className={styles.Image} /> */}
+          <KidMobile className={styles.Mobile} />
+          <KidTablet className={styles.Tablet} />
+          <KidWeb className={styles.Web} />
           <ArrowRight width={24} height={24} className={styles.ArrowRight} />
           <ArrowCircle width={46} height={46} className={styles.ArrowCircle} />
         </div>
@@ -56,8 +64,9 @@ export function Groups() {
               Осваивают технику ударов и акробатические элементы
             </Typography>
           </div>
-          <Teen />
-          {/* <img src={Teen} alt="Дети 11–15 лет" className={styles.Image} /> */}
+          <TeenMobile className={styles.Mobile} />
+          <TeenTablet className={styles.Tablet} />
+          <TeenWeb className={styles.Web} />
           <ArrowRight width={24} height={24} className={styles.ArrowRight} />
           <ArrowCircle width={46} height={46} className={styles.ArrowCircle} />
         </div>
@@ -71,12 +80,9 @@ export function Groups() {
               еще помогают стать увереннее в себе и смотреть на мир шире
             </Typography>
           </div>
-          <Adult />
-          {/* <img
-            src={Adult}
-            alt="Взрослые и подростки 16+"
-            className={styles.Image}
-          /> */}
+          <AdultMobile className={styles.Mobile} />
+          <AdultTablet className={styles.Tablet} />
+          <AdultWeb className={styles.Web} />
           <ArrowRight width={24} height={24} className={styles.ArrowRight} />
           <ArrowCircle width={46} height={46} className={styles.ArrowCircle} />
         </div>
