@@ -1,0 +1,205 @@
+.Groups {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+}
+
+.Heading {
+  width: 335px;
+  font-size: 28px;
+  line-height: 120%;
+  text-align: center;
+}
+
+.Grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  margin: 0 -20px;
+}
+
+.Card {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: space-between;
+  padding: 20px 20px 0;
+  gap: 16px;
+  background-color: var(--gray);
+  transition: background 0.3s ease;
+  border-radius: 20px;
+  cursor: pointer;
+  position: relative;
+}
+
+.Card:hover {
+  background-image: radial-gradient(circle at 80% 90%, #fde74c 0%, #f6f4f3 80%);
+}
+
+.ArrowRight {
+  position: absolute;
+  right: 16px;
+  bottom: 16px;
+  cursor: pointer;
+}
+
+.ArrowCircle {
+  display: none;
+}
+
+.InfoWrap {
+  display: flex;
+  flex-direction: column;
+  gap: 11px;
+  text-align: left;
+}
+
+.Title {
+  font-size: 20px;
+  line-height: 120%;
+}
+
+.Description {
+  display: none;
+}
+
+.Mobile {
+  display: flex;
+}
+
+.Tablet {
+  display: none;
+}
+
+.Web {
+  display: none;
+}
+
+@media (min-width: 1024px) {
+  .Groups {
+    gap: 40px;
+  }
+
+  .Grid {
+    gap: 16px;
+    margin: 0;
+  }
+
+  .Heading {
+    width: 100%;
+    font-size: 56px;
+    line-height: 120%;
+  }
+
+  .Card {
+    padding: 24px 24px 0;
+    gap: 24px;
+  }
+
+  .ArrowRight {
+    display: none;
+  }
+
+  .ArrowCircle {
+    display: flex;
+    position: absolute;
+    right: 16px;
+    bottom: 16px;
+    cursor: pointer;
+  }
+
+  .Title {
+    font-size: 28px;
+    line-height: 120%;
+  }
+
+  .Description {
+    display: flex;
+    font-size: 18px;
+    line-height: 24px;
+  }
+
+  .Mobile {
+    display: none;
+  }
+
+  .Tablet {
+    display: flex;
+  }
+
+  .Web {
+    display: none;
+  }
+}
+
+@media (min-width: 1440px) {
+  .Groups {
+    gap: 64px;
+  }
+
+  .Grid {
+    gap: 24px;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: auto auto;
+    grid-template-areas:
+      'a b d'
+      'c c d';
+  }
+
+  .Grid > *:nth-child(1) {
+    grid-area: a;
+    height: 450px;
+  }
+
+  .Grid > *:nth-child(2) {
+    grid-area: b;
+    height: 450px;
+  }
+
+  .Grid > *:nth-child(3) {
+    grid-area: c;
+    flex-direction: row;
+    gap: 0px;
+    height: 400px;
+    width: 783px;
+
+    .Web {
+      margin-left: -110px;
+    }
+  }
+
+  .Grid > *:nth-child(4) {
+    grid-area: d;
+
+    .Web {
+      height: 521px;
+    }
+  }
+
+  .Card:nth-of-type(3) {
+    padding-right: 0px;
+    padding-top: 0px;
+
+    .InfoWrap {
+      padding-top: 20px;
+    }
+  }
+
+  .ThirdCard {
+    max-width: 366px;
+  }
+
+  .Mobile {
+    display: none;
+  }
+
+  .Tablet {
+    display: none;
+  }
+
+  .Web {
+    display: flex;
+  }
+}

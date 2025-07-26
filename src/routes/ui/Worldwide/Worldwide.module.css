@@ -1,0 +1,64 @@
+.Worldwide {
+  padding-top: 140px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  width: 100%;
+}
+
+.Heading {
+  font-size: 28px;
+  line-height: 120%;
+  text-align: center;
+}
+
+.Subheading {
+  font-size: 18px;
+  line-height: 120%;
+  text-align: center;
+}
+
+.Countries {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  margin-right: -40px;
+}
+
+.Countries::-webkit-scrollbar {
+  display: none;
+}
+
+@media (min-width: 1024px) {
+  .Worldwide {
+    padding-top: 200px;
+    gap: 40px;
+    background: url('../../../app/assets/capo_map.svg') no-repeat;
+    background-size: contain;
+  }
+
+  .Heading {
+    width: 100%;
+    font-size: 56px;
+  }
+
+  .Subheading {
+    font-size: 28px;
+  }
+
+  .Image {
+    width: 100%;
+  }
+
+}
+
+@media (min-width: 1440px) {
+  .Groups {
+    gap: 64px;
+  }
+
+}

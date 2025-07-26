@@ -33,7 +33,3 @@ export function getDatesString(dateFrom: string, dateTo: string): string {
 
   return `${startDay} ${startMonthName} – ${endDay} ${endMonthName}`;
 }
-
-// Примеры
-console.log(getDatesString('2025-09-26', '2025-09-28')); // "26–28 сентября"
-console.log(getDatesString('2025-10-31', '2025-11-02')); // "31 октября – 2 ноября"
