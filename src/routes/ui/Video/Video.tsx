@@ -9,6 +9,10 @@ import Video5 from '../../../app/assets/Video5.svg?react';
 import styles from './Video.module.css';
 
 export function Video() {
+  const downloadClick = () => {
+    console.log('Скачивание приложения Capoeira daily');
+  };
+
   return (
     <div className={styles.Video}>
       <div className={styles.Row}>
@@ -22,12 +26,20 @@ export function Video() {
               Скачайте приложение Capoeira daily — сможете тренироваться, не
               выходя из дома
             </Typography>
-            <Button color="white" className={styles.MobileButton}>
+            <Button
+              color="white"
+              className={styles.MobileButton}
+              onClick={downloadClick}
+            >
               Скачать
             </Button>
           </div>
         </div>
-        <Button color="white" className={styles.WebButton}>
+        <Button
+          color="white"
+          className={styles.WebButton}
+          onClick={downloadClick}
+        >
           Скачать
         </Button>
       </div>
