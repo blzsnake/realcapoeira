@@ -9,10 +9,17 @@ export function CityCard({ title, subtitle, url, image }: TCityCardProps) {
   };
   return (
     <Link url={url} className={styles.CityCard} style={inlineStyles}>
-      {/* <Typography className={styles.Subtitle}>{subtitle}</Typography>
-      <Typography className={styles.Title} component="h3" weight="demiBold">
+      <Typography color="white" className={styles.Subtitle}>
+        {subtitle}
+      </Typography>
+      <Typography
+        color="white"
+        className={styles.Title}
+        component="h3"
+        weight="demiBold"
+      >
         {title}
-      </Typography> */}
+      </Typography>
     </Link>
   );
 }

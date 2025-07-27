@@ -1,6 +1,14 @@
 import { Typography } from '~shared/ui/typography';
 import { CityCard } from '~shared/ui/CityCard/CityCard';
-import Moscow from '../../../app/assets/moscow.png';
+import { Button } from '~shared/ui/button/Button';
+import Moscow from '../../../app/assets/mos.png';
+import Kaz from '../../../app/assets/kaz.png';
+import Krs from '../../../app/assets/krs.png';
+import Lissabon from '../../../app/assets/lis.png';
+import Eu from '../../../app/assets/eu.png';
+import Us from '../../../app/assets/us.png';
+import Asia from '../../../app/assets/asia.png';
+import Usa from '../../../app/assets/usa.png';
 
 import styles from './Worldwide.module.css';
 
@@ -13,11 +21,31 @@ export function Worldwide() {
       <Typography className={styles.Subheading}>
         В филиалах Real Capoeira и у наших друзей по всему миру
       </Typography>
+      <Button color="yellow">Узнать больше</Button>
       <div className={styles.Countries}>
-        <CityCard url="/" image={Moscow} />
-        <CityCard title="Казань" subtitle="Россия" url="/" image="/" />
-        <CityCard title="Краснодар" subtitle="Россия" url="/" image="/" />
-        <CityCard title="Лиссабон" subtitle="Россия" url="/" image="/" />
+        <CityCard title="Москва" subtitle="Россия" url="/" image={Moscow} />
+        <CityCard title="Казань" subtitle="Россия" url="/" image={Kaz} />
+        <CityCard title="Краснодар" subtitle="Россия" url="/" image={Krs} />
+        <CityCard
+          title="Лиссабон"
+          subtitle="Друзья школы"
+          url="/"
+          image={Lissabon}
+        />
+        <CityCard title="Европа" subtitle="Друзья школы" url="/" image={Eu} />
+        <CityCard
+          title="Латинская америка"
+          subtitle="Друзья школы"
+          url="/"
+          image={Us}
+        />
+        <CityCard title="Азия" subtitle="Друзья школы" url="/" image={Asia} />
+        <CityCard
+          title="Северная америка"
+          subtitle="Друзья школы"
+          url="/"
+          image={Usa}
+        />
       </div>
     </div>
   );
