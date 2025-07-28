@@ -17,7 +17,6 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 8px;
-  margin: 0 -20px;
 }
 
 .Card {
@@ -84,7 +83,6 @@
 
   .Grid {
     gap: 16px;
-    margin: 0;
   }
 
   .Heading {
@@ -172,6 +170,7 @@
 
   .Grid > *:nth-child(4) {
     grid-area: d;
+    width: 553px;
 
     .Web {
       height: 521px;
