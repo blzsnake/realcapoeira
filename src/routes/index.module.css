@@ -19,6 +19,15 @@
   gap: 48px;
 }
 
+.ContentWithoutPadding {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 1440px;
+  gap: 48px;
+}
+
 @media (min-width: 1024px) {
   .MainWrap {
     gap: 60px;
@@ -26,6 +35,11 @@
 
   .Content {
     gap: 60px;
+  }
+
+  .ContentWithoutPadding {
+    gap: 60px;
+    padding: 0 20px;
   }
 }
 
@@ -35,6 +49,11 @@
   }
 
   .Content {
+    gap: 100px;
+    padding: 0 40px;
+  }
+
+  .ContentWithoutPadding {
     gap: 100px;
     padding: 0 40px;
   }
