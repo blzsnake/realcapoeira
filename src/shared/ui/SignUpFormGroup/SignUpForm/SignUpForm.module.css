@@ -28,6 +28,23 @@
   gap: 24px;
 }
 
+.Button {
+  padding: 13px 20px;
+}
+
+.Checkbox {
+  width: 24px;
+  height: 24px;
+  border-color: #CACACA;
+  border-radius: 4px;
+}
+
+.AgreementRow {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
 @media (min-width: 1024px) {
   .CityCard {
     width: 380px;

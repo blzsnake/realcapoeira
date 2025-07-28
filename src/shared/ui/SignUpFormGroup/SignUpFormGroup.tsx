@@ -1,6 +1,7 @@
 import { Link } from '@tramvai/module-router';
 import cn from 'classnames';
 import { Typography } from '~shared/ui/typography';
+import { Button } from '~shared/ui/button/Button';
 import { SignUpForm } from './SignUpForm/SignUpForm';
 import styles from './SignUpFormGroup.module.css';
 import type { TSignUpFormGroupProps } from './types';
@@ -24,6 +25,14 @@ export function SignUpFormGroup({
               {description}
             </Typography>
             <Typography className={styles.Phone}>{phone}</Typography>
+            <div className={styles.Buttons}>
+              <Button>
+                <span className="isDesktop">Написать в&nbsp;</span>Telegram
+              </Button>
+              <Button>
+                <span className="isDesktop">Написать в&nbsp;</span>WhatsApp
+              </Button>
+            </div>
           </>
         )}
       </div>

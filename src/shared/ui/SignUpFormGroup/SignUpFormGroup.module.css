@@ -29,6 +29,11 @@
   display: none;
 }
 
+.Buttons {
+  display: flex;
+  gap: 16px;
+}
+
 @media (min-width: 1024px) {
   .Title {
     font-size: 40px;
@@ -40,6 +45,7 @@
   }
 
   .Phone {
+    margin-bottom: 24px;
     font-size: 40px;
     line-height: 120%;
   }

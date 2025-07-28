@@ -1,7 +1,6 @@
-import { Link } from '@tramvai/module-router';
 import { Typography } from '~shared/ui/typography';
+import { Button } from '~shared/ui/button/Button';
 import styles from './SignUpForm.module.css';
-import type { TSignUpFormProps } from './types';
 
 export function SignUpForm() {
   return (
@@ -21,6 +20,24 @@ export function SignUpForm() {
           <Typography weight="demiBold">Выберите филиал</Typography>
           <input type="text" className={styles.Input} id="filial" />
         </label>
+      </div>
+      <div className={styles.FieldRow}>
+        <div className={styles.AgreementRow}>
+          <input
+            type="checkbox"
+            id="agreement"
+            name="agreement"
+            className={styles.Checkbox}
+          />
+          <label htmlFor="agreement" className={styles.FieldLabel}>
+            Я даю согласие на обработку моих персональных данных
+          </label>
+        </div>
+      </div>
+      <div className={styles.FieldRow}>
+        <Button color="yellow" className={styles.Button}>
+          Оставить заявку
+        </Button>
       </div>
     </form>
   );
