@@ -3,7 +3,7 @@ import styles from './SchoolPhoto.module.css';
 import AllCrew from '../../../app/assets/AllCrew.png';
 import ArrowDown from '../../../app/assets/ArrowDown.svg?react';
 
-export function SchoolPhoto() {
+export function SchoolPhoto({ scrollHandler }: { scrollHandler: () => void }) {
   return (
     <div className={styles.SchoolPhoto}>
       <div className={styles.HeadingBlock}>
@@ -22,13 +22,7 @@ export function SchoolPhoto() {
       <img src={AllCrew} className={styles.Image} alt="Команда" />
       <div className={styles.ButtonsBlockWeb}>
         <Button className={styles.Button}>О школе</Button>
-        <ArrowDown
-          width={46}
-          height={46}
-          onClick={() => {
-            console.log('Скролл вниз страницы');
-          }}
-        />
+        <ArrowDown width={46} height={46} onClick={scrollHandler} />
         <Button color="white" className={styles.Button}>
           Филиалы
         </Button>
