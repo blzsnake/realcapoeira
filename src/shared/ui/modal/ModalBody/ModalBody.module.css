@@ -1,0 +1,21 @@
+.Body {
+  padding: 0 16px;
+
+  @media (min-width: 1024px) {
+    padding: 0 40px;
+  }
+}
+
+.Scroll,
+.ScrollInner {
+  display: flex;
+  flex-direction: column;
+}
+
+.Scroll {
+  overflow-y: auto;
+}
+
+.ScrollInner {
+  overflow: hidden;
+}

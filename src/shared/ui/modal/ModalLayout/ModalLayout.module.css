@@ -1,0 +1,262 @@
+.Modal {
+  flex-direction: column;
+
+  position: fixed;
+  width: 100%;
+  max-width: 100%;
+  max-height: calc(100% - 24px);
+  top: auto;
+  overflow: hidden;
+  padding: 0;
+  border: none;
+  background-color: var(--white);
+  border-radius: 16px 16px 0 0;
+
+  animation-fill-mode: forwards;
+}
+
+.Modal.Laptop {
+  @media (--laptop) {
+    border-radius: 16px;
+    top: 0;
+    bottom: 0;
+    max-width: calc(100% - 80px);
+    margin: auto;
+    width: max-content;
+  }
+}
+
+.PopUp {
+  z-index: 9999;
+}
+
+.PopUp ~ .Backdrop {
+  z-index: 5000;
+}
+
+.Modal[open] {
+  display: flex;
+}
+
+.FullWidth {
+  @media (max-width: 1025px) {
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100vh;
+    height: 100dvh;
+
+    max-height: none;
+    max-width: none;
+    border-radius: 0;
+
+    overflow: auto;
+  }
+}
+
+.ModalSideMenu {
+  @media (min-width: 1024px) {
+    max-height: none;
+    height: 100vh;
+    height: 100dvh;
+
+    border-radius: 0;
+  }
+}
+
+.Wrapper {
+  border-radius: inherit;
+}
+
+.Modal::backdrop,
+.Backdrop {
+  background: var(rgb(32 33 35 / 0.24), rgb(0 0 0 / 24%));
+  animation-fill-mode: forwards;
+}
+
+.TransparentBackdrop::backdrop,
+.TransparentBackdrop ~ .Backdrop {
+  background-color: transparent;
+}
+
+.ModalOpen,
+.ModalSideMenuOpen {
+  --animation-modal-duration: 200ms;
+  animation-name: show-modal-mobile;
+  animation-duration: var(--animation-modal-duration);
+  animation-timing-function: ease-out;
+}
+
+.ModalOpen.Laptop {
+  @media (--laptop) {
+    --animation-modal-duration: 100ms;
+    animation-name: show-modal-desktop;
+  }
+}
+
+.ModalSideMenuOpen {
+  @media (--laptop) {
+    left: auto;
+    --animation-modal-duration: 200ms;
+    animation-name: show-side-menu-desktop;
+  }
+}
+
+.ModalOpen::backdrop,
+.ModalSideMenuOpen::backdrop,
+.ModalOpen ~ .Backdrop,
+.ModalSideMenuOpen ~ .Backdrop {
+  animation-name: show-backdrop;
+  animation-duration: var(--animation-modal-duration, 100ms);
+  animation-timing-function: ease-out;
+}
+
+.ModalClose,
+.ModalSideMenuClose {
+  --animation-modal-duration: 122ms;
+  animation-name: hide-modal-mobile;
+  animation-duration: var(--animation-modal-duration);
+  animation-timing-function: ease-in;
+}
+
+.ModalClose.Laptop {
+  @media (--laptop) {
+    --animation-modal-duration: 67ms;
+    animation-name: hide-modal-desktop;
+  }
+}
+
+.ModalSideMenuClose {
+  @media (--laptop) {
+    left: auto;
+    --animation-modal-duration: 150ms;
+    animation-name: hide-side-menu-desktop;
+  }
+}
+
+.ModalClose::backdrop,
+.ModalSideMenuClose::backdrop,
+.ModalClose ~ .Backdrop,
+.ModalSideMenuClose ~ .Backdrop {
+  animation-name: hide-backdrop;
+  animation-duration: var(--animation-modal-duration, 67ms);
+  animation-timing-function: ease-in;
+}
+
+.Close {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 12px;
+
+  background-color: transparent;
+  line-height: 0;
+
+  cursor: pointer;
+}
+
+.HiddenElement {
+  position: absolute;
+  opacity: 0;
+}
+
+.icon {
+  overflow: hidden;
+  border-radius: 50%;
+}
+
+.Backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  height: 100dvh;
+  width: 100%;
+}
+
+.noBackDrop ~ .Backdrop,
+.noBackDrop::backdrop {
+  display: none;
+}
+
+dialog {
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+@keyframes show-backdrop {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes hide-backdrop {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes show-modal-desktop {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes hide-modal-desktop {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes show-modal-mobile {
+  from {
+    transform: translateY(100%);
+  }
+
+  to {
+    transform: translateY(0%);
+  }
+}
+
+@keyframes hide-modal-mobile {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(100%);
+  }
+}
+
+@keyframes show-side-menu-desktop {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes hide-side-menu-desktop {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(100%);
+  }
+}

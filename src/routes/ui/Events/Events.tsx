@@ -1,7 +1,9 @@
+import { useState } from 'react';
 import { Typography } from '~shared/ui/typography';
 import { Button } from '~shared/ui/button/Button';
 import { EventCard } from '~shared/ui/EventCard/EventCard';
 import styles from './Events.module.css';
+import { EventModal } from './modals/EventModal/EventModal';
 
 const mockProps = {
   dateFrom: '2025-09-26',
@@ -28,24 +30,36 @@ function ButtonsBlock() {
 }
 
 export function Events() {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   return (
-    <div className={styles.Events}>
-      <div className={styles.HeadingBlock}>
-        <Typography component="h2" weight="demiBold" className={styles.Heading}>
-          События
-        </Typography>
-        <ButtonsBlock />
-      </div>
+    <>
+      <div className={styles.Events}>
+        <div className={styles.HeadingBlock}>
+          <Typography
+            component="h2"
+            weight="demiBold"
+            className={styles.Heading}
+          >
+            События
+          </Typography>
+          <ButtonsBlock />
+        </div>
 
-      <div className={styles.Cards}>
-        {mockEvents.map((evt) => (
-          <EventCard key={evt.title} {...evt} />
-        ))}
-      </div>
+        <div className={styles.Cards}>
+          {mockEvents.map((evt) => (
+            <EventCard key={evt.title} {...evt} />
+          ))}
+        </div>
 
-      <div className={styles.BottomButtons}>
-        <ButtonsBlock />
+        <div className={styles.BottomButtons}>
+          <ButtonsBlock />
+        </div>
       </div>
-    </div>
+      <EventModal
+        isOpen={isModalOpen}
+        closeModal={() => setIsModalOpen(false)}
+      />
+    </>
   );
 }
