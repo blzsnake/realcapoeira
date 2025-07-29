@@ -7,6 +7,7 @@ import {
   useRef,
 } from 'react';
 import cn from 'classnames';
+import CloseMobile from '../../../../app/assets/CloseMobile.svg?react';
 import Close from '../../../../app/assets/Close.svg?react';
 // Styles
 import styles from './ModalLayout.module.css';
@@ -149,7 +150,8 @@ export const ModalLayout = forwardRef<HTMLDialogElement, TModalLayoutProps>(
               onClick={(event) => onClose(event as unknown as Event)}
               data-qa={dataQa && `${dataQa}-close-button`}
             >
-              <Close className={styles.icon} />
+              <CloseMobile className={styles.iconMobile} />
+              <Close className={styles.iconWeb} />
             </button>
           )}
         </dialog>

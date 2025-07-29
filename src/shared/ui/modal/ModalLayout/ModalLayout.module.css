@@ -162,9 +162,22 @@
   opacity: 0;
 }
 
-.icon {
+.iconMobile {
   overflow: hidden;
-  border-radius: 50%;
+}
+
+.iconWeb {
+  display: none;
+}
+
+@media (min-width: 1024px) {
+  .iconMobile {
+    display: none;
+  }
+
+  .iconWeb {
+    display: block;
+  }
 }
 
 .Backdrop {
