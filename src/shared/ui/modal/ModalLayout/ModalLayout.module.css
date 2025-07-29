@@ -16,7 +16,7 @@
 }
 
 .Modal.Laptop {
-  @media (--laptop) {
+  @media (min-width: 1024px) {
     border-radius: 16px;
     top: 0;
     bottom: 0;
