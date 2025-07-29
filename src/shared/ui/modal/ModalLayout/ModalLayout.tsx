@@ -7,8 +7,8 @@ import {
   useRef,
 } from 'react';
 import cn from 'classnames';
-import CloseMobile from '../../../../app/assets/CloseMobile.svg?react';
-import Close from '../../../../app/assets/Close.svg?react';
+import CloseMobile from '~app/assets/CloseMobile.svg?react';
+import Close from '~app/assets/Close.svg?react';
 // Styles
 import styles from './ModalLayout.module.css';
 // Types

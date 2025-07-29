@@ -9,11 +9,10 @@ import styles from './ModalTitle.module.css';
 
 export const ModalTitle = memo(function ModalTitle({
   children,
-  variant = 'left',
   className,
   style,
 }: TModalTitleProps) {
-  const modalTitleStyles = cn(styles.ModalTitle, [styles[variant]], className);
+  const modalTitleStyles = cn(styles.ModalTitle, className);
   return (
     <div className={modalTitleStyles} style={style}>
       {children}

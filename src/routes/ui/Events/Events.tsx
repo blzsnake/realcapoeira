@@ -4,6 +4,7 @@ import { Button } from '~shared/ui/button/Button';
 import { EventCard } from '~shared/ui/EventCard/EventCard';
 import styles from './Events.module.css';
 import { EventModal } from './modals/EventModal/EventModal';
+import type { EventModalProps } from './modals/EventModal/types';
 
 const mockProps = {
   dateFrom: '2025-09-26',
@@ -32,6 +33,13 @@ function ButtonsBlock() {
 export function Events() {
   const [isModalOpen, setIsModalOpen] = useState(true);
 
+  const mockModalProps: EventModalProps = {
+    isOpen: isModalOpen,
+    closeModal: () => setIsModalOpen(false),
+    title: 'Батизада 2024 для дошкольников 3-6 лет',
+    date: '2023-04-12T12:00:00.000Z',
+  };
+
   return (
     <>
       <div className={styles.Events}>
@@ -56,10 +64,7 @@ export function Events() {
           <ButtonsBlock />
         </div>
       </div>
-      <EventModal
-        isOpen={isModalOpen}
-        closeModal={() => setIsModalOpen(false)}
-      />
+      <EventModal {...mockModalProps} />
     </>
   );
 }

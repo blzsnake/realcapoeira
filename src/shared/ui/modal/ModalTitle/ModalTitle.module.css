@@ -1,26 +1,10 @@
 .ModalTitle {
-  font-size: 28px;
-  line-height: 120%;
-  font-weight: 500;
-
-  @media (min-width: 1024px) {
-    font-size: 40px;
-  }
-}
-
-.left {
-  padding: 20px 56px 20px 16px;
+  padding: 20px 0px 20px 16px;
+  min-width: 295px;
 
   @media (min-width: 1024px) {
     padding: 32px 40px 12px 40px;
-  }
-}
 
-.center {
-  padding: 20px 56px;
-  text-align: center;
-
-  @media (min-width: 1024px) {
-    padding: 32px 48px 12px 48px;
+    width: 680px;
   }
 }
