@@ -36,7 +36,7 @@ export function SignUpForm() {
       </div>
       <div className={styles.FieldRow}>
         <Button color="yellow" className={styles.Button}>
-          Оставить заявку
+          <span>Оставить заявку</span>
         </Button>
       </div>
     </form>
