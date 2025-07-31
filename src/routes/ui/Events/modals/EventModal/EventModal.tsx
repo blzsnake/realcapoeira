@@ -12,6 +12,7 @@ export function EventModal({
   closeModal,
   title,
   date,
+  text,
 }: EventModalProps) {
   const shareTgHandler = () => {
     console.log('Share on Telegram');
@@ -26,7 +27,7 @@ export function EventModal({
   return (
     <Modal isOpen={isOpen} onClose={closeModal} className={styles.Modal}>
       <ModalTitle className={styles.Wrap}>
-        <Typography component="h1" weight="demiBold" className={styles.Title}>
+        <Typography component="h2" weight="demiBold" className={styles.Title}>
           {title}
         </Typography>
         <div className={styles.DateShareRow}>
@@ -42,11 +43,7 @@ export function EventModal({
         </div>
       </ModalTitle>
       <ModalBody>
-        <p> Body </p>
-        <p> Body </p>
-        <p> Body </p>z<p> Body </p>
-        <p> Body </p>
-        <p>sad</p>
+        <Typography className={styles.Text}>{text}</Typography>
       </ModalBody>
     </Modal>
   );

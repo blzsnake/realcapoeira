@@ -9,9 +9,6 @@ import type { EventModalProps } from './modals/EventModal/types';
 const mockProps = {
   dateFrom: '2025-09-26',
   dateTo: '2025-09-28',
-  onClick: () => {
-    console.log('Event clicked');
-  },
   title: 'Семинар от бразильских мастеров',
   description:
     'Berimbau me chama — это 3 дня мастер‑классов для взрослых и детей',
@@ -31,13 +28,14 @@ function ButtonsBlock() {
 }
 
 export function Events() {
-  const [isModalOpen, setIsModalOpen] = useState(true);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const mockModalProps: EventModalProps = {
     isOpen: isModalOpen,
     closeModal: () => setIsModalOpen(false),
     title: 'Батизада 2024 для дошкольников 3-6 лет',
     date: '2023-04-12T12:00:00.000Z',
+    text: 'Здесь будет содержимое маркдаун-редактора',
   };
 
   return (
@@ -56,7 +54,11 @@ export function Events() {
 
         <div className={styles.Cards}>
           {mockEvents.map((evt) => (
-            <EventCard key={evt.title} {...evt} />
+            <EventCard
+              onClick={() => setIsModalOpen(true)}
+              key={evt.title}
+              {...evt}
+            />
           ))}
         </div>
 
