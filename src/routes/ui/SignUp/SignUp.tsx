@@ -1,5 +1,5 @@
 import { Typography } from '~shared/ui/typography';
-import DreamTeam from '../../../app/assets/dream_team_photo.png';
+import DreamTeam from '~app/assets/dream_team_photo.png';
 
 import styles from './SignUp.module.css';
 

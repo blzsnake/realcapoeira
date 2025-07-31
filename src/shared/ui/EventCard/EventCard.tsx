@@ -1,4 +1,4 @@
-import { getDatesString } from '~shared/utils/getDatesString';
+import { getDatesStringForEventCard } from '~shared/utils/getDatesStringForEventCard';
 import { Typography } from '../typography';
 import styles from './EventCard.module.css';
 import type { TEventCardProps } from './types';
@@ -13,7 +13,7 @@ export function EventCard({
   return (
     <article className={styles.EventCard} onClick={onClick}>
       <Typography className={styles.Dates}>
-        {getDatesString(dateFrom, dateTo)}
+        {getDatesStringForEventCard(dateFrom, dateTo)}
       </Typography>
       <Typography className={styles.Title} component="h3" weight="demiBold">
         {title}

@@ -1,6 +1,6 @@
 import { Typography } from '~shared/ui/typography';
 import { CityCard } from '~shared/ui/CityCard/CityCard';
-import Moscow from '../../../app/assets/moscow.png';
+import Moscow from '~app/assets/moscow.png';
 
 import styles from './Worldwide.module.css';
 

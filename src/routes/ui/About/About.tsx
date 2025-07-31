@@ -1,6 +1,6 @@
 import { Typography } from '~shared/ui/typography';
 import { Button } from '~shared/ui/button/Button';
-import Alexander from '../../../app/assets/Alexander.svg?react';
+import Alexander from '~app/assets/Alexander.svg?react';
 import styles from './About.module.css';
 
 export function About() {

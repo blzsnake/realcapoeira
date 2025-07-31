@@ -1,11 +1,11 @@
 import { Button } from '~shared/ui/button/Button';
 import { Typography } from '~shared/ui/typography';
-import Brazil from '../../../app/assets/Brazil.svg?react';
-import Video1 from '../../../app/assets/Video1.svg?react';
-import Video2 from '../../../app/assets/Video2.svg?react';
-import Video3 from '../../../app/assets/Video3.svg?react';
-import Video4 from '../../../app/assets/Video4.svg?react';
-import Video5 from '../../../app/assets/Video5.svg?react';
+import Brazil from '~app/assets/Brazil.svg?react';
+import Video1 from '~app/assets/Video1.svg?react';
+import Video2 from '~app/assets/Video2.svg?react';
+import Video3 from '~app/assets/Video3.svg?react';
+import Video4 from '~app/assets/Video4.svg?react';
+import Video5 from '~app/assets/Video5.svg?react';
 import styles from './Video.module.css';
 
 export function Video() {
