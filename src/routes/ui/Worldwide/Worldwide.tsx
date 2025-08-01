@@ -1,14 +1,14 @@
 import { Typography } from '~shared/ui/typography';
 import { CityCard } from '~shared/ui/CityCard/CityCard';
 import { Button } from '~shared/ui/button/Button';
-import Moscow from '../../../app/assets/mos.png';
-import Kaz from '../../../app/assets/kaz.png';
-import Krs from '../../../app/assets/krs.png';
-import Lissabon from '../../../app/assets/lis.png';
-import Eu from '../../../app/assets/eu.png';
-import Us from '../../../app/assets/us.png';
-import Asia from '../../../app/assets/asia.png';
-import Usa from '../../../app/assets/usa.png';
+import Moscow from '~app/assets/moscow.png';
+import Kaz from '~app/assets/kaz.png';
+import Krs from '~app/assets/krs.png';
+import Lissabon from '~app/assets/lis.png';
+import Eu from '~app/assets/eu.png';
+import Us from '~app/assets/us.png';
+import Asia from '~app/assets/asia.png';
+import Usa from '~app/assets/usa.png';
 
 import styles from './Worldwide.module.css';
 

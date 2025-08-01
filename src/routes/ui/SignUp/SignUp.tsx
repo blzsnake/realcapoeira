@@ -1,6 +1,6 @@
 import { Typography } from '~shared/ui/typography';
 import { SignUpFormGroup } from '~shared/ui/SignUpFormGroup';
-import DreamTeam from '../../../app/assets/dream_team_photo.png';
+import DreamTeam from '~app/assets/dream_team_photo.png';
 
 import styles from './SignUp.module.css';
 

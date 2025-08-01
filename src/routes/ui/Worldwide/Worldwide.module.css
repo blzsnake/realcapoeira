@@ -37,7 +37,7 @@
   .Worldwide {
     padding-top: 80px;
     gap: 40px;
-    background: url('../../../app/assets/capo_map.svg') no-repeat;
+    background: url('~app/assets/capo_map.svg') no-repeat;
     background-size: contain;
   }
 

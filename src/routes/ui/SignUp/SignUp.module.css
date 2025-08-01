@@ -27,7 +27,7 @@
   .SignUp {
     padding-top: 200px;
     gap: 40px;
-    background: url('../../../app/assets/real_dream_team.svg') no-repeat;
+    background: url('~app/assets/real_dream_team.svg') no-repeat;
     background-size: contain;
   }
 

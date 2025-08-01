@@ -1,4 +1,7 @@
-export function getDatesString(dateFrom: string, dateTo: string): string {
+export function getDatesStringForEventCard(
+  dateFrom: string,
+  dateTo: string
+): string {
   const monthNames = [
     'января',
     'февраля',

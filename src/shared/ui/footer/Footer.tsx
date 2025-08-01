@@ -1,8 +1,8 @@
 import { Link } from '@tramvai/module-router';
 import { Typography } from '~shared/ui/typography';
-import Telegram from '../../../app/assets/telegram.svg?react';
-import Youtube from '../../../app/assets/youtube.svg?react';
-import Vk from '../../../app/assets/vk.svg?react';
+import Telegram from '~app/assets/telegram.svg?react';
+import Youtube from '~app/assets/youtube.svg?react';
+import Vk from '~app/assets/vk.svg?react';
 
 import styles from './Footer.module.css';
 

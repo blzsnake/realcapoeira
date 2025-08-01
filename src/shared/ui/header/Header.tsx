@@ -2,8 +2,8 @@
 import { Link } from '@tramvai/module-router';
 import { Button } from '~shared/ui/button/Button';
 // Assets
-import Logo from '../../../app/assets/RCLogo.svg?react';
-import Menu from '../../../app/assets/Menu.svg?react';
+import Logo from '~app/assets/RCLogo.svg?react';
+import Menu from '~app/assets/Menu.svg?react';
 // Styles
 import styles from './Header.module.css';
 
@@ -23,13 +23,13 @@ export function Header() {
               <Link url="/" aria-label="Что такое капоэйра">
                 <p>Что такое капоэйра</p>
               </Link>
-              <Link url="/" aria-label="Филиалы">
+              <Link url="/filials" aria-label="Филиалы">
                 <p>Филиалы</p>
               </Link>
               <Link url="/" aria-label="Инструкторы">
                 <p>Инструкторы</p>
               </Link>
-              <Link url="/" aria-label="Контакты">
+              <Link url="/contacts" aria-label="Контакты">
                 <p>Контакты</p>
               </Link>
             </nav>
