@@ -27,6 +27,8 @@
   -ms-overflow-style: none;
   scrollbar-width: none;
   margin-right: -40px;
+  width: 100%;
+  overflow-x: auto;
 }
 
 .Countries::-webkit-scrollbar {
