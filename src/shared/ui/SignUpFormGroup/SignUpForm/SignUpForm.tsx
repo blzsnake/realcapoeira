@@ -5,6 +5,10 @@ import styles from './SignUpForm.module.css';
 export function SignUpForm() {
   return (
     <form className={styles.Form}>
+      <div className={styles.Description}>
+        Позвоните или оставьте заявку — тренер ответит на все вопросы и подберет
+        подходящую группу для вас или ребенка
+      </div>
       <div className={styles.FieldRow}>
         <label htmlFor="fio" className={styles.FieldLabel}>
           <Typography weight="demiBold">Как вас зовут</Typography>
@@ -18,7 +22,11 @@ export function SignUpForm() {
       <div className={styles.FieldRow}>
         <label htmlFor="filial" className={styles.FieldLabel}>
           <Typography weight="demiBold">Выберите филиал</Typography>
-          <input type="text" className={styles.Input} id="filial" />
+          <select className={styles.Input} id="filial">
+            <option>Любой</option>
+            <option>Выбор два</option>
+            <option>Выбор три</option>
+          </select>
         </label>
       </div>
       <div className={styles.FieldRow}>

@@ -19,12 +19,14 @@
 
 .FieldLabel {
   width: 100%;
+  font-size: 18px;
 }
 
 .FieldRow {
   margin-bottom: 24px;
   display: flex;
   justify-content: space-between;
+  flex-direction: column;
   gap: 24px;
 }
 
@@ -42,14 +44,21 @@
 .AgreementRow {
   display: flex;
   align-items: center;
-  gap: 4px;
+  gap: 6px;
+  margin-top: 16px;
+  margin-bottom: 16px;
+}
+
+.Description {
+  margin: 24px 0;
 }
 
 @media (min-width: 1024px) {
-  .CityCard {
-    width: 380px;
-    height: 500px;
-    padding: 40px;
+  .FieldRow {
+    flex-direction: row;
+  }
+  .Description {
+    display: none;
   }
 
   .Title {
