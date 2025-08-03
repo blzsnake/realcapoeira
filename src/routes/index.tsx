@@ -26,7 +26,9 @@ export function IndexPage() {
       <div className={styles.ContentWithoutPadding}>
         <Groups />
         <Video />
-        <Worldwide />
+      </div>
+      <Worldwide />
+      <div className={styles.ContentWithoutPadding}>
         <SignUp />
       </div>
     </main>

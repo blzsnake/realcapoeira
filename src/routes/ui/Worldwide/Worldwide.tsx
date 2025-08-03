@@ -21,7 +21,9 @@ export function Worldwide() {
       <Typography className={styles.Subheading}>
         В филиалах Real Capoeira и у наших друзей по всему миру
       </Typography>
-      <Button color="yellow">Узнать больше</Button>
+      <Button color="yellow" size="big" className={styles.Button}>
+        К списку школ
+      </Button>
       <div className={styles.Countries}>
         <CityCard title="Москва" subtitle="Россия" url="/" image={Moscow} />
         <CityCard title="Казань" subtitle="Россия" url="/" image={Kaz} />
