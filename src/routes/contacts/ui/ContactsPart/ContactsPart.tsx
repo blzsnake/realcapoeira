@@ -1,6 +1,7 @@
 import { Typography } from '~shared/ui/typography';
 import { Button } from '~shared/ui/button/Button';
 import Telegram from '../../../../app/assets/telegram.svg?react';
+import Whatsapp from '../../../../app/assets/whatsapp.svg?react';
 import styles from './ContactsPart.module.css';
 
 export function ContactsPart() {
@@ -20,7 +21,7 @@ export function ContactsPart() {
               <span className="isTablet">Написать в&nbsp;</span>Telegram
             </Button>
             <Button>
-              <Telegram className={styles.SocialLink} />
+              <Whatsapp className={styles.SocialLink} />
               <span className="isTablet">Написать в&nbsp;</span>WhatsApp
             </Button>
           </div>
