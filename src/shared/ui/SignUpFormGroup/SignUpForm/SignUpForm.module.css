@@ -1,0 +1,68 @@
+.Form {
+  display: block;
+}
+
+.Input {
+  margin-top: 8px;
+  display: block;
+  padding: 12px;
+  height: 48px;
+  width: 100%;
+  font-size: 18px;
+  border-radius: 8px;
+  border-color: #CACACA;
+  border-width: 1px;
+  box-shadow: none;
+  outline: 1px solid #cacaca;
+  outline-offset: -1px;
+}
+
+.FieldLabel {
+  width: 100%;
+  font-size: 18px;
+}
+
+.FieldRow {
+  margin-bottom: 24px;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.Button {
+  padding: 13px 20px;
+}
+
+.Checkbox {
+  width: 24px;
+  height: 24px;
+  border-color: #CACACA;
+  border-radius: 4px;
+}
+
+.AgreementRow {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 16px;
+  margin-bottom: 16px;
+}
+
+.Description {
+  margin: 24px 0;
+}
+
+@media (min-width: 1024px) {
+  .FieldRow {
+    flex-direction: row;
+  }
+  .Description {
+    display: none;
+  }
+
+  .Title {
+    font-size: 40px;
+    line-height: 120%;
+  }
+}

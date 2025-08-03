@@ -1,0 +1,72 @@
+.SignUpFormGroup {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  padding: 20px;
+  border-radius: 16px;
+}
+
+.grey {
+  background-color: #F6F4F3;
+}
+
+.Title {
+  margin-bottom: 24px;
+  font-size: 28px;
+  line-height: 120%;
+}
+
+.Phone {
+  margin-bottom: 16px;
+  font-size: 28px;
+  line-height: 120%;
+}
+
+.Description {
+  margin-bottom: 8px;
+  font-size: 18px;
+  line-height: 120%;
+  display: none;
+}
+
+.Buttons {
+  display: flex;
+  gap: 16px;
+}
+
+.SocialLink {
+  margin-right: 10px;
+}
+
+@media (min-width: 1024px) {
+  .Title {
+    font-size: 40px;
+    line-height: 120%;
+  }
+
+  .Description {
+    display: block;
+  }
+
+  .Phone {
+    margin-bottom: 24px;
+    font-size: 40px;
+    line-height: 120%;
+  }
+}
+
+@media (min-width: 1024px) {
+  .SignUpFormGroup {
+    flex-direction: row;
+    gap: 24px;
+    justify-content: space-between;
+  }
+
+  .Info {
+    width: 50%;
+  }
+
+  .Form {
+    width: 50%;
+  }
+}
