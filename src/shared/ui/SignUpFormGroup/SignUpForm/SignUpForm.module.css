@@ -39,6 +39,7 @@
   height: 24px;
   border-color: #CACACA;
   border-radius: 4px;
+  cursor: pointer;
 }
 
 .AgreementRow {
@@ -51,6 +52,30 @@
 
 .Description {
   margin: 24px 0;
+}
+
+.Title {
+  font-size: 28px;
+  line-height: 120%;
+  margin: 24px 0;
+
+  @media (min-width: 1024px) {
+    font-size: 40px;
+  }
+
+  @media (min-width: 1440px) {
+    margin: 40px 0;
+  }
+}
+
+.ContactsDescription {
+  font-size: 18px;
+  line-height: 24px;
+  margin-bottom: 24px;
+
+  @media (min-width: 1440px) {
+    margin-bottom: 40px;
+  }
 }
 
 @media (min-width: 1024px) {

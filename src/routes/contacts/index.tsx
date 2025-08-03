@@ -1,4 +1,5 @@
 import { Typography } from '~shared/ui/typography';
+import { SignUpForm } from '~shared/ui/SignUpFormGroup/SignUpForm';
 import styles from './Contacts.module.css';
 
 export function ContactsPage() {
@@ -11,7 +12,7 @@ export function ContactsPage() {
           </Typography>
         </div>
         <div className={styles.Form}>
-          <p>Форма</p>
+          <SignUpForm contactsVariant />
         </div>
       </div>
     </main>

@@ -1,8 +1,7 @@
-import { Link } from '@tramvai/module-router';
 import cn from 'classnames';
 import { Typography } from '~shared/ui/typography';
 import { Button } from '~shared/ui/button/Button';
-import { SignUpForm } from './SignUpForm/SignUpForm';
+import { SignUpForm } from './SignUpForm';
 import Telegram from '../../../app/assets/telegram.svg?react';
 import styles from './SignUpFormGroup.module.css';
 import type { TSignUpFormGroupProps } from './types';

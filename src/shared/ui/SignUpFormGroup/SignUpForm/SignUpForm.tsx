@@ -1,14 +1,28 @@
 import { Typography } from '~shared/ui/typography';
 import { Button } from '~shared/ui/button/Button';
+import type { TSignUpFormProps } from './types';
 import styles from './SignUpForm.module.css';
 
-export function SignUpForm() {
+export function SignUpForm({ contactsVariant = false }: TSignUpFormProps) {
   return (
     <form className={styles.Form}>
-      <div className={styles.Description}>
-        Позвоните или оставьте заявку — тренер ответит на все вопросы и подберет
-        подходящую группу для вас или ребенка
-      </div>
+      {contactsVariant && (
+        <Typography weight="demiBold" className={styles.Title}>
+          Запишитесь за пару минут
+        </Typography>
+      )}
+      {contactsVariant && (
+        <Typography className={styles.ContactsDescription}>
+          Позвоните или оставьте заявку — тренер ответит на все вопросы и
+          подберет подходящую группу для вас или ребенка
+        </Typography>
+      )}
+      {!contactsVariant && (
+        <div className={styles.Description}>
+          Позвоните или оставьте заявку — тренер ответит на все вопросы и
+          подберет подходящую группу для вас или ребенка
+        </div>
+      )}
       <div className={styles.FieldRow}>
         <label htmlFor="fio" className={styles.FieldLabel}>
           <Typography weight="demiBold">Как вас зовут</Typography>
