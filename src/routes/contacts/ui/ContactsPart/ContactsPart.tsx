@@ -1,14 +1,14 @@
 import { useState } from 'react';
 import { Typography } from '~shared/ui/typography';
 import { Button } from '~shared/ui/button/Button';
-import { CITIES, type TCity } from '~shared/consts/cities';
+import { CITIES } from '~shared/consts/cities';
 import { CitySelect } from '../CitySelect';
 import Telegram from '../../../../app/assets/telegram.svg?react';
 import Whatsapp from '../../../../app/assets/whatsapp.svg?react';
 import styles from './ContactsPart.module.css';
 
 export function ContactsPart() {
-  const [choosedCity, setChoosedCity] = useState<TCity>('moscow');
+  const [choosedCity, setChoosedCity] = useState<string>('moscow');
 
   return (
     <div className={styles.Content}>

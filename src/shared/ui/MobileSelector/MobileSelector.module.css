@@ -1,0 +1,28 @@
+.MobileSelector {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  border: 1px solid var(--gray-secondary);
+  border-radius: 8px;
+  padding: 8px 12px;
+  cursor: pointer;
+}
+
+.Text {
+  font-size: 18px;
+  line-height: 24px;
+}
+
+.OptionRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 0;
+  cursor: pointer;
+  border-bottom: 1px solid #ECECEC;
+}
+
+.OptionRow:last-child {
+  border-bottom: none;
+}
