@@ -1,0 +1,17 @@
+.WebWrap {
+  display: none;
+
+  @media (min-width: 1024px) {
+    display: flex;
+    gap: 40px;
+    align-items: center;
+  }
+
+  * {
+    cursor: pointer;
+  }
+}
+
+.Choosed {
+  border-bottom: 2px solid var(--black);
+}

@@ -1,19 +1,25 @@
+import { useState } from 'react';
 import { Typography } from '~shared/ui/typography';
 import { Button } from '~shared/ui/button/Button';
+import { CITIES, type TCity } from '~shared/consts/cities';
+import { CitySelect } from '../CitySelect';
 import Telegram from '../../../../app/assets/telegram.svg?react';
 import Whatsapp from '../../../../app/assets/whatsapp.svg?react';
 import styles from './ContactsPart.module.css';
 
 export function ContactsPart() {
+  const [choosedCity, setChoosedCity] = useState<TCity>('moscow');
+
   return (
     <div className={styles.Content}>
       <Typography weight="medium" className={styles.Title}>
         КОНТАКТЫ
       </Typography>
+      <CitySelect choosedCity={choosedCity} setChoosedCity={setChoosedCity} />
       <div className={styles.ContactsWrap}>
         <div className={styles.Column}>
           <Typography weight="demiBold" className={styles.Number}>
-            +7 (925) 555 00 77
+            {CITIES.find((city) => city.value === choosedCity)?.phone}
           </Typography>
           <div className={styles.Buttons}>
             <Button>
@@ -31,7 +37,7 @@ export function ContactsPart() {
             По вопросам сотрудничества
           </Typography>
           <Typography weight="demiBold" className={styles.Number}>
-            +7 (926) 212 21 00
+            realcapoeira@gmail.com
           </Typography>
         </div>
       </div>

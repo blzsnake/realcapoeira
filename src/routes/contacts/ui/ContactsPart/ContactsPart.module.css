@@ -51,9 +51,9 @@
   font-size: 28px;
   line-height: 120%;
 
-   @media (min-width: 1024px) {
+  @media (min-width: 1024px) {
     font-size: 40px;
-   }
+  }
 }
 
 .Text {
@@ -68,6 +68,12 @@
 .Buttons {
   display: flex;
   gap: 16px;
+  
+  @media (min-width: 1024px) {
+    > * {
+      min-width: 230px;
+    }
+  }
 }
 
 .SocialLink {
