@@ -3,4 +3,6 @@
   flex-direction: column;
   width: 100%;
   min-width: 375px;
+  min-height: 100vh;
+  height: 100%;
 }
