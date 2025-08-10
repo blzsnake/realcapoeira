@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@csstools/postcss-global-data": "^2.1.1",
+    "@iminside/react-yandex-maps": "^1.2.7",
     "@tramvai/core": "^4.41.104",
     "@tramvai/module-common": "^4.41.104",
     "@tramvai/module-error-interceptor": "^4.41.104",

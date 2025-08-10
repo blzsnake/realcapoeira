@@ -1,5 +1,7 @@
+import { useRoute } from '@tramvai/module-router';
 // Components
 import { Link } from '@tramvai/module-router';
+import { Typography } from '~shared/ui/typography';
 import { Button } from '~shared/ui/button/Button';
 // Assets
 import Logo from '~app/assets/RCLogo.svg?react';
@@ -7,30 +9,83 @@ import Menu from '~app/assets/Menu.svg?react';
 // Styles
 import styles from './Header.module.css';
 
+const isLinkActive = (actualPath: string, linkRoute: string): boolean =>
+  actualPath === linkRoute;
+const getLinkActiveStyle = (ap: string, lr: string): string =>
+  isLinkActive(ap, lr) ? styles.Active : '';
+
 export function Header() {
+  const { actualPath } = useRoute();
+
+  console.log(actualPath);
   return (
     <header className={styles.HeaderWrap}>
       <div className={styles.Header}>
         <div className={styles.ContentWrapper}>
-          <Link url="/" aria-label="На главную">
+          <Link viewTransition url="/" aria-label="На главную">
             <Logo />
           </Link>
           <div className="isDesktop">
             <nav className={`${styles.Contents} isDesktop`}>
-              <Link url="/" aria-label="О школе">
-                <p>О школе</p>
+              <Link viewTransition url="/" aria-label="О школе">
+                <Typography
+                  weight={
+                    isLinkActive(actualPath, '/about-school/')
+                      ? 'demiBold'
+                      : 'regular'
+                  }
+                  className={getLinkActiveStyle(actualPath, '/about-school/')}
+                >
+                  О школе
+                </Typography>
               </Link>
-              <Link url="/" aria-label="Что такое капоэйра">
-                <p>Что такое капоэйра</p>
+              <Link viewTransition url="/" aria-label="Что такое капоэйра">
+                <Typography
+                  weight={
+                    isLinkActive(actualPath, '/about-capoeira/')
+                      ? 'demiBold'
+                      : 'regular'
+                  }
+                  className={getLinkActiveStyle(actualPath, '/about-capoeira/')}
+                >
+                  Что такое капоэйра
+                </Typography>
               </Link>
-              <Link url="/filials" aria-label="Филиалы">
-                <p>Филиалы</p>
+              <Link viewTransition url="/filials" aria-label="Филиалы">
+                <Typography
+                  weight={
+                    isLinkActive(actualPath, '/filials/')
+                      ? 'demiBold'
+                      : 'regular'
+                  }
+                  className={getLinkActiveStyle(actualPath, '/filials/')}
+                >
+                  Филиалы
+                </Typography>
               </Link>
-              <Link url="/" aria-label="Инструкторы">
-                <p>Инструкторы</p>
+              <Link viewTransition url="/" aria-label="Инструкторы">
+                <Typography
+                  weight={
+                    isLinkActive(actualPath, '/trainers/')
+                      ? 'demiBold'
+                      : 'regular'
+                  }
+                  className={getLinkActiveStyle(actualPath, '/trainers/')}
+                >
+                  Инструкторы
+                </Typography>
               </Link>
-              <Link url="/contacts" aria-label="Контакты">
-                <p>Контакты</p>
+              <Link viewTransition url="/contacts" aria-label="Контакты">
+                <Typography
+                  weight={
+                    isLinkActive(actualPath, '/contacts/')
+                      ? 'demiBold'
+                      : 'regular'
+                  }
+                  className={getLinkActiveStyle(actualPath, '/contacts/')}
+                >
+                  Контакты
+                </Typography>
               </Link>
             </nav>
           </div>
