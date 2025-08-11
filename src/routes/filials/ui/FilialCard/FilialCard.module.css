@@ -39,3 +39,12 @@
     background-size: contain;
   }
 }
+
+.Schedule {
+  display: flex;
+  gap: 8px;
+}
+
+.ScheduleItem {
+  width: 90px;
+}
