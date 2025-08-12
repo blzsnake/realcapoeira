@@ -23,7 +23,7 @@
 }
 
 .Checked {
-  border: 2px solid var(--black);
+  background-color: var(--black);
 }
 
 .RadiobuttonDisabledAndChecked {
@@ -55,5 +55,5 @@
   left: 50%;
   transform: translate(-50%, -50%);
   border-radius: var(--radius-1000);
-  background-color: var(--black);
+  background-color: var(--white);
 }

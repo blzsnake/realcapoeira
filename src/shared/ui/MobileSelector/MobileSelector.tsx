@@ -45,10 +45,13 @@ export function MobileSelector({
               <div
                 key={value.value}
                 className={styles.OptionRow}
-                onClick={() => setSelectedValue(value.value)}
+                onClick={() => {
+                  setSelectedValue(value.value);
+                  setIsOpen(false);
+                }}
               >
                 <Typography className={styles.Text}>{value.name}</Typography>
-                <Radiobutton checked={selectedValue === value.value} />
+                <Radiobutton checked={selectedValue === value.name} />
               </div>
             ))}
           </ModalBody>
