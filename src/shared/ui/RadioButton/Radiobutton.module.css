@@ -1,0 +1,59 @@
+.Container {
+  display: flex;
+  height: 40px;
+  padding: 6px 0px;
+  align-items: center;
+  cursor: pointer;
+  background: var(--white);
+  white-space: nowrap;
+}
+
+.Radiobutton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  background: var(--white);
+  border: 1px solid var(--gray-secondary);
+  border-radius: var(--radius-1000);
+  flex-grow: 0;
+  flex-shrink: 0;
+  position: relative;
+}
+
+.Checked {
+  border: 2px solid var(--black);
+}
+
+.RadiobuttonDisabledAndChecked {
+  border: 2px solid var(--gray);
+
+  .CheckIcon {
+    background-color: var(--gray);
+  }
+}
+
+.RadiobuttonDisabled {
+  background-color: var(--gray);
+  border: 2px solid var(--gray);
+}
+
+.Disabled {
+  color: var(--gray);
+}
+
+.Hidden {
+  display: none;
+}
+
+.CheckIcon {
+  width: 10px;
+  height: 10px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: var(--radius-1000);
+  background-color: var(--black);
+}

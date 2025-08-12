@@ -5,6 +5,7 @@ import SelectorArrow from '../../../app/assets/SelectorArrow.svg?react';
 import type { TMobileSelector } from './types';
 import styles from './MobileSelector.module.css';
 import { Modal, ModalBody, ModalTitle } from '../modal';
+import { Radiobutton } from '../RadioButton';
 
 export function MobileSelector({
   values,
@@ -13,6 +14,8 @@ export function MobileSelector({
   className,
 }: TMobileSelector) {
   const [isOpen, setIsOpen] = useState(false);
+  console.log(selectedValue);
+
   return (
     <>
       <div
@@ -45,6 +48,7 @@ export function MobileSelector({
                 onClick={() => setSelectedValue(value.value)}
               >
                 <Typography className={styles.Text}>{value.name}</Typography>
+                <Radiobutton checked={selectedValue === value.value} />
               </div>
             ))}
           </ModalBody>
