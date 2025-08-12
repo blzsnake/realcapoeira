@@ -24,11 +24,11 @@ export function ContactsPart() {
           <div className={styles.Buttons}>
             <Button>
               <Telegram className={styles.SocialLink} />
-              <span className="isTablet">Написать в&nbsp;</span>Telegram
+              <span className={styles.Prefix}>Написать в&nbsp;</span>Telegram
             </Button>
             <Button>
               <Whatsapp className={styles.SocialLink} />
-              <span className="isTablet">Написать в&nbsp;</span>WhatsApp
+              <span className={styles.Prefix}>Написать в&nbsp;</span>WhatsApp
             </Button>
           </div>
         </div>

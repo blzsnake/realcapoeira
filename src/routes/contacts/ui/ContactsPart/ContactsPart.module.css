@@ -79,3 +79,11 @@
 .SocialLink {
   margin-right: 10px;
 }
+
+.Prefix {
+  display: none;
+
+  @media (min-width: 1024px) {
+    display: inline;
+  }
+}
