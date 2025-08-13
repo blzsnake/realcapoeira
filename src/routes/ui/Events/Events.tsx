@@ -19,10 +19,18 @@ const mockEvents = Array(4).fill(mockProps);
 function ButtonsBlock() {
   return (
     <div className={styles.ButtonsBlock}>
-      <Button color="yellow" className={styles.Button}>
+      <Button
+        color="yellow"
+        className={styles.Button}
+        onClick={() => window.open('https://t.me/real_capoeira', '_blank')}
+      >
         Все новости в Telegram
       </Button>
-      <Button>VK</Button>
+      <Button
+        onClick={() => window.open('https://vk.com/realcapoeira', '_blank')}
+      >
+        VK
+      </Button>
     </div>
   );
 }
