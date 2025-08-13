@@ -12,7 +12,7 @@ export function EventModal({
   closeModal,
   title,
   date,
-  text,
+  children,
 }: EventModalProps) {
   const shareTgHandler = () => {
     console.log('Share on Telegram');
@@ -42,9 +42,7 @@ export function EventModal({
           </div>
         </div>
       </ModalTitle>
-      <ModalBody>
-        <Typography className={styles.Text}>{text}</Typography>
-      </ModalBody>
+      <ModalBody>{children}</ModalBody>
     </Modal>
   );
 }

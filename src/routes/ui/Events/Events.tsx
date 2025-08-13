@@ -43,7 +43,7 @@ export function Events() {
     closeModal: () => setIsModalOpen(false),
     title: 'Батизада 2024 для дошкольников 3-6 лет',
     date: '2023-04-12T12:00:00.000Z',
-    text: 'Здесь будет содержимое маркдаун-редактора',
+    children: 'Здесь будет содержимое маркдаун-редактора',
   };
 
   return (
