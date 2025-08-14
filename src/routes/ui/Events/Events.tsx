@@ -2,9 +2,10 @@ import { useState } from 'react';
 import { Typography } from '~shared/ui/typography';
 import { Button } from '~shared/ui/button/Button';
 import { EventCard } from '~shared/ui/EventCard/EventCard';
-import styles from './Events.module.css';
+import { News1 } from './ui/LatestNews/LatestNews';
 import { EventModal } from './modals/EventModal/EventModal';
 import type { EventModalProps } from './modals/EventModal/types';
+import styles from './Events.module.css';
 
 const mockProps = {
   dateFrom: '2025-09-26',
@@ -43,7 +44,7 @@ export function Events() {
     closeModal: () => setIsModalOpen(false),
     title: 'Батизада 2024 для дошкольников 3-6 лет',
     date: '2023-04-12T12:00:00.000Z',
-    children: 'Здесь будет содержимое маркдаун-редактора',
+    children: <News1 />,
   };
 
   return (
