@@ -7,7 +7,7 @@
   flex-shrink: 0;
   gap: 16px;
   align-items: start;
-  justify-content: center;
+  justify-content: start;
   background-color: var(--gray);
   border-radius: 16px;
   cursor: pointer;

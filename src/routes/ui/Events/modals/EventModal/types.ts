@@ -1,7 +1,8 @@
 export type EventModalProps = {
   isOpen: boolean;
   closeModal: () => void;
-  title: string;
-  date: string;
+  cardTitle?: string;
+  fullTitle: string;
+  description?: string;
   children: React.ReactNode;
 };
