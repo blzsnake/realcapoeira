@@ -27,11 +27,19 @@ export function SignUpFormGroup({
             </Typography>
             <Typography className={styles.Phone}>{phone}</Typography>
             <div className={styles.Buttons}>
-              <Button>
+              <Button
+                onClick={() => {
+                  window.open(`https://t.me/+79255550077`, '_blank');
+                }}
+              >
                 <Telegram className={styles.SocialLink} />
                 <span className={styles.Prefix}>Написать в&nbsp;</span>Telegram
               </Button>
-              <Button>
+              <Button
+                onClick={() => {
+                  window.open(`https://wa.me/+79255550077`, '_blank');
+                }}
+              >
                 <Whatsapp className={styles.SocialLink} />
                 <span className={styles.Prefix}>Написать в&nbsp;</span>WhatsApp
               </Button>

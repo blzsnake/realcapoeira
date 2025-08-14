@@ -21,7 +21,12 @@ export function Footer() {
             onClick={() => window.open('https://t.me/real_capoeira', '_blank')}
           />
 
-          <Youtube className={styles.SocialLink} />
+          <Youtube
+            className={styles.SocialLink}
+            onClick={() =>
+              window.open('https://youtube.com/@realcapoeira1', '_blank')
+            }
+          />
 
           <Vk
             className={styles.SocialLink}

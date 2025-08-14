@@ -10,7 +10,7 @@ import styles from './Video.module.css';
 
 export function Video() {
   const downloadClick = () => {
-    console.log('Скачивание приложения Capoeira daily');
+    window.open(`http://capoeiradaily.onelink.me/vbMQ/rc_site`, '_blank');
   };
 
   return (
