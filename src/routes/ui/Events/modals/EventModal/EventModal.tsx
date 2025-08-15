@@ -1,4 +1,3 @@
-import dayjs from 'dayjs';
 import { Typography } from '~shared/ui/typography';
 import { Modal, ModalBody, ModalTitle } from '~shared/ui/modal';
 import ShareTg from '~app/assets/ShareTg.svg?react';
@@ -10,9 +9,8 @@ import styles from './EventModal.module.css';
 export function EventModal({
   isOpen,
   closeModal,
-  title,
-  date,
-  text,
+  fullTitle,
+  children,
 }: EventModalProps) {
   const shareTgHandler = () => {
     console.log('Share on Telegram');
@@ -28,12 +26,9 @@ export function EventModal({
     <Modal isOpen={isOpen} onClose={closeModal} className={styles.Modal}>
       <ModalTitle className={styles.Wrap}>
         <Typography component="h2" weight="demiBold" className={styles.Title}>
-          {title}
+          {fullTitle}
         </Typography>
         <div className={styles.DateShareRow}>
-          <Typography className={styles.Date}>
-            {dayjs(date).format('DD.MM.YY')}
-          </Typography>
           <div className={styles.ShareRow}>
             <Typography className={styles.Date}>Поделиться:</Typography>
             <ShareTg className={styles.Pointer} onClick={shareTgHandler} />
@@ -42,9 +37,7 @@ export function EventModal({
           </div>
         </div>
       </ModalTitle>
-      <ModalBody>
-        <Typography className={styles.Text}>{text}</Typography>
-      </ModalBody>
+      <ModalBody>{children}</ModalBody>
     </Modal>
   );
 }

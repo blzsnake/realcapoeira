@@ -10,7 +10,7 @@
   width: 100%;
   font-size: 18px;
   border-radius: 8px;
-  border-color: #CACACA;
+  border-color: #cacaca;
   border-width: 1px;
   box-shadow: none;
   outline: 1px solid #cacaca;
@@ -37,7 +37,7 @@
 .Checkbox {
   width: 24px;
   height: 24px;
-  border-color: #CACACA;
+  border-color: #cacaca;
   border-radius: 4px;
   cursor: pointer;
 }
@@ -79,15 +79,17 @@
 }
 
 @media (min-width: 1024px) {
+  .Title {
+    font-size: 40px;
+    line-height: 120%;
+  }
+}
+
+@media (min-width: 1440px) {
   .FieldRow {
     flex-direction: row;
   }
   .Description {
     display: none;
-  }
-
-  .Title {
-    font-size: 40px;
-    line-height: 120%;
   }
 }

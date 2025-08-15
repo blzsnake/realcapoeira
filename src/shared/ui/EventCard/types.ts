@@ -1,7 +1,5 @@
 export type TEventCardProps = {
-  dateFrom: string;
-  dateTo: string;
   onClick?: () => void;
-  title: string;
+  title?: string;
   description?: string;
 };

@@ -11,13 +11,13 @@ import styles from './index.module.css';
 
 export function IndexPage() {
   const eventsRef = useRef<HTMLDivElement | null>(null);
-  const scrollHandler = () => {
+  const scrollToEventsHandler = () => {
     eventsRef.current?.scrollIntoView({ behavior: 'smooth' });
   };
 
   return (
     <main className={styles.MainWrap}>
-      <SchoolPhoto scrollHandler={scrollHandler} />
+      <SchoolPhoto scrollHandler={scrollToEventsHandler} />
       <div ref={eventsRef} className={styles.Content}>
         <Events />
         <About />
@@ -28,7 +28,7 @@ export function IndexPage() {
         <Video />
       </div>
       <Worldwide />
-      <div className={styles.ContentWithoutPadding}>
+      <div id="signup" className={styles.ContentWithoutPadding}>
         <SignUp />
       </div>
     </main>

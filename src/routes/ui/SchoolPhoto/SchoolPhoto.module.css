@@ -40,6 +40,9 @@
   width: fit-content;
   display: flex;
   gap: 16px;
+  opacity: 0;
+  animation: fadeIn 1s ease-in-out forwards;
+  animation-delay: 3s;
 }
 
 .Button {

@@ -1,4 +1,3 @@
-import { Link } from '@tramvai/module-router';
 import { Typography } from '~shared/ui/typography';
 import Telegram from '~app/assets/telegram.svg?react';
 import Youtube from '~app/assets/youtube.svg?react';
@@ -17,15 +16,22 @@ export function Footer() {
       <div className={styles.Socials}>
         <Typography component="span">Мы в соцсетях</Typography>
         <div className={styles.Links}>
-          <Link url="/" aria-label="TG">
-            <Telegram className={styles.SocialLink} />
-          </Link>
-          <Link url="/" aria-label="Youtube">
-            <Youtube className={styles.SocialLink} />
-          </Link>
-          <Link url="/" aria-label="VK">
-            <Vk className={styles.SocialLink} />
-          </Link>
+          <Telegram
+            className={styles.SocialLink}
+            onClick={() => window.open('https://t.me/real_capoeira', '_blank')}
+          />
+
+          <Youtube
+            className={styles.SocialLink}
+            onClick={() =>
+              window.open('https://youtube.com/@realcapoeira1', '_blank')
+            }
+          />
+
+          <Vk
+            className={styles.SocialLink}
+            onClick={() => window.open('https://vk.com/realcapoeira', '_blank')}
+          />
         </div>
       </div>
     </footer>

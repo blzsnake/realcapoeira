@@ -1,0 +1,23 @@
+.NewsItem {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  font-size: 24px;
+  line-height: 150%;
+}
+
+.Block {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.Image {
+  width: 100%;
+  height: auto;
+}
+
+.Title {
+  font-size: 28px;
+  line-height: 120%;
+}

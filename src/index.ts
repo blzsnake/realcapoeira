@@ -16,6 +16,7 @@ import './app/styles/index.css';
 import { HeaderModule } from '~shared/ui/header';
 import { FooterModule } from '~shared/ui/footer';
 import { getFontsProviders } from './app/fonts/fonts';
+import { getMetaProviders } from './meta';
 
 createApp({
   name: 'realcapoeira-front',
@@ -50,6 +51,25 @@ createApp({
         },
       },
     },
+    ...getMetaProviders({
+      favicon: {
+        default: {
+          16: './favicon.png',
+          32: './favicon.png',
+          128: './favicon.png',
+          167: './favicon.png',
+          192: './favicon.png',
+        },
+        apple: {
+          192: './favicon.png',
+          512: './favicon.png',
+        },
+      },
+      tags: {
+        title: 'Real Capoeira',
+        viewport: 'width=device-width, initial-scale=1, maximum-scale=1',
+      },
+    }),
     ...getFontsProviders(),
   ],
 });

@@ -93,7 +93,15 @@ export function Header() {
         <Menu width={24} height={24} className="isTablet" />
 
         <div className="isDesktop">
-          <Button color="yellow" className={styles.Button}>
+          <Button
+            color="yellow"
+            className={styles.Button}
+            onClick={() =>
+              document
+                .getElementById('signup')
+                ?.scrollIntoView({ behavior: 'smooth' })
+            }
+          >
             Записаться на занятие
           </Button>
         </div>
