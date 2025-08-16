@@ -1,0 +1,50 @@
+.FilialCard {
+  margin: 0 auto;
+  padding: 24px 40px;
+  border-bottom: 1px solid #ECECEC;
+}
+
+.Head {
+  margin-bottom: 8px;
+  font-size: 20px;
+}
+
+.Address {
+  margin-bottom: 8px;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  &::before {
+    content: '';
+    margin-right: 8px;
+    width: 16px;
+    height: 16px;
+    display: inline-block;
+    border-radius: 100%;
+    background-color: #09A652;
+  }
+}
+.Coach {
+  margin-bottom: 8px;
+  font-size: 14px;
+  display: flex;
+    &::before {
+    content: '';
+    margin-right: 8px;
+    width: 16px;
+    height: 16px;
+    display: inline-block;
+    border-radius: 100%;
+    background: url('~app/assets/user.svg') no-repeat;
+    background-size: contain;
+  }
+}
+
+.Schedule {
+  display: flex;
+  gap: 8px;
+}
+
+.ScheduleItem {
+  width: 84.5px;
+}

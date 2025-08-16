@@ -16,6 +16,14 @@
   justify-content: space-between;
   color: #444;
   padding: 20px;
+
+  p {
+    font-size: 18px;
+  }
+}
+
+.Active {
+  box-shadow: 0px 4px #FDCF2B;
 }
 
 .ContentWrapper,

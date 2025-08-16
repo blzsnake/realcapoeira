@@ -4,12 +4,14 @@
   "scripts": {
     "start": "tramvai start realcapoeira-front",
     "build": "tramvai build realcapoeira-front",
+    "build-static": "tramvai static realcapoeira-front",
     "preview": "tramvai start-prod realcapoeira-front",
     "analyze": "tramvai analyze realcapoeira-front",
     "lint": "eslint --ext .ts,.tsx --ignore-path .gitignore ."
   },
   "dependencies": {
     "@csstools/postcss-global-data": "^2.1.1",
+    "@pbe/react-yandex-maps": "^1.2.5",
     "@tramvai/core": "^4.41.104",
     "@tramvai/module-common": "^4.41.104",
     "@tramvai/module-error-interceptor": "^4.41.104",
@@ -22,9 +24,9 @@
     "@tramvai/tokens-render": "^4.41.104",
     "@tramvai/tokens-router": "^4.41.104",
     "classnames": "^2.5.1",
-    "react": "^19.1.0",
+    "react": "^18.2.0",
     "react-device-detect": "^2.2.3",
-    "react-dom": "^19.1.0",
+    "react-dom": "^18.2.0",
     "react-responsive": "^10.0.1",
     "sharp": "^0.34.3",
     "tslib": "^2.8.1"
@@ -44,7 +46,8 @@
     "@tinkoff/eslint-config-react": "^5.0.1",
     "@tinkoff/eslint-plugin-tramvai": "^0.8.4",
     "@tramvai/cli": "^4.41.104",
-    "@types/react": "^19.1.8",
+    "@types/react": "^18.3.23",
+    "@types/react-dom": "^18.3.7",
     "husky": "^4.3.8",
     "lint-staged": "^16.1.2",
     "postcss-custom-media": "^11.0.6",
