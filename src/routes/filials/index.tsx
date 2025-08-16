@@ -1,4 +1,4 @@
-import { YMaps, Map } from '@iminside/react-yandex-maps';
+import { YMaps, Map } from '@pbe/react-yandex-maps';
 import { FilialCard } from './ui/FilialCard/FilialCard';
 
 import styles from './Filials.module.css';
