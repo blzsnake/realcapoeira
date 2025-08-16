@@ -4,7 +4,8 @@
   "scripts": {
     "start": "tramvai start realcapoeira-front",
     "build": "tramvai build realcapoeira-front",
-    "build-static": "tramvai static realcapoeira-front",
+    "build-static": "tramvai static realcapoeira-front && npm run copy-static",
+    "copy-static": "cp -r dist/static/* dist/",
     "preview": "tramvai start-prod realcapoeira-front",
     "analyze": "tramvai analyze realcapoeira-front",
     "lint": "eslint --ext .ts,.tsx --ignore-path .gitignore ."
