@@ -1,9 +1,50 @@
+import { useState } from 'react';
+import Select, { components } from 'react-select';
 import { Typography } from '~shared/ui/typography';
 import { Button } from '~shared/ui/button/Button';
+import { FILIALS_MOCK } from '~shared/mocks';
+
 import type { TSignUpFormProps } from './types';
 import styles from './SignUpForm.module.css';
 
+const OPTIONS = [
+  { address: { city: 'Любой', street: '' } },
+  ...FILIALS_MOCK,
+].map((item) => ({
+  value: `${item.address.city} ${item.address.street}`,
+  label: `${item.address.city} ${item.address.street}`,
+}));
+
+const customStyles = {
+  container: (base) => ({
+    ...base,
+    width: '100%',
+    height: '48px',
+  }),
+  control: (base) => ({
+    ...base,
+    height: '100%',
+    borderRadius: '8px',
+    borderColor: '#cacaca',
+    borderWidth: '1px',
+  }),
+  indicatorSeparator: (base) => ({
+    ...base,
+    display: 'none',
+  }),
+  singleValue: (base) => ({
+    ...base,
+    fontSize: '18px',
+  }),
+  // option: (base, state) => ({
+  //   ...base,
+  //   backgroundColor: state.isFocused ? 'lightgreen' : 'white',
+  //   color: 'black',
+  // }),
+};
+
 export function SignUpForm({ contactsVariant = false }: TSignUpFormProps) {
+  const [selectedOptions, setSelectedOptions] = useState([]);
   return (
     <form className={styles.Form}>
       {contactsVariant && (
@@ -34,14 +75,22 @@ export function SignUpForm({ contactsVariant = false }: TSignUpFormProps) {
         </label>
       </div>
       <div className={styles.FieldRow}>
-        <label htmlFor="filial" className={styles.FieldLabel}>
+        {/* <label htmlFor="filial" className={styles.FieldLabel}>
           <Typography weight="demiBold">Выберите филиал</Typography>
+
           <select className={styles.Input} id="filial">
             <option>Любой</option>
             <option>Выбор два</option>
             <option>Выбор три</option>
           </select>
-        </label>
+        </label> */}
+        <Select
+          options={OPTIONS}
+          hideSelectedOptions={false}
+          styles={customStyles}
+          defaultValue={OPTIONS[0]}
+          closeMenuOnSelect
+        />
       </div>
       <div className={styles.FieldRow}>
         <div className={styles.AgreementRow}>

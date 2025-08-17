@@ -10,7 +10,7 @@
 .Header {
   display: flex;
   width: 100%;
-  max-width: 1360px;
+  max-width: 1440px;
   margin: 0 auto;
   align-items: center;
   justify-content: space-between;
@@ -23,7 +23,7 @@
 }
 
 .Active {
-  box-shadow: 0px 4px #FDCF2B;
+  box-shadow: 0px 0px #FDCF2B;
 }
 
 .ContentWrapper,

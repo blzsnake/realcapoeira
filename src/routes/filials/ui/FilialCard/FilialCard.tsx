@@ -1,6 +1,6 @@
 import { Typography } from '~shared/ui/typography';
 import styles from './FilialCard.module.css';
-import { WEEK_DAYS } from '../../mock';
+import { WEEK_DAYS } from '../../../../shared/mocks';
 // import { ContactsPart } from './ui/ContactsPart';
 
 type ScheduleItem = {
@@ -44,19 +44,34 @@ export function FilialCard(props: TFilialCardData) {
         ))}
       </div>
       <div className={styles.ScheduleWrap}>
-        <div className={styles.ScheduleToggle}>Посмотреть расписание</div>
         <div className={styles.Schedule}>
-          {props?.schedule?.map((item, index) => (
-            <div className={styles.ScheduleItem}>
-              <div className={styles.ScheduleWeekDay}>{WEEK_DAYS[index]}</div>
-              <div className={styles.ScheduleGroups}>
-                {item?.map((el) => (<>
-                <div>{el.group}</div>
-                <div>{el.time}</div>
-                </>))}
+          <div className={styles.ScheduleToggle}>Посмотреть расписание</div>
+
+          <div className={styles.ScheduleWrap}>
+            {props?.schedule?.map((item, index) => (
+              <div key={`${WEEK_DAYS[index]}`} className={styles.ScheduleItem}>
+                <Typography
+                  weight="demiBold"
+                  className={styles.ScheduleWeekDay}
+                >
+                  {WEEK_DAYS[index]}
+                </Typography>
+                <div className={styles.ScheduleGroups}>
+                  {item?.map((el) => (
+                    <>
+                      <Typography className={styles.ScheduleGroup}>
+                        {el.group}
+                      </Typography>
+                      <Typography className={styles.ScheduleTime}>
+                        {el.time}
+                      </Typography>
+                    </>
+                  ))}
+                </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
+          <div className={styles.ScheduleToggle}>Свернуть</div>
         </div>
       </div>
     </div>
