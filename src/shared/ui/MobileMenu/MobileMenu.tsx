@@ -5,6 +5,9 @@ import { Typography } from '~shared/ui/typography';
 import Logo from '~app/assets/RCLogo.svg?react';
 import Close from '~app/assets/Close.svg?react';
 import ArrowRight from '~app/assets/ArrowRight.svg?react';
+import Telegram from '~app/assets/telegram.svg?react';
+import Youtube from '~app/assets/youtube.svg?react';
+import Vk from '~app/assets/vk.svg?react';
 // Styles
 import styles from './MobileMenu.module.css';
 
@@ -51,6 +54,38 @@ export function MobileMenu({ onClose }: MobileMenuProps) {
             </Link>
           ))}
         </nav>
+      </div>
+      <div className={styles.Footer}>
+        <div className={styles.Copyright}>
+          <Typography component="span">
+            © Официальный сайт школы “Real Capoeira”
+          </Typography>
+        </div>
+        <div className={styles.Socials}>
+          <Typography component="span">Мы в соцсетях</Typography>
+          <div className={styles.Links}>
+            <Telegram
+              className={styles.SocialLink}
+              onClick={() =>
+                window.open('https://t.me/real_capoeira', '_blank')
+              }
+            />
+
+            <Youtube
+              className={styles.SocialLink}
+              onClick={() =>
+                window.open('https://youtube.com/@realcapoeira1', '_blank')
+              }
+            />
+
+            <Vk
+              className={styles.SocialLink}
+              onClick={() =>
+                window.open('https://vk.com/realcapoeira', '_blank')
+              }
+            />
+          </div>
+        </div>
       </div>
     </div>
   );
