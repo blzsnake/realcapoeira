@@ -1,6 +1,7 @@
 import { YMaps, Map } from '@pbe/react-yandex-maps';
 import Select, { components } from 'react-select';
 import { FILIALS_MOCK } from '~shared/mocks';
+import { useState } from 'react';
 import { FilialCard } from './ui/FilialCard/FilialCard';
 
 import styles from './Filials.module.css';
@@ -24,6 +25,8 @@ function CheckboxOption(props) {
   );
 }
 export function FilialsPage() {
+  const [selectedOption, setSelectedOption] = useState(options[1]);
+
   return (
     <YMaps query={{ apikey: 'fcf49c8d-b16f-4277-ab7a-d08242e838b8' }}>
       <main className={styles.Wrap}>
@@ -35,8 +38,8 @@ export function FilialsPage() {
               closeMenuOnSelect={false}
               hideSelectedOptions={false}
               components={{ Option: CheckboxOption }}
-              onChange={setSelectedOptions}
-              value={selectedOptions}
+              onChange={setSelectedOption}
+              value={selectedOption}
             />
           </div>
           <div className={styles.FilialsList}>

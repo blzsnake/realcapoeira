@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import Select, { components } from 'react-select';
 import { Typography } from '~shared/ui/typography';
 import { Button } from '~shared/ui/button/Button';
@@ -44,9 +44,20 @@ const customStyles = {
 };
 
 export function SignUpForm({ contactsVariant = false }: TSignUpFormProps) {
-  const [selectedOptions, setSelectedOptions] = useState([]);
+  const formRef = useRef<HTMLFormElement>(null);
+  const submitHander = () => {
+    formRef?.current?.submit();
+  };
+
+  useEffect(() => console.log(formRef), []);
+
   return (
-    <form className={styles.Form}>
+    <form
+      ref={formRef}
+      className={styles.Form}
+      method="GET"
+      action="https://script.google.com/macros/s/AKfycbx6gBwcu62zsKCLikMpc840hyhYdcR1sqEqaHkD8vPt9nFgUOM3dNYh13Fg-zDAR2F0/exec"
+    >
       {contactsVariant && (
         <Typography weight="demiBold" className={styles.Title}>
           Запишитесь за пару минут
@@ -65,13 +76,13 @@ export function SignUpForm({ contactsVariant = false }: TSignUpFormProps) {
         </div>
       )}
       <div className={styles.FieldRow}>
-        <label htmlFor="fio" className={styles.FieldLabel}>
+        <label htmlFor="name" className={styles.FieldLabel}>
           <Typography weight="demiBold">Как вас зовут</Typography>
-          <input type="text" className={styles.Input} id="fio" />
+          <input name="name" type="text" className={styles.Input} id="name" />
         </label>
         <label htmlFor="phone" className={styles.FieldLabel}>
           <Typography weight="demiBold">Телефон</Typography>
-          <input type="text" className={styles.Input} id="phone" />
+          <input name="phone" type="text" className={styles.Input} id="phone" />
         </label>
       </div>
       <div className={styles.FieldRow}>
@@ -106,7 +117,7 @@ export function SignUpForm({ contactsVariant = false }: TSignUpFormProps) {
         </div>
       </div>
       <div className={styles.FieldRow}>
-        <Button color="yellow" className={styles.Button}>
+        <Button color="yellow" className={styles.Button} onClick={submitHander}>
           <span>Оставить заявку</span>
         </Button>
       </div>
