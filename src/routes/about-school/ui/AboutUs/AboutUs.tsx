@@ -1,4 +1,9 @@
+// Components
 import { Typography } from '~shared/ui/typography';
+// Assets
+import FounderAlexander from '~app/assets/FounderAlexander.png';
+import FounderTimur from '~app/assets/FounderTimur.png';
+// Styles
 import styles from './AboutUs.module.css';
 
 export function AboutUs() {
@@ -27,6 +32,47 @@ export function AboutUs() {
               <Typography weight="demiBold" className={styles.Year}>
                 32
               </Typography>
+            </div>
+          </div>
+        </div>
+        <div className={styles.Column}>
+          <Typography>
+            Основатели школы два брата Александр и Тимур Рогозины еще в 2000х
+            годах начали практиковать капоэйру в Бразилии, Канаде, Европе и
+            Японии. Спустя 5 лет решили связать свою жизнь с этим
+            афро-бразильским боевым икусством и открыли первый филиал школы.
+          </Typography>
+          <div className={styles.FoundersBlock}>
+            <Typography
+              component="h3"
+              weight="demiBold"
+              className={styles.Title}
+            >
+              Основатели
+            </Typography>
+            <div className={styles.Founders}>
+              <div className={styles.Founder}>
+                <img
+                  src={FounderAlexander}
+                  className={styles.FounderIcon}
+                  alt="Основатель Александр"
+                />
+                <div className={styles.FounderInfo}>
+                  <Typography weight="demiBold">Александр Рогозин</Typography>
+                  <Typography>Contra–Mestre Ninja</Typography>
+                </div>
+              </div>
+              <div className={styles.Founder}>
+                <img
+                  src={FounderTimur}
+                  className={styles.FounderIcon}
+                  alt="Основатель Тимур"
+                />
+                <div className={styles.FounderInfo}>
+                  <Typography weight="demiBold">Тимур Рогозин</Typography>
+                  <Typography>Professor Pirulito</Typography>
+                </div>
+              </div>
             </div>
           </div>
         </div>
