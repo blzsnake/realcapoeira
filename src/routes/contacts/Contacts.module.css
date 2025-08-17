@@ -11,7 +11,7 @@
   gap: 48px;
   margin-top: 24px;
   width: 100%;
-  max-width: 1360px;
+  max-width: 1440px;
 
   @media (min-width: 1024px) {
     gap: 100px;
