@@ -56,6 +56,10 @@
   }
 }
 
+.MobileMenu {
+  cursor: pointer;
+}
+
 @media (min-width: 1440px) {
   .Header {
     padding: 16px 40px;
@@ -64,5 +68,9 @@
   .ContentWrapper svg {
     width: 64px;
     height: 64px;
+  }
+
+  .MobileMenu {
+    display: none;
   }
 }

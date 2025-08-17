@@ -1,0 +1,53 @@
+.MobileMenu {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  background-color: var(--bg-black);
+  z-index: 9999;
+  overflow: hidden;
+}
+
+.MainBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  width: 100%;
+}
+
+.Row {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px;
+
+  > * {
+    cursor: pointer;
+  }
+}
+
+.LinkRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  padding: 16px 0;
+  margin: 0 20px;
+  border-bottom: 1px solid #FFFFFF33;
+}
+
+.Close {
+  path {
+    fill: var(--white);
+  }
+}
+
+.Arrow {
+  path {
+    stroke: var(--white);
+  }
+}
