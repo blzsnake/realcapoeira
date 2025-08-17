@@ -40,11 +40,29 @@
   }
 }
 
-.Schedule {
+.ScheduleWrap {
   display: flex;
   gap: 8px;
 }
 
 .ScheduleItem {
-  width: 84.5px;
+  width: 89.14px;
+}
+
+.ScheduleWeekDay {
+  margin-bottom: 10px;
+  font-size: 20px;
+}
+
+.ScheduleGroup {
+  margin-bottom: 4px;
+  font-size: 12px;
+}
+
+.ScheduleTime {
+  font-size: 12px;
+}
+
+.ScheduleTime:not(:last-child) {
+  margin-bottom: 4px;
 }
