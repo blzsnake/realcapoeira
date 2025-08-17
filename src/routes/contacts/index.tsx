@@ -1,6 +1,6 @@
 import { SignUpForm } from '~shared/ui/SignUpFormGroup/SignUpForm';
-import styles from './Contacts.module.css';
 import { ContactsPart } from './ui/ContactsPart';
+import styles from './Contacts.module.css';
 
 export function ContactsPage() {
   return (

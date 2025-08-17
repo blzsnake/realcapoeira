@@ -1,0 +1,59 @@
+.Content {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+
+  @media (min-width: 1024px) {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+}
+
+.Title {
+  font-size: 28px;
+  line-height: 120%;
+
+  @media (min-width: 1024px) {
+    font-size: 56px;
+    min-width: 437px;
+  }
+}
+
+.Column {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+
+  @media (min-width: 1024px) {
+    gap: 40px;
+  }
+}
+
+.Article {
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+  font-size: 18px;
+  line-height: 24px;
+
+  @media (min-width: 1024px) {
+    gap: 64px;
+    font-size: 24px;
+    line-height: 150%;
+  }
+}
+
+.Years {
+  display: flex;
+  gap: 100px;
+}
+
+.Year {
+  font-size: 64px;
+  line-height: 120%;
+
+  @media (min-width: 1024px) {
+    font-size: 80px;
+  }
+}

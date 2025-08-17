@@ -1,0 +1,54 @@
+.Content {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: start;
+  padding: 0 20px;
+  max-width: 1360px;
+
+  @media (min-width: 1440px) {
+    padding: 0;
+  }
+}
+
+.MainInfo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  min-width: 335px;
+  margin: 0 auto;
+
+  @media (min-width: 1440px) {
+    min-width: 1360px;
+  }
+}
+
+.Title {
+  font-size: 40px;
+
+  @media (min-width: 1024px) {
+    font-size: 148px;
+  }
+}
+
+.Description {
+  font-size: 18px;
+  line-height: 24px;
+  text-align: center;
+
+  @media (min-width: 1024px) {
+    font-size: 28px;
+    line-height: 140%;
+    width: 890px;
+  }
+}
+
+.Image {
+  width: 100%;
+
+  @media (min-width: 1024px) {
+    margin-top: -35px;
+  }
+}
