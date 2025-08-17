@@ -34,7 +34,7 @@ export function Header() {
             </Link>
             <div className="isDesktop">
               <nav className={`${styles.Contents} isDesktop`}>
-                <Link viewTransition url="/" aria-label="О школе">
+                <Link viewTransition url="/about-school/" aria-label="О школе">
                   <Typography
                     weight={
                       isLinkActive(actualPath, '/about-school/')
@@ -46,7 +46,11 @@ export function Header() {
                     О школе
                   </Typography>
                 </Link>
-                <Link viewTransition url="/" aria-label="Что такое капоэйра">
+                <Link
+                  viewTransition
+                  url="/about-capoeira/"
+                  aria-label="Что такое капоэйра"
+                >
                   <Typography
                     weight={
                       isLinkActive(actualPath, '/about-capoeira/')
