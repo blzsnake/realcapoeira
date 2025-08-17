@@ -3,6 +3,7 @@ import { Typography } from '~shared/ui/typography';
 // Assets
 import FounderAlexander from '~app/assets/FounderAlexander.png';
 import FounderTimur from '~app/assets/FounderTimur.png';
+import AboutUsMusicians from '~app/assets/AboutUsMusicians.png';
 // Styles
 import styles from './AboutUs.module.css';
 
@@ -35,6 +36,7 @@ export function AboutUs() {
             </div>
           </div>
         </div>
+
         <div className={styles.Column}>
           <Typography>
             Основатели школы два брата Александр и Тимур Рогозины еще в 2000х
@@ -76,6 +78,25 @@ export function AboutUs() {
             </div>
           </div>
         </div>
+
+        <div className={styles.Column}>
+          <Typography>
+            Сегодня в школе более 20 инструкторов, все они выросли из учеников и
+            продолжают совершенствовать свои навыки капоэйры, преподавания,
+            музыки и танца. Каждый инструктор прошёл аттестацию в международной
+            ассоциации капоэйры Cordao de Ouro, чтобы передавать знания о
+            традиционной капоэйре взрослым и детям безопасно и эффективно.
+          </Typography>
+          <Typography>
+            Для преподавателей школы «Реал Капоэйра» искусство капоэйры стало не
+            только увлечением, но и стилем жизни. На занятиях вы будете не
+            просто изучать движения и прыжки, вы откроете для себя удивительный
+            язык тела, с помощью которого сможете создавать уникальные диалоги с
+            партнёром через неповторимый танец-битву.
+          </Typography>
+        </div>
+
+        <img src={AboutUsMusicians} className={styles.Image} alt="Музыканты" />
       </div>
     </article>
   );
