@@ -10,6 +10,10 @@ import styles from './ContactsPart.module.css';
 export function ContactsPart() {
   const [choosedCity, setChoosedCity] = useState<string>('moscow');
 
+  const choosedCityNumber = CITIES.find(
+    (city) => city.value === choosedCity
+  )?.phone;
+
   return (
     <div className={styles.Content}>
       <Typography weight="medium" className={styles.Title}>
@@ -19,8 +23,16 @@ export function ContactsPart() {
       <div className={styles.ContactsWrap}>
         <div className={styles.Column}>
           <Typography weight="demiBold" className={styles.Number}>
-            {CITIES.find((city) => city.value === choosedCity)?.phone}
+            <a
+              href={`tel:${choosedCityNumber}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={styles.Link}
+            >
+              {choosedCityNumber}
+            </a>
           </Typography>
+
           <div className={styles.Buttons}>
             <Button
               onClick={() => {
@@ -45,7 +57,14 @@ export function ContactsPart() {
             По вопросам сотрудничества
           </Typography>
           <Typography weight="demiBold" className={styles.Number}>
-            realcapoeira@gmail.com
+            <a
+              href="mailto:realcapoeira@gmail.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={styles.Link}
+            >
+              realcapoeira@gmail.com
+            </a>
           </Typography>
         </div>
       </div>
