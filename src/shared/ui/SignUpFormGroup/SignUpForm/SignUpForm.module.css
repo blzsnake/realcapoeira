@@ -59,7 +59,7 @@
   line-height: 120%;
   margin: 24px 0;
 
-  @media (min-width: 1024px) {
+  @media (min-width: 1025px) {
     font-size: 40px;
   }
 
@@ -78,7 +78,7 @@
   }
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 1025px) {
   .Title {
     font-size: 40px;
     line-height: 120%;

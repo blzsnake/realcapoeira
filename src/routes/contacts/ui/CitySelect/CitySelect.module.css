@@ -1,7 +1,7 @@
 .WebWrap {
   display: none;
 
-  @media (min-width: 1024px) {
+  @media (min-width: 1025px) {
     display: flex;
     gap: 40px;
     align-items: center;
@@ -17,7 +17,7 @@
 }
 
 .MobileSelector {
-  @media (min-width: 1024px) {
+  @media (min-width: 1025px) {
     display: none;
   }
 }

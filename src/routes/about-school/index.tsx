@@ -1,4 +1,5 @@
 import { HeaderPart } from './ui/HeaderPart';
+import { AgesActivities } from './ui/AgesActivities';
 import { AboutUs } from './ui/AboutUs';
 import styles from './AboutSchool.module.css';
 
@@ -10,6 +11,7 @@ export function AboutSchoolPage() {
       </div>
       <div className={styles.Content}>
         <AboutUs />
+        <AgesActivities />
       </div>
     </main>
   );

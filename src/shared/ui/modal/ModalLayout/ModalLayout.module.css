@@ -16,7 +16,7 @@
 }
 
 .Modal.Laptop {
-  @media (min-width: 1024px) {
+  @media (min-width: 1025px) {
     border-radius: 16px;
     top: 0;
     bottom: 0;
@@ -56,7 +56,7 @@
 }
 
 .ModalSideMenu {
-  @media (min-width: 1024px) {
+  @media (min-width: 1025px) {
     max-height: none;
     height: 100vh;
     height: 100dvh;
@@ -155,7 +155,7 @@
 
   cursor: pointer;
 
-  @media (min-width: 1024px) {
+  @media (min-width: 1025px) {
     padding: 40px;
   }
 }
@@ -173,7 +173,7 @@
   display: none;
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 1025px) {
   .iconMobile {
     display: none;
   }

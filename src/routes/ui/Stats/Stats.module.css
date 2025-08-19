@@ -22,7 +22,7 @@
   line-height: 120%;
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 1025px) {
   .Stats {
     flex-direction: row;
     justify-content: flex-start;

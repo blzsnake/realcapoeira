@@ -44,7 +44,7 @@
   max-width: 334px;
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 1025px) {
   .Worldwide {
     padding-top: 80px;
     gap: 40px;

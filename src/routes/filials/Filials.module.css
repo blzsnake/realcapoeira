@@ -13,7 +13,7 @@
   min-height: 100vh;
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 1025px) {
   .Wrap {
     flex-direction: row;
   }

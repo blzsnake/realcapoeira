@@ -24,7 +24,7 @@
   gap: 48px;
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 1025px) {
   .MainWrap {
     gap: 60px;
   }

@@ -28,7 +28,7 @@
 .Title {
   font-size: 40px;
 
-  @media (min-width: 1024px) {
+  @media (min-width: 1025px) {
     font-size: 148px;
   }
 }
@@ -38,7 +38,7 @@
   line-height: 24px;
   text-align: center;
 
-  @media (min-width: 1024px) {
+  @media (min-width: 1025px) {
     font-size: 28px;
     line-height: 140%;
     width: 890px;
@@ -48,7 +48,7 @@
 .Image {
   width: 100%;
 
-  @media (min-width: 1024px) {
+  @media (min-width: 1025px) {
     margin-top: -35px;
   }
 }
