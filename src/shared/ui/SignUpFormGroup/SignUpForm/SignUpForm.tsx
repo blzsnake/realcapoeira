@@ -1,5 +1,5 @@
-import { useEffect, useRef, useState } from 'react';
-import Select, { components } from 'react-select';
+import { useEffect, useRef } from 'react';
+import Select from 'react-select';
 import { Typography } from '~shared/ui/typography';
 import { Button } from '~shared/ui/button/Button';
 import { FILIALS_MOCK } from '~shared/mocks';
@@ -49,8 +49,6 @@ export function SignUpForm({ contactsVariant = false }: TSignUpFormProps) {
     formRef?.current?.submit();
   };
 
-  useEffect(() => console.log(formRef), []);
-
   return (
     <form
       ref={formRef}
@@ -86,22 +84,17 @@ export function SignUpForm({ contactsVariant = false }: TSignUpFormProps) {
         </label>
       </div>
       <div className={styles.FieldRow}>
-        {/* <label htmlFor="filial" className={styles.FieldLabel}>
+        <label htmlFor="filial" className={styles.FieldLabel}>
           <Typography weight="demiBold">Выберите филиал</Typography>
-
-          <select className={styles.Input} id="filial">
-            <option>Любой</option>
-            <option>Выбор два</option>
-            <option>Выбор три</option>
-          </select>
-        </label> */}
-        <Select
-          options={OPTIONS}
-          hideSelectedOptions={false}
-          styles={customStyles}
-          defaultValue={OPTIONS[0]}
-          closeMenuOnSelect
-        />
+          <Select
+            options={OPTIONS}
+            hideSelectedOptions={false}
+            styles={customStyles}
+            defaultValue={OPTIONS[0]}
+            closeMenuOnSelect
+            className={styles.Select}
+          />
+        </label>
       </div>
       <div className={styles.FieldRow}>
         <div className={styles.AgreementRow}>
