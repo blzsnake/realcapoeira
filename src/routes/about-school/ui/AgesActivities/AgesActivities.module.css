@@ -46,8 +46,14 @@
 
 .ImagesBlockMobile {
   display: flex;
-  gap: 16px;
-  max-width: 100%;
+  gap: 8px;
+  flex-wrap: wrap;
+
+  @media (min-width: 1025px) {
+    flex-wrap: nowrap;
+    display: flex;
+    gap: 16px;
+  }
 
   @media (min-width: 1440px) {
     display: none;
@@ -72,6 +78,16 @@
   min-width: 0;
 }
 
-.Image:nth-child(1) { flex: 5; }
-.Image:nth-child(2) { flex: 7; }
-.Image:nth-child(3) { flex: 4; }
+.Image:nth-child(1) {
+  flex: 0 0 100%;
+
+  @media (min-width: 769px) {
+    flex: 5;
+  }
+}
+.Image:nth-child(2) {
+  flex: 7;
+}
+.Image:nth-child(3) {
+  flex: 4;
+}
