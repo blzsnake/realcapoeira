@@ -1,0 +1,36 @@
+.Collapsible {
+  overflow: hidden;
+
+  --height: 0;
+  --duration: 0;
+
+  animation-duration: var(--duration);
+  animation-timing-function: ease-in-out;
+  animation-fill-mode: forwards;
+}
+
+.Open {
+  animation-name: show;
+}
+
+.Close {
+  animation-name: hidden;
+}
+
+@keyframes show {
+  from {
+    height: 0;
+  }
+  to {
+    height: var(--height);
+  }
+}
+
+@keyframes hidden {
+  from {
+    height: var(--height);
+  }
+  to {
+    height: 0;
+  }
+}

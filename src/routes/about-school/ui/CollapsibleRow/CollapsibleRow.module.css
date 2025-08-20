@@ -1,0 +1,14 @@
+.CollapsibleRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.Title {
+  font-size: 20px;
+  line-height: 120%;
+
+  @media (min-width: 1025px) {
+    font-size: 28px;
+  }
+}

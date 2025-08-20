@@ -6,6 +6,7 @@ import AgesActivities2 from '~app/assets/AgesActivities2.png';
 import AgesActivities3 from '~app/assets/AgesActivities3.png';
 // Styles
 import styles from './AgesActivities.module.css';
+import { CollapsibleRow } from '../CollapsibleRow';
 
 function ImagesBlock() {
   return (
@@ -50,6 +51,9 @@ export function AgesActivities() {
       <div className={styles.ImagesBlockWeb}>
         <ImagesBlock />
       </div>
+      <CollapsibleRow title="asdsad">
+        <p>asdsadasd</p>
+      </CollapsibleRow>
     </>
   );
 }
