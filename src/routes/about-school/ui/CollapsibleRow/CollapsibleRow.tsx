@@ -1,16 +1,21 @@
+import { useState } from 'react';
 // Components
 import { Typography } from '~shared/ui/typography';
-// Styles
-// import { Button } from '~shared/ui/button/Button';
-import { useState } from 'react';
 import { Collapsible } from '~shared/ui/Collapsible';
+// Assets
+import Plus from '~app/assets/Plus.svg?react';
+import Close from '~app/assets/Close.svg?react';
+// Utils
+import cn from 'classnames';
+// Types
 import type { TCollapsibleRow } from './types';
+// Styles
 import styles from './CollapsibleRow.module.css';
 
 export function CollapsibleRow({ title, children }: TCollapsibleRow) {
   const [isOpen, setIsOpen] = useState(false);
   const [isCollapsible, setIsCollapsible] = useState(true);
-  const duration = 500;
+  const duration = 700;
 
   const handleClick = () => {
     if (isOpen) {
@@ -23,18 +28,32 @@ export function CollapsibleRow({ title, children }: TCollapsibleRow) {
       setIsCollapsible(false);
     }
   };
+
   return (
-    <div>
-      <div className={styles.CollapsibleRow} onClick={handleClick}>
+    <div className={styles.Content}>
+      <div
+        className={cn(styles.CollapsibleRow, {
+          [styles.BorderBottom]: !isOpen,
+        })}
+        onClick={handleClick}
+      >
         <Typography weight="demiBold" className={styles.Title}>
           {title}
         </Typography>
-        {/* <Button onClick={handleClick}>
-          {isCollapsible ? 'Показать' : 'Скрыть'}
-        </Button> */}
+        {isOpen ? (
+          <Close className={styles.Icon} onClick={handleClick} />
+        ) : (
+          <Plus className={styles.Icon} onClick={handleClick} />
+        )}
       </div>
       {isOpen && (
-        <Collapsible isCollapsible={isCollapsible} duration={duration}>
+        <Collapsible
+          isCollapsible={isCollapsible}
+          duration={duration}
+          className={cn(styles.CollapsibleChildren, {
+            [styles.BorderBottom]: isOpen,
+          })}
+        >
           {children}
         </Collapsible>
       )}

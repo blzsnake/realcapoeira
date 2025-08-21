@@ -151,7 +151,7 @@ export const ModalLayout = forwardRef<HTMLDialogElement, TModalLayoutProps>(
               data-qa={dataQa && `${dataQa}-close-button`}
             >
               <CloseMobile className={styles.iconMobile} />
-              <Close className={styles.iconWeb} />
+              <Close width={24} height={24} className={styles.iconWeb} />
             </button>
           )}
         </dialog>

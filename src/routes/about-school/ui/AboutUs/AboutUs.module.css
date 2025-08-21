@@ -16,7 +16,7 @@
 
   @media (min-width: 1025px) {
     font-size: 56px;
-    min-width: 437px;
+    width: 437px;
   }
 }
 
@@ -31,6 +31,7 @@
 }
 
 .Article {
+  width: 100%;
   display: flex;
   flex-direction: column;
   gap: 48px;

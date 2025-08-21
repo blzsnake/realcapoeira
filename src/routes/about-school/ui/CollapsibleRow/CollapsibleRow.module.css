@@ -1,14 +1,35 @@
+.Content {
+  width: 100%;
+}
+
 .CollapsibleRow {
+  width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding: 24px 0;
 }
 
 .Title {
+  width: 100%;
   font-size: 20px;
   line-height: 120%;
 
   @media (min-width: 1025px) {
     font-size: 28px;
   }
+}
+
+.Icon {
+  cursor: pointer;
+  width: 40px;
+  height: 40px;
+}
+
+.CollapsibleChildren {
+  width: 100%;
+}
+
+.BorderBottom {
+  border-bottom: 1px solid var(--gray-tertiary);
 }

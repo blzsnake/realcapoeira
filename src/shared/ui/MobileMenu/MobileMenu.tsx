@@ -35,7 +35,7 @@ export function MobileMenu({ onClose }: MobileMenuProps) {
             <Logo width={48} height={48} />
           </Link>
           <button type="button" onClick={onClose} aria-label="Закрыть меню">
-            <Close className={styles.Close} />
+            <Close width={24} height={24} className={styles.Close} />
           </button>
         </div>
 
