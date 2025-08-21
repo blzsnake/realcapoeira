@@ -14,10 +14,11 @@
   width: 100%;
   font-size: 28px;
   line-height: 120%;
+  flex-shrink: 0;
 
   @media (min-width: 1025px) {
     font-size: 56px;
-    width: 437px !important;
+    width: 437px;
   }
 }
 
@@ -100,6 +101,7 @@
   @media (min-width: 1440px) {
     display: block;
     width: 437px;
+    flex-shrink: 0;
   }
 }
 
