@@ -1,0 +1,121 @@
+.Content {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+
+  @media (min-width: 1440px) {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+}
+
+.Title {
+  width: 100%;
+  font-size: 28px;
+  line-height: 120%;
+  flex-shrink: 0;
+
+  @media (min-width: 1025px) {
+    font-size: 56px;
+    width: 437px;
+  }
+}
+
+.Column {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+
+  @media (min-width: 1025px) {
+    gap: 40px;
+  }
+}
+
+.Article {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+  font-size: 18px;
+  line-height: 24px;
+
+  @media (min-width: 1025px) {
+    gap: 64px;
+    font-size: 24px;
+    line-height: 150%;
+  }
+}
+
+.ImagesBlockMobile {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+
+  @media (min-width: 1025px) {
+    flex-wrap: nowrap;
+    display: flex;
+    gap: 16px;
+  }
+
+  @media (min-width: 1440px) {
+    display: none;
+  }
+}
+
+.ImagesBlockWeb {
+  display: none;
+  width: 100%;
+
+  @media (min-width: 1440px) {
+    display: flex;
+    gap: 16px;
+  }
+}
+
+.Image {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  object-fit: cover;
+  min-width: 0;
+}
+
+.Image:nth-child(1) {
+  flex: 0 0 100%;
+
+  @media (min-width: 769px) {
+    flex: 5;
+  }
+}
+.Image:nth-child(2) {
+  flex: 7;
+}
+.Image:nth-child(3) {
+  flex: 4;
+}
+
+.HiddenPlug {
+  display: none;
+
+  @media (min-width: 1440px) {
+    display: block;
+    width: 437px;
+    flex-shrink: 0;
+  }
+}
+
+.CollapsibleContent {
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+  font-size: 18px;
+  line-height: 24px;
+  padding-bottom: 24px;
+
+  @media (min-width: 1025px) {
+    font-size: 24px;
+    line-height: 150%;
+    gap: 64px;
+  }
+}

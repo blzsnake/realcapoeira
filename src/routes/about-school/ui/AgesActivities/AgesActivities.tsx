@@ -4,9 +4,10 @@ import { Typography } from '~shared/ui/typography';
 import AgesActivities1 from '~app/assets/AgesActivities1.png';
 import AgesActivities2 from '~app/assets/AgesActivities2.png';
 import AgesActivities3 from '~app/assets/AgesActivities3.png';
+import { FilialsByAges } from '../FilialsByAges';
+import { CollapsibleRow } from '../CollapsibleRow';
 // Styles
 import styles from './AgesActivities.module.css';
-import { CollapsibleRow } from '../CollapsibleRow';
 
 function ImagesBlock() {
   return (
@@ -89,8 +90,29 @@ export function AgesActivities() {
               </Typography>
             </div>
           </CollapsibleRow>
+          <CollapsibleRow title="Начальная школа 1–4 класс">
+            <div className={styles.CollapsibleContent}>
+              <Typography>Заглушка</Typography>
+            </div>
+          </CollapsibleRow>
+          <CollapsibleRow title="Средняя школа 5–11 класс">
+            <div className={styles.CollapsibleContent}>
+              <Typography>Заглушка</Typography>
+            </div>
+          </CollapsibleRow>
+          <CollapsibleRow title="Взрослые от 18 лет и старше">
+            <div className={styles.CollapsibleContent}>
+              <Typography>Заглушка</Typography>
+            </div>
+          </CollapsibleRow>
         </div>
       </article>
+      <div className={styles.Column}>
+        <Typography component="h3" weight="demiBold" className={styles.Title}>
+          Филиалы по возрастам
+        </Typography>
+        <FilialsByAges />
+      </div>
     </>
   );
 }

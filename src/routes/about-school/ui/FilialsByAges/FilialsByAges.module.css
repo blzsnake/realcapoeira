@@ -1,0 +1,56 @@
+.Grid {
+  display: grid;
+  gap: 8px;
+  grid-template-columns: 1fr 1fr;
+
+  @media (min-width: 1025px) {
+    display: flex;
+    gap: 8px;
+  }
+}
+
+.Card {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: space-between;
+  padding: 20px 20px 0;
+  gap: 16px;
+  background-color: var(--gray);
+  transition: background 0.3s ease;
+  border-radius: 20px;
+  cursor: pointer;
+  position: relative;
+
+  @media (min-width: 1025px) {
+    width: 230px;
+  }
+}
+
+.Card:hover {
+  background-image: radial-gradient(circle at 80% 90%, #fde74c 0%, #f6f4f3 80%);
+}
+
+.ArrowRight {
+  position: absolute;
+  right: 16px;
+  bottom: 16px;
+  cursor: pointer;
+}
+
+.Title {
+  font-size: 20px;
+  line-height: 120%;
+}
+
+@media (min-width: 1025px) {
+  .Card {
+    padding: 24px 24px 0;
+    gap: 24px;
+  }
+
+  .Title {
+    font-size: 28px;
+    line-height: 120%;
+  }
+}
