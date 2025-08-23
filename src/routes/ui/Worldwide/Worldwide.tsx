@@ -25,6 +25,7 @@ export function Worldwide() {
         К списку школ
       </Button>
       <div className={styles.Countries}>
+        <div className={styles.EmptyPlug} />
         <CityCard title="Москва" subtitle="Россия" url="/" image={Moscow} />
         <CityCard title="Казань" subtitle="Россия" url="/" image={Kaz} />
         <CityCard title="Краснодар" subtitle="Россия" url="/" image={Krs} />
@@ -48,6 +49,7 @@ export function Worldwide() {
           url="/"
           image={Usa}
         />
+        <div className={styles.EmptyPlug} />
       </div>
     </div>
   );
