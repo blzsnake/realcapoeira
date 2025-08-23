@@ -28,6 +28,11 @@
   justify-content: space-between;
   flex-direction: column;
   gap: 24px;
+
+  @media (min-width: 1025px) {
+    margin-bottom: 40px;
+    gap: 40px;
+  }
 }
 
 .Button {
