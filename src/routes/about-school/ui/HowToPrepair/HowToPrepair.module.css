@@ -25,26 +25,14 @@
   }
 }
 
-.Column {
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
-
-  @media (min-width: 1025px) {
-    gap: 40px;
-  }
-}
-
 .Article {
   width: 100%;
   display: flex;
   flex-direction: column;
-  gap: 48px;
   font-size: 18px;
   line-height: 24px;
 
   @media (min-width: 1025px) {
-    gap: 64px;
     font-size: 24px;
     line-height: 150%;
   }

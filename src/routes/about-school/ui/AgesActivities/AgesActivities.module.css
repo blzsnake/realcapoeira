@@ -122,3 +122,7 @@
     gap: 64px;
   }
 }
+
+.NoGap {
+  gap: 0px;
+}
