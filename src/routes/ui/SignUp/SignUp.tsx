@@ -13,12 +13,14 @@ export function SignUp() {
       <Typography className={styles.Subheading}>
         Начните свой путь к силе, ловкости и мастерству
       </Typography>
-      <img src={DreamTeam} className={styles.Image} alt="Команда" />
-      <SignUpFormGroup
-        title="Запишитесь за пару минут"
-        description="Позвоните или оставьте заявку — тренер ответит на все вопросы и подберет подходящую группу для вас или ребенка"
-        phone="+7 (925) 555 00 77"
-      />
+      <div className={styles.Column}>
+        <img src={DreamTeam} className={styles.Image} alt="Команда" />
+        <SignUpFormGroup
+          title="Запишитесь за пару минут"
+          description="Позвоните или оставьте заявку — тренер ответит на все вопросы и подберет подходящую группу для вас или ребенка"
+          phone="+7 (925) 555 00 77"
+        />
+      </div>
     </div>
   );
 }
