@@ -1,13 +1,13 @@
 import { Typography } from '~shared/ui/typography';
-import Pic1 from './assets/1.svg?react';
-import Pic2 from './assets/2.svg?react';
-import Pic3 from './assets/3.svg?react';
+import Pic1 from '~app/assets/NewsPic1.png';
+import Pic2 from '~app/assets/NewsPic2.png';
+import Pic3 from '~app/assets/NewsPic3.png';
 import styles from './LatestNews.module.css';
 
 export function News1() {
   return (
     <div className={styles.NewsItem}>
-      <Pic1 />
+      <img src={Pic1} className={styles.Image} />
       <div className={styles.Block}>
         <Typography weight="demiBold" component="h3" className={styles.Title}>
           Что такое капоэйра?
@@ -84,7 +84,7 @@ export function News2() {
         Бразильские мастера капоэйры подготовили увлекательные мастер-классы для
         детей. В программе тренировки, танцы и игры на свежем воздухе
       </Typography>
-      <Pic2 />
+      <img src={Pic2} className={styles.Image} />
       <div className={styles.Block}>
         <Typography weight="demiBold" component="h3" className={styles.Title}>
           Даты
@@ -168,7 +168,7 @@ export function News3() {
         только возможность продвинуться в боевом искусстве, но и завести новые
         знакомства.
       </Typography>
-      <Pic3 />
+      <img src={Pic3} className={styles.Image} />
       <div className={styles.Block}>
         <Typography weight="demiBold" component="h3" className={styles.Title}>
           Даты

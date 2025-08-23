@@ -5,7 +5,6 @@ import AgesActivities1 from '~app/assets/AgesActivities1.png';
 import AgesActivities2 from '~app/assets/AgesActivities2.png';
 import AgesActivities3 from '~app/assets/AgesActivities3.png';
 import classNames from 'classnames';
-import { FilialsByAges } from '../FilialsByAges';
 import { CollapsibleRow } from '../CollapsibleRow';
 // Styles
 import styles from './AgesActivities.module.css';
