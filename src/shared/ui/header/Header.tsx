@@ -77,7 +77,7 @@ export function Header() {
                     Филиалы
                   </Typography>
                 </Link>
-                <Link viewTransition url="/" aria-label="Инструкторы">
+                <Link viewTransition url="/trainers/" aria-label="Инструкторы">
                   <Typography
                     weight={
                       isLinkActive(actualPath, '/trainers/')
