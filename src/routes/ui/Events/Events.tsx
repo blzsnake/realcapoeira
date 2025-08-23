@@ -79,6 +79,7 @@ export function Events() {
       </div>
 
       <div className={styles.Cards}>
+        <div className={styles.EmptyPlug} />
         {cardInfos.map((evt, i) => (
           <EventCard
             key={evt.cardTitle}
@@ -87,6 +88,7 @@ export function Events() {
             description={evt.description}
           />
         ))}
+        <div className={styles.EmptyPlug} />
       </div>
 
       <div className={styles.BottomButtons}>

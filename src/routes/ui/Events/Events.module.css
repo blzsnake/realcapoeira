@@ -9,9 +9,14 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-left: 20px;
 
   :last-child {
     display: none;
+  }
+
+  @media (min-width: 1440px) {
+    margin-left: 40px;
   }
 }
 
@@ -39,7 +44,7 @@
   overflow-x: auto;
   -ms-overflow-style: none;
   scrollbar-width: none;
-  margin-right: -40px;
+  margin-right: 0;
 }
 
 .Cards::-webkit-scrollbar {
@@ -69,5 +74,14 @@
 @media (min-width: 1440px) {
   .Cards {
     gap: 24px;
+  }
+}
+
+.EmptyPlug {
+  width: 12px;
+  flex-shrink: 0;
+
+  @media (min-width: 1025px) {
+    display: none;
   }
 }
