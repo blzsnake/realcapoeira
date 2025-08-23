@@ -76,11 +76,23 @@ export function SignUpForm({ contactsVariant = false }: TSignUpFormProps) {
       <div className={styles.FieldRow}>
         <label htmlFor="name" className={styles.FieldLabel}>
           <Typography weight="demiBold">Как вас зовут</Typography>
-          <input name="name" type="text" className={styles.Input} id="name" />
+          <input
+            name="name"
+            type="text"
+            className={styles.Input}
+            id="name"
+            placeholder="Имя Фамилия"
+          />
         </label>
         <label htmlFor="phone" className={styles.FieldLabel}>
           <Typography weight="demiBold">Телефон</Typography>
-          <input name="phone" type="text" className={styles.Input} id="phone" />
+          <input
+            name="phone"
+            type="text"
+            className={styles.Input}
+            id="phone"
+            placeholder="+7"
+          />
         </label>
       </div>
       <div className={styles.FieldRow}>
@@ -111,7 +123,7 @@ export function SignUpForm({ contactsVariant = false }: TSignUpFormProps) {
       </div>
       <div className={styles.FieldRow}>
         <Button color="yellow" className={styles.Button} onClick={submitHander}>
-          <span>Оставить заявку</span>
+          <span>Записаться</span>
         </Button>
       </div>
     </form>

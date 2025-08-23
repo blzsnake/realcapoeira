@@ -41,6 +41,7 @@
 .Button {
   width: 100%;
   max-width: 334px;
+  border-radius: 28px !important;
 }
 
 @media (min-width: 1025px) {

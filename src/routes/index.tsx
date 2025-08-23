@@ -29,9 +29,11 @@ export function IndexPage() {
         <Groups />
         <Video />
       </div>
-      <Worldwide />
-      <div id="signup" className={styles.ContentWithoutPadding}>
-        <SignUp />
+      <div className={styles.Column}>
+        <Worldwide />
+        <div id="signup" className={styles.ContentWithoutPadding}>
+          <SignUp />
+        </div>
       </div>
     </main>
   );
