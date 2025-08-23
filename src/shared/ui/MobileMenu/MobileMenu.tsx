@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 // Components
 import { Link } from '@tramvai/module-router';
 import { Typography } from '~shared/ui/typography';
@@ -22,6 +23,14 @@ const LINKS = [
 ];
 
 export function MobileMenu({ onClose }: MobileMenuProps) {
+  useEffect(() => {
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape' || e.key === 'Esc') onClose();
+    };
+    document.addEventListener('keydown', onKeyDown);
+    return () => document.removeEventListener('keydown', onKeyDown);
+  }, [onClose]);
+
   return (
     <div className={styles.MobileMenu}>
       <div className={styles.MainBlock}>
