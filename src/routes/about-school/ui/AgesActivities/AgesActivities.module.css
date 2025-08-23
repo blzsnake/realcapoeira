@@ -18,6 +18,9 @@
 
   @media (min-width: 1025px) {
     font-size: 56px;
+  }
+
+  @media (min-width: 1440px) {
     width: 437px;
   }
 }

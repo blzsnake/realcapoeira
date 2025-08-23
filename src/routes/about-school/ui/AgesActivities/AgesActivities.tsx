@@ -107,12 +107,6 @@ export function AgesActivities() {
           </CollapsibleRow>
         </div>
       </article>
-      <div className={styles.Column}>
-        <Typography component="h3" weight="demiBold" className={styles.Title}>
-          Филиалы по возрастам
-        </Typography>
-        <FilialsByAges />
-      </div>
     </>
   );
 }

@@ -8,37 +8,51 @@ import styles from './FilialsByAges.module.css';
 
 export function FilialsByAges() {
   return (
-    <div className={styles.Grid}>
-      <div className={styles.Card}>
-        <Typography className={styles.Title}>Дети 3-6 лет</Typography>
-
-        <BabyMobile />
-
-        <ArrowRight width={24} height={24} className={styles.ArrowRight} />
-      </div>
-      <div className={styles.Card}>
-        <Typography className={styles.Title}>Дети 7–10 лет</Typography>
-
-        <KidMobile />
-
-        <ArrowRight width={24} height={24} className={styles.ArrowRight} />
-      </div>
-      <div className={styles.Card}>
-        <Typography className={styles.Title}>Дети 11–15 лет</Typography>
-
-        <TeenMobile />
-
-        <ArrowRight width={24} height={24} className={styles.ArrowRight} />
-      </div>
-      <div className={styles.Card}>
-        <Typography className={styles.Title}>
-          Взрослые и подростки 16+
+    <article className={styles.Content}>
+      <div className={styles.HiddenPlug} />
+      <div className={styles.Column}>
+        <Typography component="h3" weight="demiBold" className={styles.Header}>
+          Филиалы по возрастам
         </Typography>
+        <div className={styles.Grid}>
+          <div className={styles.Card}>
+            <Typography className={styles.Title} weight="demiBold">
+              Дети 3-6 лет
+            </Typography>
 
-        <AdultMobile />
+            <BabyMobile />
 
-        <ArrowRight width={24} height={24} className={styles.ArrowRight} />
+            <ArrowRight width={24} height={24} className={styles.ArrowRight} />
+          </div>
+          <div className={styles.Card}>
+            <Typography className={styles.Title} weight="demiBold">
+              Дети 7–10 лет
+            </Typography>
+
+            <KidMobile />
+
+            <ArrowRight width={24} height={24} className={styles.ArrowRight} />
+          </div>
+          <div className={styles.Card}>
+            <Typography className={styles.Title} weight="demiBold">
+              Дети 11–15 лет
+            </Typography>
+
+            <TeenMobile />
+
+            <ArrowRight width={24} height={24} className={styles.ArrowRight} />
+          </div>
+          <div className={styles.Card}>
+            <Typography className={styles.Title} weight="demiBold">
+              Взрослые и подростки 16+
+            </Typography>
+
+            <AdultMobile />
+
+            <ArrowRight width={24} height={24} className={styles.ArrowRight} />
+          </div>
+        </div>
       </div>
-    </div>
+    </article>
   );
 }
