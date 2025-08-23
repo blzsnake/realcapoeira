@@ -25,7 +25,16 @@ export function SignUpFormGroup({
             <Typography className={styles.Description}>
               {description}
             </Typography>
-            <Typography className={styles.Phone}>{phone}</Typography>
+            <Typography className={styles.Phone}>
+              <a
+                href={`tel:${phone}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={styles.Link}
+              >
+                {phone}
+              </a>
+            </Typography>
             <div className={styles.Buttons}>
               <Button
                 onClick={() => {

@@ -1,3 +1,4 @@
+import { Link } from '@tramvai/module-router';
 import { Button } from '~shared/ui/button/Button';
 import AllCrew from '~app/assets/AllCrew.png';
 import ArrowDown from '~app/assets/ArrowDown.svg?react';
@@ -13,19 +14,27 @@ export function SchoolPhoto({ scrollHandler }: { scrollHandler: () => void }) {
           REAL CAPOEIRA
         </h1>
         <div className={styles.ButtonsBlockMobile}>
-          <Button className={styles.Button}>О школе</Button>
-          <Button color="white" className={styles.Button}>
-            Филиалы
-          </Button>
+          <Link viewTransition url="/about-school/" aria-label="О школе">
+            <Button className={styles.Button}>О школе</Button>
+          </Link>
+          <Link viewTransition url="/filials/" aria-label="Филиалы">
+            <Button color="white" className={styles.Button}>
+              Филиалы
+            </Button>
+          </Link>
         </div>
       </div>
       <img src={AllCrew} className={styles.Image} alt="Команда" />
       <div className={styles.ButtonsBlockWeb}>
-        <Button className={styles.Button}>О школе</Button>
+        <Link viewTransition url="/about-school/" aria-label="О школе">
+          <Button className={styles.Button}>О школе</Button>
+        </Link>
         <ArrowDown width={46} height={46} onClick={scrollHandler} />
-        <Button color="white" className={styles.Button}>
-          Филиалы
-        </Button>
+        <Link viewTransition url="/filials/" aria-label="Филиалы">
+          <Button color="white" className={styles.Button}>
+            Филиалы
+          </Button>
+        </Link>
       </div>
     </div>
   );
