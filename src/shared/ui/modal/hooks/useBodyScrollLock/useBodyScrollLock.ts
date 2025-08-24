@@ -37,7 +37,7 @@ export const useBodyScrollLock: TBodyScrollLock = ({
 
   useEffect(() => {
     const isTouchDevice = window.matchMedia('(pointer: coarse)').matches;
-    const isMobile = window.matchMedia('(max-width: 768px)').matches;
+    const isMobile = window.matchMedia('(max-width: 1025px)').matches;
     const touchEnabled = isTouchDevice && !disabled && isMobile;
 
     const dialogsNumber = document.querySelectorAll('dialog').length;
