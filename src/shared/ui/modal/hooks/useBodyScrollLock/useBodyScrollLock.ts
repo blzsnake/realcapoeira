@@ -1,9 +1,6 @@
 import { useEffect, useRef } from 'react';
-import { isScrolledToBottom } from '../../utils/isScrolledToBottom';
 import { setScroll } from './setScroll';
-// types
 import type { TBodyScrollLock, TElement } from './types';
-// Styles
 import styles from '../../Modal.module.css';
 
 let scrollPosition = 0;
@@ -12,9 +9,25 @@ const onTouchMoveDocument = (event: TouchEvent) => {
   event.preventDefault();
 };
 
-const touchLockOption = {
-  capture: false,
-  passive: false,
+const touchLockOption = { capture: false, passive: false };
+
+const getOpenDialogsCount = () =>
+  document.querySelectorAll('dialog[open]').length;
+
+const lockRoot = () => {
+  const html = document.documentElement;
+  const { body } = document;
+  const scrollbarWidth = window.innerWidth - html.clientWidth;
+
+  html.classList.add(styles.ScrollLock);
+  body.classList.add(styles.ScrollLock);
+  if (scrollbarWidth > 0) body.style.paddingRight = `${scrollbarWidth}px`;
+};
+
+const unlockRoot = () => {
+  document.documentElement.classList.remove(styles.ScrollLock);
+  document.body.classList.remove(styles.ScrollLock);
+  document.body.style.paddingRight = '';
 };
 
 export const useBodyScrollLock: TBodyScrollLock = ({
@@ -30,17 +43,14 @@ export const useBodyScrollLock: TBodyScrollLock = ({
   const prevIsClosed = useRef(true);
 
   useEffect(() => {
-    if (isOpen) {
-      prevIsClosed.current = false;
-    }
+    if (isOpen) prevIsClosed.current = false;
   }, [isOpen]);
 
   useEffect(() => {
     const isTouchDevice = window.matchMedia('(pointer: coarse)').matches;
-    const isMobile = window.matchMedia('(max-width: 1025px)').matches;
+    const isMobile = window.matchMedia('(max-width: 1024px)').matches;
     const touchEnabled = isTouchDevice && !disabled && isMobile;
 
-    const dialogsNumber = document.querySelectorAll('dialog').length;
     if (mounted && isOpen) {
       isPopUp
         ? layoutRef?.current?.show?.()
@@ -52,47 +62,35 @@ export const useBodyScrollLock: TBodyScrollLock = ({
           onTouchMoveDocument,
           touchLockOption
         );
-
         removeListeners.current = setScroll({
           refs: scrollableRef,
           childScrollElem,
         });
       }
 
-      scrollPosition = isScrolledToBottom() ? window.scrollY : 0;
+      scrollPosition = window.scrollY;
 
-      if (dialogsNumber === 1) {
-        document.body.style.paddingRight = `${
-          window.innerWidth - document.documentElement.clientWidth
-        }px`;
-        document.body.classList.add(styles.ScrollLock);
-      }
+      if (getOpenDialogsCount() === 1) lockRoot();
     } else if (!mounted && !isOpen && !prevIsClosed.current) {
-      if (dialogsNumber === 0) {
-        if (touchEnabled) {
-          document.removeEventListener(
-            'touchmove',
-            onTouchMoveDocument,
-            touchLockOption
-          );
-
-          removeListeners.current();
-        }
-        document.body.classList.remove(styles.ScrollLock);
-        document.body.style.paddingRight = '';
+      if (touchEnabled) {
+        document.removeEventListener(
+          'touchmove',
+          onTouchMoveDocument,
+          touchLockOption
+        );
+        removeListeners.current();
       }
 
-      scrollPosition && window.scrollTo(0, scrollPosition);
+      if (getOpenDialogsCount() === 0) unlockRoot();
+
+      window.scrollTo(0, scrollPosition);
+      prevIsClosed.current = true;
     }
 
     return () => {
-      if (mounted) {
-        document.body.classList.remove(styles.ScrollLock);
-        document.body.style.paddingRight = '';
-      }
+      if (getOpenDialogsCount() === 0) unlockRoot();
 
       removeListeners.current();
-
       document.removeEventListener(
         'touchmove',
         onTouchMoveDocument,
