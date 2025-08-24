@@ -35,6 +35,10 @@
   }
 }
 
+.FieldRow:last-child {
+  margin-bottom: 0;
+}
+
 .Button {
   padding: 13px 20px;
 }
