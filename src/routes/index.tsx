@@ -30,11 +30,7 @@ export function IndexPage() {
         <Groups />
         <Video />
       </div>
-
-      <div
-        id="signup"
-        className={classNames(styles.ContentWithoutPadding, styles.LesserGap)}
-      >
+      <div className={styles.WorldwideContent}>
         <Worldwide />
         <SignUp />
       </div>

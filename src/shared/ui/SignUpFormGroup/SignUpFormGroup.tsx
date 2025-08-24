@@ -42,7 +42,7 @@ export function SignUpFormGroup({
                 }}
               >
                 <Telegram className={styles.SocialLink} />
-                <span className={styles.Prefix}>Написать в&nbsp;</span>Telegram
+                <span className={styles.Prefix}>Написать в&nbsp;Telegram</span>
               </Button>
               <Button
                 onClick={() => {
@@ -50,7 +50,7 @@ export function SignUpFormGroup({
                 }}
               >
                 <Whatsapp className={styles.SocialLink} />
-                <span className={styles.Prefix}>Написать в&nbsp;</span>WhatsApp
+                <span className={styles.Prefix}>Написать в&nbsp;WhatsApp</span>
               </Button>
             </div>
           </>
