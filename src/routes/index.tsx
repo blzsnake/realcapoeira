@@ -1,4 +1,5 @@
 import { useRef } from 'react';
+import classNames from 'classnames';
 import { SchoolPhoto } from './ui/SchoolPhoto';
 import { Events } from './ui/Events';
 import { About } from './ui/About';
@@ -29,11 +30,13 @@ export function IndexPage() {
         <Groups />
         <Video />
       </div>
-      <div className={styles.Column}>
+
+      <div
+        id="signup"
+        className={classNames(styles.ContentWithoutPadding, styles.LesserGap)}
+      >
         <Worldwide />
-        <div id="signup" className={styles.ContentWithoutPadding}>
-          <SignUp />
-        </div>
+        <SignUp />
       </div>
     </main>
   );
