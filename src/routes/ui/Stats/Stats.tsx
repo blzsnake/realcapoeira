@@ -9,7 +9,7 @@ export function Stats() {
           Обучаем капоэйре
         </Typography>
         <Typography weight="demiBold" className={styles.Number}>
-          18 лет
+          18&nbsp;лет
         </Typography>
       </div>
 
