@@ -27,7 +27,7 @@ export function Stats() {
             Учеников
           </Typography>
           <Typography weight="demiBold" className={styles.Number}>
-            1 300+
+            1&nbsp;300+
           </Typography>
         </div>
       </div>
