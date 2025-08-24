@@ -1,6 +1,10 @@
 @keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 .SchoolPhoto {
@@ -33,7 +37,7 @@
   line-height: 1;
   opacity: 0;
   animation: fadeIn 1s ease-in-out forwards;
-  animation-delay: 1s;
+  animation-delay: 2s;
 }
 
 .ButtonsBlockMobile {
@@ -42,7 +46,7 @@
   gap: 16px;
   opacity: 0;
   animation: fadeIn 1s ease-in-out forwards;
-  animation-delay: 3s;
+  animation-delay: 2s;
 }
 
 .Button {
@@ -58,8 +62,8 @@
   width: auto;
   margin-top: 20px;
   opacity: 0;
-  animation: fadeIn 1s ease-in-out forwards;
-  animation-delay: 3s;
+  animation: fadeIn 2s ease-in-out forwards;
+  animation-delay: 1s;
 }
 
 .ButtonsBlockWeb {
@@ -81,6 +85,9 @@
     z-index: var(--upper-middle-z-index);
     position: absolute;
     bottom: 32px;
+    opacity: 0;
+    animation: fadeIn 1s ease-in-out forwards;
+    animation-delay: 2s;
 
     svg {
       cursor: pointer;
