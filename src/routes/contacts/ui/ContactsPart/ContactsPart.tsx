@@ -40,7 +40,7 @@ export function ContactsPart() {
               }}
             >
               <Telegram className={styles.SocialLink} />
-              <span className={styles.Prefix}>Написать в&nbsp;</span>Telegram
+              <span className={styles.Prefix}>Написать в&nbsp;Telegram</span>
             </Button>
             <Button
               onClick={() => {
@@ -48,7 +48,7 @@ export function ContactsPart() {
               }}
             >
               <Whatsapp className={styles.SocialLink} />
-              <span className={styles.Prefix}>Написать в&nbsp;</span>WhatsApp
+              <span className={styles.Prefix}>Написать в&nbsp;WhatsApp</span>
             </Button>
           </div>
         </div>
