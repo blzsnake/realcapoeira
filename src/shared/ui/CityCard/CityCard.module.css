@@ -1,4 +1,11 @@
 .CityCard {
+  --overlay-h: 45%;
+  --blur: 8px;
+  --shade-bot: .3;
+  --shade-mid: .1;
+}
+
+.CityCard {
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
@@ -8,24 +15,74 @@
   border-radius: 16px;
   cursor: pointer;
   flex-shrink: 0;
+}
 
-  &:hover {
-    transform: translateY(-16px);
-    transition: transform 0.3s ease;
-  }
+.CityCard {
+  position: relative;
+  overflow: hidden;
+  background-size: cover;
+  background-position: center;
+  transition: transform 0.3s ease;
+  isolation: isolate;
+}
+
+.CityCard:hover {
+  transform: translateY(-16px);
+}
+
+.CityCard::after {
+  content: '';
+  position: absolute;
+  left: 0; right: 0; bottom: 0;
+  height: var(--overlay-h);
+
+  -webkit-backdrop-filter: blur(var(--blur));
+  backdrop-filter: blur(var(--blur));
+
+  -webkit-mask-image: linear-gradient(to top, #000 45%, transparent 85%);
+  mask-image: linear-gradient(to top, #000 45%, transparent 85%);
+
+  border-bottom-left-radius: inherit;
+  border-bottom-right-radius: inherit;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.CityCard::before {
+  content: '';
+  position: absolute;
+  left: 0; right: 0; bottom: 0;
+  height: var(--overlay-h);
+
+  background: linear-gradient(
+    to top,
+    rgba(0,0,0,var(--shade-bot)) 10%,
+    rgba(255,255,255,var(--shade-mid)) 60%,
+    rgba(0,0,0,0) 80%
+  );
+
+  border-bottom-left-radius: inherit;
+  border-bottom-right-radius: inherit;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.Title,
+.Subtitle {
+  position: relative;
+  z-index: 3;
 }
 
 .Title {
   font-size: 28px;
   line-height: 120%;
-  color: #fff;
+  color: var(--white);
 }
 
 .Subtitle {
   font-size: 18px;
   line-height: 120%;
-  color: #fff;
-
+  color: var(--white);
 }
 
 @media (min-width: 1025px) {
