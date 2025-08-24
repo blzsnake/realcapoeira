@@ -71,7 +71,8 @@
 
 .Modal::backdrop,
 .Backdrop {
-  background: var(rgb(32 33 35 / 0.24), rgb(0 0 0 / 24%));
+  background-color: rgba(0, 0, 0, 0.4);
+  background: rgb(0 0 0 / 40%);
   animation-fill-mode: forwards;
 }
 
