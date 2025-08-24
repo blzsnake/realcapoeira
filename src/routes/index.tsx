@@ -1,5 +1,4 @@
 import { useRef } from 'react';
-import classNames from 'classnames';
 import { SchoolPhoto } from './ui/SchoolPhoto';
 import { Events } from './ui/Events';
 import { About } from './ui/About';

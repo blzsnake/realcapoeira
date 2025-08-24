@@ -9,9 +9,7 @@ import styles from './AboutSchool.module.css';
 export function AboutSchoolPage() {
   return (
     <main className={styles.MainWrap}>
-      <div className={styles.ContentWithoutPadding}>
-        <HeaderPart />
-      </div>
+      <HeaderPart />
       <div className={styles.Content}>
         <AboutUs />
         <AgesActivities />
