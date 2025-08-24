@@ -37,10 +37,7 @@
   .Footer {
     margin: 0 auto;
     margin-top: auto;
-    padding-left: 20px;
-    padding-right: 20px;
-    padding-top: 40px;
-    padding-bottom: 40px;
+    padding: 40px 0;
     max-width: 1360px;
     width: 100%;
     align-items: center;
