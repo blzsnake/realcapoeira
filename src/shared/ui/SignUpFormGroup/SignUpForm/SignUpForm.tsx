@@ -1,5 +1,5 @@
 import { useEffect, useRef } from 'react';
-import Select from 'react-select';
+import Select, { StylesConfig } from 'react-select';
 import { Typography } from '~shared/ui/typography';
 import { Button } from '~shared/ui/button/Button';
 import { FILIALS_MOCK } from '~shared/mocks';
@@ -9,23 +9,24 @@ import styles from './SignUpForm.module.css';
 
 const OPTIONS = [
   { address: { city: 'Любой', street: '' } },
-  ...FILIALS_MOCK,
+  ...FILIALS_MOCK.moscow,
 ].map((item) => ({
   value: `${item.address.city} ${item.address.street}`,
   label: `${item.address.city} ${item.address.street}`,
 }));
 
-const customStyles = {
+export const customStyles = {
   container: (base) => ({
     ...base,
     width: '100%',
     height: '48px',
   }),
-  control: (base) => ({
+  control: (base, state) => ({
     ...base,
     height: '100%',
     borderRadius: '8px',
-    borderColor: '#cacaca',
+    borderColor: state.isFocused ? '#000 !important' : '#cacaca',
+    boxShadow: state.isFocused ? '0 0 0 1px #000' : '0 0 0 1px #cacaca',
     borderWidth: '1px',
   }),
   indicatorSeparator: (base) => ({
@@ -36,11 +37,36 @@ const customStyles = {
     ...base,
     fontSize: '18px',
   }),
-  // option: (base, state) => ({
-  //   ...base,
-  //   backgroundColor: state.isFocused ? 'lightgreen' : 'white',
-  //   color: 'black',
-  // }),
+
+  // доработка мультиселекта
+  clearIndicator: (base) => ({
+    ...base,
+    display: 'none',
+  }),
+  multiValueLabel: (base) => ({
+    ...base,
+    display: 'none',
+  }),
+  placeholder: (base) => ({
+    ...base,
+    color: '#000',
+    fontSize: '18px',
+  }),
+  option: (base, state) => ({
+    ...base,
+    backgroundColor: state.isFocused ? 'rgba(202,202,202,0.1)' : 'white',
+    color: 'black',
+    ':active': {
+      backgroundColor: 'rgba(202,202,202,0.1)',
+    },
+  }),
+  groupHeading: (base, state) => ({
+    ...base,
+    fontSize: '18px',
+    color: '#000',
+    textTransform: 'none',
+    fontWeight: 'bold',
+  }),
 };
 
 export function SignUpForm({ contactsVariant = false }: TSignUpFormProps) {

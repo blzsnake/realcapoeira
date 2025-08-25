@@ -1,4 +1,6 @@
+import cn from 'classnames';
 import { Typography } from '~shared/ui/typography';
+import { useMemo, useState } from 'react';
 import styles from './FilialCard.module.css';
 import { WEEK_DAYS } from '../../../../shared/mocks';
 // import { ContactsPart } from './ui/ContactsPart';
@@ -27,14 +29,34 @@ export type TFilialCardData = {
 };
 
 export function FilialCard(props: TFilialCardData) {
+  const [cardActive, setCardActive] = useState(false);
+  const handleToggleSchedule = () => setCardActive(!cardActive);
+  const { address } = props;
+  const addressName = useMemo(
+    () =>
+      address?.metro
+        ? `м. ${address?.metro?.name} ${address?.street}`
+        : address?.street,
+    [address]
+  );
   return (
-    <div className={styles.FilialCard}>
+    <div
+      className={cn(styles.FilialCard, {
+        [styles.FilialCardActive]: cardActive,
+      })}
+    >
       <Typography weight="demiBold" className={styles.Head}>
-        {props?.address?.metro?.name}
+        {address?.metro?.name || address?.city}
       </Typography>
-      <Typography
-        className={styles.Address}
-      >{`м. ${props?.address?.metro?.name} ${props?.address?.street}`}</Typography>
+      <Typography className={styles.Address}>
+        {address.metro && (
+          <div
+            className={styles.AddressIcon}
+            style={{ backgroundColor: address.metro.color }}
+          />
+        )}
+        {addressName}
+      </Typography>
       <div className={styles.Coaches}>
         {props?.coaches?.map((coach) => (
           <Typography
@@ -43,36 +65,41 @@ export function FilialCard(props: TFilialCardData) {
           >{`${coach.name} ${coach.phone}`}</Typography>
         ))}
       </div>
-      <div className={styles.ScheduleWrap}>
-        <div className={styles.Schedule}>
-          <div className={styles.ScheduleToggle}>Посмотреть расписание</div>
-
-          <div className={styles.ScheduleWrap}>
-            {props?.schedule?.map((item, index) => (
-              <div key={`${WEEK_DAYS[index]}`} className={styles.ScheduleItem}>
-                <Typography
-                  weight="demiBold"
-                  className={styles.ScheduleWeekDay}
+      {cardActive ? (
+        <div className={styles.ScheduleWrap}>
+          <div className={styles.Schedule}>
+            <div className={styles.ScheduleWrap}>
+              {props?.schedule?.map((item, index) => (
+                <div
+                  key={`${WEEK_DAYS[index]}`}
+                  className={styles.ScheduleItem}
                 >
-                  {WEEK_DAYS[index]}
-                </Typography>
-                <div className={styles.ScheduleGroups}>
-                  {item?.map((el) => (
-                    <>
-                      <Typography className={styles.ScheduleGroup}>
-                        {el.group}
-                      </Typography>
-                      <Typography className={styles.ScheduleTime}>
-                        {el.time}
-                      </Typography>
-                    </>
-                  ))}
+                  <Typography
+                    weight="demiBold"
+                    className={styles.ScheduleWeekDay}
+                  >
+                    {WEEK_DAYS[index]}
+                  </Typography>
+                  <div className={styles.ScheduleGroups}>
+                    {item?.map((el) => (
+                      <>
+                        <Typography className={styles.ScheduleGroup}>
+                          {el.group}
+                        </Typography>
+                        <Typography className={styles.ScheduleTime}>
+                          {el.time}
+                        </Typography>
+                      </>
+                    ))}
+                  </div>
                 </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
-          <div className={styles.ScheduleToggle}>Свернуть</div>
         </div>
+      ) : null}
+      <div onClick={handleToggleSchedule} className={styles.ScheduleToggle}>
+        {cardActive ? 'Свернуть' : 'Показать расписание'}
       </div>
     </div>
   );

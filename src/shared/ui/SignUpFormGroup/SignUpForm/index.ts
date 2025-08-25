@@ -1,1 +1,1 @@
-export { SignUpForm } from './SignUpForm';
+export { SignUpForm, customStyles } from './SignUpForm';

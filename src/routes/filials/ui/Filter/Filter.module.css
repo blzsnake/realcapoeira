@@ -1,0 +1,13 @@
+.Filter {
+  display: flex;
+  gap: 8px;
+}
+
+.FilterItem {
+  width: 33%;
+}
+
+.CheckboxWrap {
+  padding: 8px 0;
+  cursor: pointer;
+}
