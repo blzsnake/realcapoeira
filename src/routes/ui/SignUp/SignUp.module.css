@@ -18,8 +18,26 @@
   text-align: center;
 }
 
+.ImageWrap {
+  width: 100%;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+}
+
 .Image {
-  width: 100vw;
+  width: 147%;
+  height: auto;
+}
+
+.FormWrap {
+  width: 100%;
+  margin-top: -26px;
+
+  @media (min-width: 1025px) {
+    margin-top: 0;
+  }
+
 }
 
 @media (min-width: 1025px) {
@@ -41,12 +59,18 @@
 
   .Image {
     width: 100%;
+    max-width: 100%;
   }
-
 }
 
 @media (min-width: 1440px) {
   .Groups {
     gap: 64px;
   }
+}
+
+.Column {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
 }

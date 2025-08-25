@@ -20,13 +20,21 @@ const getLinkActiveStyle = (ap: string, lr: string): string =>
 
 export function Header() {
   const { actualPath } = useRoute();
+
+  const isGrayBgRoute = (path: string) =>
+    path === '/' || path === '/about-school/' || path === '/about-capoeira/';
+
   const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+  const headerBgClass = isGrayBgRoute(actualPath)
+    ? styles.GrayBg
+    : styles.WhiteBg;
 
   useLockBodyScroll(isMobileMenuOpen);
 
   return (
     <>
-      <header className={styles.HeaderWrap}>
+      <header className={`${styles.HeaderWrap} ${headerBgClass}`}>
         <div className={styles.Header}>
           <div className={styles.ContentWrapper}>
             <Link viewTransition url="/" aria-label="На главную">
@@ -77,7 +85,7 @@ export function Header() {
                     Филиалы
                   </Typography>
                 </Link>
-                <Link viewTransition url="/" aria-label="Инструкторы">
+                <Link viewTransition url="/trainers/" aria-label="Инструкторы">
                   <Typography
                     weight={
                       isLinkActive(actualPath, '/trainers/')

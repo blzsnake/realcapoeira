@@ -54,3 +54,21 @@
     padding: 0 40px;
   }
 }
+
+.WorldwideContent {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 1440px;
+  gap: 48px;
+
+  @media (min-width: 1025px) {
+    gap: 40px;
+    padding: 0 20px;
+  }
+
+  @media (min-width: 1440px) {
+    padding: 0 40px;
+  }
+}

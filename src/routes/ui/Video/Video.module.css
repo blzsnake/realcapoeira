@@ -126,3 +126,8 @@
     display: block;
   }
 }
+
+.ButtonText {
+  font-size: 20px;
+  line-height: 150%;
+}

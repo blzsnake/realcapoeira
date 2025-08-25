@@ -19,7 +19,12 @@ export function Video() {
         <div className={styles.SmallRow}>
           <Brazil className={styles.Logo} />
           <div className={styles.Column}>
-            <Typography component="h3" color="white" className={styles.Heading}>
+            <Typography
+              component="h3"
+              color="white"
+              className={styles.Heading}
+              weight="demiBold"
+            >
               Бесплатные видеоуроки
             </Typography>
             <Typography color="white" className={styles.Description}>
@@ -31,7 +36,9 @@ export function Video() {
               className={styles.MobileButton}
               onClick={downloadClick}
             >
-              Скачать
+              <Typography className={styles.ButtonText} weight="medium">
+                Скачать
+              </Typography>
             </Button>
           </div>
         </div>
@@ -40,7 +47,9 @@ export function Video() {
           className={styles.WebButton}
           onClick={downloadClick}
         >
-          Скачать
+          <Typography className={styles.ButtonText} weight="medium">
+            Скачать
+          </Typography>
         </Button>
       </div>
       <div className={styles.VideoRow}>

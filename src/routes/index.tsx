@@ -18,8 +18,10 @@ export function IndexPage() {
   return (
     <main className={styles.MainWrap}>
       <SchoolPhoto scrollHandler={scrollToEventsHandler} />
-      <div ref={eventsRef} className={styles.Content}>
+      <div className={styles.ContentWithoutPadding}>
         <Events />
+      </div>
+      <div ref={eventsRef} className={styles.Content}>
         <About />
         <Stats />
       </div>
@@ -27,8 +29,8 @@ export function IndexPage() {
         <Groups />
         <Video />
       </div>
-      <Worldwide />
-      <div id="signup" className={styles.ContentWithoutPadding}>
+      <div className={styles.WorldwideContent}>
+        <Worldwide />
         <SignUp />
       </div>
     </main>

@@ -5,4 +5,9 @@
   min-width: 375px;
   min-height: 100vh;
   height: 100%;
+  margin-top: 88px;
+
+  @media (min-width: 1440px) {
+    margin-top: 96px;
+  }
 }

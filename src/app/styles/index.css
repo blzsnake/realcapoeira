@@ -55,8 +55,16 @@ body {
   text-size-adjust: 100%;
   position: relative;
   overflow-x: hidden;
-
   scroll-behavior: smooth;
+  -webkit-tap-highlight-color: transparent;
+  :focus:not(:focus-visible) {
+    outline: none;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--focus-outline, #fdcf2b);
+    outline-offset: 2px;
+  }
 }
 
 :global(.isDesktop) {

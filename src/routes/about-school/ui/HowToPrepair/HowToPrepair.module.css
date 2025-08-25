@@ -1,4 +1,5 @@
 .Content {
+  box-sizing: content-box;
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -18,17 +19,10 @@
 
   @media (min-width: 1025px) {
     font-size: 56px;
-    width: 437px;
   }
-}
 
-.Column {
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
-
-  @media (min-width: 1025px) {
-    gap: 40px;
+  @media (min-width: 1440px) {
+    width: 437px;
   }
 }
 
@@ -36,14 +30,16 @@
   width: 100%;
   display: flex;
   flex-direction: column;
-  gap: 48px;
   font-size: 18px;
   line-height: 24px;
 
   @media (min-width: 1025px) {
-    gap: 64px;
     font-size: 24px;
     line-height: 150%;
+  }
+
+  @media (min-width: 1440px) {
+    max-width: 784px;
   }
 }
 

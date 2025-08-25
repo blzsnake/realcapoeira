@@ -25,7 +25,16 @@ export function SignUpFormGroup({
             <Typography className={styles.Description}>
               {description}
             </Typography>
-            <Typography className={styles.Phone}>{phone}</Typography>
+            <Typography className={styles.Phone}>
+              <a
+                href={`tel:${phone}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={styles.Link}
+              >
+                {phone}
+              </a>
+            </Typography>
             <div className={styles.Buttons}>
               <Button
                 onClick={() => {
@@ -33,7 +42,7 @@ export function SignUpFormGroup({
                 }}
               >
                 <Telegram className={styles.SocialLink} />
-                <span className={styles.Prefix}>Написать в&nbsp;</span>Telegram
+                <span className={styles.Prefix}>Написать в&nbsp;Telegram</span>
               </Button>
               <Button
                 onClick={() => {
@@ -41,7 +50,7 @@ export function SignUpFormGroup({
                 }}
               >
                 <Whatsapp className={styles.SocialLink} />
-                <span className={styles.Prefix}>Написать в&nbsp;</span>WhatsApp
+                <span className={styles.Prefix}>Написать в&nbsp;WhatsApp</span>
               </Button>
             </div>
           </>

@@ -4,7 +4,7 @@ import { Typography } from '~shared/ui/typography';
 import AgesActivities1 from '~app/assets/AgesActivities1.png';
 import AgesActivities2 from '~app/assets/AgesActivities2.png';
 import AgesActivities3 from '~app/assets/AgesActivities3.png';
-import { FilialsByAges } from '../FilialsByAges';
+import classNames from 'classnames';
 import { CollapsibleRow } from '../CollapsibleRow';
 // Styles
 import styles from './AgesActivities.module.css';
@@ -54,7 +54,7 @@ export function AgesActivities() {
       </div>
       <article className={styles.Content}>
         <div className={styles.HiddenPlug} />
-        <div className={styles.Article}>
+        <div className={classNames(styles.Article, styles.NoGap)}>
           <CollapsibleRow title="Дошкольники 3–6 лет">
             <div className={styles.CollapsibleContent}>
               <Typography>
@@ -107,12 +107,6 @@ export function AgesActivities() {
           </CollapsibleRow>
         </div>
       </article>
-      <div className={styles.Column}>
-        <Typography component="h3" weight="demiBold" className={styles.Title}>
-          Филиалы по возрастам
-        </Typography>
-        <FilialsByAges />
-      </div>
     </>
   );
 }
