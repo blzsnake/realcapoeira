@@ -14,18 +14,19 @@ export const filterCity = (
   obj: Record<string, TFilialType[]>,
   city: string
 ): TFilialType[] => {
-  return obj[city];
+  return obj[city] || Object.values(obj).flat();
 };
 
-export const filterAgeGroup = (
-  arr: TFilialScheduleType[],
-  ageGroup: string
-) => {
-  return ageGroup ? arr.find((item) => ageGroup.includes(item.id)) : ageGroup;
+export const findAgeGroup = (arr: TFilialScheduleType[], ageGroup: string) => {
+  return ageGroup && arr?.length
+    ? arr.find((item) => ageGroup.includes(item.id))
+    : ageGroup;
 };
 
-export const filterCoachGroup = (arr: TFilialCoachType[], coach: string) => {
-  return coach ? arr.find((item) => coach.includes(item.id)) : arr;
+export const findCoachGroup = (arr: TFilialCoachType[], coach: string) => {
+  return coach && arr?.length
+    ? arr.find((item) => coach.includes(item.id))
+    : arr;
 };
 
 export const filterFilials = (
@@ -36,20 +37,12 @@ export const filterFilials = (
     ? filterCity(obj, query.city)
     : Object.values(obj).flat();
 
-  console.log(
-    'rawDaata',
-    rawData,
-    rawData?.filter((data: TFilialType) => {
-      return (
-        filterAgeGroup(data.schedule, query.group) ||
-        filterCoachGroup(data.coaches, query.coach)
-      );
-    })
-  );
   return rawData?.filter((data: TFilialType) => {
-    return (
-      filterAgeGroup(data.schedule, query.group) ||
-      filterCoachGroup(data.coaches, query.coach)
-    );
+    return data
+      ? findAgeGroup(data.schedule, query.group) ||
+          findCoachGroup(data.coaches, query.coach)
+      : data;
   });
+
+  // return rawData;
 };
