@@ -15,14 +15,15 @@
 }
 
 .MapWrap {
+  position: relative;
   max-width: 640px;
-  height: 100vh;
-  max-height: (100vh - 10vh);
+  height: 90vh;
+  max-height: 90vh;
 }
 
 .Map {
   height: 100vh;
-  max-height: (100vh - 10vh);
+  max-height: 90vh;
   width: 100%;
 }
 
@@ -45,4 +46,30 @@
   .Wrap {
     flex-direction: row;
   }
+}
+
+.ZoomButton {
+  width: 46px;
+  height: 46px;
+  background-color: #fff;
+  font-size: 30px;
+  display: block;
+
+  &:first-child {
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+  }
+
+  &:last-child {
+    border-bottom-left-radius: 4px;
+    border-bottom-right-radius: 4px;
+  }
+}
+
+.ZoomControls {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  z-index: 1000;
+  transform: translateY(-50%);
 }

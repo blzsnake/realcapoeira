@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import { YMaps, Map, Placemark, Clusterer } from '@pbe/react-yandex-maps';
 import { useUrl } from '@tramvai/module-router';
 import { FILIALS_MOCK } from '~shared/mocks';
@@ -15,7 +15,34 @@ const getHintData = (city: string, metro: string, street: string) =>
     ? `<b>Филиал на ${metro}</b><pre><b>метро ${metro}</b><div>г ${city} ${street}</div>`
     : `<b>Филиал в г ${city}</b><div>${street}</div>`;
 
+function CustomZoomControls({
+  zoom,
+  setZoom,
+}: {
+  zoom: number;
+  setZoom: (x: number) => void;
+}) {
+  return (
+    <div className={styles.ZoomControls}>
+      <button
+        type="button"
+        className={styles.ZoomButton}
+        onClick={() => setZoom(zoom + 1)}
+      >
+        +
+      </button>
+      <button
+        type="button"
+        className={styles.ZoomButton}
+        onClick={() => setZoom(zoom - 1)}
+      >
+        –
+      </button>
+    </div>
+  );
+}
 export function FilialsPage() {
+  const [zoom, setZoom] = useState(10);
   const [activeId, setActiveId] = useState<number | null>(null);
   const mapRef = useRef(null);
   const { query } = useUrl();
@@ -32,6 +59,7 @@ export function FilialsPage() {
       mapRef.current.setCenter(coords, 14, { duration: 200 });
     }
   };
+  console.log('rendert!!!!', zoom);
 
   useEffect(() => {
     if (mapRef.current && markers.length > 0) {
@@ -69,13 +97,14 @@ export function FilialsPage() {
           </div>
         </div>
         <div className={styles.MapWrap}>
+          <CustomZoomControls zoom={zoom} setZoom={setZoom} />
           <Map
             className={styles.Map}
             instanceRef={(ref) => (mapRef.current = ref)}
             modules={['geoObject.addon.hint']}
-            defaultState={{
+            state={{
+              zoom,
               center: markers[0]?.coords || [55.793698, 37.708868],
-              zoom: 11,
             }}
           >
             <Clusterer

@@ -44,7 +44,9 @@ export const filterFilials = (
       : false;
   });
   const markers = filials?.map((item, index) => ({
-    id: Math.floor((item.address.lat * 1000 + item.address.lng * 1000) * index),
+    id: Math.floor(
+      (item.address.lat * 1000 + item.address.lng * 1000) * (index + 1)
+    ),
     coords: [item.address.lat, item.address.lng],
     city: item.address.city,
     street: item.address.street,
