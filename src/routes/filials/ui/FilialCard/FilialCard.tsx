@@ -1,16 +1,14 @@
 import cn from 'classnames';
 import { Typography } from '~shared/ui/typography';
-import { useMemo, useState } from 'react';
+import { forwardRef, useEffect, useMemo, useState } from 'react';
 import styles from './FilialCard.module.css';
 import { WEEK_DAYS } from '../../../../shared/mocks';
-// import { ContactsPart } from './ui/ContactsPart';
 
-type ScheduleItem = {
-  group: string;
-  time: string;
-};
+import type { TFilialScheduleType } from '../Filter/types';
 
 export type TFilialCardData = {
+  activeId: number;
+  id: number;
   address: {
     city: string;
     metro: {
@@ -25,11 +23,13 @@ export type TFilialCardData = {
     name: string;
     phone: string;
   }[];
-  schedule: ScheduleItem[][];
+  schedule: TFilialScheduleType[];
 };
 
-export function FilialCard(props: TFilialCardData) {
-  const [cardActive, setCardActive] = useState(false);
+export type Ref = HTMLDivElement;
+
+export const FilialCard = forwardRef<Ref, TFilialCardData>((props, ref) => {
+  const [cardActive, setCardActive] = useState(props.id === props.activeId);
   const handleToggleSchedule = () => setCardActive(!cardActive);
   const { address } = props;
   const addressName = useMemo(
@@ -39,8 +39,14 @@ export function FilialCard(props: TFilialCardData) {
         : address?.street,
     [address]
   );
+
+  useEffect(
+    () => setCardActive(props.id === props.activeId),
+    [props.activeId, props.id]
+  );
   return (
     <div
+      ref={ref}
       className={cn(styles.FilialCard, {
         [styles.FilialCardActive]: cardActive,
       })}
@@ -103,6 +109,4 @@ export function FilialCard(props: TFilialCardData) {
       </div>
     </div>
   );
-}
-
-export default FilialCard;
+});

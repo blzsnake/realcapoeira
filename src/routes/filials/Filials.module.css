@@ -38,7 +38,8 @@
 }
 
 .FilialsList {
-  max-height: calc(100vh - 10vh);
+  scroll-snap-type: y mandatory;
+  height: 90vh;
   overflow-y: auto;
 }
 

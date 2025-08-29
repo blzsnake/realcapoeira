@@ -22,9 +22,10 @@ export type TFilialScheduleType = {
 };
 
 export type TFilialType = {
+  id: number;
   address: TFilialAddressType;
   coaches: TFilialCoachType[];
-  schedule: TFilialScheduleType[];
+  schedule: TFilialScheduleType[][];
 };
 
 export type TypeOption = {

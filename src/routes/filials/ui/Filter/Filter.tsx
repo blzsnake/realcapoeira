@@ -41,13 +41,11 @@ function RadioOption(props) {
   );
 }
 
-export function Filter(props: TFilialType) {
-  const [selectedAgeGroup, setSelectedAgeGroup] = useState<
-    MultiValue<TypeOption>
-  >(AGE_GROUPS[0]);
-  const [selectedCoach, setSelectedCoach] = useState<MultiValue<TypeOption>>(
-    COACHES[0]
-  );
+export function Filter() {
+  const [selectedAgeGroup, setSelectedAgeGroup] =
+    useState<MultiValue<TypeOption> | null>(null);
+  const [selectedCoach, setSelectedCoach] =
+    useState<MultiValue<TypeOption> | null>(null);
   const [selectedCity, setSelectedCity] = useState<SingleValue<TypeOption>>();
   const { query } = useUrl();
   const setQueryParam =

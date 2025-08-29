@@ -45,6 +45,7 @@ export function FilialsPage() {
   const [zoom, setZoom] = useState(10);
   const [activeId, setActiveId] = useState<number | null>(null);
   const mapRef = useRef(null);
+  const listRef = useRef({});
   const { query } = useUrl();
   const [filials = [], markers = []] = useMemo(
     () => filterFilials(FILIALS_MOCK, query),
@@ -53,17 +54,21 @@ export function FilialsPage() {
   console.log(filials, markers);
 
   const handleMarkerClick = (id: number, coords: number[]) => () => {
+    if (listRef.current[id]) {
+      listRef.current[id]?.scrollIntoView({
+        behavior: 'smooth',
+        block: 'center',
+      });
+    }
     setActiveId(id);
     if (mapRef.current) {
       mapRef.current.panTo(coords, { flying: true });
       mapRef.current.setCenter(coords, 14, { duration: 200 });
     }
   };
-  console.log('rendert!!!!', zoom);
 
   useEffect(() => {
     if (mapRef.current && markers.length > 0) {
-      // setActiveId(null);
       const bounds = markers.reduce(
         (acc, { coords }) => {
           return [
@@ -83,6 +88,8 @@ export function FilialsPage() {
     }
   }, [markers, query]);
 
+  console.log(listRef);
+
   return (
     <YMaps query={{ apikey: 'fcf49c8d-b16f-4277-ab7a-d08242e838b8' }}>
       <main className={styles.Wrap}>
@@ -91,8 +98,13 @@ export function FilialsPage() {
             <Filter />
           </div>
           <div className={styles.FilialsList}>
-            {filials.map((item) => (
-              <FilialCard {...item} key={item.address.street} />
+            {markers.map((item) => (
+              <FilialCard
+                {...item}
+                activeId={activeId}
+                key={item.id}
+                ref={(el) => (listRef.current[item.id] = el)}
+              />
             ))}
           </div>
         </div>

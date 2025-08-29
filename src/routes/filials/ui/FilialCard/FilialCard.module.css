@@ -3,10 +3,11 @@
   margin: 0 auto;
   padding: 24px 0;
   border-bottom: 1px solid #ECECEC;
+  scroll-snap-align: start;
 }
 
 .FilialCardActive {
-  background-color: #fff;
+  background-color: #ECECEC;
 
   &::before {
     content: '';
