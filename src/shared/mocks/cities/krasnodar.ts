@@ -3,8 +3,8 @@ export const krasnodar = [
     address: {
       city: 'г. Краснодар',
       street: 'Ул. Московская, 69/18',
-      lat: 0,
-      lng: 0,
+      lat: 45.064177,
+      lng: 39.001373,
     },
     coaches: [
       {
@@ -39,8 +39,8 @@ export const krasnodar = [
     address: {
       city: 'г. Краснодар',
       street: 'Ул. Котлярова, 17',
-      lat: 0,
-      lng: 0,
+      lat: 45.069588,
+      lng: 39.011039,
     },
     coaches: [
       {
@@ -95,8 +95,8 @@ export const krasnodar = [
     address: {
       city: 'г. Краснодар',
       street: 'Ул. Монтажников, 2',
-      lat: 0,
-      lng: 0,
+      lat: 45.058441,
+      lng: 38.962494,
     },
     coaches: [
       {
@@ -151,8 +151,8 @@ export const krasnodar = [
     address: {
       city: 'г. Краснодар',
       street: 'Ул. Уральская, 152/1',
-      lat: 0,
-      lng: 0,
+      lat: 45.037611,
+      lng: 39.090154,
     },
     coaches: [
       {
@@ -192,8 +192,8 @@ export const krasnodar = [
     address: {
       city: 'г. Краснодар',
       street: 'Ул. Трудовой славы, 25',
-      lat: 0,
-      lng: 0,
+      lat: 45.006686,
+      lng: 39.080829,
     },
     coaches: [
       {

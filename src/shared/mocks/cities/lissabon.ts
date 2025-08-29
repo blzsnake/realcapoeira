@@ -3,8 +3,8 @@ export const lissabon = [
     address: {
       city: 'г. Эшторил',
       street: 'R. Santa Rita 169b, 2765-280 Estoril',
-      lat: 0,
-      lng: 0,
+      lat: 38.705504,
+      lng: -9.389946,
     },
     coaches: [
       {
@@ -69,8 +69,8 @@ export const lissabon = [
     address: {
       city: 'г. Лиссабон, Парк Наций',
       street: 'Alameda dos Oceanos, Pátio das Pirogas 1C',
-      lat: 0,
-      lng: 0,
+      lat: 39.676912,
+      lng: -8.830296,
     },
     coaches: [
       {
@@ -125,8 +125,8 @@ export const lissabon = [
     address: {
       city: 'г. Лиссабон, Португалия',
       street: 'Av. Pádua 10L, 1800-297 Lisboa',
-      lat: 0,
-      lng: 0,
+      lat: 38.732937,
+      lng: -9.133962,
     },
     coaches: [
       {

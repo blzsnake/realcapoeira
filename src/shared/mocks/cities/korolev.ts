@@ -3,8 +3,8 @@ export const korolev = [
     address: {
       city: 'г. Королев',
       street: 'ул. Грабина, дом 8Б ТЦ "Каньон',
-      lat: 0,
-      lng: 0,
+      lat: 55.925808,
+      lng: 37.820331,
     },
     coaches: [
       {
@@ -84,8 +84,8 @@ export const korolev = [
     address: {
       city: 'г. Королев',
       street: 'Микрорайон Первомайский, ул. Советская, 42А ТЦ "Ривер парк"',
-      lat: 0,
-      lng: 0,
+      lat: 55.940472,
+      lng: 37.866729,
     },
     coaches: [
       {

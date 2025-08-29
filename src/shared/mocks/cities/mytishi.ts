@@ -3,8 +3,8 @@ export const mytishi = [
     address: {
       city: 'г. Мытищи',
       street: 'Комарова 2к2',
-      lat: 0,
-      lng: 0,
+      lat: 55.918837,
+      lng: 37.746157,
     },
     coaches: [
       {

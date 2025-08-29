@@ -20,7 +20,7 @@ export const filterCity = (
 export const findAgeGroup = (arr: TFilialScheduleType[], ageGroup: string) => {
   return ageGroup && arr?.length
     ? arr.find((item) => ageGroup.includes(item.id))
-    : ageGroup;
+    : arr;
 };
 
 export const findCoachGroup = (arr: TFilialCoachType[], coach: string) => {
@@ -37,12 +37,19 @@ export const filterFilials = (
     ? filterCity(obj, query.city)
     : Object.values(obj).flat();
 
-  return rawData?.filter((data: TFilialType) => {
+  const filials = rawData?.filter((data: TFilialType) => {
     return data
-      ? findAgeGroup(data.schedule, query.group) ||
+      ? findAgeGroup(data.schedule?.flat(), query.group) &&
           findCoachGroup(data.coaches, query.coach)
-      : data;
+      : false;
   });
+  const markers = filials?.map((item, index) => ({
+    id: Math.floor((item.address.lat * 1000 + item.address.lng * 1000) * index),
+    coords: [item.address.lat, item.address.lng],
+    city: item.address.city,
+    street: item.address.street,
+    metro: item.address.metro?.name,
+  }));
 
-  // return rawData;
+  return [filials, markers];
 };

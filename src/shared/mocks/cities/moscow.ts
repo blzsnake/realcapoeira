@@ -7,8 +7,8 @@ export const moscow = [
         color: '#da2127',
       },
       street: 'ул. Электрозаводская, дом 58 Спортивный клуб "Команда Е"',
-      lat: 0,
-      lng: 0,
+      lat: 55.793698,
+      lng: 37.708868,
     },
     coaches: [
       {
@@ -77,8 +77,8 @@ export const moscow = [
         color: '#a1a2a3',
       },
       street: 'ул. Яблочкова, дом 3',
-      lat: 0,
-      lng: 0,
+      lat: 55.814209,
+      lng: 37.58164,
     },
     coaches: [
       {
@@ -147,8 +147,8 @@ export const moscow = [
         color: '#b4d445',
       },
       street: 'Бескудниковский бул., дом 12, стр. 1',
-      lat: 0,
-      lng: 0,
+      lat: 55.862348,
+      lng: 37.563188,
     },
     coaches: [
       {
@@ -218,8 +218,8 @@ export const moscow = [
         color: '#8e479b',
       },
       street: 'ул. Расплетина, 1',
-      lat: 0,
-      lng: 0,
+      lat: 55.789795,
+      lng: 37.479618,
     },
     coaches: [
       {
@@ -294,82 +294,12 @@ export const moscow = [
     address: {
       city: 'г. Москва',
       metro: {
-        name: 'Нахабино',
-        color: '#ea4184',
-      },
-      street: 'Ул Красноармейская, 68. Клуб Зевс, 2 этаж.',
-      lat: 0,
-      lng: 0,
-    },
-    coaches: [
-      {
-        id: 'a.kedrova',
-        name: 'Кедрова Алёна',
-        phone: '89154805685',
-      },
-    ],
-    schedule: [
-      [],
-      [
-        {
-          group: 'Группа 3-6 лет',
-          time: '17:00-18:00',
-          id: 'junior',
-        },
-        {
-          group: 'Группа 7–10 лет',
-          time: '18:00-19:00',
-          id: 'middle',
-        },
-        {
-          group: 'Группа 11-16 лет',
-          time: '19:00-20:00',
-          id: 'senior',
-        },
-        {
-          group: 'Группа 16+',
-          time: '19:00-20:00',
-          id: 'staff',
-        },
-      ],
-      [],
-      [
-        {
-          group: 'Группа 3-6 лет',
-          time: '17:00-18:00',
-          id: 'junior',
-        },
-        {
-          group: 'Группа 7–10 лет',
-          time: '18:00-19:00',
-          id: 'middle',
-        },
-        {
-          group: 'Группа 11-16 лет',
-          time: '19:00-20:00',
-          id: 'senior',
-        },
-        {
-          group: 'Группа 16+',
-          time: '19:00-20:00',
-          id: 'staff',
-        },
-      ],
-      [],
-      [],
-      [],
-    ],
-  },
-  {
-    address: {
-      city: 'г. Москва',
-      metro: {
         name: 'Юго-восточная',
         color: '#e76ac0',
       },
       street: 'Ферганская улица, 8',
-      lat: 0,
-      lng: 0,
+      lat: 55.709475,
+      lng: 37.804548,
     },
     coaches: [
       {
@@ -408,8 +338,8 @@ export const moscow = [
         color: '#b4d445',
       },
       street: 'Октябрьская, 58',
-      lat: 0,
-      lng: 0,
+      lat: 55.794801,
+      lng: 37.613251,
     },
     coaches: [
       {
@@ -504,8 +434,8 @@ export const moscow = [
         color: '#48b85e',
       },
       street: 'Зои и Александра Космодемьянских, 42',
-      lat: 0,
-      lng: 0,
+      lat: 55.825133,
+      lng: 37.528298,
     },
     coaches: [
       {
@@ -574,8 +504,8 @@ export const moscow = [
         color: '#faa402',
       },
       street: 'ул. Дубки д.7',
-      lat: 0,
-      lng: 0,
+      lat: 55.820657,
+      lng: 37.562569,
     },
     coaches: [
       {
@@ -666,8 +596,8 @@ export const moscow = [
       },
       street:
         'ул. Сущёвский Вал, 10 А стр. 2 Культурный центр "Новослободский"',
-      lat: 0,
-      lng: 0,
+      lat: 55.790135,
+      lng: 37.594135,
     },
     coaches: [
       {
@@ -706,8 +636,8 @@ export const moscow = [
         color: '#b4d445',
       },
       street: 'Ул. Дубнинская 73А',
-      lat: 0,
-      lng: 0,
+      lat: 55.882833,
+      lng: 37.55655,
     },
     coaches: [
       {
@@ -766,8 +696,8 @@ export const moscow = [
         color: '#0078be',
       },
       street: 'Новотушинский пр., 10',
-      lat: 0,
-      lng: 0,
+      lat: 55.838996,
+      lng: 37.378728,
     },
     coaches: [
       {
@@ -826,8 +756,8 @@ export const moscow = [
         color: '#48b85e',
       },
       street: 'Ул. Зои и Александра Космодемьянских, 42',
-      lat: 0,
-      lng: 0,
+      lat: 55.825133,
+      lng: 37.528298,
     },
     coaches: [
       {
@@ -906,8 +836,8 @@ export const moscow = [
         color: '#f58220',
       },
       street: 'Ул. Тёплый Стан, 7',
-      lat: 0,
-      lng: 0,
+      lat: 55.622604,
+      lng: 37.495698,
     },
     coaches: [
       {
@@ -981,8 +911,8 @@ export const moscow = [
         color: '#6ac9c8',
       },
       street: 'Ул. Саляма Адиля 9к3',
-      lat: 0,
-      lng: 0,
+      lat: 55.775074,
+      lng: 37.464499,
     },
     coaches: [
       {
@@ -1057,8 +987,8 @@ export const moscow = [
         color: '#b4d445',
       },
       street: 'Дмитровское ш. 122Гк1',
-      lat: 0,
-      lng: 0,
+      lat: 55.920547,
+      lng: 37.547225,
     },
     coaches: [
       {
@@ -1117,8 +1047,8 @@ export const moscow = [
         color: '#48b85e',
       },
       street: 'Новопесчаная ул. 17к4',
-      lat: 0,
-      lng: 0,
+      lat: 55.797468,
+      lng: 37.515838,
     },
     coaches: [
       {
@@ -1167,8 +1097,8 @@ export const moscow = [
         color: '#8e479b',
       },
       street: 'Свободы, 91',
-      lat: 0,
-      lng: 0,
+      lat: 55.866647,
+      lng: 37.445482,
     },
     coaches: [
       {
@@ -1237,8 +1167,8 @@ export const moscow = [
         color: '#48b85e',
       },
       street: 'Зеленоградская 33А',
-      lat: 0,
-      lng: 0,
+      lat: 55.875647,
+      lng: 37.491647,
     },
     coaches: [
       {
@@ -1307,8 +1237,8 @@ export const moscow = [
         color: '#da2127',
       },
       street: 'пер. Сивцев Вражек 20',
-      lat: 0,
-      lng: 0,
+      lat: 55.747814,
+      lng: 37.593947,
     },
     coaches: [
       {
@@ -1347,8 +1277,8 @@ export const moscow = [
         color: '#f58220',
       },
       street: 'ул. Полярная 33, стр 3',
-      lat: 0,
-      lng: 0,
+      lat: 55.888982,
+      lng: 37.64445,
     },
     coaches: [
       {
@@ -1397,8 +1327,8 @@ export const moscow = [
         color: '#f58220',
       },
       street: 'ул. Лётчика Бабушкина, 26, ТЦ Орион',
-      lat: 0,
-      lng: 0,
+      lat: 55.869127,
+      lng: 37.677238,
     },
     coaches: [
       {
@@ -1477,8 +1407,8 @@ export const moscow = [
         color: '#a1a2a3',
       },
       street: 'Новолесная улица, 6Бс1',
-      lat: 0,
-      lng: 0,
+      lat: 55.783519,
+      lng: 37.592231,
     },
     coaches: [
       {
@@ -1517,8 +1447,8 @@ export const moscow = [
         color: '#f58220',
       },
       street: 'Москва, улица Малыгина, 3с2',
-      lat: 0,
-      lng: 0,
+      lat: 55.877652,
+      lng: 37.699651,
     },
     coaches: [
       {
@@ -1567,8 +1497,8 @@ export const moscow = [
         color: '#48b85e',
       },
       street: 'Москва, ул. Флотская, 25',
-      lat: 0,
-      lng: 0,
+      lat: 55.861615,
+      lng: 37.513134,
     },
     coaches: [
       {
@@ -1637,8 +1567,8 @@ export const moscow = [
         color: '#48b85e',
       },
       street: 'Москва, ул. Лавочкина, 32',
-      lat: 0,
-      lng: 0,
+      lat: 55.855532,
+      lng: 37.495806,
     },
     coaches: [
       {
@@ -1717,8 +1647,8 @@ export const moscow = [
         color: '#48b85e',
       },
       street: 'Москва, ул. Беломорская, 16а',
-      lat: 0,
-      lng: 0,
+      lat: 55.862681,
+      lng: 37.471192,
     },
     coaches: [
       {

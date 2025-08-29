@@ -16,6 +16,14 @@
 
 .MapWrap {
   max-width: 640px;
+  height: 100vh;
+  max-height: (100vh - 10vh);
+}
+
+.Map {
+  height: 100vh;
+  max-height: (100vh - 10vh);
+  width: 100%;
 }
 
 .InfoWrap {
@@ -26,6 +34,11 @@
   padding-top: 24px;
   padding-bottom: 24px;
   padding-right: 40px;
+}
+
+.FilialsList {
+  max-height: calc(100vh - 10vh);
+  overflow-y: auto;
 }
 
 @media (min-width: 1025px) {
