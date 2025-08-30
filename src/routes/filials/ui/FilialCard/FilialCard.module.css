@@ -4,10 +4,14 @@
   padding: 24px 0;
   border-bottom: 1px solid #ECECEC;
   scroll-snap-align: start;
+
+  &:hover .Button {
+    opacity: 1;
+  }
 }
 
 .FilialCardActive {
-  background-color: #ECECEC;
+  background-color: #fff;
 
   &::before {
     content: '';
@@ -16,6 +20,7 @@
     width: 100%;
     right: 100%;
     top: 0;
+    border-bottom: 1px solid #fff;
     background-color: #fff;
   }
 
@@ -62,6 +67,18 @@
     background: url('~app/assets/user.svg') no-repeat;
     background-size: contain;
   }
+}
+
+.HeaderWrap {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-right: 40px;
+}
+
+.Button {
+  opacity: 0;
+  transition: opacity 0.4s ease;
 }
 
 .ScheduleWrap {

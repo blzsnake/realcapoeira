@@ -3,7 +3,7 @@
   max-width: 1360px;
   display: flex;
   width: 100%;
-  flex-direction: column;
+  flex-direction: column-reverse;
 }
 
 .InfoWrap,
@@ -15,38 +15,62 @@
 }
 
 .MapWrap {
+  width: 100%;
   position: relative;
-  max-width: 640px;
-  height: 90vh;
-  max-height: 90vh;
+}
+
+.InfoWrap {
+  padding: 0 40px;
 }
 
 .Map {
   height: 100vh;
-  max-height: 90vh;
+  max-height: 500px;
   width: 100%;
 }
 
 .InfoWrap {
-  max-width: 800px;
+  width: 100%;
 }
 
 .Filter {
   padding-top: 24px;
   padding-bottom: 24px;
-  padding-right: 40px;
 }
 
 .FilialsList {
   scroll-snap-type: y mandatory;
-  height: 90vh;
+  max-height: 80vh;
   overflow-y: auto;
 }
 
-@media (min-width: 1025px) {
+@media (min-width: 1280px) {
+  .Filter {
+    padding-right: 40px;
+  }
+
   .Wrap {
     flex-direction: row;
   }
+
+  .MapWrap {
+    position: relative;
+    max-width: 640px;
+    height: 90vh;
+    max-height: 90vh;
+  }
+
+  .Map {
+    max-height: 90vh;
+  }
+
+  .InfoWrap {
+    max-width: 800px;
+    padding: 0;
+  }
+
+  
+
 }
 
 .ZoomButton {
@@ -73,4 +97,9 @@
   right: 10px;
   z-index: 1000;
   transform: translateY(-50%);
+}
+
+.Counter {
+  font-size: 18px;
+  padding-bottom: 15px;
 }

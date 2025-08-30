@@ -14,7 +14,6 @@ export function MobileSelector({
   className,
 }: TMobileSelector) {
   const [isOpen, setIsOpen] = useState(false);
-  console.log(selectedValue);
 
   return (
     <>

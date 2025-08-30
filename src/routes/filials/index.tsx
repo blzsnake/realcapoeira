@@ -51,7 +51,6 @@ export function FilialsPage() {
     () => filterFilials(FILIALS_MOCK, query),
     [query]
   );
-  console.log(filials, markers);
 
   const handleMarkerClick = (id: number, coords: number[]) => () => {
     if (listRef.current[id]) {
@@ -88,14 +87,15 @@ export function FilialsPage() {
     }
   }, [markers, query]);
 
-  console.log(listRef);
-
   return (
     <YMaps query={{ apikey: 'fcf49c8d-b16f-4277-ab7a-d08242e838b8' }}>
       <main className={styles.Wrap}>
         <div className={styles.InfoWrap}>
           <div className={styles.Filter}>
             <Filter />
+          </div>
+          <div className={styles.Counter}>
+            {`Найдено ${markers?.length} филиалов`}
           </div>
           <div className={styles.FilialsList}>
             {markers.map((item) => (

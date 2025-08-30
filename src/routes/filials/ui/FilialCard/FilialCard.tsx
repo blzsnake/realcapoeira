@@ -1,5 +1,6 @@
 import cn from 'classnames';
 import { Typography } from '~shared/ui/typography';
+import { Button } from '~shared/ui/button/Button';
 import { forwardRef, useEffect, useMemo, useState } from 'react';
 import styles from './FilialCard.module.css';
 import { WEEK_DAYS } from '../../../../shared/mocks';
@@ -51,9 +52,22 @@ export const FilialCard = forwardRef<Ref, TFilialCardData>((props, ref) => {
         [styles.FilialCardActive]: cardActive,
       })}
     >
-      <Typography weight="demiBold" className={styles.Head}>
-        {address?.metro?.name || address?.city}
-      </Typography>
+      <div className={styles.HeaderWrap}>
+        <Typography weight="demiBold" className={styles.Head}>
+          {address?.metro?.name || address?.city}
+        </Typography>
+        <Button
+          color="yellow"
+          className={styles.Button}
+          onClick={() =>
+            document
+              .getElementById('signup')
+              ?.scrollIntoView({ behavior: 'smooth' })
+          }
+        >
+          Записаться
+        </Button>
+      </div>
       <Typography className={styles.Address}>
         {address.metro && (
           <div

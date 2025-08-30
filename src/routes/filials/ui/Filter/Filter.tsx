@@ -83,7 +83,6 @@ export function Filter() {
       const selected = COACHES.filter((e) => query.coach.includes(e.value));
       setSelectedCoach(selected);
     }
-    console.log(query);
   }, [query]);
 
   return (
