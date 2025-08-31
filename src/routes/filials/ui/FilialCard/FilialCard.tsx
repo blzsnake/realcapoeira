@@ -25,6 +25,7 @@ export type TFilialCardData = {
     phone: string;
   }[];
   schedule: TFilialScheduleType[];
+  onButtonClick: () => void;
 };
 
 export type Ref = HTMLDivElement;
@@ -32,7 +33,7 @@ export type Ref = HTMLDivElement;
 export const FilialCard = forwardRef<Ref, TFilialCardData>((props, ref) => {
   const [cardActive, setCardActive] = useState(props.id === props.activeId);
   const handleToggleSchedule = () => setCardActive(!cardActive);
-  const { address } = props;
+  const { address, onButtonClick } = props;
   const addressName = useMemo(
     () =>
       address?.metro
@@ -59,11 +60,7 @@ export const FilialCard = forwardRef<Ref, TFilialCardData>((props, ref) => {
         <Button
           color="yellow"
           className={styles.Button}
-          onClick={() =>
-            document
-              .getElementById('signup')
-              ?.scrollIntoView({ behavior: 'smooth' })
-          }
+          onClick={onButtonClick}
         >
           Записаться
         </Button>

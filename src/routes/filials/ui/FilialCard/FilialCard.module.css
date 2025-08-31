@@ -12,7 +12,9 @@
 
 .FilialCardActive {
   background-color: #fff;
-
+  .Button {
+    opacity: 1;
+  }
   &::before {
     content: '';
     position: absolute;

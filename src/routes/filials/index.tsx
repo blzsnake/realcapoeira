@@ -1,9 +1,13 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
+import { useEvents, useSelector } from '@tramvai/state';
 import { YMaps, Map, Placemark, Clusterer } from '@pbe/react-yandex-maps';
 import { useUrl } from '@tramvai/module-router';
 import { FILIALS_MOCK } from '~shared/mocks';
 import Pin from '~app/assets/Pin.svg';
 import PinActive from '~app/assets/PinActive.svg';
+import { setModalState, ModalStore } from '~shared/ui/modal/store';
+import { SignUpFormGroup } from '~shared/ui/SignUpFormGroup';
+import { SignUpModal } from './modals/SignUpModal/SignUpModal';
 import { FilialCard } from './ui/FilialCard/FilialCard';
 import { Filter } from './ui/Filter/Filter';
 
@@ -43,10 +47,17 @@ function CustomZoomControls({
 }
 export function FilialsPage() {
   const [zoom, setZoom] = useState(10);
+  const $setModalState = useEvents(setModalState);
   const [activeId, setActiveId] = useState<number | null>(null);
+  const onModalSetState = (state: boolean) => () =>
+    $setModalState({ type: 'signUp', isOpen: state });
   const mapRef = useRef(null);
   const listRef = useRef({});
   const { query } = useUrl();
+  const isModalOpen = useSelector(
+    ModalStore,
+    ({ modals }) => modals.signUp?.isOpen
+  );
   const [filials = [], markers = []] = useMemo(
     () => filterFilials(FILIALS_MOCK, query),
     [query]
@@ -104,6 +115,7 @@ export function FilialsPage() {
                 activeId={activeId}
                 key={item.id}
                 ref={(el) => (listRef.current[item.id] = el)}
+                onButtonClick={onModalSetState(true)}
               />
             ))}
           </div>
@@ -148,6 +160,19 @@ export function FilialsPage() {
             </Clusterer>
           </Map>
         </div>
+        <SignUpModal
+          isOpen={isModalOpen}
+          closeModal={onModalSetState(false)}
+          fullTitle="Запишитесь за пару минут"
+        >
+          <SignUpFormGroup
+            description="Позвоните или оставьте заявку — тренер ответит на все вопросы и подберет подходящую группу для вас или ребенка"
+            phone="+7 (925) 555 00 77"
+            title=""
+            theme="white"
+            className={styles.ModalForm}
+          />
+        </SignUpModal>
       </main>
     </YMaps>
   );

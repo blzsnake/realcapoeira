@@ -70,9 +70,26 @@ export const customStyles = {
 };
 
 export function SignUpForm({ contactsVariant = false }: TSignUpFormProps) {
-  const formRef = useRef<HTMLFormElement>(null);
+  const formRef = useRef<HTMLFormElement>(undefined);
   const submitHander = () => {
-    formRef?.current?.submit();
+    const [name, phone, filial] = formRef?.current?.elements || [];
+    const data = new URLSearchParams({
+      name: name.value,
+      phone: phone.value,
+      filial: filial.value,
+    }).toString();
+    fetch(
+      'https://script.google.com/macros/s/AKfycbzQ6bkSKmvHSPshvfjENE0qjB6cfNGZn9GlPypxBexF4KqeaRDeb4wVyREzQsHSEbP1/exec',
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        body: data,
+      }
+    )
+      .then(() => formRef?.current?.reset())
+      .catch(() => formRef?.current?.reset());
   };
 
   return (

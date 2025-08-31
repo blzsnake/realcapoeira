@@ -5,6 +5,7 @@ import { RenderModule } from '@tramvai/module-render';
 import { ServerModule } from '@tramvai/module-server';
 import { ErrorInterceptorModule } from '@tramvai/module-error-interceptor';
 import { SeoModule } from '@tramvai/module-seo';
+import { COMBINE_REDUCERS } from '@tramvai/tokens-common';
 import {
   RENDER_SLOTS,
   ResourceType,
@@ -12,6 +13,7 @@ import {
   LAYOUT_OPTIONS,
 } from '@tramvai/tokens-render';
 import { Layout } from '~shared/ui/layout';
+import { ModalStore } from '~shared/ui/modal/store';
 import './app/styles/index.css';
 import { HeaderModule } from '~shared/ui/header';
 import { FooterModule } from '~shared/ui/footer';
@@ -40,6 +42,10 @@ createApp({
         payload:
           '<meta name="viewport" content="width=device-width, initial-scale=1">',
       },
+    },
+    {
+      provide: COMBINE_REDUCERS,
+      useValue: ModalStore,
     },
     {
       provide: LAYOUT_OPTIONS,

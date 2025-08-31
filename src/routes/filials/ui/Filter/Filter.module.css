@@ -1,13 +1,23 @@
 .Filter {
   display: flex;
+  flex-direction: column;
   gap: 8px;
 }
 
 .FilterItem {
-  width: 33%;
+  width: 100%;
 }
 
 .CheckboxWrap {
   padding: 8px 0;
   cursor: pointer;
+}
+
+@media (min-width: 760px) {
+  .Filter {
+   flex-direction: row;
+  }
+  .FilterItem {
+    width: 33%;
+  }
 }
