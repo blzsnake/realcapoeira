@@ -4,15 +4,19 @@
   gap: 8px;
   padding: 0 20px;
   flex-wrap: wrap;
+  @media (min-width: 760px) {
+    flex-wrap: nowrap;
+  }
   @media (min-width: 1280px) {
     padding: 0;
+    flex-wrap: nowrap;
   }
   
 }
 
 .FilterItem {
   width: 100%;
-  @media (max-width: 1280px) {
+  @media (max-width: 760px) {
     &:nth-child(1) {
       width: 48%;
     }
