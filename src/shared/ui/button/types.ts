@@ -9,4 +9,6 @@ export type TButtonProps = {
   onClick?: () => void;
   children: ReactNode;
   className?: string;
+  isLink?: boolean;
+  url?: string;
 };

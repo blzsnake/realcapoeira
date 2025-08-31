@@ -1,3 +1,4 @@
+import { useRoute } from '@tramvai/module-router';
 import { Typography } from '~shared/ui/typography';
 import Telegram from '~app/assets/telegram.svg?react';
 import Youtube from '~app/assets/youtube.svg?react';
@@ -6,7 +7,9 @@ import Vk from '~app/assets/vk.svg?react';
 import styles from './Footer.module.css';
 
 export function Footer() {
-  return (
+  const { path } = useRoute();
+
+  return path.includes('filials') ? null : (
     <footer className={styles.Footer}>
       <div className={styles.Copyright}>
         <Typography component="span">

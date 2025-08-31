@@ -1,5 +1,6 @@
 import { useRoute } from '@tramvai/module-router';
 import { useState } from 'react';
+import { useEvents } from '@tramvai/state';
 // Assets
 import Logo from '~app/assets/RCLogo.svg?react';
 import Menu from '~app/assets/Menu.svg?react';
@@ -8,6 +9,7 @@ import { useLockBodyScroll } from '~shared/hooks/useLockBodyScroll';
 // Components
 import { Link } from '@tramvai/module-router';
 import { Typography } from '~shared/ui/typography';
+import { setModalState } from '~shared/ui/modal/store';
 import { Button } from '~shared/ui/button/Button';
 import { MobileMenu } from '../MobileMenu';
 // Styles
@@ -20,6 +22,7 @@ const getLinkActiveStyle = (ap: string, lr: string): string =>
 
 export function Header() {
   const { actualPath } = useRoute();
+  const $setModalState = useEvents(setModalState);
 
   const isGrayBgRoute = (path: string) =>
     path === '/' || path === '/about-school/' || path === '/about-capoeira/';
@@ -123,11 +126,12 @@ export function Header() {
             <Button
               color="yellow"
               className={styles.Button}
-              onClick={() =>
+              onClick={() => {
+                $setModalState({ type: 'signUp', isOpen: true });
                 document
                   .getElementById('signup')
-                  ?.scrollIntoView({ behavior: 'smooth' })
-              }
+                  ?.scrollIntoView({ behavior: 'smooth' });
+              }}
             >
               Записаться на занятие
             </Button>

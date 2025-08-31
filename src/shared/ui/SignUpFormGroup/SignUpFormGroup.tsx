@@ -12,16 +12,19 @@ export function SignUpFormGroup({
   title,
   description,
   phone,
+  className,
   children,
 }: TSignUpFormGroupProps) {
   return (
-    <div className={cn(styles.SignUpFormGroup, styles[theme])}>
+    <div className={cn(styles.SignUpFormGroup, styles[theme], className)}>
       <div className={styles.Info}>
         {children || (
           <>
-            <Typography weight="demiBold" className={styles.Title}>
-              {title}
-            </Typography>
+            {title ? (
+              <Typography weight="demiBold" className={styles.Title}>
+                {title}
+              </Typography>
+            ) : null}
             <Typography className={styles.Description}>
               {description}
             </Typography>
