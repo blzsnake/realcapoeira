@@ -1,11 +1,30 @@
 .Filter {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   gap: 8px;
+  padding: 0 20px;
+  flex-wrap: wrap;
+  @media (min-width: 1280px) {
+    padding: 0;
+  }
+  
 }
 
 .FilterItem {
   width: 100%;
+  @media (max-width: 1280px) {
+    &:nth-child(1) {
+      width: 48%;
+    }
+    &:nth-child(2) {
+      order: 2;
+      width: 99%;
+    }
+    &:nth-child(3) {
+      width: 49%;
+    }
+  }
+
 }
 
 .CheckboxWrap {

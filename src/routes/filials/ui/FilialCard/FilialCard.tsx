@@ -57,13 +57,15 @@ export const FilialCard = forwardRef<Ref, TFilialCardData>((props, ref) => {
         <Typography weight="demiBold" className={styles.Head}>
           {address?.metro?.name || address?.city}
         </Typography>
-        <Button
-          color="yellow"
-          className={styles.Button}
-          onClick={onButtonClick}
-        >
-          Записаться
-        </Button>
+        <div className="isTablet">
+          <Button
+            color="yellow"
+            className={styles.Button}
+            onClick={onButtonClick}
+          >
+            Записаться
+          </Button>
+        </div>
       </div>
       <Typography className={styles.Address}>
         {address.metro && (
@@ -117,6 +119,15 @@ export const FilialCard = forwardRef<Ref, TFilialCardData>((props, ref) => {
       ) : null}
       <div onClick={handleToggleSchedule} className={styles.ScheduleToggle}>
         {cardActive ? 'Свернуть' : 'Показать расписание'}
+      </div>
+      <div className="isMobile">
+        <Button
+          color="yellow"
+          className={cn(styles.Button, styles.BottomButton)}
+          onClick={onButtonClick}
+        >
+          Записаться
+        </Button>
       </div>
     </div>
   );

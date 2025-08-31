@@ -1,9 +1,13 @@
 .FilialCard {
   position: relative;
   margin: 0 auto;
-  padding: 24px 0;
+  padding: 24px 20px;
   border-bottom: 1px solid #ECECEC;
   scroll-snap-align: start;
+
+  @media (min-width: 1280px) {
+    padding: 24px 0;
+  }
 
   &:hover .Button {
     opacity: 1;
@@ -11,11 +15,14 @@
 }
 
 .FilialCardActive {
-  background-color: #fff;
+  background-color: #ECECEC;
+  @media (min-width: 1280px) {
+    background-color: #fff;
+  }
   .Button {
     opacity: 1;
   }
-  &::before {
+  /* &::before {
     content: '';
     position: absolute;
     height: 100%;
@@ -24,7 +31,7 @@
     top: 0;
     border-bottom: 1px solid #fff;
     background-color: #fff;
-  }
+  } */
 
   .ScheduleToggle {
     margin-top: 24px;
@@ -75,11 +82,16 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding-right: 40px;
+
+  @media (min-width: 1280px) {
+    padding-right: 40px;
+  }
 }
 
 .Button {
-  opacity: 0;
+  @media (min-width: 1280px) {
+    opacity: 0;
+  }
   transition: opacity 0.4s ease;
 }
 
@@ -131,4 +143,9 @@
     transform: rotate(-45deg);
     transition: transform 0.4s ease;
   }
+}
+
+.BottomButton {
+  margin-top: 16px;
+  width: 100%;
 }

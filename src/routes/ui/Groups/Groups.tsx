@@ -14,6 +14,7 @@ import AdultTablet from '~app/assets/AdultTablet.svg?react';
 import AdultWeb from '~app/assets/AdultWeb.svg?react';
 import ArrowRight from '~app/assets/ArrowRight.svg?react';
 import ArrowCircle from '~app/assets/ArrowCircle.svg?react';
+import { Link } from '@tramvai/module-router';
 import styles from './Groups.module.css';
 
 export function Groups() {
@@ -23,7 +24,12 @@ export function Groups() {
         Капоэйра — спорт для всей семьи
       </Typography>
       <div className={styles.Grid}>
-        <div className={styles.Card}>
+        <Link
+          viewTransition
+          url="/filials/?group=junior"
+          aria-label="Филиал"
+          className={styles.Card}
+        >
           <div className={styles.InfoWrap}>
             <Typography className={styles.Title} weight="demiBold">
               Дети 3-6 лет
@@ -38,8 +44,13 @@ export function Groups() {
           <BabyWeb className={styles.Web} />
           <ArrowRight width={24} height={24} className={styles.ArrowRight} />
           <ArrowCircle width={46} height={46} className={styles.ArrowCircle} />
-        </div>
-        <div className={styles.Card}>
+        </Link>
+        <Link
+          viewTransition
+          url="/filials/?group=middle"
+          aria-label="Филиал"
+          className={styles.Card}
+        >
           <div className={styles.InfoWrap}>
             <Typography className={styles.Title} weight="demiBold">
               Дети 7–10 лет
@@ -54,8 +65,13 @@ export function Groups() {
           <KidWeb className={styles.Web} />
           <ArrowRight width={24} height={24} className={styles.ArrowRight} />
           <ArrowCircle width={46} height={46} className={styles.ArrowCircle} />
-        </div>
-        <div className={styles.Card}>
+        </Link>
+        <Link
+          viewTransition
+          url="/filials/?group=senior"
+          aria-label="Филиал"
+          className={styles.Card}
+        >
           <div className={classNames(styles.InfoWrap, styles.ThirdCard)}>
             <Typography className={styles.Title} weight="demiBold">
               Дети 11–15 лет
@@ -70,8 +86,13 @@ export function Groups() {
           <TeenWeb className={styles.Web} />
           <ArrowRight width={24} height={24} className={styles.ArrowRight} />
           <ArrowCircle width={46} height={46} className={styles.ArrowCircle} />
-        </div>
-        <div className={styles.Card}>
+        </Link>
+        <Link
+          viewTransition
+          url="/filials/?group=staff"
+          aria-label="Филиал"
+          className={styles.Card}
+        >
           <div className={styles.InfoWrap}>
             <Typography className={styles.Title} weight="demiBold">
               Взрослые и подростки 16+
@@ -86,7 +107,7 @@ export function Groups() {
           <AdultWeb className={styles.Web} />
           <ArrowRight width={24} height={24} className={styles.ArrowRight} />
           <ArrowCircle width={46} height={46} className={styles.ArrowCircle} />
-        </div>
+        </Link>
       </div>
     </div>
   );

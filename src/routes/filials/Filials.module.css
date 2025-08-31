@@ -18,15 +18,15 @@
 }
 
 .InfoWrap {
-  padding: 0 20px;
+  @media (min-width: 1280px) {
+    padding: 0 20px;
+  }
 }
 
 .Map {
-  height: 100vh;
-  max-height: 500px;
+  height: 50vh;
+  max-height: 700px;
   width: 100%;
-
-  
 }
 
 .InfoWrap {
@@ -39,11 +39,19 @@
 }
 
 .FilialsList {
-  scroll-snap-type: y mandatory;
   max-height: 80vh;
   overflow-y: auto;
+  @media (min-width: 1280px) {
+    scroll-snap-type: y mandatory;
+  }
 }
 
+@media (min-width: 760px) {
+  .Map {
+    height: 100vh;
+    max-height: 700px;
+  }
+}
 @media (min-width: 1280px) {
   .Filter {
     padding-right: 40px;
@@ -102,6 +110,8 @@
 
 .Counter {
   font-size: 18px;
+  padding-left: 20px;
+  padding-right: 20px;
   padding-bottom: 15px;
 }
 
