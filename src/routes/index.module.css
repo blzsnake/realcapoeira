@@ -62,8 +62,10 @@
   align-items: center;
   max-width: 1440px;
   gap: 48px;
+  margin-top: -30px;
 
   @media (min-width: 1025px) {
+    margin-top: 0;
     gap: 40px;
     padding: 0 20px;
   }
