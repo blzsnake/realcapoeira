@@ -25,7 +25,12 @@ export function EventModal({
   const scrollableRef = useRef<HTMLDivElement>(null);
 
   return (
-    <Modal isOpen={isOpen} onClose={closeModal} className={styles.Modal}>
+    <Modal
+      scrollableRef={scrollableRef}
+      isOpen={isOpen}
+      onClose={closeModal}
+      className={styles.Modal}
+    >
       <ModalTitle className={styles.Wrap}>
         <Typography component="h2" weight="demiBold" className={styles.Title}>
           {fullTitle}
