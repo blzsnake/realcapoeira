@@ -24,7 +24,7 @@ export type TFilialCardData = {
     name: string;
     phone: string;
   }[];
-  schedule: TFilialScheduleType[];
+  schedule: TFilialScheduleType[][];
   onButtonClick: () => void;
 };
 
@@ -32,6 +32,9 @@ export type Ref = HTMLDivElement;
 
 export const FilialCard = forwardRef<Ref, TFilialCardData>((props, ref) => {
   const [cardActive, setCardActive] = useState(props.id === props.activeId);
+  const [activeSchedule, setActiveSchedule] = useState(
+    props.schedule?.findIndex((item) => item.length)
+  );
   const handleToggleSchedule = () => setCardActive(!cardActive);
   const { address, onButtonClick } = props;
   const addressName = useMemo(
@@ -85,7 +88,7 @@ export const FilialCard = forwardRef<Ref, TFilialCardData>((props, ref) => {
         ))}
       </div>
       {cardActive ? (
-        <div className={styles.ScheduleWrap}>
+        <div>
           <div className={styles.Schedule}>
             <div className={styles.ScheduleWrap}>
               {props?.schedule?.map((item, index) => (
@@ -93,12 +96,15 @@ export const FilialCard = forwardRef<Ref, TFilialCardData>((props, ref) => {
                   key={`${WEEK_DAYS[index]}`}
                   className={styles.ScheduleItem}
                 >
-                  <Typography
-                    weight="demiBold"
-                    className={styles.ScheduleWeekDay}
+                  <div
+                    onClick={() => item?.length && setActiveSchedule(index)}
+                    className={cn(styles.ScheduleWeekDay, {
+                      [styles.ScheduleWeekDayDisabled]: !item?.length,
+                      [styles.ScheduleWeekDayActive]: index === activeSchedule,
+                    })}
                   >
                     {WEEK_DAYS[index]}
-                  </Typography>
+                  </div>
                   <div className={styles.ScheduleGroups}>
                     {item?.map((el) => (
                       <>
@@ -111,6 +117,21 @@ export const FilialCard = forwardRef<Ref, TFilialCardData>((props, ref) => {
                       </>
                     ))}
                   </div>
+                </div>
+              ))}
+            </div>
+            <div className={styles.ScheduleGroupsMobile}>
+              {props.schedule[activeSchedule]?.map((el) => (
+                <div
+                  key={`${el.time}_${el.id}`}
+                  className={styles.ScheduleGroupsMobileRow}
+                >
+                  <Typography className={styles.ScheduleGroup}>
+                    {el.group}
+                  </Typography>
+                  <Typography className={styles.ScheduleTime}>
+                    {el.time}
+                  </Typography>
                 </div>
               ))}
             </div>
