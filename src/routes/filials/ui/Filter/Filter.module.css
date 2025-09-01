@@ -38,6 +38,7 @@
 
 @media (min-width: 760px) {
   .Filter {
+   flex-wrap: nowrap;
    flex-direction: row;
   }
   .FilterItem {
