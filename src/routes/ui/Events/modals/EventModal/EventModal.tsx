@@ -23,7 +23,12 @@ export function EventModal({
   };
 
   return (
-    <Modal isOpen={isOpen} onClose={closeModal} className={styles.Modal}>
+    <Modal
+      isOpen={isOpen}
+      onClose={closeModal}
+      className={styles.Modal}
+      variant="full-for-mobile"
+    >
       <ModalTitle className={styles.Wrap}>
         <Typography component="h2" weight="demiBold" className={styles.Title}>
           {fullTitle}

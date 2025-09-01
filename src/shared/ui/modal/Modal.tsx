@@ -24,7 +24,7 @@ export function Modal({
     layoutRef,
     mounted,
     scrollableRef,
-    disabled: variant === 'full-for-mobile',
+    disabled: false,
     isPopUp,
   });
 
