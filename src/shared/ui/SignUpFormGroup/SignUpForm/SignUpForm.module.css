@@ -17,12 +17,31 @@
   outline-offset: -1px;
 }
 
+.InputError {
+  border-color: red;
+  outline-color: red;
+}
+
 .FieldLabel {
   width: 100%;
   font-size: 18px;
 }
 
+.FieldErrorText {
+  color: red;
+  position: absolute;
+  bottom: -25px;
+}
+
+.FieldLabelError {
+  &::before,
+  &::after {
+    border-color: red;
+  }
+}
+
 .FieldRow {
+  position: relative;
   margin-bottom: 24px;
   display: flex;
   justify-content: space-between;
@@ -51,7 +70,12 @@
   cursor: pointer;
 }
 
+.Checkbox.CheckboxError {
+  border-color: red;
+}
+
 .AgreementRow {
+  position: relative;
   display: flex;
   align-items: center;
   gap: 6px;
@@ -60,7 +84,38 @@
 }
 
 .Description {
+  position: relative;
   margin: 24px 0;
+}
+
+.FormResult {
+  display: flex;
+  text-align: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+.FormResultImage {
+  width: 150px;
+  height: 150px;
+}
+
+.FormResult {
+  padding-top: 100px;
+  padding-bottom: 250px;
+}
+
+.FormResultHead {
+  padding-top: 24px;
+  padding-bottom: 8px;
+}
+
+.FormResultHeadText {
+  font-size: 28px;
+}
+
+.FormResultText {
+  font-size: 18px;
 }
 
 .Title {

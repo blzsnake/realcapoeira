@@ -84,3 +84,25 @@
     display: none;
   }
 }
+
+.ArrowLeftIcon,
+.ArrowRightIcon {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+  cursor: pointer;
+}
+
+.ArrowRightIcon {
+  right: 10px;
+}
+
+.ArrowLeftIcon {
+  left: 10px;
+}
+
+.Wrap {
+  position: relative;
+  overflow-x: scroll;
+}

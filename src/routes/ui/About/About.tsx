@@ -33,7 +33,8 @@ export function About() {
           чувствовать ритм. Рассказываем, почему капоэйра — это история о
           свободе.
         </Typography>
-        <Button className={styles.Button}>
+        {/* Разлочить когда будет страница */}
+        {/* <Button className={styles.Button}>
           <Typography
             className={styles.ButtonText}
             weight="medium"
@@ -41,7 +42,7 @@ export function About() {
           >
             Узнать больше
           </Typography>
-        </Button>
+        </Button> */}
       </div>
     </article>
   );

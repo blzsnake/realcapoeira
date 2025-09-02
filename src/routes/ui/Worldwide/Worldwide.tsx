@@ -1,5 +1,7 @@
 import { Typography } from '~shared/ui/typography';
 import { CityCard } from '~shared/ui/CityCard/CityCard';
+import RightArrow from '~app/assets/right_arrow.svg?react';
+import LeftArrow from '~app/assets/left_arrow.svg?react';
 import { Button } from '~shared/ui/button/Button';
 import Moscow from '~app/assets/moscow.png';
 import Kaz from '~app/assets/kaz.png';
@@ -30,28 +32,55 @@ export function Worldwide() {
         К списку школ
       </Button>
       <div className={styles.Countries}>
+        <LeftArrow width={46} height={46} className={styles.ArrowLeftIcon} />
+        <RightArrow width={46} height={46} className={styles.ArrowRightIcon} />
         <div className={styles.EmptyPlug} />
-        <CityCard title="Москва" subtitle="Россия" url="/" image={Moscow} />
-        <CityCard title="Казань" subtitle="Россия" url="/" image={Kaz} />
-        <CityCard title="Краснодар" subtitle="Россия" url="/" image={Krs} />
+        <CityCard
+          title="Москва"
+          subtitle="Россия"
+          url="/filials/?city=moscow"
+          image={Moscow}
+        />
+        <CityCard
+          title="Казань"
+          subtitle="Россия"
+          url="/filials/?city=kazan"
+          image={Kaz}
+        />
+        <CityCard
+          title="Краснодар"
+          subtitle="Россия"
+          url="/filials/?city=krasnodar"
+          image={Krs}
+        />
         <CityCard
           title="Лиссабон"
           subtitle="Друзья школы"
-          url="/"
+          url="/filials/?city=lissabon"
           image={Lissabon}
         />
-        <CityCard title="Европа" subtitle="Друзья школы" url="/" image={Eu} />
+        <CityCard
+          title="Европа"
+          subtitle="Друзья школы"
+          url="/filials/?city=europe"
+          image={Eu}
+        />
         <CityCard
           title="Латинская америка"
           subtitle="Друзья школы"
           url="/"
           image={Us}
         />
-        <CityCard title="Азия" subtitle="Друзья школы" url="/" image={Asia} />
+        <CityCard
+          title="Азия"
+          subtitle="Друзья школы"
+          url="/filials/?city=asia"
+          image={Asia}
+        />
         <CityCard
           title="Северная америка"
           subtitle="Друзья школы"
-          url="/"
+          url="/filials/?city=america"
           image={Usa}
         />
         <div className={styles.EmptyPlug} />

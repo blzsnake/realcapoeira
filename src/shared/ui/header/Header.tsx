@@ -32,6 +32,15 @@ export function Header() {
   const headerBgClass = isGrayBgRoute(actualPath)
     ? styles.GrayBg
     : styles.WhiteBg;
+  const handleScrollToForm = () => {
+    const elem = document.getElementById('signup');
+
+    if (elem) {
+      elem.scrollIntoView({ behavior: 'smooth' });
+    } else {
+      $setModalState({ type: 'signUp', isOpen: true });
+    }
+  };
 
   useLockBodyScroll(isMobileMenuOpen);
 
@@ -126,12 +135,7 @@ export function Header() {
             <Button
               color="yellow"
               className={styles.Button}
-              onClick={() => {
-                $setModalState({ type: 'signUp', isOpen: true });
-                document
-                  .getElementById('signup')
-                  ?.scrollIntoView({ behavior: 'smooth' });
-              }}
+              onClick={handleScrollToForm}
             >
               Записаться на занятие
             </Button>
