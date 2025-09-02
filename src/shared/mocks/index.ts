@@ -4,11 +4,12 @@ import { krasnogorsk } from './cities/krasnogorsk';
 import { lissabon } from './cities/lissabon';
 import { moscow } from './cities/moscow';
 import { mytishi } from './cities/mytishi';
+import { kazan } from './cities/kazan';
 
 export const FILIALS_MOCK = {
   moscow,
   krasnodar,
-  // kazan: [],
+  kazan,
   korolev,
   mytishi,
   krasnogorsk,
@@ -29,7 +30,7 @@ export const GROUPED_PLACES = [
       { value: 'mytishi', label: 'Мытищи' },
       { value: 'krasnogorsk', label: 'Красногорск' },
       { value: 'krasnodar', label: 'Краснодар' },
-      // { value: 'kazan', label: 'Казань' },
+      { value: 'kazan', label: 'Казань' },
       { value: 'lissabon', label: 'Лиссабон' },
     ],
   },
@@ -57,8 +58,8 @@ export const COACHES = [
   { value: 'd.barhatov', label: 'Дмитрий Бархатов' },
   { value: 'a.magdych', label: 'Алексей Магдыч' },
   { value: 'm.rozhkov', label: 'Максим Рожков' },
-  { value: 'd.popov', label: 'Молодожников Илья' },
-  { value: 'i.molodozhnikov', label: 'Дмитрий Попов' },
+  { value: 'i.molodozhnikov', label: 'Молодожников Илья' },
+  { value: 'd.popov', label: 'Дмитрий Попов' },
   { value: 'a.chmyhov', label: 'Чмыхов Александр' },
   { value: 'e.staynow', label: 'Стейнау Екатерина' },
   { value: 'a.kedrova', label: 'Кедрова Алёна' },
@@ -72,4 +73,7 @@ export const COACHES = [
   { value: 'r.minnulin', label: 'Рамиль Миннуллин' },
   { value: 'a.zuykin', label: 'Зуйкин Алексей' },
   { value: 'k.sofiyskaya', label: 'Софийская Ксения' },
+  { value: 'o.tahaviev', label: 'Тахавиев Оскар' },
+  { value: 'k.malyh', label: 'Малых Константин' },
+  { value: 'i.kuznetsov', label: 'Кузнецов Илья' },
 ];

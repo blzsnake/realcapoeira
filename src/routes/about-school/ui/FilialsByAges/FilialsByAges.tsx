@@ -1,3 +1,4 @@
+import { Link } from '@tramvai/module-router';
 import { Typography } from '~shared/ui/typography';
 import BabyMobile from '~app/assets/BabyMobile.svg?react';
 import KidMobile from '~app/assets/KidMobile.svg?react';
@@ -15,7 +16,7 @@ export function FilialsByAges() {
           Филиалы по возрастам
         </Typography>
         <div className={styles.Grid}>
-          <div className={styles.Card}>
+          <Link url="/filials/?group=junior" className={styles.Card}>
             <Typography className={styles.Title} weight="demiBold">
               Дети 3-6 лет
             </Typography>
@@ -23,8 +24,8 @@ export function FilialsByAges() {
             <BabyMobile />
 
             <ArrowRight width={24} height={24} className={styles.ArrowRight} />
-          </div>
-          <div className={styles.Card}>
+          </Link>
+          <Link url="/filials/?group=middle" className={styles.Card}>
             <Typography className={styles.Title} weight="demiBold">
               Дети 7–10 лет
             </Typography>
@@ -32,8 +33,8 @@ export function FilialsByAges() {
             <KidMobile />
 
             <ArrowRight width={24} height={24} className={styles.ArrowRight} />
-          </div>
-          <div className={styles.Card}>
+          </Link>
+          <Link url="/filials/?group=senior" className={styles.Card}>
             <Typography className={styles.Title} weight="demiBold">
               Дети 11–15 лет
             </Typography>
@@ -41,8 +42,8 @@ export function FilialsByAges() {
             <TeenMobile />
 
             <ArrowRight width={24} height={24} className={styles.ArrowRight} />
-          </div>
-          <div className={styles.Card}>
+          </Link>
+          <Link url="/filials/?group=staff" className={styles.Card}>
             <Typography className={styles.Title} weight="demiBold">
               Взрослые и подростки 16+
             </Typography>
@@ -50,7 +51,7 @@ export function FilialsByAges() {
             <AdultMobile />
 
             <ArrowRight width={24} height={24} className={styles.ArrowRight} />
-          </div>
+          </Link>
         </div>
       </div>
     </article>

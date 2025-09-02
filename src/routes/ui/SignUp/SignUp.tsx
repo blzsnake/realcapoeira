@@ -6,7 +6,7 @@ import styles from './SignUp.module.css';
 
 export function SignUp() {
   return (
-    <div className={styles.SignUp}>
+    <div className={styles.SignUp} id="signup">
       <Typography weight="demiBold" className={styles.Heading} component="h2">
         Первое занятие — бесплатно
       </Typography>

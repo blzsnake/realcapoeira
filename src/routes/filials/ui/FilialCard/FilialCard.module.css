@@ -60,6 +60,7 @@
   height: 16px;
   display: inline-block;
   border-radius: 100%;
+  flex-shrink: 0;
 }
 
 .Coach {

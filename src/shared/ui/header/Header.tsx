@@ -32,6 +32,15 @@ export function Header() {
   const headerBgClass = isGrayBgRoute(actualPath)
     ? styles.GrayBg
     : styles.WhiteBg;
+  const handleScrollToForm = () => {
+    const elem = document.getElementById('signup');
+
+    if (elem) {
+      elem.scrollIntoView({ behavior: 'smooth' });
+    } else {
+      $setModalState({ type: 'signUp', isOpen: true });
+    }
+  };
 
   useLockBodyScroll(isMobileMenuOpen);
 
@@ -57,7 +66,7 @@ export function Header() {
                     О школе
                   </Typography>
                 </Link>
-                <Link
+                {/* <Link
                   viewTransition
                   url="/about-capoeira/"
                   aria-label="Что такое капоэйра"
@@ -75,7 +84,7 @@ export function Header() {
                   >
                     Что такое капоэйра
                   </Typography>
-                </Link>
+                </Link> */}
                 <Link viewTransition url="/filials" aria-label="Филиалы">
                   <Typography
                     weight={
@@ -88,7 +97,7 @@ export function Header() {
                     Филиалы
                   </Typography>
                 </Link>
-                <Link viewTransition url="/trainers/" aria-label="Инструкторы">
+                {/* <Link viewTransition url="/trainers/" aria-label="Инструкторы">
                   <Typography
                     weight={
                       isLinkActive(actualPath, '/trainers/')
@@ -99,7 +108,7 @@ export function Header() {
                   >
                     Инструкторы
                   </Typography>
-                </Link>
+                </Link> */}
                 <Link viewTransition url="/contacts" aria-label="Контакты">
                   <Typography
                     weight={
@@ -126,12 +135,7 @@ export function Header() {
             <Button
               color="yellow"
               className={styles.Button}
-              onClick={() => {
-                $setModalState({ type: 'signUp', isOpen: true });
-                document
-                  .getElementById('signup')
-                  ?.scrollIntoView({ behavior: 'smooth' });
-              }}
+              onClick={handleScrollToForm}
             >
               Записаться на занятие
             </Button>

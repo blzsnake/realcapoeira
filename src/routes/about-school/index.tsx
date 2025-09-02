@@ -20,7 +20,7 @@ export function AboutSchoolPage() {
       <div className={styles.Content}>
         <HowToPrepair />
       </div>
-      <div className={styles.ContentWithoutPadding}>
+      <div id="signup" className={styles.ContentWithoutPadding}>
         <SignUpFormGroup
           title="Запишитесь за пару минут"
           description="Позвоните или оставьте заявку — тренер ответит на все вопросы и подберет подходящую группу для вас или ребенка"

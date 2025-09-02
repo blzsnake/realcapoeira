@@ -10,6 +10,7 @@
   background: url('~app/assets/capo_map.svg') no-repeat;
   background-size: contain;
   background-position: center 5%;
+  position: relative;
 }
 
 .Heading {
@@ -82,5 +83,37 @@
 
   @media (min-width: 1025px) {
     display: none;
+  }
+}
+
+.ArrowLeftIcon,
+.ArrowRightIcon {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+  cursor: pointer;
+  display: none;
+}
+
+.ArrowRightIcon {
+  right: 10px;
+}
+
+.ArrowLeftIcon {
+  left: 10px;
+}
+
+.Wrap {
+  position: relative;
+  width: 100%;
+
+  &:hover {
+    .ArrowLeftIcon,
+    .ArrowRightIcon {
+      @media (min-width: 1360px) {
+        display: block;
+      }
+    }
   }
 }

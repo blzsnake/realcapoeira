@@ -10,15 +10,19 @@ export function Checkbox({
   text,
   className,
   checked,
+  disabled,
+  error,
 }: TCheckboxProps) {
   return (
     <div className={styles.Checkbox}>
       <input
+        id={name}
         name={name}
         type="checkbox"
-        className={cn(className, styles.Input)}
+        className={cn(className, styles.Input, { [styles.InputError]: error })}
         onChange={onChange}
         checked={checked}
+        disabled={disabled}
       />
       <label htmlFor={name} className={cn(styles.Label)}>
         <Typography component="span">{text}</Typography>
