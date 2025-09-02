@@ -30,9 +30,9 @@
   width: 100%;
   background-color: var(--gray);
   border-radius: 20px;
-  padding: 0 20px;
+  padding: 20px;
 
   @media (min-width: 1440px) {
-    padding: 0 40px;
+    padding: 20px 40px;
   }
 }

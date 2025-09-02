@@ -10,6 +10,7 @@
   background: url('~app/assets/capo_map.svg') no-repeat;
   background-size: contain;
   background-position: center 5%;
+  position: relative;
 }
 
 .Heading {
@@ -92,6 +93,7 @@
   transform: translateY(-50%);
   z-index: 10;
   cursor: pointer;
+  display: none;
 }
 
 .ArrowRightIcon {
@@ -104,5 +106,14 @@
 
 .Wrap {
   position: relative;
-  overflow-x: scroll;
+  width: 100%;
+
+  &:hover {
+    .ArrowLeftIcon,
+    .ArrowRightIcon {
+      @media (min-width: 1360px) {
+        display: block;
+      }
+    }
+  }
 }

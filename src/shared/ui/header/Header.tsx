@@ -66,7 +66,7 @@ export function Header() {
                     О школе
                   </Typography>
                 </Link>
-                <Link
+                {/* <Link
                   viewTransition
                   url="/about-capoeira/"
                   aria-label="Что такое капоэйра"
@@ -84,7 +84,7 @@ export function Header() {
                   >
                     Что такое капоэйра
                   </Typography>
-                </Link>
+                </Link> */}
                 <Link viewTransition url="/filials" aria-label="Филиалы">
                   <Typography
                     weight={
@@ -97,7 +97,7 @@ export function Header() {
                     Филиалы
                   </Typography>
                 </Link>
-                <Link viewTransition url="/trainers/" aria-label="Инструкторы">
+                {/* <Link viewTransition url="/trainers/" aria-label="Инструкторы">
                   <Typography
                     weight={
                       isLinkActive(actualPath, '/trainers/')
@@ -108,7 +108,7 @@ export function Header() {
                   >
                     Инструкторы
                   </Typography>
-                </Link>
+                </Link> */}
                 <Link viewTransition url="/contacts" aria-label="Контакты">
                   <Typography
                     weight={

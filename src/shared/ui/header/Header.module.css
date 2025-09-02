@@ -45,18 +45,6 @@
     cursor: pointer;
     transition: text-shadow 0.2s ease;
   }
-  p:hover {
-    text-shadow:
-      0.2px 0 currentColor,
-      -0.2px 0 currentColor,
-      0 0.2px currentColor,
-      0 -0.2px currentColor,
-      0.2px 0.2px currentColor,
-      -0.2px 0.2px currentColor,
-      0.2px -0.2px currentColor,
-      -0.2px -0.2px currentColor;
-    paint-order: stroke fill;
-  }
 }
 
 .ContentWrapper {

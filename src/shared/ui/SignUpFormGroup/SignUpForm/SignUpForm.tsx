@@ -263,6 +263,7 @@ export function SignUpForm({ contactsVariant = false }: TSignUpFormProps) {
             color="yellow"
             className={styles.Button}
             onClick={submitHander}
+            size="big"
           >
             <span>Оставить заявку</span>
           </Button>
