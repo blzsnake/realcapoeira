@@ -1,0 +1,57 @@
+.Modal {
+  width: 100% !important;
+
+  @media (min-width: 1025px) {
+    gap: 0;
+    max-width: 980px !important;
+  }
+
+  @media (min-width: 1280px) {
+    gap: 0;
+    max-width: 1200px !important;
+  }
+}
+
+.DateShareRow {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.ShareRow {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.Title {
+  font-size: 28px;
+  line-height: 120%;
+
+  @media (min-width: 1025px) {
+    font-size: 40px;
+  }
+}
+
+.Date {
+  font-size: 18px;
+  line-height: 14px;
+
+  @media (min-width: 1025px) {
+    font-size: 24px;
+    line-height: 120%;
+  }
+}
+
+.Pointer {
+  cursor: pointer;
+}
+
+.Text {
+  font-size: 24px;
+  line-height: 150%;
+}
+
+.Body {
+  margin-top: 0;
+}

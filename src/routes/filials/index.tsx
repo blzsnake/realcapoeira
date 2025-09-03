@@ -9,7 +9,9 @@ import { setModalState, ModalStore } from '~shared/ui/modal/store';
 import { SignUpFormGroup } from '~shared/ui/SignUpFormGroup';
 import { Typography } from '~shared/ui/typography';
 import { Button } from '~shared/ui/button/Button';
+import CallButton from '~app/assets/call_button.svg?react';
 import { SignUpModal } from './modals/SignUpModal/SignUpModal';
+import { ContactsModal } from './modals/ContactsModal/ContactsModal';
 import { FilialCard } from './ui/FilialCard/FilialCard';
 import { Filter } from './ui/Filter/Filter';
 
@@ -48,18 +50,40 @@ function CustomZoomControls({
   );
 }
 export function FilialsPage() {
+  const [coaches, setCoaches] = useState<
+    {
+      name: string;
+      phone: string;
+    }[]
+  >([]);
   const [isVisible, setIsVisible] = useState(false);
   const [zoom, setZoom] = useState(10);
   const $setModalState = useEvents(setModalState);
   const [activeId, setActiveId] = useState<number | null>(null);
-  const onModalSetState = (state: boolean) => () =>
-    $setModalState({ type: 'signUp', isOpen: state });
+  const onModalSetState =
+    (
+      coaches?: {
+        name: string;
+        phone: string;
+      }[]
+    ) =>
+    (state: boolean, type: string) =>
+    () => {
+      if (coaches) {
+        setCoaches(coaches);
+      }
+      $setModalState({ type, isOpen: state });
+    };
   const mapRef = useRef(null);
   const listRef = useRef({});
   const { query } = useUrl();
   const isModalOpen = useSelector(
     ModalStore,
     ({ modals }) => modals.signUp?.isOpen
+  );
+  const isModalContactOpen = useSelector(
+    ModalStore,
+    ({ modals }) => modals.contacts?.isOpen
   );
   const [filials = [], markers = []] = useMemo(
     () => filterFilials(FILIALS_MOCK, query),
@@ -81,7 +105,7 @@ export function FilialsPage() {
   };
 
   useEffect(() => {
-    const isMobile = window.matchMedia('(max-width: 1024px)').matches;
+    const isMobile = window.matchMedia('(max-width: 1280px)').matches;
     const toggleVisibility = () => {
       if (!isMobile) return;
       if (window.pageYOffset > 300) {
@@ -136,7 +160,7 @@ export function FilialsPage() {
                 activeId={activeId}
                 key={item.id}
                 ref={(el) => (listRef.current[item.id] = el)}
-                onButtonClick={onModalSetState(true)}
+                onButtonClick={onModalSetState(item.coaches)}
               />
             ))}
           </div>
@@ -199,7 +223,7 @@ export function FilialsPage() {
         </div>
         <SignUpModal
           isOpen={isModalOpen}
-          closeModal={onModalSetState(false)}
+          closeModal={onModalSetState()(false, 'signUp')}
           fullTitle="Запишитесь за пару минут"
         >
           <SignUpFormGroup
@@ -210,6 +234,27 @@ export function FilialsPage() {
             className={styles.ModalForm}
           />
         </SignUpModal>
+        <ContactsModal
+          isOpen={isModalContactOpen}
+          closeModal={onModalSetState()(false, 'contacts')}
+          fullTitle="Контакты"
+        >
+          <Typography>
+            Позвоните, чтобы задать интересующие вопросы и записаться на
+            тренировку
+          </Typography>
+          {coaches.map((coach) => (
+            <div key={coach.phone} className={styles.ContactsModalWrap}>
+              <div className={styles.ContactsModalName}>{coach.name}</div>
+              <a
+                href={`tel: ${coach.phone}`}
+                className={styles.ContactsModalPhone}
+              >
+                <CallButton className={styles.IconCallButton} />
+              </a>
+            </div>
+          ))}
+        </ContactsModal>
       </main>
     </YMaps>
   );
