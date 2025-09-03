@@ -88,8 +88,12 @@ export function SignUpForm({ contactsVariant = false }: TSignUpFormProps) {
   const [errors, setFormErrors] = useState<TSignUpFormErrors | null>(null);
   const [formData, setFormState] = useState(intitialFormState);
   const $setModalState = useEvents(setModalState);
-  const onModalSetState = (state: boolean) => () =>
+  const onModalSetState = (state: boolean) => () => {
     $setModalState({ type: 'formResult', isOpen: state });
+    if (!state) {
+      $setModalState({ type: 'signUp', isOpen: false });
+    }
+  };
   const isModalOpen = useSelector(
     ModalStore,
     ({ modals }) => modals.formResult?.isOpen

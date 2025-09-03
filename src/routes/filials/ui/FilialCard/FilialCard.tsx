@@ -1,7 +1,10 @@
+import { forwardRef, useEffect, useMemo, useState } from 'react';
 import cn from 'classnames';
 import { Typography } from '~shared/ui/typography';
 import { Button } from '~shared/ui/button/Button';
-import { forwardRef, useEffect, useMemo, useState } from 'react';
+
+import CallButton from '~app/assets/call_button.svg?react';
+
 import styles from './FilialCard.module.css';
 import { WEEK_DAYS } from '../../../../shared/mocks';
 
@@ -25,7 +28,7 @@ export type TFilialCardData = {
     phone: string;
   }[];
   schedule: TFilialScheduleType[][];
-  onButtonClick: () => void;
+  onButtonClick: (state: boolean, type: string) => () => void;
 };
 
 export type Ref = HTMLDivElement;
@@ -60,14 +63,18 @@ export const FilialCard = forwardRef<Ref, TFilialCardData>((props, ref) => {
         <Typography weight="demiBold" className={styles.Head}>
           {address?.metro?.name || address?.city}
         </Typography>
-        <div className="isTablet">
+        <div className={styles.ButtonWrap}>
           <Button
             color="yellow"
             className={styles.Button}
-            onClick={onButtonClick}
+            onClick={onButtonClick(true, 'signUp')}
           >
             Записаться
           </Button>
+          <CallButton
+            className={styles.IconCallButton}
+            onClick={onButtonClick(true, 'contacts')}
+          />
         </div>
       </div>
       <Typography className={styles.Address}>
@@ -141,14 +148,18 @@ export const FilialCard = forwardRef<Ref, TFilialCardData>((props, ref) => {
       <div onClick={handleToggleSchedule} className={styles.ScheduleToggle}>
         {cardActive ? 'Свернуть' : 'Показать расписание'}
       </div>
-      <div className="isMobile">
+      <div className={styles.ButtonBottomWrap}>
         <Button
           color="yellow"
           className={cn(styles.Button, styles.BottomButton)}
-          onClick={onButtonClick}
+          onClick={onButtonClick(true, 'signUp')}
         >
           Записаться
         </Button>
+        <CallButton
+          className={styles.IconCallButton}
+          onClick={onButtonClick(true, 'contacts')}
+        />
       </div>
     </div>
   );
