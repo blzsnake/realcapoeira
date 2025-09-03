@@ -123,3 +123,15 @@
   padding: 0 !important;
   padding-bottom: 20px !important;
 }
+
+.WrapperToMapButton {
+  position: fixed;
+  bottom: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  @media (min-width: 1280px) {
+    display: none;
+  }
+}

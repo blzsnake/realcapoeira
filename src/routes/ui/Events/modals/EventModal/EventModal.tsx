@@ -1,3 +1,4 @@
+import { Link } from '@tramvai/module-router';
 import { Typography } from '~shared/ui/typography';
 import { Modal, ModalBody, ModalTitle } from '~shared/ui/modal';
 import ShareTg from '~app/assets/ShareTg.svg?react';
@@ -41,9 +42,27 @@ export function EventModal({
         <div className={styles.DateShareRow}>
           <div className={styles.ShareRow}>
             <Typography className={styles.Date}>Поделиться:</Typography>
-            <ShareTg className={styles.Pointer} onClick={shareTgHandler} />
-            <ShareVk className={styles.Pointer} onClick={shareVkHandler} />
-            <ShareLink className={styles.Pointer} onClick={shareLinkHandler} />
+            <a
+              href="https://t.me/real_capoeira"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <ShareTg className={styles.Pointer} />
+            </a>
+            <a
+              href="https://vk.com/realcapoeira"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <ShareVk className={styles.Pointer} onClick={shareVkHandler} />
+            </a>
+
+            <a href="/" target="_blank">
+              <ShareLink
+                className={styles.Pointer}
+                onClick={shareLinkHandler}
+              />
+            </a>
           </div>
         </div>
       </ModalTitle>

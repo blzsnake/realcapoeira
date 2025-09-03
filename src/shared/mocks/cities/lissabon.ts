@@ -67,10 +67,10 @@ export const lissabon = [
   },
   {
     address: {
-      city: 'г. Лиссабон, Парк Наций',
-      street: 'Alameda dos Oceanos, Pátio das Pirogas 1C',
-      lat: 39.676912,
-      lng: -8.830296,
+      city: 'г. Лиссабон',
+      street: 'Лориш, Мошкавиди, Alameda dos Oceanos',
+      lat: 38.764529,
+      lng: -9.096179,
     },
     coaches: [
       {
