@@ -12,16 +12,12 @@ function ButtonsBlock() {
     <div className={styles.ButtonsBlock}>
       <Button
         color="yellow"
+        url="https://t.me/real_capoeira"
         className={styles.Button}
-        onClick={() => window.open('https://t.me/real_capoeira', '_blank')}
       >
         Все новости в Telegram
       </Button>
-      <Button
-        onClick={() => window.open('https://vk.com/realcapoeira', '_blank')}
-      >
-        VK
-      </Button>
+      <Button url="https://vk.com/realcapoeira">VK</Button>
     </div>
   );
 }

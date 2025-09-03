@@ -7,6 +7,8 @@ import Pin from '~app/assets/Pin.svg';
 import PinActive from '~app/assets/PinActive.svg';
 import { setModalState, ModalStore } from '~shared/ui/modal/store';
 import { SignUpFormGroup } from '~shared/ui/SignUpFormGroup';
+import { Typography } from '~shared/ui/typography';
+import { Button } from '~shared/ui/button/Button';
 import { SignUpModal } from './modals/SignUpModal/SignUpModal';
 import { FilialCard } from './ui/FilialCard/FilialCard';
 import { Filter } from './ui/Filter/Filter';
@@ -46,6 +48,7 @@ function CustomZoomControls({
   );
 }
 export function FilialsPage() {
+  const [isVisible, setIsVisible] = useState(false);
   const [zoom, setZoom] = useState(10);
   const $setModalState = useEvents(setModalState);
   const [activeId, setActiveId] = useState<number | null>(null);
@@ -78,6 +81,24 @@ export function FilialsPage() {
   };
 
   useEffect(() => {
+    const isMobile = window.matchMedia('(max-width: 1024px)').matches;
+    const toggleVisibility = () => {
+      if (!isMobile) return;
+      if (window.pageYOffset > 300) {
+        setIsVisible(true);
+      } else {
+        setIsVisible(false);
+      }
+    };
+
+    if (isMobile) {
+      window.addEventListener('scroll', toggleVisibility);
+    }
+
+    return () => window.removeEventListener('scroll', toggleVisibility);
+  }, []);
+
+  useEffect(() => {
     if (mapRef.current && markers.length > 0) {
       const bounds = markers.reduce(
         (acc, { coords }) => {
@@ -100,8 +121,8 @@ export function FilialsPage() {
 
   return (
     <YMaps query={{ apikey: 'fcf49c8d-b16f-4277-ab7a-d08242e838b8' }}>
-      <main className={styles.Wrap}>
-        <div className={styles.InfoWrap}>
+      <main className={styles.Wrap} onScroll={(e) => console.log('dd')}>
+        <div className={styles.InfoWrap} onScroll={(e) => console.log('dd')}>
           <div className={styles.Filter}>
             <Filter />
           </div>
@@ -119,6 +140,22 @@ export function FilialsPage() {
               />
             ))}
           </div>
+          {isVisible ? (
+            <div className={styles.WrapperToMapButton}>
+              <Button
+                className={styles.Button}
+                onClick={() => window.scrollTo(0, 0)}
+              >
+                <Typography
+                  className={styles.ButtonText}
+                  weight="medium"
+                  color="white"
+                >
+                  На карту
+                </Typography>
+              </Button>
+            </div>
+          ) : null}
         </div>
         <div className={styles.MapWrap}>
           <CustomZoomControls zoom={zoom} setZoom={setZoom} />

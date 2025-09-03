@@ -24,6 +24,7 @@ export function Button({
     <Link
       className={cn(className, styles.Button, styles[color], styles[size])}
       url={url}
+      target="_blank"
       viewTransition
     >
       {children}
