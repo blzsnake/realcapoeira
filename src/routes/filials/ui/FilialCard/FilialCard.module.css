@@ -106,7 +106,7 @@
   width: 40px;
   @media (min-width: 760px) {
     display: block;
-    width: 96px;
+    width: 86px;
   }
 }
 
@@ -126,7 +126,7 @@
     display: block;
     font-size: 20px;
     font-weight: bold;
-    width: 96px;
+    width: 86px;
   }
 }
 
