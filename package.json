@@ -13,6 +13,7 @@
   "dependencies": {
     "@csstools/postcss-global-data": "^2.1.1",
     "@pbe/react-yandex-maps": "^1.2.5",
+    "@react-input/mask": "^2.0.4",
     "@tramvai/core": "^4.41.104",
     "@tramvai/module-common": "^4.41.104",
     "@tramvai/module-error-interceptor": "^4.41.104",

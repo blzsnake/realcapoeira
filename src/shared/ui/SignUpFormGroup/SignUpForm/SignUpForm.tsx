@@ -1,4 +1,5 @@
 import { useRef, useState } from 'react';
+import { InputMask } from '@react-input/mask';
 import cn from 'classnames';
 import Select from 'react-select';
 import { Typography } from '~shared/ui/typography';
@@ -212,7 +213,7 @@ export function SignUpForm({ contactsVariant = false }: TSignUpFormProps) {
         <div className={styles.FieldRow}>
           <label htmlFor="phone" className={styles.FieldLabel}>
             <Typography weight="demiBold">Телефон</Typography>
-            <input
+            <InputMask
               name="phone"
               type="text"
               className={cn(styles.Input, {
@@ -223,6 +224,9 @@ export function SignUpForm({ contactsVariant = false }: TSignUpFormProps) {
               onChange={handleChange}
               disabled={formData.state === 'pending'}
               value={formData.phone}
+              mask="+7 (___) ___-__-__"
+              // eslint-disable-next-line @typescript-eslint/naming-convention
+              replacement={{ _: /\d/ }}
             />
           </label>
           {errors?.phone && (
