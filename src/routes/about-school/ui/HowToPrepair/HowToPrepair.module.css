@@ -100,6 +100,9 @@
     flex-shrink: 0;
   }
 }
+.CollapsibleContentList{
+  padding-bottom: 24px;
+}
 
 .CollapsibleContent {
   display: flex;

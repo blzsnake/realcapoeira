@@ -76,7 +76,7 @@
   display: none;
 }
 
-@media (min-width: 1025px) {
+@media (min-width: 700px) {
   .Groups {
     gap: 40px;
   }
