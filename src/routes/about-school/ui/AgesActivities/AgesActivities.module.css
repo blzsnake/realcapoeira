@@ -91,6 +91,10 @@
 .Image:nth-child(1) {
   flex: 0 0 100%;
 
+  @media (min-width: 1440px) {
+    position: relative;
+    top: -230px;
+  }
   @media (min-width: 769px) {
     flex: 5;
   }

@@ -10,6 +10,7 @@ import { SignUpFormGroup } from '~shared/ui/SignUpFormGroup';
 import { Typography } from '~shared/ui/typography';
 import { Button } from '~shared/ui/button/Button';
 import CallButton from '~app/assets/call_button.svg?react';
+import FilterIcon from '~app/assets/filter.svg?react';
 import { SignUpModal } from './modals/SignUpModal/SignUpModal';
 import { ContactsModal } from './modals/ContactsModal/ContactsModal';
 import { FilialCard } from './ui/FilialCard/FilialCard';
@@ -105,6 +106,7 @@ export function FilialsPage() {
   };
 
   useEffect(() => {
+    window.scrollTo(0, 0);
     const isMobile = window.matchMedia('(max-width: 1280px)').matches;
     const toggleVisibility = () => {
       if (!isMobile) return;
@@ -152,6 +154,7 @@ export function FilialsPage() {
           </div>
           <div className={styles.Counter}>
             {`Найдено ${markers?.length} филиалов`}
+            <FilterIcon className={styles.FilterIcon} />
           </div>
           <div className={styles.FilialsList}>
             {markers.map((item) => (

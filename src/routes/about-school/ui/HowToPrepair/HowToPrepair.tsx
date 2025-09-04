@@ -9,44 +9,57 @@ export function HowToPrepair() {
   return (
     <article className={styles.Content}>
       <Typography component="h3" weight="demiBold" className={styles.Title}>
-        Как подготовиться к&nbsp;занятию
+        Подготовка к занятию
       </Typography>
       <div className={styles.Article}>
         <CollapsibleRow title="Если вы первый раз">
           <div className={styles.CollapsibleContent}>
             <Typography>
-              Запишитесь или позвоните предупредите тренера, что придёте.
+              Не волнуйтесь — наши тренеры умеют работать с новичками и к
+              каждому ищут индивидуальный подход. Позвоните, чтобы записаться на
+              занятие и получить ответы на любые вопросы
             </Typography>
           </div>
         </CollapsibleRow>
-        <CollapsibleRow title="Что нужно взять на тренировку">
+        <CollapsibleRow title="Что взять на тренировку">
+          <div className={styles.CollapsibleContentList}>
+            <Typography> Советуем всегда иметь при себе:</Typography>
+            <ul>
+              <li>
+                <Typography>Удобные спортивные штаны и футболку</Typography>
+              </li>
+              <li>
+                <Typography>
+                  Носки, если не хотите заниматься босиком
+                </Typography>
+              </li>
+              <li>
+                <Typography>Тапочки для раздевалки и душа</Typography>
+              </li>
+              <li>
+                <Typography>Полотенце и средства личной гигиены</Typography>
+              </li>
+              <li>
+                <Typography>Питьевую воду</Typography>
+              </li>
+            </ul>
+          </div>
+        </CollapsibleRow>
+        <CollapsibleRow title="Рекомендация для родителей">
           <div className={styles.CollapsibleContent}>
             <Typography>
-              Возьмите удобные тренировочные штаны и футболку. Занятия проходят
-              босиком, но можете взять носки. Так же возьмите тапочки или
-              шлёпанцы, чтобы дойти из раздевалки до зала. И не забудьте бутылку
-              чистой питьевой воды.
-            </Typography>
-            <Typography>
-              Так же в раздевалке есть душ, так что можете захватить полотенце и
-              средства личной гигиены.
+              Малышам 3—10 лет советуем надевать носочки белого и черного цвета
+              так, чтобы левый и правый носок отличались. Так им будет легче
+              выполнять упражнения на левую и правую ногу
             </Typography>
           </div>
         </CollapsibleRow>
-        <CollapsibleRow title="Для дошкольников и начальных классов">
+        <CollapsibleRow title="Когда лучше прийти на занятие">
           <div className={styles.CollapsibleContent}>
             <Typography>
-              Возьмите носочки белого и черного цвета, чтобы левый и правый
-              носок отличались. Так мы будем тренировать упражнения на левую и
-              правую сторону.
-            </Typography>
-          </div>
-        </CollapsibleRow>
-        <CollapsibleRow title="Ко скольки лучше всего прийти">
-          <div className={styles.CollapsibleContent}>
-            <Typography>
-              Приходите за 10–15 минут до занятия, так же рекомендуем не есть за
-              час-полтора, чтобы занятие прошло легко.
+              Приходите за 10–15 минут до тренировки, чтобы успеть переодеться и
+              подготовиться. Также рекомендуем не есть за 1—1,5 часа, чтобы
+              занятие прошло легко
             </Typography>
           </div>
         </CollapsibleRow>
