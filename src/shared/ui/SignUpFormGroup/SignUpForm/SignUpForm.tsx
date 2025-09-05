@@ -140,11 +140,11 @@ export function SignUpForm({ contactsVariant = false }: TSignUpFormProps) {
       });
       const data = new URLSearchParams({
         name,
-        phone,
+        phone: phone.replace('+', ''),
         filial,
       }).toString();
       fetch(
-        'https://script.google.com/macros/s/AKfycbzQ6bkSKmvHSPshvfjENE0qjB6cfNGZn9GlPypxBexF4KqeaRDeb4wVyREzQsHSEbP1/exec',
+        'https://script.google.com/macros/s/AKfycbxL78344WZLN5tod8P_FGPLPZXdeAsS-njMdeiayRSK48fEhpWtbrvTu_vCk3Za4Vu5/exec',
         {
           method: 'POST',
           headers: {
@@ -171,7 +171,7 @@ export function SignUpForm({ contactsVariant = false }: TSignUpFormProps) {
         ref={formRef}
         className={styles.Form}
         method="POST"
-        action="https://script.google.com/macros/s/AKfycbx6gBwcu62zsKCLikMpc840hyhYdcR1sqEqaHkD8vPt9nFgUOM3dNYh13Fg-zDAR2F0/exec"
+        action="https://script.google.com/macros/s/AKfycbxL78344WZLN5tod8P_FGPLPZXdeAsS-njMdeiayRSK48fEhpWtbrvTu_vCk3Za4Vu5/exec"
       >
         {contactsVariant && (
           <Typography weight="demiBold" className={styles.Title}>
@@ -272,6 +272,7 @@ export function SignUpForm({ contactsVariant = false }: TSignUpFormProps) {
             className={styles.Button}
             onClick={submitHander}
             size="big"
+            disabled={formData.state === 'pending'}
           >
             <span>Оставить заявку</span>
           </Button>

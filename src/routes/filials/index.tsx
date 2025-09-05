@@ -105,6 +105,12 @@ export function FilialsPage() {
     }
   };
 
+  const handleFilialClick = (id: number, coords: number[]) => () => {
+    mapRef.current.panTo(coords, { flying: true });
+    mapRef.current.setCenter(coords, 14, { duration: 200 });
+    console.log(id, coords);
+  };
+
   useEffect(() => {
     window.scrollTo(0, 0);
     const isMobile = window.matchMedia('(max-width: 1280px)').matches;
@@ -164,6 +170,7 @@ export function FilialsPage() {
                 key={item.id}
                 ref={(el) => (listRef.current[item.id] = el)}
                 onButtonClick={onModalSetState(item.coaches)}
+                onCardClick={handleFilialClick(item.id, item.coords)}
               />
             ))}
           </div>

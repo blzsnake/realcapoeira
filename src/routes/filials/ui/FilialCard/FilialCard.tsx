@@ -29,6 +29,7 @@ export type TFilialCardData = {
   }[];
   schedule: TFilialScheduleType[][];
   onButtonClick: (state: boolean, type: string) => () => void;
+  onCardClick: () => void;
 };
 
 export type Ref = HTMLDivElement;
@@ -39,7 +40,7 @@ export const FilialCard = forwardRef<Ref, TFilialCardData>((props, ref) => {
     props.schedule?.findIndex((item) => item.length)
   );
   const handleToggleSchedule = () => setCardActive(!cardActive);
-  const { address, onButtonClick } = props;
+  const { address, onButtonClick, onCardClick } = props;
   const addressName = useMemo(
     () =>
       address?.metro
@@ -59,7 +60,7 @@ export const FilialCard = forwardRef<Ref, TFilialCardData>((props, ref) => {
         [styles.FilialCardActive]: cardActive,
       })}
     >
-      <div className={styles.HeaderWrap}>
+      <div className={styles.HeaderWrap} onClick={onCardClick}>
         <Typography weight="demiBold" className={styles.Head}>
           {address?.metro?.name || address?.city}
         </Typography>
