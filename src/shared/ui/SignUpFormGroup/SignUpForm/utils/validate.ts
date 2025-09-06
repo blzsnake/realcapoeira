@@ -7,7 +7,7 @@ export function validatePhoneNumber(input: string): boolean {
 }
 
 function validateName(value: string): boolean {
-  const fioRegex = /^([A-Za-zА-ЯЁ][a-zа-яё-]{1,} ?){1,3}$/u;
+  const fioRegex = /^([A-Za-zА-Яа-яЁё][a-zа-яё-]{1,} ?){1,3}$/u;
 
   return fioRegex.test(value);
 }

@@ -9,12 +9,14 @@ export function Button({
   size = 'medium',
   onClick,
   children,
+  disabled,
   className,
   url,
 }: TButtonProps) {
   return !url ? (
     <button
       type="button"
+      disabled={disabled}
       className={cn(className, styles.Button, styles[color], styles[size])}
       onClick={onClick}
     >

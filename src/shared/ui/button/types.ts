@@ -11,4 +11,5 @@ export type TButtonProps = {
   className?: string;
   isLink?: boolean;
   url?: string;
+  disabled?: boolean;
 };

@@ -13,9 +13,9 @@
 
 .MapWrap {
   width: 100%;
+  height: 100vh;
   position: relative;
   flex-shrink: 1;
-
 }
 
 .InfoWrap {
@@ -23,7 +23,7 @@
   border-top-left-radius: 14px;
   border-top-right-radius: 14px;
   background-color: #fff;
-  margin-top: -7px;
+  margin-top: -12vh;
   z-index: 10;
 
   &::before {
@@ -35,6 +35,9 @@
     width: 40px;
     height: 4px;
     background-color: #ECECEC;
+    @media (min-width: 760px) {
+      display: none;
+    }
   }
 
   @media (min-width: 760px) {
@@ -49,9 +52,13 @@
 }
 
 .Map {
-  height: 50vh;
-  max-height: 700px;
+  position: fixed;
+  height: 100vh;
+  /* max-height: 700px; */
   width: 100%;
+  @media (min-width: 760px) {
+    position: relative;
+  }
 }
 
 .InfoWrap {
@@ -65,9 +72,9 @@
 }
 
 .FilialsList {
-  max-height: 80vh;
-  overflow-y: auto;
   @media (min-width: 1280px) {
+    max-height: 80vh;
+    overflow-y: auto;
     scroll-snap-type: y mandatory;
   }
 }
@@ -128,14 +135,20 @@
 }
 
 .ZoomControls {
-  position: absolute;
-  top: 50%;
+  position: fixed;
+  top: 28vh;
   right: 10px;
-  z-index: 1000;
-  transform: translateY(-50%);
+  z-index: 1;
+  @media (min-width: 760px) {
+    padding-top: 0;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+  }
 }
 
 .Counter {
+  position: relative;
   font-size: 18px;
   padding-left: 20px;
   padding-right: 20px;
@@ -143,6 +156,19 @@
   padding-top: 40px;
   display: flex;
   justify-content: space-between;
+  &::before {
+    content: '';
+    top: 8px;
+    left: 50%;
+    transform: translateX(-50%);
+    position: absolute;
+    width: 40px;
+    height: 4px;
+    background-color: #ECECEC;
+    @media (min-width: 760px) {
+      display: none;
+    }
+  }
   @media (min-width: 760px) {
     padding-top: 0;
   }
@@ -150,6 +176,18 @@
     padding-left: 40px;
     padding-right: 0;
   }
+}
+
+.CounterFixed {
+  position: fixed;
+  width: 100%;
+  top: 65px;
+  z-index: 2;
+  background-color: #fff;
+  @media (min-width: 1280px) {
+    position: static;
+  }
+
 }
 
 .ModalForm {

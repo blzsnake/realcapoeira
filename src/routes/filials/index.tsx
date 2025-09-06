@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
+import cn from 'classnames';
 import { useEvents, useSelector } from '@tramvai/state';
 import { YMaps, Map, Placemark, Clusterer } from '@pbe/react-yandex-maps';
 import { useUrl } from '@tramvai/module-router';
@@ -18,6 +19,7 @@ import { Filter } from './ui/Filter/Filter';
 
 import styles from './Filials.module.css';
 import { filterFilials } from './utils/filter';
+import { useStickyFilter } from './utils/useStickyFilter';
 
 const getHintData = (city: string, metro: string, street: string) =>
   metro
@@ -75,8 +77,9 @@ export function FilialsPage() {
       }
       $setModalState({ type, isOpen: state });
     };
-  const mapRef = useRef(null);
-  const listRef = useRef({});
+  const mapRef = useRef<ymaps.Map | null>(null);
+  // eslint-disable-next-line @typescript-eslint/no-empty-object-type
+  const listRef = useRef<Record<number, HTMLDivElement | null>>({});
   const { query } = useUrl();
   const isModalOpen = useSelector(
     ModalStore,
@@ -87,12 +90,18 @@ export function FilialsPage() {
     ({ modals }) => modals.contacts?.isOpen
   );
   const [filials = [], markers = []] = useMemo(
+    // @ts-ignore
     () => filterFilials(FILIALS_MOCK, query),
     [query]
   );
 
+  const moveToPin = (coords: number[]) => {
+    mapRef.current?.panTo(coords, { flying: true });
+    mapRef.current?.setCenter(coords, 14, { duration: 200 });
+  };
+
   const handleMarkerClick = (id: number, coords: number[]) => () => {
-    if (listRef.current[id]) {
+    if (listRef.current && listRef.current[id]) {
       listRef.current[id]?.scrollIntoView({
         behavior: 'smooth',
         block: 'center',
@@ -100,14 +109,21 @@ export function FilialsPage() {
     }
     setActiveId(id);
     if (mapRef.current) {
-      mapRef.current.panTo(coords, { flying: true });
-      mapRef.current.setCenter(coords, 14, { duration: 200 });
+      moveToPin(coords);
     }
   };
 
+  const handleFilialClick = (id: number, coords: number[]) => () => {
+    moveToPin(coords);
+  };
+
+  const position = useStickyFilter();
+  const getCounterStyles = () =>
+    cn(styles[`Counter${position}`], styles.Counter);
+
   useEffect(() => {
-    window.scrollTo(0, 0);
     const isMobile = window.matchMedia('(max-width: 1280px)').matches;
+    window.scrollTo(0, isMobile ? 300 : 0);
     const toggleVisibility = () => {
       if (!isMobile) return;
       if (window.pageYOffset > 300) {
@@ -140,23 +156,23 @@ export function FilialsPage() {
       );
       mapRef.current?.setBounds(bounds, {
         checkZoomRange: true,
-        zoomMargin: 15,
+        zoomMargin: [15],
       });
     }
   }, [markers, query]);
 
   return (
     <YMaps query={{ apikey: 'fcf49c8d-b16f-4277-ab7a-d08242e838b8' }}>
-      <main className={styles.Wrap} onScroll={(e) => console.log('dd')}>
-        <div className={styles.InfoWrap} onScroll={(e) => console.log('dd')}>
+      <main className={styles.Wrap}>
+        <div className={styles.InfoWrap} draggable="true" id="#infoWrap">
           <div className={styles.Filter}>
             <Filter />
           </div>
-          <div className={styles.Counter}>
+          <div className={getCounterStyles()}>
             {`Найдено ${markers?.length} филиалов`}
             <FilterIcon className={styles.FilterIcon} />
           </div>
-          <div className={styles.FilialsList}>
+          <div className={styles.FilialsList} id="#filterScrollMarker">
             {markers.map((item) => (
               <FilialCard
                 {...item}
@@ -164,6 +180,7 @@ export function FilialsPage() {
                 key={item.id}
                 ref={(el) => (listRef.current[item.id] = el)}
                 onButtonClick={onModalSetState(item.coaches)}
+                onCardClick={handleFilialClick(item.id, item.coords)}
               />
             ))}
           </div>
