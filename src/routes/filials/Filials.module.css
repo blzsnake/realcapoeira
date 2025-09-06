@@ -13,7 +13,7 @@
 
 .MapWrap {
   width: 100%;
-  height: 100vh;
+  height: calc(100vh - env(safe-area-inset-bottom, 34px));
   position: relative;
   flex-shrink: 1;
 }
@@ -23,7 +23,7 @@
   border-top-left-radius: 14px;
   border-top-right-radius: 14px;
   background-color: #fff;
-  margin-top: calc(-12vh + env(safe-area-inset-bottom, 34px));
+  margin-top: calc(-12vh - env(safe-area-inset-bottom, 34px));
   z-index: 10;
 
   &::before {
@@ -53,7 +53,7 @@
 
 .Map {
   position: fixed;
-  height: 100vh;
+  height: 100%;
   /* max-height: 700px; */
   width: 100%;
   @media (min-width: 760px) {
