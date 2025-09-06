@@ -36,6 +36,10 @@
 .Buttons {
   display: flex;
   gap: 16px;
+
+  rect {
+    fill: #fff;
+  }
 }
 
 .SocialLink {

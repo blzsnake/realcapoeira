@@ -39,21 +39,13 @@ export function SignUpFormGroup({
               </a>
             </Typography>
             <div className={styles.Buttons}>
-              <Button
-                onClick={() => {
-                  window.open(`https://t.me/+79255550077`, '_blank');
-                }}
-              >
+              <Button url="https://t.me/+79255550077">
                 <Telegram className={styles.SocialLink} />
-                <span className={styles.Prefix}>Написать в&nbsp;Telegram</span>
+                <span className={styles.Prefix}>Написать в</span>&nbsp;Telegram
               </Button>
-              <Button
-                onClick={() => {
-                  window.open(`https://wa.me/+79255550077`, '_blank');
-                }}
-              >
+              <Button url="https://wa.me/+79255550077">
                 <Whatsapp className={styles.SocialLink} />
-                <span className={styles.Prefix}>Написать в&nbsp;WhatsApp</span>
+                <span className={styles.Prefix}>Написать в&nbsp;</span>WhatsApp
               </Button>
             </div>
           </>

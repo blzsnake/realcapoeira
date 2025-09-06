@@ -6,7 +6,7 @@ import styles from './SchoolPhoto.module.css';
 
 export function SchoolPhoto({ scrollHandler }: { scrollHandler: () => void }) {
   return (
-    <div className={styles.SchoolPhoto}>
+    <div className={styles.SchoolPhoto} id="#headerScrollMarker">
       <div className={styles.HeadingBlock}>
         <h1 className={styles.Heading}>
           ШКОЛА

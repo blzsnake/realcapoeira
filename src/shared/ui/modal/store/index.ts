@@ -2,7 +2,14 @@ import { createReducer } from '@tramvai/state';
 
 export const ModalStore = createReducer({
   name: 'modals',
-  initialState: {},
+  initialState: {
+    signUp: {
+      isOpen: false,
+    },
+    contacts: {
+      isOpen: false,
+    },
+  },
   events: {
     setModalState: (
       state,

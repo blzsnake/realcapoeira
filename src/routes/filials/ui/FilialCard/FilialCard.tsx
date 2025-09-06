@@ -11,7 +11,7 @@ import { WEEK_DAYS } from '../../../../shared/mocks';
 import type { TFilialScheduleType } from '../Filter/types';
 
 export type TFilialCardData = {
-  activeId: number;
+  activeId: number | null;
   id: number;
   address: {
     city: string;
@@ -39,8 +39,11 @@ export const FilialCard = forwardRef<Ref, TFilialCardData>((props, ref) => {
   const [activeSchedule, setActiveSchedule] = useState(
     props.schedule?.findIndex((item) => item.length)
   );
-  const handleToggleSchedule = () => setCardActive(!cardActive);
   const { address, onButtonClick, onCardClick } = props;
+  const handleToggleSchedule = () => {
+    setCardActive(!cardActive);
+    onCardClick();
+  };
   const addressName = useMemo(
     () =>
       address?.metro

@@ -4,7 +4,7 @@ import styles from './HeaderPart.module.css';
 
 export function HeaderPart() {
   return (
-    <div className={styles.Wrap}>
+    <div className={styles.Wrap} id="#headerScrollMarker">
       <div className={styles.Content}>
         <div className={styles.MainInfo}>
           <Typography component="h1" weight="demiBold" className={styles.Title}>

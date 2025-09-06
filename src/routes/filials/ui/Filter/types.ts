@@ -23,9 +23,9 @@ export type TFilialScheduleType = {
 
 export type TFilialType = {
   coords: number[];
-  city(city: any, metro: any, street: any): any;
-  metro(city: any, metro: any, street: any): any;
-  street(city: any, metro: any, street: any): any;
+  city: string;
+  metro: string;
+  street: string;
   id: number;
   address: TFilialAddressType;
   coaches: TFilialCoachType[];

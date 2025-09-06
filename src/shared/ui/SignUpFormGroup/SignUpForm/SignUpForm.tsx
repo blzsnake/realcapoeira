@@ -17,9 +17,14 @@ import { FormResultModal } from './modals/FormResultModal/FormResultModal';
 const OPTIONS = [
   { address: { city: 'Любой', street: '' } },
   ...FILIALS_MOCK.moscow,
+  ...FILIALS_MOCK.krasnodar,
+  ...FILIALS_MOCK.krasnogorsk,
+  ...FILIALS_MOCK.kazan,
+  ...FILIALS_MOCK.lissabon,
+  ...FILIALS_MOCK.mytishi,
 ].map((item) => ({
-  value: `${item.address.city} ${item.address.street}`,
-  label: `${item.address.city} ${item.address.street}`,
+  value: `${item.address.city} ${item.address?.metro?.name || item.address?.street}`,
+  label: `${item.address.city} ${item.address?.metro?.name || item.address?.street}`,
 }));
 
 export const customStyles = {

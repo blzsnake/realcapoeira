@@ -1,5 +1,5 @@
 import { useRoute } from '@tramvai/module-router';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useEvents } from '@tramvai/state';
 // Assets
 import Logo from '~app/assets/RCLogo.svg?react';
@@ -11,6 +11,7 @@ import { Link } from '@tramvai/module-router';
 import { Typography } from '~shared/ui/typography';
 import { setModalState } from '~shared/ui/modal/store';
 import { Button } from '~shared/ui/button/Button';
+import { debounce } from '~shared/utils/debounce';
 import { MobileMenu } from '../MobileMenu';
 // Styles
 import styles from './Header.module.css';
@@ -20,18 +21,40 @@ const isLinkActive = (actualPath: string, linkRoute: string): boolean =>
 const getLinkActiveStyle = (ap: string, lr: string): string =>
   isLinkActive(ap, lr) ? styles.Active : '';
 
+const isGrayBgRoute = (path: string) =>
+  path === '/' || path === '/about-school/' || path === '/about-capoeira/';
+
 export function Header() {
   const { actualPath } = useRoute();
   const $setModalState = useEvents(setModalState);
-
-  const isGrayBgRoute = (path: string) =>
-    path === '/' || path === '/about-school/' || path === '/about-capoeira/';
-
-  const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
-
   const headerBgClass = isGrayBgRoute(actualPath)
     ? styles.GrayBg
     : styles.WhiteBg;
+  const [color, switchColor] = useState(headerBgClass);
+  useEffect(() => {
+    const $elem = document.getElementById('#headerScrollMarker');
+    const scrollHandler = debounce(() => {
+      if (!$elem) {
+        return;
+      }
+      // eslint-disable-next-line no-unsafe-optional-chaining
+      const { bottom } = $elem?.getBoundingClientRect();
+      if (bottom < 0 && color === styles.GrayBg) {
+        switchColor(styles.WhiteBg);
+      }
+      if (bottom > 0 && color === styles.WhiteBg) {
+        switchColor(styles.GrayBg);
+      }
+    }, 20);
+    if ($elem) {
+      window.addEventListener('scroll', scrollHandler);
+    }
+
+    return () => window.removeEventListener('scroll', scrollHandler);
+  });
+
+  const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
+
   const handleScrollToForm = () => {
     const elem = document.getElementById('signup');
 
@@ -46,7 +69,7 @@ export function Header() {
 
   return (
     <>
-      <header className={`${styles.HeaderWrap} ${headerBgClass}`}>
+      <header className={`${styles.HeaderWrap} ${color}`}>
         <div className={styles.Header}>
           <div className={styles.ContentWrapper}>
             <Link viewTransition url="/" aria-label="На главную">

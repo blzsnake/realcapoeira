@@ -23,6 +23,10 @@
 .black {
   background-color: #000;
   color: #fff;
+
+  &:hover {
+    color: #fff;
+  }
 }
 
 .yellow {
