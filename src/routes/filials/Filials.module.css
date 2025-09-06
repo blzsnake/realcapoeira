@@ -23,7 +23,7 @@
   border-top-left-radius: 14px;
   border-top-right-radius: 14px;
   background-color: #fff;
-  margin-top: -12vh;
+  margin-top: calc(-12vh + env(safe-area-inset-bottom, 34px));
   z-index: 10;
 
   &::before {
