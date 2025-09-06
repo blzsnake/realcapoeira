@@ -41,7 +41,7 @@ export const getMetaProviders = ({ favicon, tags }: GetMetaProvidersProps) => {
         type: ResourceType.asIs,
         slot: ResourceSlot.HEAD_META,
         payload:
-          '<meta name="viewport" content="width=device-width, initial-scale=1">',
+          '<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">',
       },
     },
     {
