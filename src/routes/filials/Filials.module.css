@@ -13,7 +13,7 @@
 
 .MapWrap {
   width: 100%;
-  height: calc(100vh - env(safe-area-inset-bottom, 34px));
+  height: calc(85vh - env(safe-area-inset-bottom, 34px));
   position: relative;
   flex-shrink: 1;
 }
