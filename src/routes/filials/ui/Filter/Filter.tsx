@@ -1,11 +1,9 @@
-import { useEffect, useLayoutEffect, useState } from 'react';
-import cn from 'classnames';
+import { useEffect, useState } from 'react';
 import { useUrl } from '@tramvai/module-router';
 import type { MultiValue, SingleValue } from 'react-select';
 import Select, { components } from 'react-select';
 import { Checkbox } from '~shared/ui/Checkbox/Checkbox';
 import { Radio } from '~shared/ui/Radio/Radio';
-import { Typography } from '~shared/ui/typography';
 import { AGE_GROUPS, COACHES, GROUPED_PLACES } from '~shared/mocks';
 import { customStyles } from '~shared/ui/SignUpFormGroup/SignUpForm';
 
@@ -50,6 +48,7 @@ export function Filter() {
   const { query } = useUrl();
   const setQueryParam =
     (name: string, cb: () => null) => (value: TypeOption | TypeOption[]) => {
+      console.log(value);
       const val = value?.label
         ? value.value
         : value?.map((e: TypeOption) => e.value).join(',');

@@ -9,15 +9,17 @@ export function Radio({
   onChange,
   text,
   className,
+  classNameWrap,
   checked,
 }: TRadioProps) {
   return (
-    <div className={styles.Radio}>
+    <div className={cn(classNameWrap, styles.Radio)}>
       <input
         name={name}
+        id={name}
         type="radio"
         className={cn(className, styles.Input)}
-        onChange={onChange}
+        onChange={() => onChange({ label: text, value: name })}
         checked={checked}
       />
       <label htmlFor={name} className={cn(styles.Label)}>

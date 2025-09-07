@@ -20,6 +20,7 @@ import { Filter } from './ui/Filter/Filter';
 import styles from './Filials.module.css';
 import { filterFilials } from './utils/filter';
 import { useStickyFilter } from './utils/useStickyFilter';
+import { FilterModal } from './modals/FilterModal/FilterModal';
 
 const getHintData = (city: string, metro: string, street: string) =>
   metro
@@ -88,6 +89,10 @@ export function FilialsPage() {
   const isModalContactOpen = useSelector(
     ModalStore,
     ({ modals }) => modals.contacts?.isOpen
+  );
+  const isModalFiterOpen = useSelector(
+    ModalStore,
+    ({ modals }) => modals.filter?.isOpen
   );
   const [filials = [], markers = []] = useMemo(
     // @ts-ignore
@@ -170,7 +175,10 @@ export function FilialsPage() {
           </div>
           <div className={getCounterStyles()}>
             {`Найдено ${markers?.length} филиалов`}
-            <FilterIcon className={styles.FilterIcon} />
+            <FilterIcon
+              className={styles.FilterIcon}
+              onClick={onModalSetState()(true, 'filter')}
+            />
           </div>
           <div className={styles.FilialsList} id="#filterScrollMarker">
             {markers.map((item) => (
@@ -275,6 +283,16 @@ export function FilialsPage() {
             </div>
           ))}
         </ContactsModal>
+        <FilterModal
+          isOpen={isModalFiterOpen}
+          closeModal={onModalSetState()(false, 'filter')}
+          fullTitle="Контакты"
+        >
+          <Typography>
+            Позвоните, чтобы задать интересующие вопросы и записаться на
+            тренировку
+          </Typography>
+        </FilterModal>
       </main>
     </YMaps>
   );

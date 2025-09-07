@@ -12,6 +12,9 @@ export function SignUpModal({
   return (
     <Modal isOpen={isOpen} onClose={closeModal} className={styles.Modal}>
       <ModalTitle className={styles.Wrap}>
+        <button style={{ opacity: 0, position: 'absolute' }} type="button">
+          fix
+        </button>
         <Typography component="h2" weight="demiBold" className={styles.Title}>
           {fullTitle}
         </Typography>

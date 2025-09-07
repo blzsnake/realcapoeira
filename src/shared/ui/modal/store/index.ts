@@ -9,6 +9,9 @@ export const ModalStore = createReducer({
     contacts: {
       isOpen: false,
     },
+    filter: {
+      isOpen: false,
+    },
   },
   events: {
     setModalState: (

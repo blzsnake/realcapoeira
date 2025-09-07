@@ -16,6 +16,9 @@
   height: calc(85vh - env(safe-area-inset-bottom, 34px));
   position: relative;
   flex-shrink: 1;
+  @media (min-width: 760px) {
+    height: calc(72vh - env(safe-area-inset-bottom, 34px)); 
+  }
 }
 
 .InfoWrap {
@@ -85,7 +88,7 @@
   }
   .Map {
     height: 100vh;
-    max-height: 700px;
+    /* max-height: 700px; */
   }
 }
 @media (min-width: 1280px) {
@@ -137,6 +140,7 @@
 .ZoomControls {
   position: fixed;
   top: 28vh;
+  color: #000;
   right: 10px;
   z-index: 1;
   @media (min-width: 760px) {
@@ -201,7 +205,9 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 100%;
+  width: 98px;
+  left: 50%;
+  transform: translateX(-50%);
   @media (min-width: 1280px) {
     display: none;
   }

@@ -1,0 +1,40 @@
+.Tabs {
+  display: block;
+}
+
+.TabItem {
+  position: relative;
+  padding: 16px 0;
+  padding-right: 24px;
+  border-bottom: 1px solid #ECECEC;
+
+  &::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 50%;
+    width: 10px;
+    height: 10px;
+    border-bottom: 2px solid #000;
+    border-right: 2px solid #000;
+    transform: translateY(-50%) rotate(-45deg);
+  }
+}
+
+.TabText {
+  font-size: 18px;
+}
+
+.RadioWrap {
+  padding: 16px 0;
+  border-bottom: 1px solid #ECECEC;
+  label {
+    width: 100%;
+    justify-content: space-between;
+    flex-direction: row-reverse;
+    &::after {
+      right: 15px;
+      left: auto;
+    }
+  }
+}
