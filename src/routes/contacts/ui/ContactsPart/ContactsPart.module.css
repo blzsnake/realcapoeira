@@ -68,7 +68,9 @@
 .Buttons {
   display: flex;
   gap: 16px;
-  
+  rect {
+    fill: #fff;
+  }
   @media (min-width: 1025px) {
     > * {
       width: 230px;
