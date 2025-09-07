@@ -1,3 +1,4 @@
+import { useRef } from 'react';
 import { Typography } from '~shared/ui/typography';
 import { Modal, ModalBody, ModalTitle } from '~shared/ui/modal';
 import type { SignUpModalProps } from './types';
@@ -9,8 +10,15 @@ export function SignUpModal({
   fullTitle,
   children,
 }: SignUpModalProps) {
+  const scrollableRef = useRef<HTMLDivElement>(null);
+
   return (
-    <Modal isOpen={isOpen} onClose={closeModal} className={styles.Modal}>
+    <Modal
+      isOpen={isOpen}
+      onClose={closeModal}
+      className={styles.Modal}
+      scrollableRef={scrollableRef}
+    >
       <ModalTitle className={styles.Wrap}>
         <button style={{ opacity: 0, position: 'absolute' }} type="button">
           fix
@@ -19,7 +27,7 @@ export function SignUpModal({
           {fullTitle}
         </Typography>
       </ModalTitle>
-      <ModalBody>{children}</ModalBody>
+      <ModalBody ref={scrollableRef}>{children}</ModalBody>
     </Modal>
   );
 }
