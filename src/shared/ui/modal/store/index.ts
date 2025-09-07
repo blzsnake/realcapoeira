@@ -5,6 +5,7 @@ export const ModalStore = createReducer({
   initialState: {
     signUp: {
       isOpen: false,
+      address: null,
     },
     contacts: {
       isOpen: false,
@@ -12,15 +13,23 @@ export const ModalStore = createReducer({
     filter: {
       isOpen: false,
     },
+    formResult: {
+      isOpen: false,
+    },
   },
   events: {
     setModalState: (
       state,
-      { type, isOpen }: { type: string; isOpen: boolean }
+      {
+        type,
+        isOpen,
+        address,
+      }: { type: string; isOpen: boolean; address?: string }
     ) => ({
       ...state,
       [type]: {
         isOpen,
+        address,
       },
     }),
   },

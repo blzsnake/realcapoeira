@@ -70,14 +70,15 @@ export function FilialsPage() {
       coaches?: {
         name: string;
         phone: string;
-      }[]
+      }[],
+      address?: string
     ) =>
     (state: boolean, type: string) =>
     () => {
       if (coaches) {
         setCoaches(coaches);
       }
-      $setModalState({ type, isOpen: state });
+      $setModalState({ type, isOpen: state, address });
     };
   const mapRef = useRef<ymaps.Map | null>(null);
   // eslint-disable-next-line @typescript-eslint/no-empty-object-type
@@ -189,7 +190,10 @@ export function FilialsPage() {
                 activeId={activeId}
                 key={item.id}
                 ref={(el) => (listRef.current[item.id] = el)}
-                onButtonClick={onModalSetState(item.coaches)}
+                onButtonClick={onModalSetState(
+                  item.coaches,
+                  `${item.city} ${item.address.metro ? item.address.metro.name : item.address.street}`
+                )}
                 onCardClick={handleFilialClick(item.id, item.coords)}
               />
             ))}

@@ -93,7 +93,13 @@ const intitialFormState = {
 export function SignUpForm({ contactsVariant = false }: TSignUpFormProps) {
   const formRef = useRef<HTMLFormElement>(undefined);
   const [errors, setFormErrors] = useState<TSignUpFormErrors | null>(null);
-  const [formData, setFormState] = useState(intitialFormState);
+  const address = useSelector(
+    ModalStore,
+    ({ modals }) => modals.signUp?.address
+  );
+  const [formData, setFormState] = useState(
+    address ? { ...intitialFormState, filial: address } : intitialFormState
+  );
   const $setModalState = useEvents(setModalState);
   const onModalSetState = (state: boolean) => () => {
     $setModalState({ type: 'formResult', isOpen: state });
@@ -118,7 +124,6 @@ export function SignUpForm({ contactsVariant = false }: TSignUpFormProps) {
     }));
   };
   const handleCheckboxChange = (e) => {
-    console.log(e);
     const { name, checked } = e.target;
     setFormState((prevData) => ({
       ...prevData,
@@ -135,6 +140,8 @@ export function SignUpForm({ contactsVariant = false }: TSignUpFormProps) {
       state: 'dirty',
     }));
   };
+
+  console.log(address, 'ddd');
   const submitHander = () => {
     const { name, phone, filial } = formData || {};
     const isErrors = validate(formData);
@@ -247,10 +254,12 @@ export function SignUpForm({ contactsVariant = false }: TSignUpFormProps) {
               options={OPTIONS}
               hideSelectedOptions={false}
               styles={customStyles}
-              defaultValue={OPTIONS[0]}
+              defaultValue={
+                address ? { label: address, value: address } : OPTIONS[0]
+              }
               closeMenuOnSelect
               className={styles.Select}
-              isDisabled={formData.state === 'pending'}
+              isDisabled={address || formData.state === 'pending'}
               onChange={handleFilialChange}
             />
           </label>
