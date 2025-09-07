@@ -230,6 +230,7 @@
   width: 24px;
   height: 24px;
   cursor: pointer;
+  margin-left: auto;
   @media (min-width: 760px) {
     display: none;
   }

@@ -26,7 +26,7 @@ export function Groups() {
       <div className={styles.Grid}>
         <Link
           viewTransition
-          url="/filials/?group=junior"
+          url="about-school/#age"
           aria-label="Филиал"
           className={styles.Card}
         >
@@ -47,7 +47,7 @@ export function Groups() {
         </Link>
         <Link
           viewTransition
-          url="/filials/?group=middle"
+          url="/about-school/#age"
           aria-label="Филиал"
           className={styles.Card}
         >
@@ -68,7 +68,7 @@ export function Groups() {
         </Link>
         <Link
           viewTransition
-          url="/filials/?group=senior"
+          url="about-school/#age"
           aria-label="Филиал"
           className={styles.Card}
         >
@@ -89,7 +89,7 @@ export function Groups() {
         </Link>
         <Link
           viewTransition
-          url="/filials/?group=staff"
+          url="about-school/#age"
           aria-label="Филиал"
           className={styles.Card}
         >

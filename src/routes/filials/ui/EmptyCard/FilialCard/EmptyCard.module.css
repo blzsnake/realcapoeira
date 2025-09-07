@@ -1,0 +1,45 @@
+.EmptyCard {
+  padding: 0 20px;
+  padding-bottom: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 0;
+  @media (min-width: 1025px) {
+    margin-top: 50px;
+  }
+  @media (min-width: 1280px) {
+    margin-top: 83px;
+  }
+}
+
+.Image {
+  width: 250px;
+  height: 250px;
+  display: block;
+  margin-bottom: 24px;
+  @media (min-width: 1025px) {
+    width: 300px;
+    height: 300px;
+  }
+}
+
+.Title {
+  margin-bottom: 8px;
+  font-size: 20px;
+  @media (min-width: 1025px) {
+    font-size: 28px;
+  }
+}
+
+.Description {
+  font-size: 18px;
+  margin-bottom: 24px;
+  text-align: center;
+}
+
+.Button {
+  @media (min-width: 1280px) {
+    font-size: 20px;
+  }
+}

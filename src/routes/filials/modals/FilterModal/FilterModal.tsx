@@ -14,14 +14,24 @@ import styles from './FilterModal.module.css';
 
 export function FilterModal({ isOpen, closeModal }: FilterModalProps) {
   const [tabState, setTabState] = useState<string>('Фильтры');
-  const [selectedAgeGroup, selectedCoach, selectedCity, setQueryParam] =
-    useQueryParams();
+  const [
+    selectedAgeGroup,
+    selectedCoach,
+    selectedCity,
+    setQueryParam,
+    resetFilter,
+  ] = useQueryParams();
+
+  const handleCloseModal = () => {
+    setTabState('Фильтры');
+    closeModal();
+  };
 
   return (
     <Modal
       isCloseIcon={false}
       isOpen={isOpen}
-      onClose={closeModal}
+      onClose={handleCloseModal}
       className={styles.Modal}
     >
       <ModalBody>
@@ -30,7 +40,7 @@ export function FilterModal({ isOpen, closeModal }: FilterModalProps) {
             fix
           </button>
           {tabState === 'Фильтры' ? (
-            <Close className={styles.Close} onClick={() => closeModal()} />
+            <Close className={styles.Close} onClick={handleCloseModal} />
           ) : (
             <ArrowRight
               width={24}
@@ -42,7 +52,11 @@ export function FilterModal({ isOpen, closeModal }: FilterModalProps) {
           <Typography weight="demiBold" className={styles.HeaderTitle}>
             {tabState}
           </Typography>
-          <Typography color="blue" className={styles.HeaderReset}>
+          <Typography
+            color="blue"
+            className={styles.HeaderReset}
+            onClick={resetFilter}
+          >
             {tabState === 'Фильтры' ? 'Сбросить' : ''}
           </Typography>
         </div>

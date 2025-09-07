@@ -8,6 +8,7 @@ import { Checkbox } from '~shared/ui/Checkbox/Checkbox';
 import { FILIALS_MOCK } from '~shared/mocks';
 import { ModalStore, setModalState } from '~shared/ui/modal/store';
 import { useEvents, useSelector } from '@tramvai/state';
+import Success from '~app/assets/sucsess.png';
 import { validate } from './utils/validate';
 
 import type { TSignUpFormErrors, TSignUpFormProps } from './types';
@@ -117,6 +118,7 @@ export function SignUpForm({ contactsVariant = false }: TSignUpFormProps) {
     }));
   };
   const handleCheckboxChange = (e) => {
+    console.log(e);
     const { name, checked } = e.target;
     setFormState((prevData) => ({
       ...prevData,
@@ -260,12 +262,18 @@ export function SignUpForm({ contactsVariant = false }: TSignUpFormProps) {
               checked={formData.agreement}
               text="Я даю согласие на обработку моих персональных данных"
               error={errors?.agreement}
+              value="agreement"
               disabled={formData.state === 'pending'}
               className={cn(styles.Checkbox, {
                 [styles.InputError]: errors?.agreement,
               })}
               onChange={handleCheckboxChange}
-            />
+            >
+              Я даю согласие на{' '}
+              <a href="/politics.pdf" target="_blank">
+                обработку моих персональных данных
+              </a>
+            </Checkbox>
             {errors?.agreement && (
               <div className={styles.FieldErrorText}>{errors?.agreement}</div>
             )}
@@ -285,7 +293,7 @@ export function SignUpForm({ contactsVariant = false }: TSignUpFormProps) {
       </form>
       <FormResultModal isOpen={isModalOpen} closeModal={onModalSetState(false)}>
         <div className={styles.FormResult}>
-          <img src="" alt="Ok" className={styles.FormResultImage} />
+          <img src={Success} alt="Ok" className={styles.FormResultImage} />
           <div className={styles.FormResultHead}>
             <Typography weight="demiBold" className={styles.FormResultHeadText}>
               Готово

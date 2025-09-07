@@ -31,10 +31,15 @@ export function Header() {
     ? styles.GrayBg
     : styles.WhiteBg;
   const [color, switchColor] = useState(headerBgClass);
+
+  useEffect(() => {
+    switchColor(headerBgClass);
+  }, [headerBgClass]);
+
   useEffect(() => {
     const $elem = document.getElementById('#headerScrollMarker');
     const scrollHandler = debounce(() => {
-      if (!$elem) {
+      if (!$elem || !isGrayBgRoute(actualPath)) {
         return;
       }
       // eslint-disable-next-line no-unsafe-optional-chaining
@@ -51,7 +56,7 @@ export function Header() {
     }
 
     return () => window.removeEventListener('scroll', scrollHandler);
-  });
+  }, [headerBgClass, actualPath, color]);
 
   const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
 

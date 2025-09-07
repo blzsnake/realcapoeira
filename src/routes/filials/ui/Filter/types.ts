@@ -36,3 +36,9 @@ export type TypeOption = {
   value: string;
   label: string;
 };
+
+export type CheckBoxProps = {
+  label: string;
+  value: string;
+  isSelected: boolean;
+};

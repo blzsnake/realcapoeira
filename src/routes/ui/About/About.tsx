@@ -1,6 +1,6 @@
 import { Typography } from '~shared/ui/typography';
 import { Button } from '~shared/ui/button/Button';
-import Alexander from '~app/assets/Alexander.svg?react';
+import Alexander from '~app/assets/Alexandr.png';
 import styles from './About.module.css';
 
 export function About() {
@@ -12,9 +12,7 @@ export function About() {
           мире»
         </Typography>
         <div className={styles.Author}>
-          <div className={styles.Image}>
-            <Alexander />
-          </div>
+          <img src={Alexander} alt="Alexander" className={styles.Image} />
           <div className={styles.AuthorColumn}>
             <Typography className={styles.AuthorName} weight="demiBold">
               Александр Рогозин

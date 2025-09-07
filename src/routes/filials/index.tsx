@@ -21,6 +21,7 @@ import styles from './Filials.module.css';
 import { filterFilials } from './utils/filter';
 import { useStickyFilter } from './utils/useStickyFilter';
 import { FilterModal } from './modals/FilterModal/FilterModal';
+import { EmptyCard } from './ui/EmptyCard/FilialCard/EmptyCard';
 
 const getHintData = (city: string, metro: string, street: string) =>
   metro
@@ -131,7 +132,7 @@ export function FilialsPage() {
     window.scrollTo(0, isMobile ? 300 : 0);
     const toggleVisibility = () => {
       if (!isMobile) return;
-      if (window.pageYOffset > 300) {
+      if (window.pageYOffset > 380) {
         setIsVisible(true);
       } else {
         setIsVisible(false);
@@ -174,12 +175,13 @@ export function FilialsPage() {
             <Filter />
           </div>
           <div className={getCounterStyles()}>
-            {`Найдено ${markers?.length} филиалов`}
+            {markers?.length ? `Найдено ${markers?.length} филиалов` : ''}
             <FilterIcon
               className={styles.FilterIcon}
               onClick={onModalSetState()(true, 'filter')}
             />
           </div>
+          {!markers?.length && <EmptyCard />}
           <div className={styles.FilialsList} id="#filterScrollMarker">
             {markers.map((item) => (
               <FilialCard
@@ -286,13 +288,7 @@ export function FilialsPage() {
         <FilterModal
           isOpen={isModalFiterOpen}
           closeModal={onModalSetState()(false, 'filter')}
-          fullTitle="Контакты"
-        >
-          <Typography>
-            Позвоните, чтобы задать интересующие вопросы и записаться на
-            тренировку
-          </Typography>
-        </FilterModal>
+        />
       </main>
     </YMaps>
   );

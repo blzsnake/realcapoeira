@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { SignUpFormGroup } from '~shared/ui/SignUpFormGroup';
 import { HowToPrepair } from './ui/HowToPrepair/HowToPrepair';
 import { HeaderPart } from './ui/HeaderPart';
@@ -7,6 +8,14 @@ import { AboutUs } from './ui/AboutUs';
 import styles from './AboutSchool.module.css';
 
 export function AboutSchoolPage() {
+  useEffect(() => {
+    if (window.location.hash === '#age') {
+      const elem = document.getElementById('age');
+      if (elem) {
+        elem.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
+    }
+  }, []);
   return (
     <main className={styles.MainWrap}>
       <HeaderPart />

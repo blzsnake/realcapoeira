@@ -15,12 +15,12 @@ export function Checkbox({
   error,
   value,
   groupValues = [],
+  children,
 }: TCheckboxProps) {
   const isValueExist = groupValues?.find((group) => group.value === value);
   const filteredGroupsVals = groupValues?.filter(
     (group) => group.value !== value
   );
-  // console.log('-------',groupValues, value, isValueExist, filteredGroupsVals)
 
   return (
     <div className={cn(styles.Checkbox, classNameWrap)}>
@@ -29,18 +29,23 @@ export function Checkbox({
         name={name}
         type="checkbox"
         className={cn(className, styles.Input, { [styles.InputError]: error })}
-        onChange={() =>
-          onChange(
-            isValueExist
-              ? filteredGroupsVals
-              : groupValues?.concat([{ label: text, value }])
-          )
-        }
+        onChange={(e) => {
+          onChange(e);
+          if (isValueExist && filteredGroupsVals) {
+            onChange(
+              isValueExist
+                ? filteredGroupsVals
+                : groupValues?.concat([
+                    { label: text || '', value: value || '' },
+                  ])
+            );
+          }
+        }}
         checked={checked}
         disabled={disabled}
       />
       <label htmlFor={value} className={cn(styles.Label)}>
-        <Typography component="span">{text}</Typography>
+        <Typography component="span">{children || text}</Typography>
       </label>
     </div>
   );

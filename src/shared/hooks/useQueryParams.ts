@@ -38,12 +38,18 @@ export const useQueryParams = () => {
       }
     };
 
+  const resetFilter = () => {
+    window.history.pushState({}, '', '/filials/');
+  };
+
   useEffect(() => {
     if (query.city) {
       const selected = GROUPED_PLACES.map((item) => item.options)
         .flat()
         .filter((e) => e.value === query.city);
       setSelectedCity(selected);
+    } else {
+      setSelectedCity(null);
     }
     if (query.group) {
       const selected = AGE_GROUPS.filter((e) => query.group.includes(e.value));
@@ -59,5 +65,11 @@ export const useQueryParams = () => {
     }
   }, [query]);
 
-  return [selectedAgeGroup, selectedCoach, selectedCity, setQueryParam];
+  return [
+    selectedAgeGroup,
+    selectedCoach,
+    selectedCity,
+    setQueryParam,
+    resetFilter,
+  ];
 };

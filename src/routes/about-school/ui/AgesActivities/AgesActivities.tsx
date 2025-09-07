@@ -58,7 +58,7 @@ export function AgesActivities() {
       <div className={styles.ImagesBlockWeb}>
         <ImagesBlock />
       </div>
-      <article className={styles.Content}>
+      <article className={styles.Content} id="age">
         <div className={styles.HiddenPlug} />
         <div className={classNames(styles.Article, styles.NoGap)}>
           <CollapsibleRow title="Дошкольники 3–6 лет">

@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useUrl } from '@tramvai/module-router';
-import type { MultiValue, SingleValue } from 'react-select';
+import type { MultiValue, OptionProps, SingleValue } from 'react-select';
 import Select, { components } from 'react-select';
 import { Checkbox } from '~shared/ui/Checkbox/Checkbox';
 import { Radio } from '~shared/ui/Radio/Radio';
@@ -9,9 +9,9 @@ import { customStyles } from '~shared/ui/SignUpFormGroup/SignUpForm';
 
 import styles from './Filter.module.css';
 
-import type { TFilialType, TypeOption } from './types';
+import type { TypeOption } from './types';
 
-function CheckboxOption(props) {
+function CheckboxOption(props: OptionProps) {
   return (
     <components.Option {...props}>
       <div className={styles.CheckboxWrap}>
@@ -25,7 +25,7 @@ function CheckboxOption(props) {
   );
 }
 
-function RadioOption(props) {
+function RadioOption(props: OptionProps) {
   return (
     <components.Option {...props}>
       <div className={styles.CheckboxWrap}>
@@ -48,7 +48,6 @@ export function Filter() {
   const { query } = useUrl();
   const setQueryParam =
     (name: string, cb: () => null) => (value: TypeOption | TypeOption[]) => {
-      console.log(value);
       const val = value?.label
         ? value.value
         : value?.map((e: TypeOption) => e.value).join(',');
