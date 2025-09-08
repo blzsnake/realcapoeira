@@ -5,6 +5,14 @@ import ArrowDown from '~app/assets/ArrowDown.svg?react';
 import styles from './SchoolPhoto.module.css';
 
 export function SchoolPhoto({ scrollHandler }: { scrollHandler: () => void }) {
+  const handleScrollToForm = () => {
+    const elem = document.getElementById('signup');
+
+    if (elem) {
+      elem.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <div className={styles.SchoolPhoto} id="#headerScrollMarker">
       <div className={styles.HeadingBlock}>
@@ -14,14 +22,16 @@ export function SchoolPhoto({ scrollHandler }: { scrollHandler: () => void }) {
           REAL CAPOEIRA
         </h1>
         <div className={styles.ButtonsBlockMobile}>
-          <Link viewTransition url="/about-school/" aria-label="О школе">
-            <Button className={styles.Button}>О школе</Button>
-          </Link>
-          <Link viewTransition url="/filials/" aria-label="Филиалы">
-            <Button color="white" className={styles.Button}>
-              Филиалы
-            </Button>
-          </Link>
+          <Button
+            color="yellow"
+            className={styles.Button}
+            onClick={handleScrollToForm}
+          >
+            Записаться
+          </Button>
+          <Button url="/filials/" color="white" className={styles.Button}>
+            Филиалы
+          </Button>
         </div>
       </div>
       <img src={AllCrew} className={styles.Image} alt="Команда" />
