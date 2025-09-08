@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import { Typography } from '~shared/ui/typography';
 import Close from '~app/assets/Close.svg?react';
 import ArrowRight from '~app/assets/ArrowRight.svg?react';
@@ -26,6 +26,7 @@ export function FilterModal({ isOpen, closeModal }: FilterModalProps) {
     setTabState('Фильтры');
     closeModal();
   };
+  const scrollableRef = useRef<HTMLDivElement>(null);
 
   return (
     <Modal
@@ -33,8 +34,9 @@ export function FilterModal({ isOpen, closeModal }: FilterModalProps) {
       isOpen={isOpen}
       onClose={handleCloseModal}
       className={styles.Modal}
+      scrollableRef={scrollableRef}
     >
-      <ModalBody>
+      <ModalBody ref={scrollableRef}>
         <div className={styles.Header}>
           <button style={{ opacity: 0, position: 'absolute' }} type="button">
             fix
