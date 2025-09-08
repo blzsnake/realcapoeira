@@ -229,16 +229,16 @@ export function SignUpForm({ contactsVariant = false }: TSignUpFormProps) {
             <Typography weight="demiBold">Телефон</Typography>
             <InputMask
               name="phone"
-              type="text"
+              type="tel"
               className={cn(styles.Input, {
                 [styles.InputError]: errors?.phone,
               })}
               id="phone"
-              placeholder="+7"
+              placeholder="+"
               onChange={handleChange}
               disabled={formData.state === 'pending'}
               value={formData.phone}
-              mask="+7 (___) ___-__-__"
+              mask="+_____________"
               // eslint-disable-next-line @typescript-eslint/naming-convention
               replacement={{ _: /\d/ }}
             />
