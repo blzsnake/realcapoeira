@@ -25,8 +25,8 @@ import { EmptyCard } from './ui/EmptyCard/FilialCard/EmptyCard';
 
 const getHintData = (city: string, metro: string, street: string) =>
   metro
-    ? `<b>Филиал на ${metro}</b><pre><b>метро ${metro}</b><div>г ${city} ${street}</div>`
-    : `<b>Филиал в г ${city}</b><div>${street}</div>`;
+    ? `<b>Филиал на ${metro}</b><pre><b>метро ${metro}</b><div>${city} ${street}</div>`
+    : `<b>Филиал в ${city}</b><div>${street}</div>`;
 
 function CustomZoomControls({
   zoom,

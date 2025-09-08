@@ -74,7 +74,7 @@ export function Worldwide() {
           />
           <CityCard
             title="Лиссабон"
-            subtitle="Друзья школы"
+            subtitle="Португалия"
             url="/filials/?city=lissabon"
             image={Lissabon}
           />

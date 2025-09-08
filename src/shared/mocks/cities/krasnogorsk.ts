@@ -21,14 +21,14 @@ export const krasnogorsk = [
       [],
       [
         {
-          group: 'Группа 3-6 лет',
+          group: 'Группа 7–10 лет',
           time: '17:00-18:00',
-          id: 'junior',
+          id: 'middle',
         },
         {
-          group: 'Группа 7–10 лет',
+          group: 'Группа 3-6 лет',
           time: '18:00-19:00',
-          id: 'middle',
+          id: 'junior',
         },
         {
           group: 'Группа 11-16 лет',
@@ -44,14 +44,14 @@ export const krasnogorsk = [
       [],
       [
         {
-          group: 'Группа 3-6 лет',
+          group: 'Группа 7–10 лет',
           time: '17:00-18:00',
-          id: 'junior',
+          id: 'middle',
         },
         {
-          group: 'Группа 7–10 лет',
+          group: 'Группа 3-6 лет',
           time: '18:00-19:00',
-          id: 'middle',
+          id: 'junior',
         },
         {
           group: 'Группа 11-16 лет',

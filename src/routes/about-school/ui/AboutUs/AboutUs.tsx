@@ -76,7 +76,7 @@ export function AboutUs() {
                 />
                 <div className={styles.FounderInfo}>
                   <Typography weight="demiBold">Тимур Рогозин</Typography>
-                  <Typography>Professor Pirulito</Typography>
+                  <Typography>Contra-Mestre Pirulito</Typography>
                 </div>
               </div>
             </div>

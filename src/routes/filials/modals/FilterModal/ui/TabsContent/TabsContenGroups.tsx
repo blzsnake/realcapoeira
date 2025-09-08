@@ -10,11 +10,13 @@ function CheckboxOption({
   checked,
   groupValues,
   onChange,
+  onFilterChange,
 }: {
   label: string;
   value: string;
   checked: boolean;
   onChange: () => void;
+  onFilterChange: () => void;
   groupValues: TypeOption[];
 }) {
   return (
@@ -23,6 +25,7 @@ function CheckboxOption({
       name="group"
       checked={checked}
       text={label}
+      onFilterChange={onFilterChange}
       onChange={onChange}
       value={value}
       classNameWrap={styles.RadioWrap}
@@ -46,7 +49,8 @@ export function TabsContentGroups({
           checked={
             !!selectedGroups?.find((group) => group.value === item.value)
           }
-          onChange={changeHander}
+          onFilterChange={changeHander}
+          onChange={() => {}}
         />
       ))}
     </div>

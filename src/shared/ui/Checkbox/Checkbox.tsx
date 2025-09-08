@@ -7,6 +7,7 @@ import type { TCheckboxProps } from './types';
 export function Checkbox({
   name,
   onChange,
+  onFilterChange,
   text,
   className,
   classNameWrap,
@@ -31,8 +32,8 @@ export function Checkbox({
         className={cn(className, styles.Input, { [styles.InputError]: error })}
         onChange={(e) => {
           onChange(e);
-          if (isValueExist && filteredGroupsVals) {
-            onChange(
+          if (onFilterChange) {
+            onFilterChange(
               isValueExist
                 ? filteredGroupsVals
                 : groupValues?.concat([
