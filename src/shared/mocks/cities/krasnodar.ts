@@ -175,14 +175,14 @@ export const krasnodar = [
       [],
       [
         {
-          group: '7-10 лет',
-          time: '12:00-13:00',
-          id: 'middle',
-        },
-        {
           group: '3-6 лет',
           time: '11:00-11:50',
           id: 'junior',
+        },
+        {
+          group: '7-10 лет',
+          time: '12:00-13:00',
+          id: 'middle',
         },
       ],
       [],

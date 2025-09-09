@@ -18,6 +18,7 @@ import { FormResultModal } from './modals/FormResultModal/FormResultModal';
 const OPTIONS = [
   { address: { city: 'Любой', street: '' } },
   ...FILIALS_MOCK.moscow,
+  ...FILIALS_MOCK.korolev,
   ...FILIALS_MOCK.krasnodar,
   ...FILIALS_MOCK.krasnogorsk,
   ...FILIALS_MOCK.kazan,
