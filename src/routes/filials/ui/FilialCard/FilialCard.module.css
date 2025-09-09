@@ -33,17 +33,21 @@
   }
 
   &:nth-child(odd) {
-    background-color: #F6F4F3;
-    .ScheduleWrap {
-      background-color: #fff;
+    @media (max-width: 760px) {
+      background-color: #F6F4F3;
+      .ScheduleWrap {
+        background-color: #fff;
+      }
     }
   } 
   &:nth-child(even) {
-    background-color: #fff;
-    .ScheduleWrap {
-      background-color: #F6F4F3;
+    @media (max-width: 760px) {
+      background-color: #fff;
+      .ScheduleWrap {
+        background-color: #F6F4F3;
+      }
     }
-  } 
+  }
 }
 
 .Head {
