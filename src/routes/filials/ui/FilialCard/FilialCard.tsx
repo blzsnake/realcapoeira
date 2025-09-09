@@ -90,52 +90,52 @@ export const FilialCard = forwardRef<Ref, TFilialCardData>((props, ref) => {
         )}
         {addressName}
       </Typography>
-      <div className={styles.Coaches}>
-        {props?.coaches?.map((coach) => (
-          <Typography
-            className={styles.Coach}
-            key={coach.phone}
-          >{`${coach.name} ${coach.phone}`}</Typography>
-        ))}
-      </div>
+      {props?.coaches?.map((coach) => (
+        <Typography
+          className={styles.Coach}
+          key={coach.phone}
+        >{`${coach.name} ${coach.phone}`}</Typography>
+      ))}
       {cardActive ? (
-        <div>
-          <div className={styles.Schedule}>
-            <div className={styles.ScheduleWrap}>
-              {props?.schedule?.map((item, index) => (
-                <div
-                  key={`${WEEK_DAYS[index]}`}
-                  className={styles.ScheduleItem}
-                >
+        <div className={styles.ScheduleWrap}>
+          {props?.schedule?.map((item, index) => (
+            <div
+              key={`${WEEK_DAYS[index]}`}
+              className={cn(styles.ScheduleItem, {
+                [styles.ScheduleItem_empty]: !item.length,
+              })}
+            >
+              <div
+                // onClick={() => item?.length && setActiveSchedule(index)}
+                className={cn(styles.ScheduleWeekDay, {
+                  [styles.ScheduleWeekDayDisabled]: !item?.length,
+                  // [styles.ScheduleWeekDayActive]: index === activeSchedule,
+                })}
+              >
+                {WEEK_DAYS[index]}
+              </div>
+              <div className={styles.ScheduleGroups}>
+                {item?.map((el) => (
                   <div
-                    onClick={() => item?.length && setActiveSchedule(index)}
-                    className={cn(styles.ScheduleWeekDay, {
-                      [styles.ScheduleWeekDayDisabled]: !item?.length,
-                      [styles.ScheduleWeekDayActive]: index === activeSchedule,
-                    })}
+                    key={`${el.time}_${el.id}`}
+                    className={styles.ScheduleGroupRow}
                   >
-                    {WEEK_DAYS[index]}
+                    <Typography className={styles.ScheduleGroup}>
+                      {el.group}
+                    </Typography>
+                    <Typography className={styles.ScheduleTime}>
+                      {el.time}
+                    </Typography>
                   </div>
-                  <div className={styles.ScheduleGroups}>
-                    {item?.map((el) => (
-                      <>
-                        <Typography className={styles.ScheduleGroup}>
-                          {el.group}
-                        </Typography>
-                        <Typography className={styles.ScheduleTime}>
-                          {el.time}
-                        </Typography>
-                      </>
-                    ))}
-                  </div>
-                </div>
-              ))}
+                ))}
+              </div>
             </div>
-            <div className={styles.ScheduleGroupsMobile}>
+          ))}
+          {/* <div className={styles.ScheduleGroupsMobile}>
               {props.schedule[activeSchedule]?.map((el) => (
                 <div
                   key={`${el.time}_${el.id}`}
-                  className={styles.ScheduleGroupsMobileRow}
+                  className={styles.ScheduleGroupsMobileColumn}
                 >
                   <Typography className={styles.ScheduleGroup}>
                     {el.group}
@@ -145,8 +145,7 @@ export const FilialCard = forwardRef<Ref, TFilialCardData>((props, ref) => {
                   </Typography>
                 </div>
               ))}
-            </div>
-          </div>
+            </div> */}
         </div>
       ) : null}
       <div onClick={handleToggleSchedule} className={styles.ScheduleToggle}>

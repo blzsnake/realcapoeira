@@ -20,21 +20,9 @@
 }
 
 .FilialCardActive {
-  background-color: #F6F4F3;
-
   .Button {
     opacity: 1;
   }
-  /* &::before {
-    content: '';
-    position: absolute;
-    height: 100%;
-    width: 100%;
-    right: 100%;
-    top: 0;
-    border-bottom: 1px solid #fff;
-    background-color: #fff;
-  } */
 
   .ScheduleToggle {
     margin-top: 24px;
@@ -43,6 +31,19 @@
       transform: rotate(135deg);
     }
   }
+
+  &:nth-child(odd) {
+    background-color: #F6F4F3;
+    .ScheduleWrap {
+      background-color: #fff;
+    }
+  } 
+  &:nth-child(even) {
+    background-color: #fff;
+    .ScheduleWrap {
+      background-color: #F6F4F3;
+    }
+  } 
 }
 
 .Head {
@@ -102,16 +103,43 @@
 
 .ScheduleWrap {
   display: flex;
-  gap: 8px;
   width: 100%;
   justify-content: space-between;
+  flex-direction: column;
+  padding: 0 16px;
+  background-color: #fff;
+  border-radius: 16px;
+  margin-top: 16px;
+  @media (min-width: 760px) {
+    gap: 8px;
+    flex-direction: row;
+    background-color: initial;
+    padding: 0;
+    border-radius: 0;
+  }
 }
 
 .ScheduleItem {
-  width: 40px;
+  width: 100%;
+  display: flex;
+  padding: 12px 0;
+  border-bottom: 1px solid #ececec;
+
+  &:last-child {
+    border: none;
+  }
   @media (min-width: 760px) {
+    border: none;
+    padding: 0;
     display: block;
     width: 86px;
+  }
+
+  &_empty {
+    display: none;
+    @media (min-width: 760px) {
+      display: block;
+    }
   }
 }
 
@@ -120,14 +148,12 @@
 }
 
 .ScheduleWeekDay {
+  margin-right: 16px;
   margin-bottom: 10px;
   font-size: 18px;
-  @media (max-width: 760px) {
-    height: 100%;
-    text-align: center;
-    padding-top: 7.5px;
-  }
+  font-weight: bold;
   @media (min-width: 760px) {
+    margin-right: 0;
     display: block;
     font-size: 20px;
     font-weight: bold;
@@ -135,9 +161,10 @@
   }
 }
 
-.ScheduleGroupsMobileRow {
+.ScheduleGroupsMobileColumn {
   display: flex;
   justify-content: space-between;
+  flex-direction: column;
 }
 
 .ScheduleWeekDayActive {
@@ -148,6 +175,16 @@
   } 
 }
 
+.ScheduleGroupRow {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+
+  @media (min-width: 760px) {
+    display: block;
+  }
+}
+
 .ScheduleGroupsMobile {
   @media (min-width: 760px) {
     display: none;
@@ -155,10 +192,12 @@
 }
 
 .ScheduleGroups {
-  display: none;
+  display: block;
+  width: 100%;
 
   @media (min-width: 760px) {
     display: block;
+    width: auto;
   }
 }
 
@@ -166,6 +205,15 @@
   margin-top: 10px;
   margin-bottom: 4px;
   font-size: 12px;
+
+  &:first-child {
+    margin-top: 0;
+    @media (min-width: 760px) {
+      margin-top: 10px;
+    }
+  }
+
+
 }
 
 .ScheduleTime {
