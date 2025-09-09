@@ -1,11 +1,11 @@
 import { Button } from '~shared/ui/button/Button';
 import { Typography } from '~shared/ui/typography';
-import Brazil from '~app/assets/Brazil.svg?react';
-import Video1 from '~app/assets/Video1.svg?react';
-import Video2 from '~app/assets/Video2.svg?react';
-import Video3 from '~app/assets/Video3.svg?react';
-import Video4 from '~app/assets/Video4.svg?react';
-import Video5 from '~app/assets/Video5.svg?react';
+import Brazil from '~app/assets/brazil_2.svg?react';
+import Video1 from '~app/assets/video1.png';
+import Video2 from '~app/assets/video2.png';
+import Video3 from '~app/assets/video3.png';
+import Video4 from '~app/assets/video4.png';
+import Video5 from '~app/assets/video5.png';
 import styles from './Video.module.css';
 
 export function Video() {
@@ -53,11 +53,11 @@ export function Video() {
         </Button>
       </div>
       <div className={styles.VideoRow}>
-        <Video1 />
-        <Video2 />
-        <Video3 />
-        <Video4 />
-        <Video5 className={styles.Video5} />
+        <img src={Video1} alt="logo" />
+        <img src={Video2} alt="logo" />
+        <img src={Video3} alt="logo" />
+        <img src={Video4} alt="logo" />
+        <img src={Video5} alt="logo" className={styles.Video5} />
       </div>
     </div>
   );
