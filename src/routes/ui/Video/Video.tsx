@@ -1,6 +1,6 @@
 import { Button } from '~shared/ui/button/Button';
 import { Typography } from '~shared/ui/typography';
-import Brazil from '~app/assets/brazil_2.svg?react';
+import Brazil from '~app/assets/Brazil.svg?react';
 import Video1 from '~app/assets/video1.png';
 import Video2 from '~app/assets/video2.png';
 import Video3 from '~app/assets/video3.png';
