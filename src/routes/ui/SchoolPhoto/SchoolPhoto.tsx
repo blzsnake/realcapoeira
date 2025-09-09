@@ -22,12 +22,8 @@ export function SchoolPhoto({ scrollHandler }: { scrollHandler: () => void }) {
           REAL CAPOEIRA
         </h1>
         <div className={styles.ButtonsBlockMobile}>
-          <Button
-            color="yellow"
-            className={styles.Button}
-            onClick={handleScrollToForm}
-          >
-            Записаться
+          <Button className={styles.Button} url="/about-school/">
+            О школе
           </Button>
           <Button url="/filials/" color="white" className={styles.Button}>
             Филиалы
