@@ -31,23 +31,6 @@
       transform: rotate(135deg);
     }
   }
-
-  &:nth-child(odd) {
-    @media (max-width: 760px) {
-      background-color: #F6F4F3;
-      .ScheduleWrap {
-        background-color: #fff;
-      }
-    }
-  } 
-  &:nth-child(even) {
-    @media (max-width: 760px) {
-      background-color: #fff;
-      .ScheduleWrap {
-        background-color: #F6F4F3;
-      }
-    }
-  }
 }
 
 .Head {

@@ -24,10 +24,23 @@ const OPTIONS = [
   ...FILIALS_MOCK.kazan,
   ...FILIALS_MOCK.lissabon,
   ...FILIALS_MOCK.mytishi,
-].map((item) => ({
-  value: `${item.address.city} ${item.address?.metro?.name || item.address?.street}`,
-  label: `${item.address.city} ${item.address?.metro?.name || item.address?.street}`,
-}));
+].reduce((arr, item) => {
+  const idDuplicate = arr.find(
+    (el) =>
+      el.value ===
+      `${item.address.city} ${item.address?.metro?.name || item.address?.street}`
+  );
+
+  return !idDuplicate
+    ? [
+        ...arr,
+        {
+          value: `${item.address.city} ${item.address?.metro?.name || item.address?.street}`,
+          label: `${item.address.city} ${item.address?.metro?.name || item.address?.street}`,
+        },
+      ]
+    : arr;
+}, []);
 
 export const customStyles = {
   container: (base) => ({
@@ -92,6 +105,7 @@ const intitialFormState = {
 };
 
 export function SignUpForm({ contactsVariant = false }: TSignUpFormProps) {
+  console.log(OPTIONS);
   const formRef = useRef<HTMLFormElement>(undefined);
   const [errors, setFormErrors] = useState<TSignUpFormErrors | null>(null);
   const address = useSelector(

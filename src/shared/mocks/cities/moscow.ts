@@ -558,7 +558,7 @@ export const moscow = [
       city: 'г. Москва',
       metro: {
         name: 'Тимирязевская',
-        color: '#faa402',
+        color: '#a1a2a3',
       },
       street: 'ул. Дубки д.7',
       lat: 55.820657,
@@ -699,7 +699,7 @@ export const moscow = [
     address: {
       city: 'г. Москва',
       metro: {
-        name: 'Дубнинская',
+        name: 'Яхромская',
         color: '#b4d445',
       },
       street: 'Ул. Дубнинская 73А',
@@ -716,37 +716,57 @@ export const moscow = [
     schedule: [
       [
         {
-          group: 'Группа 3-6 лет',
-          time: '17:00-18:30',
+          group: 'Группа 3-4 года',
+          time: '16:15-17:00',
           id: 'junior',
         },
         {
-          group: 'Группа 7–10 лет',
-          time: '18:30-19:30',
+          group: 'Группа 5-6 лет',
+          time: '17:00-17:45',
+          id: 'junior',
+        },
+        {
+          group: 'Группа 7-10 лет',
+          time: '17:45-18:45',
           id: 'middle',
         },
         {
           group: 'Группа 11-16 лет',
-          time: '19:30-20:30',
+          time: '18:45-19:45',
           id: 'senior',
+        },
+        {
+          group: 'Группа 16+',
+          time: '19:45-21:00',
+          id: 'staff',
         },
       ],
       [],
       [
         {
-          group: 'Группа 3-6 лет',
-          time: '17:00-18:30',
+          group: 'Группа 3-4 года',
+          time: '16:15-17:00',
           id: 'junior',
         },
         {
-          group: 'Группа 7–10 лет',
-          time: '18:30-19:30',
+          group: 'Группа 5-6 лет',
+          time: '17:00-17:45',
+          id: 'junior',
+        },
+        {
+          group: 'Группа 7-10 лет',
+          time: '17:45-18:45',
           id: 'middle',
         },
         {
           group: 'Группа 11-16 лет',
-          time: '19:30-20:30',
+          time: '18:45-19:45',
           id: 'senior',
+        },
+        {
+          group: 'Группа 16+',
+          time: '19:45-21:00',
+          id: 'staff',
         },
       ],
       [],
@@ -1314,8 +1334,8 @@ export const moscow = [
         color: '#f58220',
       },
       street: 'ул. Полярная 9, КДЦ Полярный',
-      lat: 55.888982,
-      lng: 37.64445,
+      lat: 55.87438,
+      lng: 37.636051,
     },
     coaches: [
       {
