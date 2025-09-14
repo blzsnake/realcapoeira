@@ -125,18 +125,18 @@ export function Header() {
                     Филиалы
                   </Typography>
                 </Link>
-                {/* <Link viewTransition url="/trainers/" aria-label="Инструкторы">
+                <Link viewTransition url="/coaches/" aria-label="Инструкторы">
                   <Typography
                     weight={
-                      isLinkActive(actualPath, '/trainers/')
+                      isLinkActive(actualPath, '/coaches/')
                         ? 'demiBold'
                         : 'regular'
                     }
-                    className={getLinkActiveStyle(actualPath, '/trainers/')}
+                    className={getLinkActiveStyle(actualPath, '/coaches/')}
                   >
                     Инструкторы
                   </Typography>
-                </Link> */}
+                </Link>
                 <Link viewTransition url="/contacts" aria-label="Контакты">
                   <Typography
                     weight={

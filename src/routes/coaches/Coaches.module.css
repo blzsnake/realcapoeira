@@ -1,0 +1,38 @@
+.Wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.MainWrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 48px;
+  margin-top: 24px;
+  width: 100%;
+  max-width: 1440px;
+
+  @media (min-width: 1025px) {
+    gap: 100px;
+    margin-top: 56px;
+    padding: 0 20px;
+  }
+
+  @media (min-width: 1440px) {
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 0 40px;
+  }
+}
+
+.Form {
+  width: 100%;
+  background-color: var(--gray);
+  border-radius: 20px;
+  padding: 20px;
+
+  @media (min-width: 1440px) {
+    padding: 20px 40px;
+  }
+}
