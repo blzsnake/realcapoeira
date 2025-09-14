@@ -4,7 +4,7 @@ import { Button } from '~shared/ui/button/Button';
 import { CITIES } from '~shared/consts/cities';
 import Telegram from '~app/assets/telegram.svg?react';
 import Whatsapp from '~app/assets/whatsapp.svg?react';
-import { CitySelect } from '../CitySelect';
+import { CitySelect } from '../Filter';
 import styles from './ContactsPart.module.css';
 
 export function ContactsPart() {

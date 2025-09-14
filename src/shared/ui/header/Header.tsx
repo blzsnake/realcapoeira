@@ -125,7 +125,7 @@ export function Header() {
                     Филиалы
                   </Typography>
                 </Link>
-                <Link viewTransition url="/coaches/" aria-label="Инструкторы">
+                <Link viewTransition url="/coaches/" aria-label="Тренеры">
                   <Typography
                     weight={
                       isLinkActive(actualPath, '/coaches/')
@@ -134,7 +134,7 @@ export function Header() {
                     }
                     className={getLinkActiveStyle(actualPath, '/coaches/')}
                   >
-                    Инструкторы
+                    Тренеры
                   </Typography>
                 </Link>
                 <Link viewTransition url="/contacts" aria-label="Контакты">

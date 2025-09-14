@@ -1,15 +1,15 @@
-import { SignUpForm } from '~shared/ui/SignUpFormGroup/SignUpForm';
-import { ContactsPart } from './ui/ContactsPart';
+import { Typography } from '~shared/ui/typography';
 import styles from './Coaches.module.css';
+import { Filter } from './ui/Filter/Filter';
 
 export function CoachesPage() {
   return (
     <main className={styles.Wrap}>
-      <div className={styles.MainWrap}>
-        <ContactsPart />
-        <div className={styles.Form}>
-          <SignUpForm contactsVariant />
-        </div>
+      <div className={styles.Header}>
+        <Typography component="h1" className={styles.Title}>
+          Тренеры
+        </Typography>
+        <Filter />
       </div>
     </main>
   );
