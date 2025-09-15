@@ -30,6 +30,7 @@ export function Header() {
   const headerBgClass = isGrayBgRoute(actualPath)
     ? styles.GrayBg
     : styles.WhiteBg;
+
   const [color, switchColor] = useState(headerBgClass);
 
   useEffect(() => {
@@ -94,7 +95,7 @@ export function Header() {
                     О школе
                   </Typography>
                 </Link>
-                {/* <Link
+                <Link
                   viewTransition
                   url="/about-capoeira/"
                   aria-label="Что такое капоэйра"
@@ -112,7 +113,7 @@ export function Header() {
                   >
                     Что такое капоэйра
                   </Typography>
-                </Link> */}
+                </Link>
                 <Link viewTransition url="/filials" aria-label="Филиалы">
                   <Typography
                     weight={
