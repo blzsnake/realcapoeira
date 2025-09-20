@@ -44,3 +44,17 @@
     min-width: 470px;
   }
 }
+
+.Slider {
+  padding-top: 16px;
+  display: flex;
+  gap: 8px;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  width: 100%;
+  overflow-x: auto;
+}
+
+.Slider::-webkit-scrollbar {
+  display: none;
+}
