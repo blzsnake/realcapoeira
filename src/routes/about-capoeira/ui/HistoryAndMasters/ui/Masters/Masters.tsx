@@ -2,6 +2,8 @@ import { useRef } from 'react';
 import { Typography } from '~shared/ui/typography';
 import RightArrow from '~app/assets/right_arrow.svg?react';
 import LeftArrow from '~app/assets/left_arrow.svg?react';
+import Moscow from '~app/assets/moscow.png';
+import { MasterCard } from './MasterCard/MasterCard';
 import styles from './Masters.module.css';
 
 export function Masters() {
@@ -39,7 +41,11 @@ export function Masters() {
         </div>
       </div>
       <div ref={refMasters} className={styles.Slider} id="#masters">
-        <p>карточка тренера</p>
+        <MasterCard
+          image={Moscow}
+          title="Мастер 1"
+          subtitle="Описание мастера 1"
+        />
       </div>
     </article>
   );

@@ -1,0 +1,45 @@
+.MasterCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 250px;
+  height: 315px;
+  cursor: pointer;
+  flex-shrink: 0;
+  gap: 24px;
+
+  @media (min-width: 1025px) {
+    width: 322px;
+  }
+}
+
+.Image {
+  width: 250px;
+  border-radius: 50%;
+
+  @media (min-width: 1025px) {
+    width: 322px;
+  }
+}
+
+.Title {
+  font-size: 20px;
+  line-height: 120%;
+  color: var(--white);
+
+  @media (min-width: 1025px) {
+    font-size: 28px;
+    line-height: 120%;
+  }
+}
+
+.Subtitle {
+  font-size: 14px;
+  line-height: 120%;
+  color: var(--white);
+
+  @media (min-width: 1025px) {
+    font-size: 24px;
+    line-height: 120%;
+  }
+}
