@@ -17,6 +17,14 @@
   @media (min-width: 1025px) {
     height: 800px;
   }
+
+  padding-top: 57px;
+
+  @media (min-width: 1025px) {
+    gap: 100px;
+    padding-left: 40px;
+    padding-top: 101px;
+  }
 }
 
 .Content {
@@ -63,10 +71,30 @@
   }
 }
 
-.Image {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+.Flag {
+  display: none;
+
+  @media (min-width: 1025px) {
+    display: flex;
+    top: 241px;
+    left: 0;
+    position: absolute;
+    width: 244px;
+    height: 172px;
+    object-fit: cover;
+  }
+}
+
+.Map {
+  display: none;
+
+  @media (min-width: 1025px) {
+    display: flex;
+    top: 390px;
+    left: 203px;
+    position: absolute;
+    width: 1067px;
+    height: 983px;
+    object-fit: cover;
+  }
 }

@@ -5,25 +5,19 @@ import styles from './HeaderPart.module.css';
 export function HeaderPart() {
   return (
     <div className={styles.Wrap} id="#headerScrollMarker">
-      <img src={CapoeiraPicture} className={styles.Image} alt="Команда" />
+      <img src={CapoeiraPicture} className={styles.Image} alt="Капоэйра" />
       <div className={styles.Content}>
-        <div className={styles.MainInfo}>
-          <Typography
-            component="h1"
-            color="white"
-            weight="demiBold"
-            className={styles.Title}
-          >
-            КАПОЭЙРА
-          </Typography>
-          <Typography
-            component="h2"
-            color="white"
-            className={styles.Description}
-          >
-            Не просто спорт — часть культурного наследия ЮНЕСКО
-          </Typography>
-        </div>
+        <Typography
+          component="h1"
+          color="white"
+          weight="demiBold"
+          className={styles.Title}
+        >
+          КАПОЭЙРА
+        </Typography>
+        <Typography component="h2" color="white" className={styles.Description}>
+          Не просто спорт — часть культурного наследия ЮНЕСКО
+        </Typography>
       </div>
     </div>
   );

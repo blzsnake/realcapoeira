@@ -1,13 +1,14 @@
 import { HeaderPart } from './ui/HeaderPart';
 import styles from './AboutCapoeira.module.css';
+import { HistoryAndMasters } from './ui/HistoryAndMasters/HistoryAndMasters';
 
 export function AboutCapoeiraPage() {
   return (
-    <main className={styles.Wrap}>
+    <main className={styles.MainWrap}>
       <HeaderPart />
-      {/* <div className={styles.ContentWithoutPadding}>
-        
-      </div> */}
+      <div className={styles.PageContent}>
+        <HistoryAndMasters />
+      </div>
     </main>
   );
 }
