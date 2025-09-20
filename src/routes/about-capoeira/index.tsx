@@ -5,6 +5,9 @@ export function AboutCapoeiraPage() {
   return (
     <main className={styles.Wrap}>
       <HeaderPart />
+      {/* <div className={styles.ContentWithoutPadding}>
+        
+      </div> */}
     </main>
   );
 }

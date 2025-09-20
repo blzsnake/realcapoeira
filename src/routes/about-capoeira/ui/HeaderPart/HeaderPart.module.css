@@ -9,17 +9,13 @@
 
 .Wrap {
   width: 100%;
-  background-color: var(--gray);
   display: flex;
   justify-content: center;
-  padding-top: 24px;
+  position: relative;
+  height: 583px;
 
   @media (min-width: 1025px) {
-    padding-top: 63px;
-  }
-
-  @media (min-width: 1440px) {
-    padding-top: 56px;
+    height: 800px;
   }
 }
 
@@ -27,13 +23,14 @@
   width: 100%;
   display: flex;
   flex-direction: column;
-  align-items: start;
+  align-items: center;
   justify-content: start;
-  padding: 0 20px;
   max-width: 1360px;
+  padding: calc(24 / 375 * 100vw) 20px;
 
-  @media (min-width: 1440px) {
-    padding: 0;
+  @media (min-width: 1025px) {
+    justify-content: center;
+    padding: 0 40px;
   }
 }
 
@@ -74,12 +71,9 @@
 }
 
 .Image {
+  position: absolute;
+  inset: 0;
   width: 100%;
-  opacity: 0;
-  animation: fadeIn 2s ease-in-out forwards;
-  animation-delay: 0s;
-
-  @media (min-width: 1025px) {
-    margin-top: -35px;
-  }
+  height: 100%;
+  object-fit: cover;
 }
