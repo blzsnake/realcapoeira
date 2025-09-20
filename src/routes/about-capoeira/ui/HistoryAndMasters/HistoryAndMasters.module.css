@@ -1,26 +1,13 @@
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
 .Wrap {
-  width: 100%;
+  max-width: 1440px;
   display: flex;
   justify-content: center;
   position: relative;
   height: 583px;
-
-  @media (min-width: 1025px) {
-    height: 800px;
-  }
-
   padding-top: 57px;
 
   @media (min-width: 1025px) {
+    height: 800px;
     gap: 100px;
     padding-left: 40px;
     padding-top: 101px;
@@ -29,6 +16,7 @@
 
 .Content {
   width: 100%;
+  height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -37,17 +25,13 @@
   padding: calc(24 / 375 * 100vw) 20px;
   min-width: 335px;
   margin: 0 auto;
-  opacity: 0;
-  animation: fadeIn 1s ease-in-out forwards;
-  animation-delay: 1s;
+
+  @media (min-width: 1025px) {
+    padding: 0 40px;
+  }
 
   @media (min-width: 1440px) {
     min-width: 1360px;
-  }
-
-  @media (min-width: 1025px) {
-    justify-content: center;
-    padding: 0 40px;
   }
 }
 

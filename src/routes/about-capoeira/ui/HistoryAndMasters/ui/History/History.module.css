@@ -1,0 +1,43 @@
+.History {
+  padding: 0 20px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  z-index: 1000;
+
+  @media (min-width: 1025px) {
+    padding: 0 40px;
+  }
+
+  @media (min-width: 1440px) {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+}
+
+.Title {
+  width: 100%;
+  font-size: 28px;
+  line-height: 120%;
+  flex-shrink: 0;
+
+  @media (min-width: 1025px) {
+    font-size: 56px;
+    width: 437px;
+  }
+}
+
+.Column {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  font-size: 18px;
+  line-height: 24px;
+
+  @media (min-width: 1025px) {
+    gap: 40px;
+    font-size: 24px;
+    line-height: 150%;
+  }
+}
