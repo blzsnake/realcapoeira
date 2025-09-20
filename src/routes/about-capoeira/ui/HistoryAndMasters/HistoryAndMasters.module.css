@@ -25,9 +25,11 @@
   padding: calc(24 / 375 * 100vw) 20px;
   min-width: 335px;
   margin: 0 auto;
+  gap: 48px;
 
   @media (min-width: 1025px) {
     padding: 0 40px;
+    gap: 100px;
   }
 
   @media (min-width: 1440px) {
