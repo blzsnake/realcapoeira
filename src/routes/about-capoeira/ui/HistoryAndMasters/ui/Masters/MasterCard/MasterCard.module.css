@@ -37,7 +37,8 @@
   height: 48px;
 
   @media (min-width: 1025px) {
-    right: 40px;
+    bottom: 15px;
+    right: 45px;
     width: 48px;
   }
 }

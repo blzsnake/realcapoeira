@@ -5,6 +5,7 @@
   flex-direction: column;
   gap: 24px;
   z-index: 1000;
+  max-width: 1360px;
 
   @media (min-width: 1025px) {
     padding: 0 40px;

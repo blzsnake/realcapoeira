@@ -88,6 +88,7 @@ export function Masters() {
           title="Mestre Joao Pequeno"
           subtitle="Жоау Перейра душ Сантуш"
         />
+        <div className={styles.EmptyPlug} />
       </div>
     </article>
   );

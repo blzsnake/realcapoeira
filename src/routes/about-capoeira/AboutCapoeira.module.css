@@ -8,15 +8,14 @@
   display: flex;
   flex-direction: column;
   padding: 0 20px;
-  max-width: 1440px;
   gap: 48px;
 }
 
 .PageContent {
   width: 100%;
   background-color: var(--bg-black);
-  height: 100vh;
   display: flex;
   justify-content: center;
+  height: 100vh;
   /* TO-DO: убрать height */
 }
