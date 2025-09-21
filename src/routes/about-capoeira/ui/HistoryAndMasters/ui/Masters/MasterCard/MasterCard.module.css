@@ -1,4 +1,5 @@
 .MasterCard {
+  height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -10,16 +11,42 @@
 
   @media (min-width: 1025px) {
     width: 322px;
+    height: 402px;
   }
+}
+
+.ImageContainer {
+  position: relative;
 }
 
 .Image {
   width: 250px;
-  border-radius: 50%;
+  height: 250px;
+  object-fit: contain;
 
   @media (min-width: 1025px) {
     width: 322px;
   }
+}
+
+.Brazil {
+  position: absolute;
+  bottom: 10px;
+  right: 20px;
+  width: 48px;
+  height: 48px;
+
+  @media (min-width: 1025px) {
+    right: 40px;
+    width: 48px;
+  }
+}
+
+.TextContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
 }
 
 .Title {

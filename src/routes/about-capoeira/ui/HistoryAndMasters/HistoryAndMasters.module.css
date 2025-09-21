@@ -1,16 +1,14 @@
 .Wrap {
-  max-width: 1440px;
+  height: 100%;
   display: flex;
   justify-content: center;
   position: relative;
-  height: 583px;
   padding-top: 57px;
 
   @media (min-width: 1025px) {
-    height: 800px;
     gap: 100px;
     padding-left: 40px;
-    padding-top: 101px;
+    padding-top: 101.5px;
   }
 }
 
