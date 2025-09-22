@@ -27,11 +27,12 @@
 
 .Countries {
   padding-top: 16px;
+  padding-right: 5%;
   display: flex;
   gap: 8px;
   -ms-overflow-style: none;
   scrollbar-width: none;
-  width: 100%;
+  width: calc(50% + 50vw);
   overflow-x: auto;
 }
 
@@ -107,6 +108,7 @@
 .Wrap {
   position: relative;
   width: 100%;
+  max-width: 1360px;
 
   &:hover {
     .ArrowLeftIcon,
