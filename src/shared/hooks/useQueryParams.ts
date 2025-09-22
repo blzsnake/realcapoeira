@@ -57,7 +57,7 @@ export const useQueryParams = () => {
       setSelectedAgeGroup(null);
     }
     if (query.coach) {
-      const selected = COACHES.filter((e) => query.coach.includes(e.value));
+      const selected = COACHES.filter((e) => query.coach.includes(e.id));
       setSelectedCoach(selected);
     } else {
       setSelectedCoach(null);

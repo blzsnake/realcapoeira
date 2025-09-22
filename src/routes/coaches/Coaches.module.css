@@ -13,6 +13,7 @@
 
 .Header {
   width: 100%;
+  margin-bottom: 24px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -22,6 +23,7 @@
     flex-direction: row;
   }
   @media (min-width: 1440px) {
+    margin-bottom: 40px;
     padding: 0;
   }
 }
@@ -34,5 +36,15 @@
   @media (min-width: 1025px) {
     margin-bottom: 0;
     font-size: 80px;
+  }
+}
+
+.Coaches {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  gap: 8px;
+  @media (min-width: 760px) {
+    gap: 24px;
   }
 }

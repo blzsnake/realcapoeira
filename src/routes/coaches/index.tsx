@@ -1,8 +1,13 @@
 import { Typography } from '~shared/ui/typography';
-import styles from './Coaches.module.css';
+import { COACHES } from '~shared/mocks';
 import { Filter } from './ui/Filter/Filter';
+import { CoachCard } from './ui/CoachCard';
+
+import styles from './Coaches.module.css';
 
 export function CoachesPage() {
+  // добавить фильтрацию
+  const coachesFitered = COACHES.filter((el) => el.id);
   return (
     <main className={styles.Wrap}>
       <div className={styles.Header}>
@@ -11,6 +16,7 @@ export function CoachesPage() {
         </Typography>
         <Filter />
       </div>
+      <div className={styles.Coaches}>{coachesFitered.map(CoachCard)}</div>
     </main>
   );
 }
