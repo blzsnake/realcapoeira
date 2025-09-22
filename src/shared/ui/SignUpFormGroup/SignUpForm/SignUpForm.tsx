@@ -156,7 +156,6 @@ export function SignUpForm({ contactsVariant = false }: TSignUpFormProps) {
     }));
   };
 
-  console.log(address, 'ddd');
   const submitHander = () => {
     const { name, phone, filial } = formData || {};
     const isErrors = validate(formData);

@@ -16,7 +16,7 @@ type MobileMenuProps = { onClose: () => void };
 
 const LINKS = [
   { url: '/about-school', label: 'О школе' },
-  // { url: '/about-capoeira', label: 'Что такое капоэйра' },
+  { url: '/about-capoeira', label: 'Что такое капоэйра' },
   { url: '/filials', label: 'Филиалы' },
   { url: '/coaches/', label: 'Тренеры' },
   { url: '/contacts', label: 'Контакты' },

@@ -9,8 +9,13 @@
 .GrayBg {
   background: var(--gray);
 }
+
 .WhiteBg {
   background: var(--white);
+}
+
+.TransparentBg {
+  background: transparent;
 }
 
 .Header {
