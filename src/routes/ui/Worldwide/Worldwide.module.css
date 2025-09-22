@@ -27,6 +27,7 @@
 
 .Countries {
   padding-top: 16px;
+  padding-right: 5%;
   display: flex;
   gap: 8px;
   -ms-overflow-style: none;
