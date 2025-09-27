@@ -1,5 +1,8 @@
 import { Typography } from '~shared/ui/typography';
-import CapoeiraPicture from '~app/assets/CapoeiraPicture.png';
+import Pic1 from '~app/assets/components/Pic1.png';
+import Pic2 from '~app/assets/components/Pic2.png';
+import Pic3 from '~app/assets/components/Pic3.png';
+import Pic4 from '~app/assets/components/Pic4.png';
 import styles from './CapoeiraComponents.module.css';
 
 export function CapoeiraComponents() {
@@ -11,8 +14,22 @@ export function CapoeiraComponents() {
         className={styles.Title}
         color="white"
       >
-        Великие мастера
+        Из чего состоит капоэйра
       </Typography>
+      <div className={styles.ComponentsContainer}>
+        <div className={styles.Component}>
+          <div className={styles.Column}>
+            <Typography weight="demiBold" className={styles.CardTitle}>
+              Искусство боя
+            </Typography>
+            <Typography className={styles.Text}>
+              Боевые приемы, удары и уходы — важнейшая часть капоэйры. Они
+              развивают навыки самозащиты, координацию и ловкость
+            </Typography>
+          </div>
+          <img src={Pic1} className={styles.Image} alt="Искусство боя" />
+        </div>
+      </div>
     </div>
   );
 }

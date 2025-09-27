@@ -1,7 +1,8 @@
 import { SignUpFormGroup } from '~shared/ui/SignUpFormGroup';
 import { HeaderPart } from './ui/HeaderPart';
-import styles from './AboutCapoeira.module.css';
 import { HistoryAndMasters } from './ui/HistoryAndMasters/HistoryAndMasters';
+import { CapoeiraComponents } from './ui/CapoeiraComponents';
+import styles from './AboutCapoeira.module.css';
 
 export function AboutCapoeiraPage() {
   return (
@@ -10,6 +11,7 @@ export function AboutCapoeiraPage() {
       <div className={styles.PageContent}>
         <HistoryAndMasters />
         <div className={styles.ContentWithPadding}>
+          <CapoeiraComponents />
           <SignUpFormGroup
             title="Запишитесь за пару минут"
             description="Позвоните или оставьте заявку — тренер ответит на все вопросы и подберет подходящую группу для вас или ребенка"

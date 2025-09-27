@@ -11,8 +11,6 @@ export function Footer() {
 
   const isGrayFooter = path === '/about-capoeira/';
 
-  console.log(isGrayFooter, path);
-
   return path.includes('filials') ? null : (
     <footer className={cn(styles.Footer, { [styles.Dark]: isGrayFooter })}>
       <div className={styles.InnerContainer}>
