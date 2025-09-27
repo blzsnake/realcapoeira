@@ -20,7 +20,23 @@
 }
 
 .ComponentsContainer {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  width: calc(50% + 50vw);
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 
+  @media (min-width: 1025px) {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: auto;
+    gap: 24px;
+    width: 100%;
+  }
+}
+.ComponentsContainer::-webkit-scrollbar {
+  display: none;
 }
 
 .Component {
@@ -29,13 +45,15 @@
   flex-direction: column;
   padding: 24px;
   gap: 46px;
-  max-width: 335px;
+  width: 335px;
+  flex-shrink: 0;
   border-radius: 20px;
+  cursor: pointer;
 
   @media (min-width: 1025px) {
     flex-direction: row;
     gap: 18px;
-    max-width: 668px;
+    width: 668px;
   }
 }
 
@@ -67,11 +85,11 @@
 .Image {
   width: 100%;
   height: auto;
-  max-width: 200px;
+  width: 200px;
   margin-left: 87px;
 
   @media (min-width: 1025px) {
-    max-width: 300px;
+    width: 300px;
     margin: 0;
   }
 }
