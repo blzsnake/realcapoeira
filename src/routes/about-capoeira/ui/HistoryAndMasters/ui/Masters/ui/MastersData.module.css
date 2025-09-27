@@ -1,0 +1,31 @@
+.MasterData {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.Image {
+  width: 100%;
+  height: auto;
+}
+
+.Column {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.Heading {
+  font-size: 28px;
+  line-height: 120%;
+}
+
+.Text {
+  font-size: 18px;
+  line-height: 24px;
+
+  @media (min-width: 1025px) {
+    font-size: 24px;
+    line-height: 150%;
+  }
+}
