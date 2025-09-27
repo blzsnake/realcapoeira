@@ -1,8 +1,5 @@
 import { Typography } from '~shared/ui/typography';
 import { Modal, ModalBody, ModalTitle } from '~shared/ui/modal';
-import ShareTg from '~app/assets/ShareTg.svg?react';
-import ShareVk from '~app/assets/ShareVk.svg?react';
-import ShareLink from '~app/assets/ShareLink.svg?react';
 import { useRef } from 'react';
 import type { MasterModalProps } from './types';
 import styles from './MasterModal.module.css';

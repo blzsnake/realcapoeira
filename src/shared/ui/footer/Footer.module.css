@@ -1,14 +1,17 @@
 .Footer {
   padding-top: 48px;
   padding-bottom: 16px;
-  width: 100%;
+  width: 100%;  
+}
+
+.InnerContainer {
+  margin: 48px auto 0;
   max-width: 1360px;
   display: flex;
-  flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
   color: #444;
-  margin: 48px auto 0;
+
   margin-top: auto;
   font-size: 14px;
   line-height: 120%;
@@ -24,7 +27,7 @@
   padding-bottom: 10px;
   display: flex;
   justify-content: space-between;
-  
+
   svg {
     cursor: pointer;
   }
@@ -69,4 +72,12 @@
     padding-left: 0;
     padding-right: 0;
   }
+}
+
+.Dark {
+  background-color: var(--bg-black);
+}
+
+.Light {
+  color: var(--white);
 }

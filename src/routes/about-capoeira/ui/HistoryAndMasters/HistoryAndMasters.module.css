@@ -60,7 +60,7 @@
   @media (min-width: 1025px) {
     display: flex;
     top: 241px;
-    left: 0;
+    left: 120px;
     position: absolute;
     width: 244px;
     height: 172px;
@@ -74,7 +74,7 @@
   @media (min-width: 1025px) {
     display: flex;
     top: 390px;
-    left: 203px;
+    left: 333px;
     position: absolute;
     width: 1067px;
     height: 983px;
