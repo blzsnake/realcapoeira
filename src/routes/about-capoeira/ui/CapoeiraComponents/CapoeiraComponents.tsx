@@ -7,7 +7,7 @@ import styles from './CapoeiraComponents.module.css';
 
 export function CapoeiraComponents() {
   return (
-    <div className={styles.Wrap} id="#headerScrollMarker">
+    <div className={styles.Wrap}>
       <Typography
         component="h3"
         weight="demiBold"

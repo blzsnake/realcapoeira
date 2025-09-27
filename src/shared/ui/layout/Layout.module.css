@@ -11,3 +11,7 @@
     padding-top: 96px;
   }
 }
+
+.Gray {
+  background-color: var(--bg-black);
+}
