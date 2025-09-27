@@ -21,7 +21,7 @@ export function CapoeiraComponents() {
           className={styles.Component}
           onClick={() =>
             window.open(
-              'https://www.youtube.com/',
+              'https://vk.com/wall-269461_19569',
               '_blank',
               'noopener,noreferrer'
             )
@@ -42,7 +42,7 @@ export function CapoeiraComponents() {
           className={styles.Component}
           onClick={() =>
             window.open(
-              'https://www.youtube.com/',
+              'https://vk.com/wall-269461_19572',
               '_blank',
               'noopener,noreferrer'
             )
@@ -63,7 +63,7 @@ export function CapoeiraComponents() {
           className={styles.Component}
           onClick={() =>
             window.open(
-              'https://www.youtube.com/',
+              'https://vk.com/wall-269461_19571',
               '_blank',
               'noopener,noreferrer'
             )
@@ -84,7 +84,7 @@ export function CapoeiraComponents() {
           className={styles.Component}
           onClick={() =>
             window.open(
-              'https://www.youtube.com/',
+              'https://vk.com/wall-269461_19570',
               '_blank',
               'noopener,noreferrer'
             )
