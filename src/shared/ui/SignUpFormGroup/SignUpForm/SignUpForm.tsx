@@ -105,7 +105,6 @@ const intitialFormState = {
 };
 
 export function SignUpForm({ contactsVariant = false }: TSignUpFormProps) {
-  console.log(OPTIONS);
   const formRef = useRef<HTMLFormElement>(undefined);
   const [errors, setFormErrors] = useState<TSignUpFormErrors | null>(null);
   const address = useSelector(
