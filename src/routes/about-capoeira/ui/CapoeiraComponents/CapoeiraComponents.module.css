@@ -1,0 +1,14 @@
+.Wrap {}
+
+.Title {
+  width: 100%;
+  max-width: 220px;
+  font-size: 28px;
+  line-height: 120%;
+
+  @media (min-width: 1025px) {
+    font-size: 56px;
+    width: 437px;
+    min-width: 470px;
+  }
+}
