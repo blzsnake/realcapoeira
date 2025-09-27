@@ -13,9 +13,11 @@
   width: 100%;
   font-size: 28px;
   line-height: 120%;
+  padding-left: 20px;
 
   @media (min-width: 1025px) {
     font-size: 56px;
+    padding-left: 40px;
   }
 }
 
@@ -27,7 +29,7 @@
   -ms-overflow-style: none;
   scrollbar-width: none;
 
-  @media (min-width: 1025px) {
+  @media (min-width: 769px) {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: auto;
@@ -45,15 +47,15 @@
   flex-direction: column;
   padding: 24px;
   gap: 46px;
-  width: 335px;
-  flex-shrink: 0;
+  min-width: 335px;
+  max-width: 335px;
   border-radius: 20px;
   cursor: pointer;
 
-  @media (min-width: 1025px) {
+  @media (min-width: 769px) {
     flex-direction: row;
     gap: 18px;
-    width: 668px;
+    max-width: 668px;
   }
 }
 
@@ -83,13 +85,12 @@
 }
 
 .Image {
-  width: 100%;
   height: auto;
   width: 200px;
   margin-left: 87px;
 
-  @media (min-width: 1025px) {
-    width: 300px;
+  @media (min-width: 769px) {
+    width: 48%;
     margin: 0;
   }
 }
