@@ -16,16 +16,13 @@ export function CapoeiraComponents() {
       >
         Из чего состоит капоэйра
       </Typography>
+
       <div className={styles.ComponentsContainer}>
-        <div
+        <a
+          href="https://vk.com/wall-269461_19569"
+          target="_blank"
+          rel="noopener noreferrer"
           className={styles.Component}
-          onClick={() =>
-            window.open(
-              'https://vk.com/wall-269461_19569',
-              '_blank',
-              'noopener,noreferrer'
-            )
-          }
         >
           <div className={styles.Column}>
             <Typography weight="demiBold" className={styles.CardTitle}>
@@ -37,16 +34,13 @@ export function CapoeiraComponents() {
             </Typography>
           </div>
           <img src={Pic1} className={styles.Image} alt="Искусство боя" />
-        </div>
-        <div
+        </a>
+
+        <a
+          href="https://vk.com/wall-269461_19572"
+          target="_blank"
+          rel="noopener noreferrer"
           className={styles.Component}
-          onClick={() =>
-            window.open(
-              'https://vk.com/wall-269461_19572',
-              '_blank',
-              'noopener,noreferrer'
-            )
-          }
         >
           <div className={styles.Column}>
             <Typography weight="demiBold" className={styles.CardTitle}>
@@ -58,16 +52,13 @@ export function CapoeiraComponents() {
             </Typography>
           </div>
           <img src={Pic2} className={styles.Image} alt="Акробатика" />
-        </div>
-        <div
+        </a>
+
+        <a
+          href="https://vk.com/wall-269461_19571"
+          target="_blank"
+          rel="noopener noreferrer"
           className={styles.Component}
-          onClick={() =>
-            window.open(
-              'https://vk.com/wall-269461_19571',
-              '_blank',
-              'noopener,noreferrer'
-            )
-          }
         >
           <div className={styles.Column}>
             <Typography weight="demiBold" className={styles.CardTitle}>
@@ -78,17 +69,14 @@ export function CapoeiraComponents() {
               помогает войти в ритм и отдает дань истории капоэйры
             </Typography>
           </div>
-          <img src={Pic3} className={styles.Image} alt="Искусство боя" />
-        </div>
-        <div
+          <img src={Pic3} className={styles.Image} alt="Музыка и танец" />
+        </a>
+
+        <a
+          href="https://vk.com/wall-269461_19570"
+          target="_blank"
+          rel="noopener noreferrer"
           className={styles.Component}
-          onClick={() =>
-            window.open(
-              'https://vk.com/wall-269461_19570',
-              '_blank',
-              'noopener,noreferrer'
-            )
-          }
         >
           <div className={styles.Column}>
             <Typography weight="demiBold" className={styles.CardTitle}>
@@ -99,8 +87,8 @@ export function CapoeiraComponents() {
               ро́де. Они стоят или сидят, наблюдая за поединком
             </Typography>
           </div>
-          <img src={Pic4} className={styles.Image} alt="Искусство боя" />
-        </div>
+          <img src={Pic4} className={styles.Image} alt="Рода" />
+        </a>
       </div>
     </div>
   );
