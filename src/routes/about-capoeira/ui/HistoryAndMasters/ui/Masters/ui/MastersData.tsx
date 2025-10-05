@@ -340,7 +340,7 @@ export function MasterData7() {
         <Typography className={styles.Text}>
           Местре Кобринья — сооснователь и один из руководителей фонда ICAF
           (International Capoeira Angola Foundation), организа- ции,
-          объединяющей школы в Бразилии, США и Европе.
+          объединяющей школы в Бразилии, США и&nbsp;Европе.
         </Typography>
       </div>
       <div className={styles.Column}>
