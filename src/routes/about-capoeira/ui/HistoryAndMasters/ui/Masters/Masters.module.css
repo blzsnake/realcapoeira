@@ -32,9 +32,10 @@
 
 .Title {
   width: 100%;
-  max-width: 220px;
+  max-width: 320px;
   font-size: 28px;
   line-height: 120%;
+  padding-right: 20px;
 
   @media (min-width: 1025px) {
     font-size: 56px;
