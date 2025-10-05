@@ -292,7 +292,7 @@ export function SignUpForm({ contactsVariant = false }: TSignUpFormProps) {
               onChange={handleCheckboxChange}
             >
               Я даю согласие на{' '}
-              <a href="/politics.pdf" target="_blank">
+              <a href="/politics.pdf" target="_blank" rel="noopener noreferrer">
                 обработку моих персональных данных
               </a>
             </Checkbox>
