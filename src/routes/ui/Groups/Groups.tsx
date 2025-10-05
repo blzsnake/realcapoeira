@@ -48,8 +48,8 @@ export function Groups() {
               Дети 7–10 лет
             </Typography>
             <Typography className={styles.Description}>
-              Упражнения помогают выпустить избыток энергии, стать сильнее и
-              собраннее
+              Упражнения помогают выпустить избыток энергии, стать сильнее
+              и&nbsp;собраннее
             </Typography>
           </div>
           <img src={KidWeb} alt="kid" className={styles.Image} />
@@ -68,7 +68,7 @@ export function Groups() {
             </Typography>
             <Typography className={styles.Description}>
               Ученики знакомятся с историей капоэйры и основами музыки.
-              Осваивают технику ударов и акробатические элементы
+              Осваивают&nbsp;технику ударов и акробатические элементы
             </Typography>
           </div>
           <img src={TeenWeb} alt="teen" className={styles.Image} />
@@ -87,7 +87,7 @@ export function Groups() {
             </Typography>
             <Typography className={styles.Description}>
               Занятия глубже знакомят с культурой капоэйры и смыслом песен, а
-              еще помогают стать увереннее в себе и смотреть на мир шире
+              еще помогают стать увереннее в себе и смотреть на&nbsp;мир шире
             </Typography>
           </div>
           {/* <AdultMobile className={styles.Mobile} />
