@@ -113,13 +113,13 @@ export function Masters() {
         <MasterCard
           image={Master2}
           title="Mestre Pastinha"
-          subtitle="Висенте Феррейра Пастинья"
+          subtitle="Висенте Феррейра Паштинья"
           onClick={() => setIsModalOpen(1)}
         />
         <MasterCard
           image={Master3}
           title="Mestre Suassuna"
-          subtitle="Рейнальду Рамус Суазуна"
+          subtitle="Рейнальду Рамус Суассуна"
           onClick={() => setIsModalOpen(2)}
         />
         <MasterCard

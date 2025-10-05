@@ -16,7 +16,7 @@ export function Quote() {
             Александр Рогозин
           </Typography>
           <Typography color="white" className={styles.Subtitle}>
-            Основатель школы «Real Capoeira»
+            Основатель школы Real Capoeira
           </Typography>
         </div>
       </div>
