@@ -22,60 +22,66 @@ const getLinkActiveStyle = (ap: string, lr: string): string =>
   isLinkActive(ap, lr) ? styles.Active : '';
 
 const isGrayBgRoute = (path: string) =>
-  path === '/' || path === '/about-school/' || path === '/about-capoeira/';
+  path === '/' || path === '/about-school/';
+const isOverlayRoute = (path: string) => path === '/about-capoeira/';
 
 export function Header() {
   const { actualPath } = useRoute();
   const $setModalState = useEvents(setModalState);
-  const headerBgClass = isGrayBgRoute(actualPath)
-    ? styles.GrayBg
-    : styles.WhiteBg;
 
-  const [color, switchColor] = useState(headerBgClass);
+  // eslint-disable-next-line no-nested-ternary
+  const initialBgClass = isOverlayRoute(actualPath)
+    ? styles.TransparentBg
+    : isGrayBgRoute(actualPath)
+      ? styles.GrayBg
+      : styles.WhiteBg;
+
+  const [bgClass, setBgClass] = useState(initialBgClass);
 
   useEffect(() => {
-    switchColor(headerBgClass);
-  }, [headerBgClass]);
+    setBgClass(initialBgClass);
+  }, [initialBgClass]);
 
   useEffect(() => {
-    const $elem = document.getElementById('#headerScrollMarker');
+    const marker = document.getElementById('#headerScrollMarker');
     const scrollHandler = debounce(() => {
-      if (!$elem || !isGrayBgRoute(actualPath)) {
+      if (!marker) return;
+      const { bottom } = marker.getBoundingClientRect();
+
+      if (isOverlayRoute(actualPath)) {
+        setBgClass(bottom < 0 ? styles.WhiteBg : styles.TransparentBg);
         return;
       }
-      // eslint-disable-next-line no-unsafe-optional-chaining
-      const { bottom } = $elem?.getBoundingClientRect();
-      if (bottom < 0 && color === styles.GrayBg) {
-        switchColor(styles.WhiteBg);
-      }
-      if (bottom > 0 && color === styles.WhiteBg) {
-        switchColor(styles.GrayBg);
-      }
-    }, 20);
-    if ($elem) {
-      window.addEventListener('scroll', scrollHandler);
-    }
 
+      if (isGrayBgRoute(actualPath)) {
+        setBgClass(bottom < 0 ? styles.WhiteBg : styles.GrayBg);
+      }
+    }, 0);
+
+    if (marker && (isOverlayRoute(actualPath) || isGrayBgRoute(actualPath))) {
+      window.addEventListener('scroll', scrollHandler, { passive: true });
+      scrollHandler();
+    }
     return () => window.removeEventListener('scroll', scrollHandler);
-  }, [headerBgClass, actualPath, color]);
+  }, [actualPath]);
 
   const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const handleScrollToForm = () => {
     const elem = document.getElementById('signup');
-
-    if (elem) {
-      elem.scrollIntoView({ behavior: 'smooth' });
-    } else {
-      $setModalState({ type: 'signUp', isOpen: true });
-    }
+    if (elem) elem.scrollIntoView({ behavior: 'smooth' });
+    else $setModalState({ type: 'signUp', isOpen: true });
   };
 
   useLockBodyScroll(isMobileMenuOpen);
 
+  const isTransparentOverlay =
+    isOverlayRoute(actualPath) && bgClass === styles.TransparentBg;
+  const headerWrapMod = isTransparentOverlay ? styles.Light : '';
+
   return (
     <>
-      <header className={`${styles.HeaderWrap} ${color}`}>
+      <header className={`${styles.HeaderWrap} ${headerWrapMod} ${bgClass}`}>
         <div className={styles.Header}>
           <div className={styles.ContentWrapper}>
             <Link viewTransition url="/" aria-label="На главную">
@@ -114,7 +120,7 @@ export function Header() {
                     Что такое капоэйра
                   </Typography>
                 </Link>
-                <Link viewTransition url="/filials" aria-label="Филиалы">
+                <Link viewTransition url="/filials/" aria-label="Филиалы">
                   <Typography
                     weight={
                       isLinkActive(actualPath, '/filials/')
@@ -126,19 +132,7 @@ export function Header() {
                     Филиалы
                   </Typography>
                 </Link>
-                {/* <Link viewTransition url="/trainers/" aria-label="Инструкторы">
-                  <Typography
-                    weight={
-                      isLinkActive(actualPath, '/trainers/')
-                        ? 'demiBold'
-                        : 'regular'
-                    }
-                    className={getLinkActiveStyle(actualPath, '/trainers/')}
-                  >
-                    Инструкторы
-                  </Typography>
-                </Link> */}
-                <Link viewTransition url="/contacts" aria-label="Контакты">
+                <Link viewTransition url="/contacts/" aria-label="Контакты">
                   <Typography
                     weight={
                       isLinkActive(actualPath, '/contacts/')
@@ -153,6 +147,7 @@ export function Header() {
               </nav>
             </div>
           </div>
+
           <Menu
             width={24}
             height={24}

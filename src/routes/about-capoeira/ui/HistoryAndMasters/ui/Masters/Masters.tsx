@@ -107,7 +107,7 @@ export function Masters() {
         <MasterCard
           image={Master1}
           title="Mestre Bimba"
-          subtitle="Мануэль душ Рейш Машаду"
+          subtitle="Мануэль дос Рейш Машаду"
           onClick={() => setIsModalOpen(0)}
         />
         <MasterCard

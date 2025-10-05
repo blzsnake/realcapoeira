@@ -8,8 +8,15 @@ export function Layout({ children }: PropsWithChildren) {
 
   const isGray = path === '/about-capoeira/';
 
+  const isOverlayRoute = path === '/about-capoeira/';
+
   return (
-    <div className={cn(styles.Layout, { [styles.Gray]: isGray })}>
+    <div
+      className={cn(styles.Layout, {
+        [styles.Gray]: isGray,
+        [styles.NoPadding]: isOverlayRoute,
+      })}
+    >
       {children}
     </div>
   );
