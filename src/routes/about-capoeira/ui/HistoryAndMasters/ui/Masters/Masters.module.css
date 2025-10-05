@@ -22,12 +22,8 @@
 
 .Arrows {
   width: fit-content;
-  display: none;
+  display: flex;
   gap: 24px;
-
-  @media (min-width: 769px) {
-    display: flex;
-  }
 }
 
 .Arrow {
@@ -36,7 +32,7 @@
 
 .Title {
   width: 100%;
-  max-width: 320px;
+  max-width: 220px;
   font-size: 28px;
   line-height: 120%;
 
