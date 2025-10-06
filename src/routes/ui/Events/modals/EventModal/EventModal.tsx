@@ -45,19 +45,19 @@ export function EventModal({
             <a
               href="https://t.me/real_capoeira"
               target="_blank"
-              rel="noreferrer"
+              rel="noopener noreferrer"
             >
               <ShareTg className={styles.Pointer} />
             </a>
             <a
               href="https://vk.com/realcapoeira"
               target="_blank"
-              rel="noreferrer"
+              rel="noopener noreferrer"
             >
               <ShareVk className={styles.Pointer} onClick={shareVkHandler} />
             </a>
 
-            <a href="/" target="_blank">
+            <a href="/" target="_blank" rel="noopener noreferrer">
               <ShareLink
                 className={styles.Pointer}
                 onClick={shareLinkHandler}

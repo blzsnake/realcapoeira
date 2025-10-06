@@ -16,7 +16,7 @@ type MobileMenuProps = { onClose: () => void };
 
 const LINKS = [
   { url: '/about-school', label: 'О школе' },
-  // { url: '/about-capoeira', label: 'Что такое капоэйра' },
+  { url: '/about-capoeira', label: 'Что такое капоэйра' },
   { url: '/filials', label: 'Филиалы' },
   // { url: '/trainers', label: 'Тренеры' },
   { url: '/contacts', label: 'Контакты' },
@@ -73,26 +73,29 @@ export function MobileMenu({ onClose }: MobileMenuProps) {
         <div className={styles.Socials}>
           <Typography component="span">Мы в соцсетях</Typography>
           <div className={styles.Links}>
-            <Telegram
-              className={styles.SocialLink}
-              onClick={() =>
-                window.open('https://t.me/real_capoeira', '_blank')
-              }
-            />
+            <a
+              href="https://t.me/real_capoeira"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Telegram className={styles.SocialLink} />
+            </a>
 
-            <Youtube
-              className={styles.SocialLink}
-              onClick={() =>
-                window.open('https://youtube.com/@realcapoeira1', '_blank')
-              }
-            />
+            <a
+              href="https://youtube.com/@realcapoeira1"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Youtube className={styles.SocialLink} />
+            </a>
 
-            <Vk
-              className={styles.SocialLink}
-              onClick={() =>
-                window.open('https://vk.com/realcapoeira', '_blank')
-              }
-            />
+            <a
+              href="https://vk.com/realcapoeira"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Vk className={styles.SocialLink} />
+            </a>
           </div>
         </div>
       </div>

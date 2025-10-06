@@ -7,6 +7,7 @@ export function CityCard({ title, subtitle, url, image }: TCityCardProps) {
   const inlineStyles = {
     backgroundImage: `url(${image})`,
   };
+
   return (
     <Link url={url} className={styles.CityCard} style={inlineStyles}>
       <Typography color="white" className={styles.Subtitle}>

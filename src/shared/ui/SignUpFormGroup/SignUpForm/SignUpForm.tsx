@@ -105,7 +105,6 @@ const intitialFormState = {
 };
 
 export function SignUpForm({ contactsVariant = false }: TSignUpFormProps) {
-  console.log(OPTIONS);
   const formRef = useRef<HTMLFormElement>(undefined);
   const [errors, setFormErrors] = useState<TSignUpFormErrors | null>(null);
   const address = useSelector(
@@ -156,7 +155,6 @@ export function SignUpForm({ contactsVariant = false }: TSignUpFormProps) {
     }));
   };
 
-  console.log(address, 'ddd');
   const submitHander = () => {
     const { name, phone, filial } = formData || {};
     const isErrors = validate(formData);
@@ -294,7 +292,7 @@ export function SignUpForm({ contactsVariant = false }: TSignUpFormProps) {
               onChange={handleCheckboxChange}
             >
               Я даю согласие на{' '}
-              <a href="/politics.pdf" target="_blank">
+              <a href="/politics.pdf" target="_blank" rel="noopener noreferrer">
                 обработку моих персональных данных
               </a>
             </Checkbox>

@@ -1,0 +1,74 @@
+.MasterCard {
+  height: 100% !important;
+  overflow-y: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 250px;
+  height: 315px;
+  cursor: pointer;
+  flex-shrink: 0;
+  gap: 24px;
+
+  @media (min-width: 1025px) {
+    width: 322px;
+    height: 402px;
+  }
+}
+
+.ImageContainer {
+  position: relative;
+}
+
+.Image {
+  width: 250px;
+  height: 250px;
+  object-fit: contain;
+
+  @media (min-width: 1025px) {
+    width: 322px;
+  }
+}
+
+.Brazil {
+  position: absolute;
+  bottom: 10px;
+  right: 20px;
+  width: 48px;
+  height: 48px;
+
+  @media (min-width: 1025px) {
+    bottom: 15px;
+    right: 45px;
+    width: 48px;
+  }
+}
+
+.TextContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.Title {
+  font-size: 20px;
+  line-height: 120%;
+  color: var(--white);
+
+  @media (min-width: 1025px) {
+    font-size: 28px;
+    line-height: 120%;
+  }
+}
+
+.Subtitle {
+  font-size: 14px;
+  line-height: 120%;
+  color: var(--white);
+
+  @media (min-width: 1025px) {
+    font-size: 24px;
+    line-height: 120%;
+  }
+}

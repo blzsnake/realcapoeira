@@ -1,0 +1,87 @@
+.Wrap {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+
+  @media (min-width: 1025px) {
+    gap: 100px;
+    padding-left: 40px;
+  }
+}
+
+.Content {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: start;
+  padding: 0 20px;
+  min-width: 335px;
+  margin: 0 auto;
+  gap: 48px;
+
+  @media (min-width: 1025px) {
+    padding: 0 40px;
+    gap: 100px;
+  }
+
+  @media (min-width: 1440px) {
+    min-width: 1360px;
+  }
+}
+
+.DecorativeElements {
+  width: 100%;
+  position: relative;
+  max-width: 1440px;
+}
+
+.Title {
+  font-size: 40px;
+
+  @media (min-width: 1025px) {
+    font-size: 148px;
+  }
+}
+
+.Description {
+  font-size: 18px;
+  line-height: 24px;
+  text-align: center;
+
+  @media (min-width: 1025px) {
+    font-size: 28px;
+    line-height: 140%;
+    width: 890px;
+  }
+}
+
+.Flag {
+  display: none;
+
+  @media (min-width: 1025px) {
+    display: flex;
+    top: 241px;
+    left: 0;
+    position: absolute;
+    width: 244px;
+    height: 172px;
+    object-fit: cover;
+  }
+}
+
+.Map {
+  display: none;
+
+  @media (min-width: 1025px) {
+    display: flex;
+    top: 390px;
+    left: 201px;
+    position: absolute;
+    width: 1067px;
+    height: 983px;
+    object-fit: cover;
+  }
+}

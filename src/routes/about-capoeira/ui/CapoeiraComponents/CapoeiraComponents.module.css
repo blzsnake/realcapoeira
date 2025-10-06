@@ -1,0 +1,96 @@
+.Wrap {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+
+  @media (min-width: 1025px) {
+    gap: 40px;
+  }
+}
+
+.Title {
+  width: 100%;
+  font-size: 28px;
+  line-height: 120%;
+  padding-left: 20px;
+
+  @media (min-width: 1025px) {
+    font-size: 56px;
+    padding-left: 40px;
+  }
+}
+
+.ComponentsContainer {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  width: calc(50% + 50vw);
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+
+  @media (min-width: 769px) {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: auto;
+    gap: 24px;
+    width: 100%;
+  }
+}
+.ComponentsContainer::-webkit-scrollbar {
+  display: none;
+}
+
+.Component {
+  display: flex;
+  background-color: var(--white);
+  flex-direction: column;
+  padding: 24px;
+  gap: 46px;
+  min-width: 335px;
+  max-width: 335px;
+  border-radius: 20px;
+  cursor: pointer;
+
+  @media (min-width: 769px) {
+    flex-direction: row;
+    gap: 18px;
+    max-width: 668px;
+  }
+}
+
+.Column {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.CardTitle {
+  font-size: 20px;
+  line-height: 120%;
+
+  @media (min-width: 1025px) {
+    font-size: 28px;
+  }
+}
+
+.Text {
+  font-size: 14px;
+  line-height: 120%;
+
+  @media (min-width: 1025px) {
+    font-size: 18px;
+    line-height: 24px;
+  }
+}
+
+.Image {
+  height: auto;
+  width: 200px;
+  margin-left: 87px;
+
+  @media (min-width: 769px) {
+    width: 48%;
+    margin: 0;
+  }
+}

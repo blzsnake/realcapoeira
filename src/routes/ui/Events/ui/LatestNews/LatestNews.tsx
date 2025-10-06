@@ -220,9 +220,9 @@ export function News4() {
           <li>Обсуждение спортивных техник и приемов</li>
         </ul>
         <a
-          onClick={() => {
-            window.open(`https://t.me/real_capoeira`, '_blank');
-          }}
+          href="https://t.me/real_capoeira"
+          target="_blank"
+          rel="noopener noreferrer"
         >
           Перейти в группу
         </a>
@@ -238,9 +238,9 @@ export function News4() {
           </li>
         </ul>
         <a
-          onClick={() => {
-            window.open(`https://t.me/+79255550077`, '_blank');
-          }}
+          href="https://t.me/+79255550077"
+          target="_blank"
+          rel="noopener noreferrer"
         >
           Перейти к боту
         </a>
@@ -257,9 +257,9 @@ export function News4() {
           <li>Разборы сложных техник и комбинаций</li>
         </ul>
         <a
-          onClick={() => {
-            window.open(`https://youtube.com/@realcapoeira1`, '_blank');
-          }}
+          href="https://youtube.com/@realcapoeira1"
+          target="_blank"
+          rel="noopener noreferrer"
         >
           Перейти в канал
         </a>
@@ -276,9 +276,9 @@ export function News4() {
           <li>Полезные материалы и статьи</li>
         </ul>
         <a
-          onClick={() => {
-            window.open(`https://vk.com/realcapoeira`, '_blank');
-          }}
+          href="https://vk.com/realcapoeira"
+          target="_blank"
+          rel="noopener noreferrer"
         >
           Перейти в группу
         </a>

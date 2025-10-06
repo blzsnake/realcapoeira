@@ -1,0 +1,67 @@
+.Masters {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  z-index: 1000;
+  max-width: 1440px;
+  @media (min-width: 1025px) {
+    gap: 40px;
+  }
+}
+
+.HeadingRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  @media (min-width: 1025px) {
+    gap: 0 40px;
+  }
+}
+
+.Arrows {
+  width: fit-content;
+  display: flex;
+  gap: 24px;
+}
+
+.Arrow {
+  cursor: pointer;
+}
+
+.Title {
+  width: 100%;
+  max-width: 320px;
+  font-size: 28px;
+  line-height: 120%;
+  padding-right: 20px;
+
+  @media (min-width: 1025px) {
+    font-size: 56px;
+    width: 437px;
+    min-width: 470px;
+  }
+}
+
+.Slider {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  width: calc(50% + 50vw);
+  padding-right: 10%;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.Slider::-webkit-scrollbar {
+  display: none;
+}
+
+.EmptyPlug {
+  width: 12px;
+  flex-shrink: 0;
+
+  @media (min-width: 1025px) {
+    display: none;
+  }
+}
