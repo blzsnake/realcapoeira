@@ -78,7 +78,7 @@ export function Filter() {
       setSelectedAgeGroup(selected);
     }
     if (query.coach) {
-      const selected = COACHES.filter((e) => query.coach.includes(e.value));
+      const selected = COACHES.filter((e) => query.coach.includes(e.id));
       setSelectedCoach(selected);
     }
   }, [query]);

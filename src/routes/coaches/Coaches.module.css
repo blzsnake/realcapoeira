@@ -1,0 +1,50 @@
+.Wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 1360px;
+  width: 100%;
+  margin: 0 auto;
+  padding-top: 24px;
+  @media (min-width: 1025px) {
+    padding-top: 45px;
+  }
+}
+
+.Header {
+  width: 100%;
+  margin-bottom: 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
+  padding: 0 20px;
+  @media (min-width: 1025px) {
+    flex-direction: row;
+  }
+  @media (min-width: 1440px) {
+    margin-bottom: 40px;
+    padding: 0;
+  }
+}
+
+.Title {
+  margin-bottom: 24px;
+  font-size: 40px;
+  text-transform: uppercase;
+  line-height: 1.2;
+  @media (min-width: 1025px) {
+    margin-bottom: 0;
+    font-size: 80px;
+  }
+}
+
+.Coaches {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  gap: 8px;
+  @media (min-width: 760px) {
+    gap: 24px;
+  }
+}
