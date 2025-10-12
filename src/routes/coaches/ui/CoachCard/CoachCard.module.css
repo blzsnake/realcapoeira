@@ -22,13 +22,36 @@
 }
 
 .Photo {
-  margin-bottom: 18px;
-}
-
-.Photo {
-  margin-bottom: 18px;
+  position: relative;
+  display: block;
 }
 
 .Name {
+  margin-top: 18px;
   margin-bottom: 8px;
+}
+
+.Professor,
+.Professora,
+.Mestre1grau {
+  position: relative;
+
+  &::after {
+    position: absolute;
+    top: 0;
+    width: 105%;
+    height: 105%;
+    display: block;
+    content: '';
+    background: url('~app/assets/belts/mestre1.svg') no-repeat;
+    background-size: contain;
+  }
+}
+
+.Professor,
+.Professora {
+    &::after {
+    background: url('~app/assets/belts/professor.svg') no-repeat;
+    background-size: contain;
+  }
 }

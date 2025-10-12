@@ -55,8 +55,9 @@ export const AGE_GROUPS = [
 export const COACHES = [
   {
     phone: '',
-    level: 'Contra–Mestre Ninja',
+    level: 'Mestre 1 grau',
     photo: '',
+    nick: 'Ninja',
     name: 'Александр Рогозин',
     id: 'a.rogozin',
     value: 'a.rogozin',
@@ -64,8 +65,9 @@ export const COACHES = [
   },
   {
     phone: '',
-    level: 'Professor Pirulito',
+    level: 'Professor',
     photo: '',
+    nick: 'Pirulito',
     name: 'Тимур Рогозин',
     id: 't.rogozin',
     value: 't.rogozin',
@@ -73,8 +75,9 @@ export const COACHES = [
   },
   {
     phone: '',
-    level: 'Professor Remo',
+    level: 'Professor',
     photo: '',
+    nick: 'Remo',
     name: 'Дмитрий Бархатов',
     id: 'd.barhatov',
     value: 'd.barhatov',
@@ -82,8 +85,9 @@ export const COACHES = [
   },
   {
     phone: '',
-    level: 'Professor Faisca',
+    level: 'Professor',
     photo: '',
+    nick: 'Faisca',
     name: 'Алексей Магдыч',
     id: 'a.magdych',
     value: 'a.magdych',
@@ -92,6 +96,7 @@ export const COACHES = [
   {
     phone: '',
     level: '',
+    nick: '',
     photo: '',
     name: 'Максим Рожков',
     id: 'm.rozhkov',
@@ -101,6 +106,7 @@ export const COACHES = [
   {
     phone: '',
     level: '',
+    nick: '',
     photo: '',
     name: 'Молодожников Илья',
     id: 'i.molodozhnikov',
@@ -110,6 +116,7 @@ export const COACHES = [
   {
     phone: '',
     level: '',
+    nick: '',
     photo: '',
     name: 'Дмитрий Попов',
     id: 'd.popov',
@@ -119,6 +126,7 @@ export const COACHES = [
   {
     phone: '',
     level: '',
+    nick: '',
     photo: '',
     name: 'Чмыхов Александр',
     id: 'a.chmyhov',
@@ -128,6 +136,7 @@ export const COACHES = [
   {
     phone: '',
     level: '',
+    nick: '',
     photo: '',
     name: 'Стейнау Екатерина',
     id: 'e.staynow',
@@ -137,6 +146,7 @@ export const COACHES = [
   {
     phone: '',
     level: '',
+    nick: '',
     photo: '',
     name: 'Кедрова Алёна',
     id: 'a.kedrova',
@@ -146,6 +156,7 @@ export const COACHES = [
   {
     phone: '',
     level: '',
+    nick: '',
     photo: '',
     name: 'Громова Светлана',
     id: 's.gromova',
@@ -155,6 +166,7 @@ export const COACHES = [
   {
     phone: '',
     level: '',
+    nick: '',
     photo: '',
     name: 'Афонина Светлана',
     id: 's.afonina',
@@ -164,6 +176,7 @@ export const COACHES = [
   {
     phone: '',
     level: '',
+    nick: '',
     photo: '',
     name: 'Макаревич Дмитрий',
     id: 'd.makarevich',
@@ -173,6 +186,7 @@ export const COACHES = [
   {
     phone: '',
     level: '',
+    nick: '',
     photo: '',
     name: 'Политов Артем',
     id: 'a.politov',
@@ -182,6 +196,7 @@ export const COACHES = [
   {
     phone: '',
     level: '',
+    nick: '',
     photo: '',
     name: 'Полякова Софья',
     id: 's.polyakova',
@@ -191,6 +206,7 @@ export const COACHES = [
   {
     phone: '',
     level: '',
+    nick: '',
     photo: '',
     name: 'Фролова Мария',
     id: 'm.frolova',
@@ -200,6 +216,7 @@ export const COACHES = [
   {
     phone: '',
     level: '',
+    nick: '',
     photo: '',
     name: 'Михеев Михаил',
     id: 'm.miheev',
@@ -209,6 +226,7 @@ export const COACHES = [
   {
     phone: '',
     level: '',
+    nick: '',
     photo: '',
     name: 'Рамиль Миннуллин',
     id: 'r.minnulin',
@@ -218,6 +236,7 @@ export const COACHES = [
   {
     phone: '',
     level: '',
+    nick: '',
     photo: '',
     name: 'Зуйкин Алексей',
     id: 'a.zuykin',
@@ -227,6 +246,7 @@ export const COACHES = [
   {
     phone: '',
     level: '',
+    nick: '',
     photo: '',
     name: 'Софийская Ксения',
     id: 'k.sofiyskaya',
@@ -236,6 +256,7 @@ export const COACHES = [
   {
     phone: '',
     level: '',
+    nick: '',
     photo: '',
     name: 'Тахавиев Оскар',
     id: 'o.tahaviev',
@@ -245,6 +266,7 @@ export const COACHES = [
   {
     phone: '',
     level: '',
+    nick: '',
     photo: '',
     name: 'Малых Константин',
     id: 'k.malyh',
@@ -254,6 +276,7 @@ export const COACHES = [
   {
     phone: '',
     level: '',
+    nick: '',
     photo: '',
     name: 'Кузнецов Илья',
     id: 'i.kuznetsov',
