@@ -16,7 +16,10 @@ export function SignUpFormGroup({
   children,
 }: TSignUpFormGroupProps) {
   return (
-    <div className={cn(styles.SignUpFormGroup, styles[theme], className)}>
+    <div
+      className={cn(styles.SignUpFormGroup, styles[theme], className)}
+      id="signup"
+    >
       <div className={styles.Info}>
         {children || (
           <>

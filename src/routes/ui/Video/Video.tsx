@@ -31,15 +31,17 @@ export function Video() {
               Скачайте приложение Capoeira daily — сможете тренироваться, не
               выходя из дома
             </Typography>
-            <Button
-              color="white"
-              className={styles.MobileButton}
-              onClick={downloadClick}
+            <a
+              href="https://capoeiradaily.onelink.me/vbMQ/rc_site"
+              target="_blank"
+              rel="noopener noreferrer"
             >
-              <Typography className={styles.ButtonText} weight="medium">
-                Скачать
-              </Typography>
-            </Button>
+              <Button color="white" className={styles.MobileButton}>
+                <Typography className={styles.ButtonText} weight="medium">
+                  Скачать
+                </Typography>
+              </Button>
+            </a>
           </div>
         </div>
         <Button

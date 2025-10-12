@@ -15,7 +15,25 @@
   width: 100%;
   background-color: var(--bg-black);
   display: flex;
-  justify-content: center;
-  height: 100vh;
-  /* TO-DO: убрать height */
+  flex-direction: column;
+  align-items: center;
+  gap: 48px;
+
+  @media (min-width: 1025px) {
+    gap: 80px;
+  }
+}
+
+.ContentWithPadding {
+  width: 100%;
+  max-width: 1440px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 48px;
+
+  @media (min-width: 1025px) {
+    padding: 0 40px;
+    gap: 80px;
+  }
 }

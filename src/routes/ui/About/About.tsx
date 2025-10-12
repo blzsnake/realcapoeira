@@ -18,7 +18,7 @@ export function About() {
               Александр Рогозин
             </Typography>
             <Typography className={styles.AuthorInfo}>
-              Основатель школы «Реал Капоэйра», обладатель титула Contra–Mestre
+              Основатель школы Real Capoeira, обладатель титула Contra–Mestre
               Ninja
             </Typography>
           </div>

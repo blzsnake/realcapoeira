@@ -1,0 +1,1 @@
+export { CapoeiraComponents } from './CapoeiraComponents';

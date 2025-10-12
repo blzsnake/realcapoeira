@@ -6,13 +6,15 @@ export function MasterCard({
   image,
   title,
   subtitle,
+  onClick,
 }: {
   image: string;
   title: string;
   subtitle: string;
+  onClick: () => void;
 }) {
   return (
-    <div className={styles.MasterCard}>
+    <div className={styles.MasterCard} onClick={onClick}>
       <div className={styles.ImageContainer}>
         <img src={image} className={styles.Image} alt={title} />
         <img src={Brazil} className={styles.Brazil} alt="Флаг" />

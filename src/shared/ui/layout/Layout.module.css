@@ -11,3 +11,11 @@
     padding-top: 96px;
   }
 }
+
+.Gray {
+  background-color: var(--bg-black);
+}
+
+.NoPadding {
+  padding-top: 0;
+}

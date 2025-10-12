@@ -7,9 +7,11 @@ import styles from './HistoryAndMasters.module.css';
 export function HistoryAndMasters() {
   return (
     <div className={styles.Wrap} id="#headerScrollMarker">
-      <img src={AboutCapoeiraFlag} className={styles.Flag} alt="Флаг" />
-      <img src={AboutCapoeiraMap} className={styles.Map} alt="Карта" />
       <div className={styles.Content}>
+        <div className={styles.DecorativeElements}>
+          <img src={AboutCapoeiraFlag} className={styles.Flag} alt="Флаг" />
+          <img src={AboutCapoeiraMap} className={styles.Map} alt="Карта" />
+        </div>
         <History />
         <Masters />
       </div>
