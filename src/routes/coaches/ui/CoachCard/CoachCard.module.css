@@ -33,7 +33,13 @@
 
 .Professor,
 .Professora,
-.Mestre1grau {
+.Monitor,
+.Monitora,
+.Instrutor,
+.Instrutora,
+.Minitora,
+.Minitor,
+.Contra-Mestre {
   position: relative;
 
   &::after {
@@ -52,6 +58,29 @@
 .Professora {
     &::after {
     background: url('~app/assets/belts/professor.svg') no-repeat;
+    background-size: contain;
+  }
+}
+
+.Instrutor,
+.Instrutora {
+    &::after {
+    background: url('~app/assets/belts/instrutor.svg') no-repeat;
+    background-size: contain;
+  }
+}
+
+.Monitor,
+.Monitora {
+    &::after {
+    background: url('~app/assets/belts/monitor.svg') no-repeat;
+    background-size: contain;
+  }
+}
+.Minitor,
+.Minitora {
+    &::after {
+    background: url('~app/assets/belts/minitor.svg') no-repeat;
     background-size: contain;
   }
 }

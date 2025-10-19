@@ -11,6 +11,7 @@ export function Button({
   children,
   disabled,
   className,
+  target = '_blank',
   url,
 }: TButtonProps) {
   return !url ? (
@@ -26,7 +27,7 @@ export function Button({
     <Link
       className={cn(className, styles.Button, styles[color], styles[size])}
       url={url}
-      target="_blank"
+      target={target}
       viewTransition
     >
       {children}

@@ -42,6 +42,7 @@ export const useQueryParams = () => {
   };
 
   useEffect(() => {
+    console.log(query);
     if (query.city) {
       const selected = GROUPED_PLACES.map((item) => item.options)
         .flat()
@@ -63,7 +64,7 @@ export const useQueryParams = () => {
       setSelectedCoach(null);
     }
   }, [query]);
-
+  console.log('return', selectedCity);
   return [
     selectedAgeGroup,
     selectedCoach,
