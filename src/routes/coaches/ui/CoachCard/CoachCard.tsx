@@ -33,10 +33,10 @@ export function CoachCard({ name, level, photo, id, nick }: TCoachCardProps) {
       </Typography>
       <Typography className={styles.Level}>{`${level} ${nick}`}</Typography>
       <div className={styles.Buttons}>
-        <Button color="white" url="">
+        <Button target="_self" color="white" url="">
           О тренере
         </Button>
-        <Button color="white" url="">
+        <Button target="_self" color="white" url={`/filials/?coach=${id}`}>
           Филиалы
         </Button>
       </div>
