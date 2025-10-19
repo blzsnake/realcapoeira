@@ -19,9 +19,11 @@ export function CoachCard({ name, level, photo, id, nick }: TCoachCardProps) {
   console.log(level?.replace(/\W/g, ''), 'xxx');
   return (
     <div className={styles.CoachCard}>
-      <div className={cn({ [styles[level?.replace(/\W/g, '')]]: level })}>
+      <div className={cn({ [styles[level]]: level })}>
         <img
-          src={photo || FALLBACK_PHOTO_MAP[id]}
+          src={
+            photo || FALLBACK_PHOTO_MAP[id] || FALLBACK_PHOTO_MAP['t.rogozin']
+          }
           alt={name}
           className={styles.Photo}
         />

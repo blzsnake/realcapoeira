@@ -1,13 +1,25 @@
+import { useQueryParams } from '~shared/hooks/useQueryParams';
 import { Typography } from '~shared/ui/typography';
-import { COACHES } from '~shared/mocks';
+import { COACHES } from '~shared/mocks/coaches';
 import { Filter } from './ui/Filter/Filter';
 import { CoachCard } from './ui/CoachCard';
 
 import styles from './Coaches.module.css';
 
 export function CoachesPage() {
-  // добавить фильтрацию
-  const coachesFitered = COACHES.filter((el) => el.id);
+  const [selectedAgeGroup, _, selectedCity] = useQueryParams();
+
+  const coachesFitered = COACHES.filter((el) => el.id)
+    .filter((el) =>
+      selectedCity?.length
+        ? selectedCity[0].label?.toLowerCase() === el.city?.toLowerCase()
+        : true
+    )
+    .filter((el) =>
+      selectedAgeGroup?.length
+        ? selectedAgeGroup?.find((i) => el.groups?.includes(i.value))
+        : true
+    );
   return (
     <main className={styles.Wrap}>
       <div className={styles.Header}>

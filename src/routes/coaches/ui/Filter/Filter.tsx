@@ -43,7 +43,7 @@ export function Filter() {
   const [selectedAgeGroup, selectedCoach, selectedCity, setQueryParam] =
     useQueryParams();
 
-  console.log(setQueryParam, '---');
+  // console.log(setQueryParam, '---');
 
   return (
     <div className={styles.Filter}>
