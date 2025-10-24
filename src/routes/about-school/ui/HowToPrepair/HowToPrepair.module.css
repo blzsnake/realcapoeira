@@ -107,7 +107,7 @@
 .CollapsibleContent {
   display: flex;
   flex-direction: column;
-  gap: 48px;
+  gap: 35px;
   font-size: 18px;
   line-height: 24px;
   padding-bottom: 24px;
@@ -115,6 +115,6 @@
   @media (min-width: 1025px) {
     font-size: 24px;
     line-height: 150%;
-    gap: 64px;
+    gap: 50px;
   }
 }

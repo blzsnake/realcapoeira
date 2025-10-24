@@ -41,43 +41,37 @@ export function AboutUs() {
               </Typography>
             </div>
           </div>
-        </div>
-
-        <div className={styles.Column}>
           <Typography>
             Независимо от локации, в школе царит энергия и дух традиционной
             капоэйры, а безопасность и комфорт учеников — наш приоритет.
           </Typography>
-          <div className={styles.FoundersBlock}>
-            <Typography
-              component="h3"
-              weight="demiBold"
-              className={styles.Title}
-            >
-              Основатели
-            </Typography>
-            <div className={styles.Founders}>
-              <div className={styles.Founder}>
-                <img
-                  src={FounderAlexander}
-                  className={styles.FounderIcon}
-                  alt="Основатель Александр"
-                />
-                <div className={styles.FounderInfo}>
-                  <Typography weight="demiBold">Александр Рогозин</Typography>
-                  <Typography>Contra–Mestre Ninja</Typography>
-                </div>
+        </div>
+
+        <div className={styles.FoundersBlock}>
+          <Typography component="h3" weight="demiBold" className={styles.Title}>
+            Основатели
+          </Typography>
+          <div className={styles.Founders}>
+            <div className={styles.Founder}>
+              <img
+                src={FounderAlexander}
+                className={styles.FounderIcon}
+                alt="Основатель Александр"
+              />
+              <div className={styles.FounderInfo}>
+                <Typography weight="demiBold">Александр Рогозин</Typography>
+                <Typography>Contra–Mestre Ninja</Typography>
               </div>
-              <div className={styles.Founder}>
-                <img
-                  src={FounderTimur}
-                  className={styles.FounderIcon}
-                  alt="Основатель Тимур"
-                />
-                <div className={styles.FounderInfo}>
-                  <Typography weight="demiBold">Тимур Рогозин</Typography>
-                  <Typography>Contra-Mestre Pirulito</Typography>
-                </div>
+            </div>
+            <div className={styles.Founder}>
+              <img
+                src={FounderTimur}
+                className={styles.FounderIcon}
+                alt="Основатель Тимур"
+              />
+              <div className={styles.FounderInfo}>
+                <Typography weight="demiBold">Тимур Рогозин</Typography>
+                <Typography>Contra-Mestre Pirulito</Typography>
               </div>
             </div>
           </div>
