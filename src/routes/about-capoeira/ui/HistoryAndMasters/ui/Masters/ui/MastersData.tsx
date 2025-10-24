@@ -12,6 +12,7 @@ import styles from './MastersData.module.css';
 export function MasterData1() {
   return (
     <div className={styles.MasterData}>
+      <Typography component="h2">23 ноября 1899 — 5 февраля 1974</Typography>
       <img src={Pic1} className={styles.Image} />
       <div className={styles.Column}>
         <Typography component="h2" weight="demiBold" className={styles.Heading}>
@@ -88,6 +89,7 @@ export function MasterData1() {
 export function MasterData2() {
   return (
     <div className={styles.MasterData}>
+      <Typography component="h2">5 апреля 1889 — 13 ноября 1981</Typography>
       <img src={Pic2} className={styles.Image} />
       <div className={styles.Column}>
         <Typography component="h2" weight="demiBold" className={styles.Heading}>
@@ -146,6 +148,7 @@ export function MasterData2() {
 export function MasterData3() {
   return (
     <div className={styles.MasterData}>
+      <Typography component="h2">3 июля 1938 — по сей день</Typography>
       <img src={Pic3} className={styles.Image} />
       <div className={styles.Column}>
         <Typography component="h2" weight="demiBold" className={styles.Heading}>
@@ -188,6 +191,7 @@ export function MasterData3() {
 export function MasterData4() {
   return (
     <div className={styles.MasterData}>
+      <Typography component="h2">1943 — по сей день</Typography>
       <img src={Pic4} className={styles.Image} />
       <div className={styles.Column}>
         <Typography component="h2" weight="demiBold" className={styles.Heading}>
@@ -226,6 +230,7 @@ export function MasterData4() {
 export function MasterData5() {
   return (
     <div className={styles.MasterData}>
+      <Typography component="h2">15 января 1933 — по сей день</Typography>
       <img src={Pic5} className={styles.Image} />
       <div className={styles.Column}>
         <Typography component="h2" weight="demiBold" className={styles.Heading}>
@@ -281,6 +286,7 @@ export function MasterData5() {
 export function MasterData6() {
   return (
     <div className={styles.MasterData}>
+      <Typography component="h2">28 октября 1955 — по сей день</Typography>
       <img src={Pic6} className={styles.Image} />
       <div className={styles.Column}>
         <Typography component="h2" weight="demiBold" className={styles.Heading}>
@@ -316,6 +322,7 @@ export function MasterData6() {
 export function MasterData7() {
   return (
     <div className={styles.MasterData}>
+      <Typography component="h2">19 мая 1960 — по сей день</Typography>
       <img src={Pic7} className={styles.Image} />
       <div className={styles.Column}>
         <Typography component="h2" weight="demiBold" className={styles.Heading}>
@@ -379,6 +386,7 @@ export function MasterData7() {
 export function MasterData8() {
   return (
     <div className={styles.MasterData}>
+      <Typography component="h2">27 декабря 1917 — 9 декабря 2011</Typography>
       <img src={Pic8} className={styles.Image} />
       <div className={styles.Column}>
         <Typography component="h2" weight="demiBold" className={styles.Heading}>

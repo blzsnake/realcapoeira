@@ -8,7 +8,6 @@ export function MasterModal({
   isOpen,
   closeModal,
   name,
-  dates,
   children,
 }: MasterModalProps) {
   const scrollableRef = useRef<HTMLDivElement>(null);
@@ -26,9 +25,6 @@ export function MasterModal({
         </button>
         <Typography component="h1" weight="demiBold" className={styles.Name}>
           {name}
-        </Typography>
-        <Typography component="h2" className={styles.Dates}>
-          {dates}
         </Typography>
       </ModalTitle>
       <ModalBody ref={scrollableRef}>{children}</ModalBody>
