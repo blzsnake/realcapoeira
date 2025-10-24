@@ -1,7 +1,7 @@
 // Components
 import { Typography } from '~shared/ui/typography';
 // Assets
-import FounderAlexander from '~app/assets/FounderAlexander.png';
+import FounderAlexander from '~app/assets/Alexandr.png';
 import FounderTimur from '~app/assets/FounderTimur.png';
 import AboutUsMusicians from '~app/assets/AboutUsMusicians.png';
 // Styles
