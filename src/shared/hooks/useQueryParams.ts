@@ -14,7 +14,6 @@ export const useQueryParams = () => {
   const [selectedCoach, setSelectedCoach] = useState<TypeOption[] | null>(null);
   const [selectedCity, setSelectedCity] = useState<TypeOption[] | null>();
   const { query } = useUrl();
-  // console.log(query)
   const setQueryParam =
     (name: string, cb?: (e: TypeOption | TypeOption[]) => null) =>
     (value: TypeOption | TypeOption[]) => {
@@ -31,7 +30,7 @@ export const useQueryParams = () => {
         {},
         '',
         // @ts-ignore
-        `/filials/?${new URLSearchParams(query).toString()}`
+        `?${new URLSearchParams(query).toString()}`
       );
       if (cb) {
         cb(value);
@@ -43,6 +42,7 @@ export const useQueryParams = () => {
   };
 
   useEffect(() => {
+    console.log(query);
     if (query.city) {
       const selected = GROUPED_PLACES.map((item) => item.options)
         .flat()
@@ -58,13 +58,13 @@ export const useQueryParams = () => {
       setSelectedAgeGroup(null);
     }
     if (query.coach) {
-      const selected = COACHES.filter((e) => query.coach.includes(e.value));
+      const selected = COACHES.filter((e) => query.coach.includes(e.id));
       setSelectedCoach(selected);
     } else {
       setSelectedCoach(null);
     }
   }, [query]);
-
+  console.log('return', selectedCity);
   return [
     selectedAgeGroup,
     selectedCoach,
