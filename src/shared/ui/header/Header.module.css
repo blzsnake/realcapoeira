@@ -18,6 +18,11 @@
   color: inherit;
 }
 
+/* Меняем цвет иконки меню в светлой шапке */
+.Light .MobileMenu path {
+  fill: #fff;
+}
+
 .GrayBg {
   background: var(--gray);
 }
