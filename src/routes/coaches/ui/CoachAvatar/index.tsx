@@ -10,16 +10,18 @@ export function CoachAvatar({
   photo: string;
   name: string;
   level: string;
-  variant: 'small' | 'medium' | 'large';
+  variant: 'micro' | 'small' | 'medium' | 'large';
 }) {
   return (
     <div
       className={cn(styles.CoachAvatar, {
-        [styles[level]]: level,
+        [styles[level]]: level && variant !== 'micro',
         [styles[variant]]: variant,
       })}
     >
-      <img src={photo} alt={name} className={styles.Photo} />
+      <div className={styles.PhotoWrapper}>
+        <img src={photo} alt={name} className={styles.Photo} />
+      </div>
     </div>
   );
 }

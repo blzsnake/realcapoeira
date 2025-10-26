@@ -1,1 +1,1 @@
-export { Quote as HeaderPart } from './Quote';
+export { Quote } from './Quote';
