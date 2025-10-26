@@ -1,0 +1,61 @@
+.MobileHeader {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: var(--bg-black);
+  gap: 30px;
+  padding: 12px 20px 20px;
+  border-radius: 0 0 40px 40px;
+
+  @media (min-width: 1025px) {
+    display: none;
+  }
+}
+
+.MasterInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.Title {
+  font-size: 20px;
+  line-height: 120%;
+  text-align: center;
+
+  @media (min-width: 1025px) {
+    font-size: 28px;
+  }
+}
+
+.Name {
+  font-size: 40px;
+  line-height: 120%;
+  word-break: break-word;
+  max-width: 335px;
+  text-align: center;
+  margin-bottom: 10px;
+
+  @media (min-width: 1025px) {
+    font-size: 80px;
+    max-width: 440px;
+  }
+}
+
+.Buttons {
+  display: flex;
+  gap: 16px;
+
+  :nth-child(1), :nth-child(2) {
+    width: 160px;
+  }
+}
+
+.DesktopHeader {
+  display: none;
+
+  @media (min-width: 1025px) {
+    display: flex;
+  }
+}

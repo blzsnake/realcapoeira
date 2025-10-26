@@ -1,0 +1,11 @@
+.PageWrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 48px;
+  max-width: 1440px;
+
+  @media (min-width: 1025px) {
+    gap: 100px;
+  }
+}

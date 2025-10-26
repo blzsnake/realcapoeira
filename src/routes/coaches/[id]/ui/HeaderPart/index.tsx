@@ -1,0 +1,73 @@
+import cn from 'classnames';
+import { useMemo } from 'react';
+import { useRoute } from '@tramvai/module-router';
+import { Typography } from '~shared/ui/typography';
+import { Button } from '~shared/ui/button/Button';
+import { CoachAvatar } from 'src/routes/coaches/ui/CoachAvatar';
+import { COACHES } from '~shared/mocks/coaches';
+import { COACH_PHOTOS } from '../../../utils';
+import styles from './HeaderPart.module.css';
+
+export function HeaderPart() {
+  const route = useRoute();
+  const { id } = route.params;
+  const coach = useMemo(() => COACHES.find((c) => c.id === id), [id]);
+
+  if (!coach) return null;
+
+  const { level, photo, nick, name, id: coachId } = coach;
+
+  const handleScrollToForm = () => {
+    const formElement = document.getElementById('signup');
+    if (formElement) {
+      formElement.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
+  return (
+    <>
+      <section className={styles.MobileHeader}>
+        <CoachAvatar
+          photo={photo || COACH_PHOTOS[id]}
+          name={name}
+          level={level}
+          variant="medium"
+        />
+        <div className={styles.MasterInfo}>
+          <Typography
+            color="white"
+            weight="demiBold"
+            className={styles.Title}
+          >{`${level} ${nick}`}</Typography>
+          <Typography
+            color="yellow"
+            component="h1"
+            weight="demiBold"
+            className={styles.Name}
+          >
+            {name}
+          </Typography>
+        </div>
+        <div className={styles.Buttons}>
+          <Button
+            className={styles.Button}
+            color="yellow"
+            onClick={handleScrollToForm}
+          >
+            Записаться
+          </Button>
+
+          <Button
+            className={styles.Button}
+            color="white"
+            url={`/filials/?coach=${coachId}`}
+            target="_self"
+          >
+            Филиалы
+          </Button>
+        </div>
+      </section>
+      <section className={styles.DesktopHeader} />
+    </>
+  );
+}
