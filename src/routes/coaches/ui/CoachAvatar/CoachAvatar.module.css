@@ -66,8 +66,8 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 105%;
-    height: 105%;
+    width: 106%;
+    height: 106%;
     display: block;
     content: '';
     pointer-events: none;
