@@ -5,6 +5,7 @@
   overflow: visible;
   background: var(--white);
   --photo-scale: 1;
+  --photo-translate-y: 0;
 }
 
 .PhotoWrapper {
@@ -19,7 +20,8 @@
 .micro {
   width: 92px;
   height: 92px;
-  --photo-scale: 1.3;
+  --photo-scale: 2.0;
+  --photo-translate-y: -6px;
 }
 
 .small {
@@ -31,7 +33,7 @@
 .medium {
   width: 280px;
   height: 280px;
-  --photo-scale: 1.13;
+  --photo-scale: 1.4;
 }
 
 .large {
@@ -47,7 +49,7 @@
   object-fit: cover;
   object-position: top center;
   transform-origin: top center;
-  transform: scale(var(--photo-scale));
+  transform: translateY(var(--photo-translate-y)) translateY(var(--photo-translate-y)) scale(var(--photo-scale));
   position: relative;
   z-index: 1;
   border-radius: 50%;

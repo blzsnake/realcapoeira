@@ -39,9 +39,10 @@ export function Header() {
   const { actualPath } = useRoute();
   const $setModalState = useEvents(setModalState);
   const isGrayBgRoute = actualPath === '/' || actualPath === '/about-school/';
+  const isCoachDetailsRoute =
+    actualPath.startsWith('/coaches/') && actualPath !== '/coaches/';
   const isOverlayRoute =
-    actualPath === '/about-capoeira/' ||
-    (actualPath.startsWith('/coaches/') && actualPath !== '/coaches/');
+    actualPath === '/about-capoeira/' || isCoachDetailsRoute;
   const isCoachesRootRoute = actualPath.startsWith('/coaches/');
 
   // eslint-disable-next-line no-nested-ternary
@@ -93,6 +94,12 @@ export function Header() {
   const isTransparentOverlay =
     isOverlayRoute && !isCoachesRootRoute && bgClass === styles.TransparentBg;
   const headerWrapMod = isTransparentOverlay ? styles.Light : '';
+
+  const mobileMenuClassName = `${styles.MobileMenu} ${
+    isCoachDetailsRoute && bgClass === styles.TransparentBg
+      ? styles.MobileMenuLight
+      : ''
+  }`.trim();
 
   return (
     <>
@@ -178,7 +185,7 @@ export function Header() {
           <Menu
             width={24}
             height={24}
-            className={styles.MobileMenu}
+            className={mobileMenuClassName}
             onClick={() => setMobileMenuOpen(true)}
           />
 

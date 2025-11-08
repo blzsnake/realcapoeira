@@ -67,7 +67,33 @@ export function HeaderPart() {
           </Button>
         </div>
       </section>
-      <section className={styles.DesktopHeader} />
+      <section className={styles.DesktopHeader}>
+        <div className={styles.CoachInfo}>
+          <div className={styles.CoachInfoTitle}>
+            <Typography
+              color="white"
+              weight="demiBold"
+              className={styles.Title}
+            >{`${level} ${nick}`}</Typography>
+            <Typography
+              color="yellow"
+              component="h1"
+              weight="demiBold"
+              className={styles.Name}
+            >
+              {name}
+            </Typography>
+          </div>
+        </div>
+        <div className={styles.CoachAvatarWrapper}>
+          <CoachAvatar
+            photo={photo || COACH_PHOTOS[id]}
+            name={name}
+            level={level}
+            variant="large"
+          />
+        </div>
+      </section>
     </>
   );
 }
