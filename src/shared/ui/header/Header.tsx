@@ -16,8 +16,22 @@ import { MobileMenu } from '../MobileMenu';
 // Styles
 import styles from './Header.module.css';
 
-const isLinkActive = (actualPath: string, linkRoute: string): boolean =>
-  actualPath === linkRoute;
+const normalizePath = (path: string): string =>
+  path.endsWith('/') ? path : `${path}/`;
+
+const isLinkActive = (actualPath: string, linkRoute: string): boolean => {
+  const normalizedActual = normalizePath(actualPath);
+  const normalizedLink = normalizePath(linkRoute);
+
+  if (normalizedLink === '/') {
+    return normalizedActual === normalizedLink;
+  }
+
+  return (
+    normalizedActual === normalizedLink ||
+    normalizedActual.startsWith(normalizedLink)
+  );
+};
 const getLinkActiveStyle = (ap: string, lr: string): string =>
   isLinkActive(ap, lr) ? styles.Active : '';
 
@@ -26,7 +40,9 @@ export function Header() {
   const $setModalState = useEvents(setModalState);
   const isGrayBgRoute = actualPath === '/' || actualPath === '/about-school/';
   const isOverlayRoute =
-    actualPath === '/about-capoeira/' || actualPath.startsWith('/coaches/');
+    actualPath === '/about-capoeira/' ||
+    (actualPath.startsWith('/coaches/') && actualPath !== '/coaches/');
+  const isCoachesRootRoute = actualPath.startsWith('/coaches/');
 
   // eslint-disable-next-line no-nested-ternary
   const initialBgClass = isOverlayRoute
@@ -75,7 +91,7 @@ export function Header() {
   useLockBodyScroll(isMobileMenuOpen);
 
   const isTransparentOverlay =
-    isOverlayRoute && bgClass === styles.TransparentBg;
+    isOverlayRoute && !isCoachesRootRoute && bgClass === styles.TransparentBg;
   const headerWrapMod = isTransparentOverlay ? styles.Light : '';
 
   return (
