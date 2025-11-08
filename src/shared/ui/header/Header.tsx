@@ -21,18 +21,17 @@ const isLinkActive = (actualPath: string, linkRoute: string): boolean =>
 const getLinkActiveStyle = (ap: string, lr: string): string =>
   isLinkActive(ap, lr) ? styles.Active : '';
 
-const isGrayBgRoute = (path: string) =>
-  path === '/' || path === '/about-school/';
-const isOverlayRoute = (path: string) => path === '/about-capoeira/';
-
 export function Header() {
   const { actualPath } = useRoute();
   const $setModalState = useEvents(setModalState);
+  const isGrayBgRoute = actualPath === '/' || actualPath === '/about-school/';
+  const isOverlayRoute =
+    actualPath === '/about-capoeira/' || actualPath.startsWith('/coaches/');
 
   // eslint-disable-next-line no-nested-ternary
-  const initialBgClass = isOverlayRoute(actualPath)
+  const initialBgClass = isOverlayRoute
     ? styles.TransparentBg
-    : isGrayBgRoute(actualPath)
+    : isGrayBgRoute
       ? styles.GrayBg
       : styles.WhiteBg;
 
@@ -48,22 +47,22 @@ export function Header() {
       if (!marker) return;
       const { bottom } = marker.getBoundingClientRect();
 
-      if (isOverlayRoute(actualPath)) {
+      if (isOverlayRoute) {
         setBgClass(bottom < 0 ? styles.WhiteBg : styles.TransparentBg);
         return;
       }
 
-      if (isGrayBgRoute(actualPath)) {
+      if (isGrayBgRoute) {
         setBgClass(bottom < 0 ? styles.WhiteBg : styles.GrayBg);
       }
     }, 0);
 
-    if (marker && (isOverlayRoute(actualPath) || isGrayBgRoute(actualPath))) {
+    if (marker && (isOverlayRoute || isGrayBgRoute)) {
       window.addEventListener('scroll', scrollHandler, { passive: true });
       scrollHandler();
     }
     return () => window.removeEventListener('scroll', scrollHandler);
-  }, [actualPath]);
+  }, [isOverlayRoute, isGrayBgRoute]);
 
   const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
 
@@ -76,7 +75,7 @@ export function Header() {
   useLockBodyScroll(isMobileMenuOpen);
 
   const isTransparentOverlay =
-    isOverlayRoute(actualPath) && bgClass === styles.TransparentBg;
+    isOverlayRoute && bgClass === styles.TransparentBg;
   const headerWrapMod = isTransparentOverlay ? styles.Light : '';
 
   return (

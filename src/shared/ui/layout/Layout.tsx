@@ -8,7 +8,9 @@ export function Layout({ children }: PropsWithChildren) {
 
   const isGray = path === '/about-capoeira/';
 
-  const isOverlayRoute = path === '/about-capoeira/';
+  const isOverlayRoute =
+    path === '/about-capoeira/' ||
+    (path.startsWith('/coaches/') && path !== '/coaches/');
 
   return (
     <div

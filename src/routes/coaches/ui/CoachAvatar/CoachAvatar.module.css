@@ -93,35 +93,35 @@
 .Aluno,
 .Aluna {
   &::after {
-    background: url('~app/assets/belts/aluno.png') no-repeat center / contain;
+    background: url('~app/assets/belts/small/aluno.svg') no-repeat center / contain;
   }
 }
 
 .Graduado,
 .Graduada {
   &::after {
-    background: url('~app/assets/belts/graduado.png') no-repeat center / contain;
+    background: url('~app/assets/belts/small/graduado.svg') no-repeat center / contain;
   }
 }
 
 .Minitor,
 .Minitora {
   &::after {
-    background: url('~app/assets/belts/minitor.png') no-repeat center / contain;
+    background: url('~app/assets/belts/small/minitor.svg') no-repeat center / contain;
   }
 }
 
 .Monitor,
 .Monitora {
   &::after {
-    background: url('~app/assets/belts/monitor.png') no-repeat center / contain;
+    background: url('~app/assets/belts/small/monitor.svg') no-repeat center / contain;
   }
 }
 
 .Instrutor,
 .Instrutora {
   &::after {
-    background: url('~app/assets/belts/instrutor.png') no-repeat center /
+    background: url('~app/assets/belts/small/instrutor.svg') no-repeat center /
       contain;
   }
 }
@@ -129,7 +129,7 @@
 .Professor,
 .Professora {
   &::after {
-    background: url('~app/assets/belts/professor.png') no-repeat center /
+    background: url('~app/assets/belts/small/professor.svg') no-repeat center /
       contain;
   }
 }
@@ -137,7 +137,7 @@
 .Contra-Mestre,
 .Contra-Mestra {
   &::after {
-    background: url('~app/assets/belts/contra-mestre.png') no-repeat center /
+    background: url('~app/assets/belts/small/contra-mestre.svg') no-repeat center /
       contain;
   }
 }
@@ -145,7 +145,7 @@
 .Mestre-1-Grau,
 .Mestra-1-Grau {
   &::after {
-    background: url('~app/assets/belts/mestre-1-grau.png') no-repeat center /
+    background: url('~app/assets/belts/small/mestre-1-grau.svg') no-repeat center /
       contain;
   }
 }
@@ -153,7 +153,7 @@
 .Mestre-2-Grau,
 .Mestra-2-Grau {
   &::after {
-    background: url('~app/assets/belts/mestre-2-grau.png') no-repeat center /
+    background: url('~app/assets/belts/small/mestre-2-grau.svg') no-repeat center /
       contain;
   }
 }
@@ -161,7 +161,7 @@
 .Mestre-3-Grau,
 .Mestra-3-Grau {
   &::after {
-    background: url('~app/assets/belts/mestre-3-grau.png') no-repeat center /
+    background: url('~app/assets/belts/small/mestre-3-grau.svg') no-repeat center /
       contain;
   }
 }
@@ -169,7 +169,84 @@
 .Grande-Mestre,
 .Grande-Mestra {
   &::after {
-    background: url('~app/assets/belts/grande-mestre.png') no-repeat center /
+    background: url('~app/assets/belts/small/grande-mestre.svg') no-repeat center /
       contain;
+  }
+}
+
+.large.Aluno,
+.large.Aluna {
+  &::after {
+    background: url('~app/assets/belts/big/aluno.svg') no-repeat center / contain;
+  }
+}
+
+.large.Graduado,
+.large.Graduada {
+  &::after {
+    background: url('~app/assets/belts/big/graduado.svg') no-repeat center / contain;
+  }
+}
+
+.large.Minitor,
+.large.Minitora {
+  &::after {
+    background: url('~app/assets/belts/big/minitor.svg') no-repeat center / contain;
+  }
+}
+
+.large.Monitor,
+.large.Monitora {
+  &::after {
+    background: url('~app/assets/belts/big/monitor.svg') no-repeat center / contain;
+  }
+}
+
+.large.Instrutor,
+.large.Instrutora {
+  &::after {
+    background: url('~app/assets/belts/big/instrutor.svg') no-repeat center / contain;
+  }
+}
+
+.large.Professor,
+.large.Professora {
+  &::after {
+    background: url('~app/assets/belts/big/professor.svg') no-repeat center / contain;
+  }
+}
+
+.large.Contra-Mestre,
+.large.Contra-Mestra {
+  &::after {
+    background: url('~app/assets/belts/big/contra-mestre.svg') no-repeat center / contain;
+  }
+}
+
+.large.Mestre-1-Grau,
+.large.Mestra-1-Grau {
+  &::after {
+    background: url('~app/assets/belts/big/mestre-1-grau.svg') no-repeat center / contain;
+  }
+}
+
+.large.Mestre-2-Grau,
+.large.Mestra-2-Grau {
+  &::after {
+    background: url('~app/assets/belts/big/mestre-2-grau.svg') no-repeat center / contain;
+  }
+}
+
+.large.Mestre-3-Grau,
+.large.Mestra-3-Grau {
+  &::after {
+    background: url('~app/assets/belts/big/mestre-3-grau.svg') no-repeat center / contain;
+  }
+}
+
+.large.Grande-Mestre,
+.large.Grande-Mestra {
+  &::after {
+    background: url('~app/assets/belts/big/grande-mestre.svg') no-repeat center / contain;
   }
 }

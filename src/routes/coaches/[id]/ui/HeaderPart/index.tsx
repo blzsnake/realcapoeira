@@ -26,7 +26,7 @@ export function HeaderPart() {
 
   return (
     <>
-      <section className={styles.MobileHeader}>
+      <section className={styles.MobileHeader} id="#headerScrollMarker">
         <CoachAvatar
           photo={photo || COACH_PHOTOS[id]}
           name={name}

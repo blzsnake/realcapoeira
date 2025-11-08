@@ -27,6 +27,9 @@
 .TransparentBg {
   background: transparent;
 }
+.BlackBg {
+  background: var(--bg-black);
+}
 
 .Header {
   display: flex;
