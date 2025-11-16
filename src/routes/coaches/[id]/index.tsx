@@ -2,8 +2,14 @@ import { useMemo } from 'react';
 import { useRoute } from '@tramvai/module-router';
 import { COACHES } from '~shared/mocks/coaches';
 import { SignUpFormGroup } from '~shared/ui/SignUpFormGroup';
+import { Typography } from '~shared/ui/typography';
+import ArrowRight from '~app/assets/ArrowRight.svg?react';
+import MiniMapIcon from '~app/assets/MiniMapIcon.png';
 import { HeaderPart } from './ui/HeaderPart';
+import { Numbers } from './ui/Numbers';
 import { Quote } from './ui/Quote';
+import { Groups } from './ui/Groups';
+import { Socials } from './ui/Socials';
 import { COACH_PHOTOS } from '../utils';
 import styles from './Coach.module.css';
 
@@ -17,7 +23,40 @@ function CoachPage() {
   return (
     <main className={styles.PageWrap}>
       <HeaderPart />
-      <div className={styles.ContentWithPadding} />
+      <Numbers
+        city={coach.city}
+        incapoeira={coach.incapoeira}
+        since={coach.since}
+        level={coach.level}
+      />
+      <div className={styles.ContentWithPadding}>
+        <div className={styles.FirstBlock}>
+          <div className={styles.InfoBlock}>
+            <Groups groups={coach.groups} />
+            <Socials links={coach.links} />
+          </div>
+          <div className={styles.TextBlock}>
+            <a
+              href={`/filials/?coach=${coach.id}`}
+              className={styles.FilialsCard}
+            >
+              <img
+                src={MiniMapIcon}
+                alt="Мини-карта филиалов"
+                className={styles.FilialsIcon}
+              />
+              <Typography weight="medium" className={styles.FilialsTitle}>
+                К филиалам
+              </Typography>
+              <ArrowRight
+                width={32}
+                height={32}
+                className={styles.FilialsArrow}
+              />
+            </a>
+          </div>
+        </div>
+      </div>
       <Quote
         name={coach.name}
         title={`${coach.level} ${coach.nick}`}

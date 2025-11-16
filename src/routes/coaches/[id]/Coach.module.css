@@ -13,5 +13,86 @@
 }
 
 .ContentWithPadding {
+  width: 100%;
   padding: 0 20px;
+
+  @media (min-width: 1025px) {
+    padding: 0;
+  }
+}
+
+.FirstBlock {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 16px;
+
+  @media (min-width: 1025px) {
+    flex-direction: column;
+    gap: 48px;
+    justify-content: unset;
+  }
+}
+
+.InfoBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  max-width: 335px;
+
+  @media (min-width: 1025px) {
+    gap: 40px;
+    max-width: 421px;
+  }
+}
+
+.TextBlock {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+
+  @media (min-width: 1025px) {
+    justify-content: flex-start;
+  }
+}
+
+.FilialsCard {
+  min-width: 335px;
+  width: 100%;
+  height: 96px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 16px 24px;
+  border-radius: 20px;
+  background-color: var(--gray-white);
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+}
+
+.FilialsIcon {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.FilialsTitle {
+  font-size: 18px;
+  line-height: 24px;
+}
+
+.FilialsArrow {
+  margin-left: auto;
+  width: 24px;
+  height: 24px;
+  color: var(--black);
 }
