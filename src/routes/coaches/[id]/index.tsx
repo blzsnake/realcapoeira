@@ -36,6 +36,9 @@ function CoachPage() {
             <Socials links={coach.links} />
           </div>
           <div className={styles.TextBlock}>
+            <Typography className={styles.Description}>
+              {coach.selfDescription}
+            </Typography>
             <a
               href={`/filials/?coach=${coach.id}`}
               className={styles.FilialsCard}

@@ -23,14 +23,14 @@
 
 .FirstBlock {
   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  gap: 16px;
+  flex-direction: column;
+  gap: 48px;
+  justify-content: unset;
 
   @media (min-width: 1025px) {
-    flex-direction: column;
-    gap: 48px;
-    justify-content: unset;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 16px;
   }
 }
 
@@ -47,13 +47,9 @@
 }
 
 .TextBlock {
-  flex: 1;
   display: flex;
-  justify-content: flex-end;
-
-  @media (min-width: 1025px) {
-    justify-content: flex-start;
-  }
+  flex-direction: column;
+  gap: 48px;
 }
 
 .FilialsCard {
@@ -69,7 +65,9 @@
   text-decoration: none;
   color: inherit;
   cursor: pointer;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
 
   &:hover {
     transform: translateY(-2px);
@@ -95,4 +93,8 @@
   width: 24px;
   height: 24px;
   color: var(--black);
+}
+
+.Description {
+  white-space: pre-line;
 }

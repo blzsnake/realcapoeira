@@ -107,7 +107,7 @@ export function HeaderPart() {
             <div className={styles.DesktopSocials}>
               <a
                 className={styles.SocialLink}
-                href={coach.links.tg}
+                href={`https://t.me/${coach.links.tg}`}
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -115,7 +115,7 @@ export function HeaderPart() {
               </a>
               <a
                 className={styles.SocialLink}
-                href={coach.links.wa}
+                href={`https://wa.me/${coach.links.wa}`}
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -123,7 +123,7 @@ export function HeaderPart() {
               </a>
               <a
                 className={styles.SocialLink}
-                href={coach.links.vk}
+                href={`https://vk.com/${coach.links.vk}`}
                 target="_blank"
                 rel="noopener noreferrer"
               >
