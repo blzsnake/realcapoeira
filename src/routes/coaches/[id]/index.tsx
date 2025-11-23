@@ -49,7 +49,7 @@ function CoachPage() {
                 className={styles.FilialsIcon}
               />
               <Typography weight="medium" className={styles.FilialsTitle}>
-                К филиалам
+                Где преподаю
               </Typography>
               <ArrowRight
                 width={32}
