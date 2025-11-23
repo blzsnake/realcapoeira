@@ -32,6 +32,8 @@ const isLinkActive = (actualPath: string, linkRoute: string): boolean => {
     normalizedActual.startsWith(normalizedLink)
   );
 };
+const DESKTOP_BREAKPOINT = 1025;
+
 const getLinkActiveStyle = (ap: string, lr: string): string =>
   isLinkActive(ap, lr) ? styles.Active : '';
 
@@ -45,9 +47,48 @@ export function Header() {
     actualPath === '/about-capoeira/' || isCoachDetailsRoute;
   const isCoachesRootRoute = actualPath.startsWith('/coaches/');
 
+  const [isDesktopWidth, setIsDesktopWidth] = useState(() =>
+    typeof window === 'undefined'
+      ? true
+      : window.innerWidth >= DESKTOP_BREAKPOINT
+  );
+
+  useEffect(() => {
+    if (typeof window === 'undefined') {
+      return undefined;
+    }
+
+    const mediaQuery = window.matchMedia(
+      `(min-width: ${DESKTOP_BREAKPOINT}px)`
+    );
+    const handleChange = (event: MediaQueryListEvent) => {
+      setIsDesktopWidth(event.matches);
+    };
+
+    setIsDesktopWidth(mediaQuery.matches);
+
+    if (typeof mediaQuery.addEventListener === 'function') {
+      mediaQuery.addEventListener('change', handleChange);
+      return () => mediaQuery.removeEventListener('change', handleChange);
+    }
+
+    mediaQuery.addListener(handleChange);
+    return () => mediaQuery.removeListener(handleChange);
+  }, []);
+
+  const shouldUseCoachDarkOverlay = isCoachDetailsRoute && !isDesktopWidth;
+
+  const coachOverlayBgClass = shouldUseCoachDarkOverlay
+    ? styles.BlackBg
+    : styles.WhiteBg;
+
+  const overlayInitialBgClass = isCoachDetailsRoute
+    ? coachOverlayBgClass
+    : styles.TransparentBg;
+
   // eslint-disable-next-line no-nested-ternary
   const initialBgClass = isOverlayRoute
-    ? styles.TransparentBg
+    ? overlayInitialBgClass
     : isGrayBgRoute
       ? styles.GrayBg
       : styles.WhiteBg;
@@ -65,7 +106,11 @@ export function Header() {
       const { bottom } = marker.getBoundingClientRect();
 
       if (isOverlayRoute) {
-        setBgClass(bottom < 0 ? styles.WhiteBg : styles.TransparentBg);
+        const overlayBgClass = isCoachDetailsRoute
+          ? coachOverlayBgClass
+          : styles.TransparentBg;
+
+        setBgClass(bottom < 0 ? styles.WhiteBg : overlayBgClass);
         return;
       }
 
@@ -79,7 +124,13 @@ export function Header() {
       scrollHandler();
     }
     return () => window.removeEventListener('scroll', scrollHandler);
-  }, [isOverlayRoute, isGrayBgRoute]);
+  }, [
+    isOverlayRoute,
+    isGrayBgRoute,
+    isCoachDetailsRoute,
+    shouldUseCoachDarkOverlay,
+    coachOverlayBgClass,
+  ]);
 
   const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
 
@@ -93,12 +144,14 @@ export function Header() {
 
   const isTransparentOverlay =
     isOverlayRoute && !isCoachesRootRoute && bgClass === styles.TransparentBg;
-  const headerWrapMod = isTransparentOverlay ? styles.Light : '';
+  const isCoachDarkOverlay = isCoachDetailsRoute && bgClass === styles.BlackBg;
+  const headerWrapMod =
+    isTransparentOverlay || isCoachDarkOverlay ? styles.Light : '';
 
+  const shouldUseLightMobileMenu =
+    isCoachDetailsRoute && bgClass !== styles.WhiteBg;
   const mobileMenuClassName = `${styles.MobileMenu} ${
-    isCoachDetailsRoute && bgClass === styles.TransparentBg
-      ? styles.MobileMenuLight
-      : ''
+    shouldUseLightMobileMenu ? styles.MobileMenuLight : ''
   }`.trim();
 
   return (
