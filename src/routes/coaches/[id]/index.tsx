@@ -30,7 +30,7 @@ function CoachPage() {
         level={coach.level}
       />
       <div className={styles.ContentWithPadding}>
-        <div className={styles.FirstBlock}>
+        <div className={styles.ContentBlock}>
           <div className={styles.InfoBlock}>
             <Groups groups={coach.groups} />
             <Socials links={coach.links} />
@@ -57,6 +57,18 @@ function CoachPage() {
                 className={styles.FilialsArrow}
               />
             </a>
+          </div>
+        </div>
+        <div className={styles.ContentBlock}>
+          <div className={styles.InfoBlock}>
+            <Typography weight="demiBold" className={styles.Classroom}>
+              На занятиях
+            </Typography>
+          </div>
+          <div className={styles.TextBlock}>
+            <Typography className={styles.Description}>
+              {coach.trainDescription}
+            </Typography>
           </div>
         </div>
       </div>
