@@ -24,6 +24,7 @@ import SPolyakova from '~app/assets/coaches/s.polyakova.png';
 import KSofiyskaya from '~app/assets/coaches/k.sofiyskaya.png';
 import IKuznecov from '~app/assets/coaches/i.kuznecov.png';
 import APolitov from '~app/assets/coaches/a.politov.png';
+import KSamohina from '~app/assets/coaches/k.samohina.png';
 
 export const COACH_PHOTOS: Record<string, string> = {
   'a.rogozin': ARogozin,
@@ -52,4 +53,5 @@ export const COACH_PHOTOS: Record<string, string> = {
   'k.sofiyskaya': KSofiyskaya,
   'i.kuznetsov': IKuznecov,
   'a.politov': APolitov,
+  'k.samohina': KSamohina,
 };
