@@ -1,0 +1,148 @@
+.MobileHeader {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: var(--bg-black);
+  gap: 30px;
+  padding: 12px 20px 20px;
+  border-radius: 0 0 40px 40px;
+  padding-top: 78px;
+
+  @media (min-width: 1025px) {
+    display: none;
+  }
+}
+
+.MasterInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  text-align: center;
+}
+
+.Title {
+  font-size: 20px;
+  line-height: 120%;
+  word-break: normal;
+  overflow-wrap: normal;
+  hyphens: none;
+
+  @media (min-width: 1025px) {
+    font-size: 24px;
+  }
+
+  @media (min-width: 1440px) {
+    font-size: 28px;
+  }
+}
+
+.Name {
+  font-size: 40px;
+  line-height: 120%;
+  word-break: normal;
+  overflow-wrap: normal;
+  hyphens: none;
+  max-width: 335px;
+  margin-bottom: 10px;
+
+  @media (min-width: 1025px) {
+    font-size: 60px;
+    max-width: 440px;
+  }
+
+  @media (min-width: 1440px) {
+    font-size: 80px;
+    max-width: 440px;
+  }
+}
+
+.Buttons {
+  display: flex;
+  gap: 16px;
+
+  :nth-child(1),
+  :nth-child(2) {
+    width: 160px;
+  }
+}
+
+.DesktopHeader {
+  display: none;
+
+  @media (min-width: 1025px) {
+    display: flex;
+    gap: 8px;
+    padding-top: 68px;
+  }
+
+  @media (min-width: 1440px) {
+    padding-top: 96px;
+  }
+}
+
+.CoachInfo {
+  display: flex;
+  flex-direction: column;
+  padding: 24px;
+  justify-content: space-between;
+  border-radius: 20px;
+  background: var(--bg-black);
+  width: 50%;
+
+  @media (min-width: 1440px) {
+    padding: 40px;
+  }
+}
+
+.CoachInfoTitle {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.CoachAvatarWrapper {
+  width: 50%;
+}
+
+.DesktopButtons {
+  display: flex;
+  justify-content: space-between;
+}
+
+.DesktopMainButtons {
+  display: flex;
+  gap: 8px;
+
+  @media (min-width: 1440px) {
+    gap: 16px;
+  }
+}
+
+.DesktopSocials {
+  display: flex;
+  gap: 4px;
+}
+
+.SocialLink {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #000;
+  border-radius: 50%;
+
+  @media (min-width: 1440px) {
+    width: 56px;
+    height: 56px;
+  }
+}
+
+.DesktopButton {
+  height: 40px !important;
+
+  @media (min-width: 1440px) {
+    height: 56px !important;
+  }
+}

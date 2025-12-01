@@ -1,0 +1,254 @@
+.CoachAvatar {
+  position: relative;
+  display: inline-block;
+  border-radius: 50%;
+  overflow: visible;
+  background: var(--white);
+  --photo-scale: 1;
+  --photo-translate-y: 0;
+}
+
+.PhotoWrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.micro {
+  width: 92px;
+  height: 92px;
+  --photo-scale: 2.0;
+  --photo-translate-y: -6px;
+}
+
+.small {
+  width: 160px;
+  height: 160px;
+  --photo-scale: 1.1;
+}
+
+.medium {
+  width: 280px;
+  height: 280px;
+  --photo-scale: 1.4;
+}
+
+.large {
+  width: 98%;
+  height: 98%;
+  background: rgba(252, 238, 191, 1);
+}
+
+.Photo {
+  padding-top: 6px;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  transform-origin: top center;
+  transform: translateY(var(--photo-translate-y)) translateY(var(--photo-translate-y)) scale(var(--photo-scale));
+  position: relative;
+  z-index: 1;
+  border-radius: 50%;
+}
+
+.Aluno,
+.Aluna,
+.Graduado,
+.Graduada,
+.Minitor,
+.Minitora,
+.Monitor,
+.Monitora,
+.Instrutor,
+.Instrutora,
+.Professor,
+.Professora,
+.Contra-Mestre,
+.Contra-Mestra,
+.Mestre-1-Grau,
+.Mestra-2-Grau,
+.Mestre-3-Grau,
+.Mestra-3-Grau,
+.Grande-Mestre,
+.Grande-Mestra {
+  position: relative;
+  
+
+  &::after {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 106%;
+    height: 106%;
+    display: block;
+    content: '';
+    pointer-events: none;
+    z-index: 2;
+  }
+}
+
+.Aluno,
+.Aluna {
+  &::after {
+    background: url('~app/assets/belts/small/aluno.svg') no-repeat center / contain;
+  }
+}
+
+.Graduado,
+.Graduada {
+  &::after {
+    background: url('~app/assets/belts/small/graduado.svg') no-repeat center / contain;
+  }
+}
+
+.Minitor,
+.Minitora {
+  &::after {
+    background: url('~app/assets/belts/small/minitor.svg') no-repeat center / contain;
+  }
+}
+
+.Monitor,
+.Monitora {
+  &::after {
+    background: url('~app/assets/belts/small/monitor.svg') no-repeat center / contain;
+  }
+}
+
+.Instrutor,
+.Instrutora {
+  &::after {
+    background: url('~app/assets/belts/small/instrutor.svg') no-repeat center /
+      contain;
+  }
+}
+
+.Professor,
+.Professora {
+  &::after {
+    background: url('~app/assets/belts/small/professor.svg') no-repeat center /
+      contain;
+  }
+}
+
+.Contra-Mestre,
+.Contra-Mestra {
+  &::after {
+    background: url('~app/assets/belts/small/contra-mestre.svg') no-repeat center /
+      contain;
+  }
+}
+
+.Mestre-1-Grau,
+.Mestra-1-Grau {
+  &::after {
+    background: url('~app/assets/belts/small/mestre-1-grau.svg') no-repeat center /
+      contain;
+  }
+}
+
+.Mestre-2-Grau,
+.Mestra-2-Grau {
+  &::after {
+    background: url('~app/assets/belts/small/mestre-2-grau.svg') no-repeat center /
+      contain;
+  }
+}
+
+.Mestre-3-Grau,
+.Mestra-3-Grau {
+  &::after {
+    background: url('~app/assets/belts/small/mestre-3-grau.svg') no-repeat center /
+      contain;
+  }
+}
+
+.Grande-Mestre,
+.Grande-Mestra {
+  &::after {
+    background: url('~app/assets/belts/small/grande-mestre.svg') no-repeat center /
+      contain;
+  }
+}
+
+.large.Aluno,
+.large.Aluna {
+  &::after {
+    background: url('~app/assets/belts/big/aluno.svg') no-repeat center / contain;
+  }
+}
+
+.large.Graduado,
+.large.Graduada {
+  &::after {
+    background: url('~app/assets/belts/big/graduado.svg') no-repeat center / contain;
+  }
+}
+
+.large.Minitor,
+.large.Minitora {
+  &::after {
+    background: url('~app/assets/belts/big/minitor.svg') no-repeat center / contain;
+  }
+}
+
+.large.Monitor,
+.large.Monitora {
+  &::after {
+    background: url('~app/assets/belts/big/monitor.svg') no-repeat center / contain;
+  }
+}
+
+.large.Instrutor,
+.large.Instrutora {
+  &::after {
+    background: url('~app/assets/belts/big/instrutor.svg') no-repeat center / contain;
+  }
+}
+
+.large.Professor,
+.large.Professora {
+  &::after {
+    background: url('~app/assets/belts/big/professor.svg') no-repeat center / contain;
+  }
+}
+
+.large.Contra-Mestre,
+.large.Contra-Mestra {
+  &::after {
+    background: url('~app/assets/belts/big/contra-mestre.svg') no-repeat center / contain;
+  }
+}
+
+.large.Mestre-1-Grau,
+.large.Mestra-1-Grau {
+  &::after {
+    background: url('~app/assets/belts/big/mestre-1-grau.svg') no-repeat center / contain;
+  }
+}
+
+.large.Mestre-2-Grau,
+.large.Mestra-2-Grau {
+  &::after {
+    background: url('~app/assets/belts/big/mestre-2-grau.svg') no-repeat center / contain;
+  }
+}
+
+.large.Mestre-3-Grau,
+.large.Mestra-3-Grau {
+  &::after {
+    background: url('~app/assets/belts/big/mestre-3-grau.svg') no-repeat center / contain;
+  }
+}
+
+.large.Grande-Mestre,
+.large.Grande-Mestra {
+  &::after {
+    background: url('~app/assets/belts/big/grande-mestre.svg') no-repeat center / contain;
+  }
+}

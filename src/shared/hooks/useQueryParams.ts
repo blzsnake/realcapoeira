@@ -64,7 +64,7 @@ export const useQueryParams = () => {
       setSelectedCoach(null);
     }
   }, [query]);
-  console.log('return', selectedCity);
+
   return [
     selectedAgeGroup,
     selectedCoach,

@@ -19,3 +19,11 @@
 .NoPadding {
   padding-top: 0;
 }
+
+.HeaderPadBlack {
+  background: var(--bg-black);
+
+  @media (min-width: 1025px) {
+    background: none;
+  }
+}

@@ -27,6 +27,9 @@
 .TransparentBg {
   background: transparent;
 }
+.BlackBg {
+  background: var(--bg-black);
+}
 
 .Header {
   display: flex;
@@ -72,6 +75,15 @@
 
 .MobileMenu {
   cursor: pointer;
+}
+
+.MobileMenu path {
+  transition: fill 0.2s ease;
+  fill: #000;
+}
+
+.MobileMenuLight path {
+  fill: #fff;
 }
 
 @media (min-width: 1440px) {
