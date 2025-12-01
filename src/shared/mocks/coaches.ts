@@ -495,7 +495,7 @@ export const COACHES = [
     phone: '+79266906147',
     level: 'Monitor',
     photo: '',
-    nick: 'Trinity',
+    nick: 'Ramil',
     name: 'Миннуллин Рамиль',
     id: 'r.minnulin',
     value: 'r.minnulin',
