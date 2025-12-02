@@ -11,7 +11,7 @@ export function CoachCard({ name, level, photo, id, nick }: TCoachCardProps) {
   return (
     <div
       className={styles.CoachCard}
-      onClick={() => router.navigate(`/coaches/${id}`)}
+      onClick={() => router.navigate(`/coaches/${id?.replace('.', '_')}`)}
     >
       <CoachAvatar
         photo={photo || COACH_PHOTOS[id]}

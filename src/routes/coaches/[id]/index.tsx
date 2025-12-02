@@ -1,4 +1,4 @@
-import { useMemo } from 'react';
+import { useEffect, useMemo } from 'react';
 import { useRoute } from '@tramvai/module-router';
 import { COACHES } from '~shared/mocks/coaches';
 import { SignUpFormGroup } from '~shared/ui/SignUpFormGroup';
@@ -16,7 +16,15 @@ import styles from './Coach.module.css';
 function CoachPage() {
   const route = useRoute();
   const { id } = route.params;
-  const coach = useMemo(() => COACHES.find((c) => c.id === id), [id]);
+  const formatedId = id.replace('_', '.');
+  const coach = useMemo(
+    () => COACHES.find((c) => c.id === formatedId),
+    [formatedId]
+  );
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [id]);
 
   if (!coach) return null;
 

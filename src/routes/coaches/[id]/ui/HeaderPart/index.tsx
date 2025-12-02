@@ -13,7 +13,11 @@ import styles from './HeaderPart.module.css';
 export function HeaderPart() {
   const route = useRoute();
   const { id } = route.params;
-  const coach = useMemo(() => COACHES.find((c) => c.id === id), [id]);
+  const formatedId = id.replace('_', '.');
+  const coach = useMemo(
+    () => COACHES.find((c) => c.id === formatedId),
+    [formatedId]
+  );
 
   if (!coach) return null;
 
@@ -134,7 +138,7 @@ export function HeaderPart() {
         </div>
         <div className={styles.CoachAvatarWrapper}>
           <CoachAvatar
-            photo={photo || COACH_PHOTOS[id]}
+            photo={photo || COACH_PHOTOS[formatedId]}
             name={name}
             level={level}
             variant="large"
