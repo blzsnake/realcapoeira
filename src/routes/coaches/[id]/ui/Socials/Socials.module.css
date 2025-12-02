@@ -61,3 +61,8 @@
   color: var(--black);
 }
 
+.MetaDisclaimer {
+  font-size: 12px;
+  line-height: 120%;
+  color: #959595;
+}

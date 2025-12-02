@@ -17,7 +17,7 @@ type SocialsProps = {
 const SOCIAL_LABELS = {
   vk: 'VK',
   tg: 'Telegram',
-  inst: 'Instagram',
+  inst: 'Instagram*',
   youtube: 'YouTube',
 } as const;
 
@@ -78,6 +78,9 @@ export function Socials({ links }: SocialsProps) {
           </a>
         ))}
       </div>
+      <Typography weight="medium" className={styles.MetaDisclaimer}>
+        *Соцсеть принадлежит компании Meta, признанной экстремистской в РФ
+      </Typography>
     </section>
   );
 }
