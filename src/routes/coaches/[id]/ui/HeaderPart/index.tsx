@@ -34,7 +34,7 @@ export function HeaderPart() {
     <>
       <section className={styles.MobileHeader} id="#headerScrollMarker">
         <CoachAvatar
-          photo={photo || COACH_PHOTOS[id]}
+          photo={photo || COACH_PHOTOS[formatedId]}
           name={name}
           level={level}
           variant="medium"
