@@ -39,7 +39,7 @@ export function CapoeiraComponents() {
         <button
           type="button"
           onClick={openVideo(
-            'https://vk.com/video-269461_456239253',
+            'https://vk.com/video_ext.php?oid=-269461&id=456239253&hash=abc123...',
             'Исскуство боя'
           )}
           className={styles.Component}
@@ -58,7 +58,10 @@ export function CapoeiraComponents() {
 
         <button
           type="button"
-          onClick={openVideo('https://vk.com/wall-269461_19572', 'Акробатика')}
+          onClick={openVideo(
+            'https://vk.com/video_ext.php?oid=-269461&id=456239256&hash=29013e0603fdc0db&hd=3',
+            'Акробатика'
+          )}
           className={styles.Component}
         >
           <div className={styles.Column}>
@@ -76,7 +79,7 @@ export function CapoeiraComponents() {
         <button
           type="button"
           onClick={openVideo(
-            'https://vk.com/wall-269461_19571',
+            'https://vk.com/video_ext.php?oid=-269461&id=456239255&hash=45e7f8249279f73e&hd=3',
             'Музыка и танец'
           )}
           className={styles.Component}
@@ -95,7 +98,10 @@ export function CapoeiraComponents() {
 
         <button
           type="button"
-          onClick={openVideo('https://vk.com/wall-269461_19570', 'Рода')}
+          onClick={openVideo(
+            'https://vk.com/video_ext.php?oid=-269461&id=456239254&hash=178b3c1c2e955062&hd=3',
+            'Рода'
+          )}
           className={styles.Component}
         >
           <div className={styles.Column}>
@@ -120,3 +126,11 @@ export function CapoeiraComponents() {
     </div>
   );
 }
+<iframe
+  src="https://vk.com/video_ext.php?oid=-269461&id=456239255&hash=45e7f8249279f73e&hd=3"
+  width="1280"
+  height="720"
+  allow="autoplay; encrypted-media; fullscreen; picture-in-picture; screen-wake-lock;"
+  frameBorder="0"
+  allowfullscreen
+/>;
