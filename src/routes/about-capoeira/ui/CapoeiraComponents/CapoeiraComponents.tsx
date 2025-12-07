@@ -13,6 +13,7 @@ export function CapoeiraComponents() {
   const [videoTitle, setVideoTitle] = useState('');
 
   const openVideo = (src: string, title: string) => () => {
+    console.log('xxxs');
     setVideoSrc(src);
     setIsOpen(true);
     setVideoTitle(title);
@@ -38,7 +39,7 @@ export function CapoeiraComponents() {
         <button
           type="button"
           onClick={openVideo(
-            'https://vk.com/wall-269461_19569',
+            'https://vk.com/video-269461_456239253',
             'Исскуство боя'
           )}
           className={styles.Component}

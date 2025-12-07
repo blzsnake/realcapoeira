@@ -1,8 +1,4 @@
-import classNames from 'classnames';
-import { Typography } from '~shared/ui/typography';
-import { MobileSelector } from '~shared/ui/MobileSelector';
-import { CITIES } from '~shared/consts/cities';
-import type { MultiValue, OptionProps, SingleValue } from 'react-select';
+import type { OptionProps } from 'react-select';
 import Select, { components } from 'react-select';
 import { customStyles } from '~shared/ui/SignUpFormGroup/SignUpForm';
 import { Radio } from '~shared/ui/Radio/Radio';

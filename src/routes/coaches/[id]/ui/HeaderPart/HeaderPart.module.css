@@ -74,11 +74,11 @@
     display: flex;
     width: 100%;
     gap: 8px;
-    padding-top: 68px;
+    padding-top: 74px;
   }
 
   @media (min-width: 1440px) {
-    padding-top: 96px;
+    padding-top: 104px;
   }
 }
 
