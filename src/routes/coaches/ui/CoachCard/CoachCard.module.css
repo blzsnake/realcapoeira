@@ -9,6 +9,12 @@
   background-color: #F6F4F3;
   border-radius: 20px;
   @media (min-width: 760px) {
+    min-width: 238px;
+    width: 23vw;
+    max-width: 290px;
+  }
+
+  @media (min-width: 1260px) {
     max-width: 322px;
   }
 }
