@@ -1,0 +1,16 @@
+.Filter {
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  z-index: 10;
+  position: relative;
+}
+
+.FilterItem {
+  width: 164px;
+
+  @media (min-width: 760px) {
+    width: 207px;
+  }
+
+}

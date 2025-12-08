@@ -27,34 +27,42 @@ import styles from './Masters.module.css';
 const mastersData = [
   {
     name: 'Mestre Bimba',
+    dates: '23 ноября 1899 — 5 февраля 1974',
     children: <MasterData1 />,
   },
   {
     name: 'Mestre Pastinha',
+    dates: '5 апреля 1889 — 13 ноября 1981',
     children: <MasterData2 />,
   },
   {
     name: 'Mestre Suassuna',
+    dates: '3 июля 1938 — по сей день',
     children: <MasterData3 />,
   },
   {
     name: 'Mestre Acordeon',
+    dates: '1943 — по сей день',
     children: <MasterData4 />,
   },
   {
     name: 'Mestre João Grande',
+    dates: '15 января 1933 — по сей день',
     children: <MasterData5 />,
   },
   {
     name: 'Mestre Camisa',
+    dates: '28 октября 1955 — по сей день',
     children: <MasterData6 />,
   },
   {
     name: 'Mestre Cobra Mansa',
+    dates: '19 мая 1960 — по сей день',
     children: <MasterData7 />,
   },
   {
     name: 'Mestre João Pequeno',
+    dates: '27 декабря 1917 — 9 декабря 2011',
     children: <MasterData8 />,
   },
 ];
@@ -151,6 +159,7 @@ export function Masters() {
           isOpen={isModalOpen !== null}
           closeModal={() => setIsModalOpen(null)}
           name={mastersData[isModalOpen].name}
+          dates={mastersData[isModalOpen].dates}
         >
           {mastersData[isModalOpen].children}
         </MasterModal>

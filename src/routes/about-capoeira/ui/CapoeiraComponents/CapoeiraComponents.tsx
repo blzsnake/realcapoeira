@@ -1,11 +1,28 @@
+import { useState } from 'react';
 import { Typography } from '~shared/ui/typography';
 import Pic1 from '~app/assets/components/Pic1.png';
 import Pic2 from '~app/assets/components/Pic2.png';
 import Pic3 from '~app/assets/components/Pic3.png';
 import Pic4 from '~app/assets/components/Pic4.png';
 import styles from './CapoeiraComponents.module.css';
+import { VideoModal } from './modals/VideoModal';
 
 export function CapoeiraComponents() {
+  const [isOpen, setIsOpen] = useState(false);
+  const [videoSrc, setVideoSrc] = useState('');
+  const [videoTitle, setVideoTitle] = useState('');
+
+  const openVideo = (src: string, title: string) => () => {
+    setVideoSrc(src);
+    setIsOpen(true);
+    setVideoTitle(title);
+  };
+
+  const closeVideo = () => {
+    setIsOpen(false);
+    setVideoSrc('');
+  };
+
   return (
     <div className={styles.Wrap}>
       <Typography
@@ -18,10 +35,12 @@ export function CapoeiraComponents() {
       </Typography>
 
       <div className={styles.ComponentsContainer}>
-        <a
-          href="https://vk.com/wall-269461_19569"
-          target="_blank"
-          rel="noopener noreferrer"
+        <button
+          type="button"
+          onClick={openVideo(
+            'https://vk.com/video_ext.php?oid=-269461&id=456239253&hash=abc123...',
+            'Исскуство боя'
+          )}
           className={styles.Component}
         >
           <div className={styles.Column}>
@@ -34,12 +53,14 @@ export function CapoeiraComponents() {
             </Typography>
           </div>
           <img src={Pic1} className={styles.Image} alt="Искусство боя" />
-        </a>
+        </button>
 
-        <a
-          href="https://vk.com/wall-269461_19572"
-          target="_blank"
-          rel="noopener noreferrer"
+        <button
+          type="button"
+          onClick={openVideo(
+            'https://vk.com/video_ext.php?oid=-269461&id=456239256&hash=29013e0603fdc0db&hd=3',
+            'Акробатика'
+          )}
           className={styles.Component}
         >
           <div className={styles.Column}>
@@ -52,12 +73,14 @@ export function CapoeiraComponents() {
             </Typography>
           </div>
           <img src={Pic2} className={styles.Image} alt="Акробатика" />
-        </a>
+        </button>
 
-        <a
-          href="https://vk.com/wall-269461_19571"
-          target="_blank"
-          rel="noopener noreferrer"
+        <button
+          type="button"
+          onClick={openVideo(
+            'https://vk.com/video_ext.php?oid=-269461&id=456239255&hash=45e7f8249279f73e&hd=3',
+            'Музыка и танец'
+          )}
           className={styles.Component}
         >
           <div className={styles.Column}>
@@ -70,12 +93,14 @@ export function CapoeiraComponents() {
             </Typography>
           </div>
           <img src={Pic3} className={styles.Image} alt="Музыка и танец" />
-        </a>
+        </button>
 
-        <a
-          href="https://vk.com/wall-269461_19570"
-          target="_blank"
-          rel="noopener noreferrer"
+        <button
+          type="button"
+          onClick={openVideo(
+            'https://vk.com/video_ext.php?oid=-269461&id=456239254&hash=178b3c1c2e955062&hd=3',
+            'Рода'
+          )}
           className={styles.Component}
         >
           <div className={styles.Column}>
@@ -88,8 +113,23 @@ export function CapoeiraComponents() {
             </Typography>
           </div>
           <img src={Pic4} className={styles.Image} alt="Рода" />
-        </a>
+        </button>
       </div>
+
+      <VideoModal
+        isOpen={isOpen}
+        closeModal={closeVideo}
+        src={videoSrc}
+        title={videoTitle}
+      />
     </div>
   );
 }
+<iframe
+  src="https://vk.com/video_ext.php?oid=-269461&id=456239255&hash=45e7f8249279f73e&hd=3"
+  width="1280"
+  height="720"
+  allow="autoplay; encrypted-media; fullscreen; picture-in-picture; screen-wake-lock;"
+  frameBorder="0"
+  allowFullScreen
+/>;

@@ -1,0 +1,38 @@
+.CoachCard {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-top: 20px;
+  padding-bottom: 24px;
+  width: 100%;
+  background-color: #F6F4F3;
+  border-radius: 20px;
+  @media (min-width: 760px) {
+    min-width: 238px;
+    width: 23vw;
+    max-width: 290px;
+  }
+
+  @media (min-width: 1260px) {
+    max-width: 322px;
+  }
+}
+
+.Buttons {
+  margin-top: 24px;
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  width: 100%;
+}
+
+.Photo {
+  position: relative;
+  display: block;
+}
+
+.Name {
+  margin-top: 18px;
+  margin-bottom: 8px;
+}

@@ -2,7 +2,7 @@ import { SignUpFormGroup } from '~shared/ui/SignUpFormGroup';
 import { HeaderPart } from './ui/HeaderPart';
 import { HistoryAndMasters } from './ui/HistoryAndMasters/HistoryAndMasters';
 import { CapoeiraComponents } from './ui/CapoeiraComponents';
-import { Quote } from './ui/Quote/Quote';
+import { Quote } from './ui/Quote';
 import styles from './AboutCapoeira.module.css';
 
 export function AboutCapoeiraPage() {

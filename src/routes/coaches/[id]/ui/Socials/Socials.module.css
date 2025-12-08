@@ -1,0 +1,63 @@
+.Socials {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.Title {
+  font-size: 20px;
+  line-height: 120%;
+
+  @media (min-width: 1025px) {
+    font-size: 28px;
+  }
+}
+
+.Grid {
+  width: 100%;
+  display: grid;
+  gap: 8px;
+  grid-template-columns: repeat(2, 162px);
+
+  @media (min-width: 1025px) {
+    gap: 16px;
+    grid-template-columns: repeat(2, 202px);
+  }
+}
+
+.Card {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  padding: 16px;
+  border-radius: 20px;
+  background-color: var(--gray-white);
+  text-decoration: none;
+  color: inherit;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  width: 162px;
+  height: 100px;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+
+  @media (min-width: 1025px) {
+    width: 202px;
+  }
+}
+
+.Label {
+  font-size: 18px;
+  line-height: 120%;
+}
+
+.ArrowRight {
+  position: absolute;
+  bottom: 16px;
+  right: 16px;
+  color: var(--black);
+}
+

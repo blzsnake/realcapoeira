@@ -51,6 +51,9 @@
   max-width: 335px;
   border-radius: 20px;
   cursor: pointer;
+  border: none;
+  text-align: left;
+  appearance: none;
 
   @media (min-width: 769px) {
     flex-direction: row;

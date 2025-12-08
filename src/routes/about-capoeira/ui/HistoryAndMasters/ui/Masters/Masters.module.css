@@ -39,7 +39,7 @@
 
   @media (min-width: 1025px) {
     font-size: 56px;
-    max-width: 600px;
+    width: 437px;
     min-width: 470px;
   }
 }

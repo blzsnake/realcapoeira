@@ -16,23 +16,80 @@ import { MobileMenu } from '../MobileMenu';
 // Styles
 import styles from './Header.module.css';
 
-const isLinkActive = (actualPath: string, linkRoute: string): boolean =>
-  actualPath === linkRoute;
+const normalizePath = (path: string): string =>
+  path.endsWith('/') ? path : `${path}/`;
+
+const isLinkActive = (actualPath: string, linkRoute: string): boolean => {
+  const normalizedActual = normalizePath(actualPath);
+  const normalizedLink = normalizePath(linkRoute);
+
+  if (normalizedLink === '/') {
+    return normalizedActual === normalizedLink;
+  }
+
+  return (
+    normalizedActual === normalizedLink ||
+    normalizedActual.startsWith(normalizedLink)
+  );
+};
+const DESKTOP_BREAKPOINT = 1025;
+
 const getLinkActiveStyle = (ap: string, lr: string): string =>
   isLinkActive(ap, lr) ? styles.Active : '';
-
-const isGrayBgRoute = (path: string) =>
-  path === '/' || path === '/about-school/';
-const isOverlayRoute = (path: string) => path === '/about-capoeira/';
 
 export function Header() {
   const { actualPath } = useRoute();
   const $setModalState = useEvents(setModalState);
+  const isGrayBgRoute = actualPath === '/' || actualPath === '/about-school/';
+  const isCoachDetailsRoute =
+    actualPath.startsWith('/coaches/') && actualPath !== '/coaches/';
+  const isOverlayRoute =
+    actualPath === '/about-capoeira/' || isCoachDetailsRoute;
+  const isCoachesRootRoute = actualPath.startsWith('/coaches/');
+
+  const [isDesktopWidth, setIsDesktopWidth] = useState(() =>
+    typeof window === 'undefined'
+      ? true
+      : window.innerWidth >= DESKTOP_BREAKPOINT
+  );
+
+  useEffect(() => {
+    if (typeof window === 'undefined') {
+      return undefined;
+    }
+
+    const mediaQuery = window.matchMedia(
+      `(min-width: ${DESKTOP_BREAKPOINT}px)`
+    );
+    const handleChange = (event: MediaQueryListEvent) => {
+      setIsDesktopWidth(event.matches);
+    };
+
+    setIsDesktopWidth(mediaQuery.matches);
+
+    if (typeof mediaQuery.addEventListener === 'function') {
+      mediaQuery.addEventListener('change', handleChange);
+      return () => mediaQuery.removeEventListener('change', handleChange);
+    }
+
+    mediaQuery.addListener(handleChange);
+    return () => mediaQuery.removeListener(handleChange);
+  }, []);
+
+  const shouldUseCoachDarkOverlay = isCoachDetailsRoute && !isDesktopWidth;
+
+  const coachOverlayBgClass = shouldUseCoachDarkOverlay
+    ? styles.BlackBg
+    : styles.WhiteBg;
+
+  const overlayInitialBgClass = isCoachDetailsRoute
+    ? coachOverlayBgClass
+    : styles.TransparentBg;
 
   // eslint-disable-next-line no-nested-ternary
-  const initialBgClass = isOverlayRoute(actualPath)
-    ? styles.TransparentBg
-    : isGrayBgRoute(actualPath)
+  const initialBgClass = isOverlayRoute
+    ? overlayInitialBgClass
+    : isGrayBgRoute
       ? styles.GrayBg
       : styles.WhiteBg;
 
@@ -48,22 +105,32 @@ export function Header() {
       if (!marker) return;
       const { bottom } = marker.getBoundingClientRect();
 
-      if (isOverlayRoute(actualPath)) {
-        setBgClass(bottom < 0 ? styles.WhiteBg : styles.TransparentBg);
+      if (isOverlayRoute) {
+        const overlayBgClass = isCoachDetailsRoute
+          ? coachOverlayBgClass
+          : styles.TransparentBg;
+
+        setBgClass(bottom < 0 ? styles.WhiteBg : overlayBgClass);
         return;
       }
 
-      if (isGrayBgRoute(actualPath)) {
+      if (isGrayBgRoute) {
         setBgClass(bottom < 0 ? styles.WhiteBg : styles.GrayBg);
       }
     }, 0);
 
-    if (marker && (isOverlayRoute(actualPath) || isGrayBgRoute(actualPath))) {
+    if (marker && (isOverlayRoute || isGrayBgRoute)) {
       window.addEventListener('scroll', scrollHandler, { passive: true });
       scrollHandler();
     }
     return () => window.removeEventListener('scroll', scrollHandler);
-  }, [actualPath]);
+  }, [
+    isOverlayRoute,
+    isGrayBgRoute,
+    isCoachDetailsRoute,
+    shouldUseCoachDarkOverlay,
+    coachOverlayBgClass,
+  ]);
 
   const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
 
@@ -76,8 +143,16 @@ export function Header() {
   useLockBodyScroll(isMobileMenuOpen);
 
   const isTransparentOverlay =
-    isOverlayRoute(actualPath) && bgClass === styles.TransparentBg;
-  const headerWrapMod = isTransparentOverlay ? styles.Light : '';
+    isOverlayRoute && !isCoachesRootRoute && bgClass === styles.TransparentBg;
+  const isCoachDarkOverlay = isCoachDetailsRoute && bgClass === styles.BlackBg;
+  const headerWrapMod =
+    isTransparentOverlay || isCoachDarkOverlay ? styles.Light : '';
+
+  const shouldUseLightMobileMenu =
+    isCoachDetailsRoute && bgClass !== styles.WhiteBg;
+  const mobileMenuClassName = `${styles.MobileMenu} ${
+    shouldUseLightMobileMenu ? styles.MobileMenuLight : ''
+  }`.trim();
 
   return (
     <>
@@ -132,7 +207,19 @@ export function Header() {
                     Филиалы
                   </Typography>
                 </Link>
-                <Link viewTransition url="/contacts/" aria-label="Контакты">
+                <Link viewTransition url="/coaches/" aria-label="Тренеры">
+                  <Typography
+                    weight={
+                      isLinkActive(actualPath, '/coaches/')
+                        ? 'demiBold'
+                        : 'regular'
+                    }
+                    className={getLinkActiveStyle(actualPath, '/coaches/')}
+                  >
+                    Тренеры
+                  </Typography>
+                </Link>
+                <Link viewTransition url="/contacts" aria-label="Контакты">
                   <Typography
                     weight={
                       isLinkActive(actualPath, '/contacts/')
@@ -151,7 +238,7 @@ export function Header() {
           <Menu
             width={24}
             height={24}
-            className={styles.MobileMenu}
+            className={mobileMenuClassName}
             onClick={() => setMobileMenuOpen(true)}
           />
 

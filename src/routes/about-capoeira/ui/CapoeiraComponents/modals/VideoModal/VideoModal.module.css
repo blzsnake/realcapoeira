@@ -1,0 +1,26 @@
+.Modal {
+  width: 100%;
+}
+
+.Name {
+  font-size: 28px;
+  line-height: 120%;
+
+  @media (min-width: 1025px) {
+    font-size: 40px;
+  }
+}
+
+.FrameWrap {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.FrameWrap iframe {
+  width: 100%;
+  max-width: 1120px;
+  aspect-ratio: 1120 / 630;
+  height: auto;
+  border: none;
+}
