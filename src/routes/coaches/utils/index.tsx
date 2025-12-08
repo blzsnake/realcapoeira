@@ -11,6 +11,7 @@ import AChmyhov from '~app/assets/coaches/a.chmyhov.png';
 import AKedrova from '~app/assets/coaches/a.kedrova.png';
 import EStaynow from '~app/assets/coaches/e.staynow.png';
 import SAfonina from '~app/assets/coaches/s.afonina.png';
+import KSamohina from '~app/assets/coaches/k.samohina.png';
 import AAragon from '~app/assets/coaches/a.aragon.png';
 import AZuykin from '~app/assets/coaches/a.zuykin.png';
 import IMolodozhnikov from '~app/assets/coaches/i.molodozhnikov.png';
@@ -24,7 +25,6 @@ import SPolyakova from '~app/assets/coaches/s.polyakova.png';
 import KSofiyskaya from '~app/assets/coaches/k.sofiyskaya.png';
 import IKuznecov from '~app/assets/coaches/i.kuznecov.png';
 import APolitov from '~app/assets/coaches/a.politov.png';
-import KSamohina from '~app/assets/coaches/k.samohina.png';
 
 export const COACH_PHOTOS: Record<string, string> = {
   'a.rogozin': ARogozin,
