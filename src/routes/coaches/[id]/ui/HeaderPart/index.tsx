@@ -66,7 +66,7 @@ export function HeaderPart() {
           <Button
             className={styles.Button}
             color="white"
-            url={`/filials/?coach=${coachId}`}
+            url={`/filials?coach=${coachId}`}
             target="_self"
           >
             Филиалы
@@ -102,7 +102,7 @@ export function HeaderPart() {
               <Button
                 className={styles.DesktopButton}
                 color="white"
-                url={`/filials/?coach=${coachId}`}
+                url={`/filials?coach=${coachId}`}
                 target="_self"
               >
                 Филиалы

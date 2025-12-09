@@ -52,7 +52,7 @@ function CoachPage() {
               {coach.selfDescription}
             </Typography>
             <a
-              href={`/filials/?coach=${coach.id}`}
+              href={`/filials?coach=${coach.id}`}
               className={styles.FilialsCard}
             >
               <img

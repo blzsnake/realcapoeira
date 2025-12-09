@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { useQueryParams } from '~shared/hooks/useQueryParams';
 import { Typography } from '~shared/ui/typography';
 import { COACHES } from '~shared/mocks/coaches';
@@ -20,6 +21,14 @@ export function CoachesPage() {
         ? selectedAgeGroup?.find((i) => el.groups?.includes(i.value))
         : true
     );
+
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: 'instant', // 'auto' | 'smooth' | 'instant'
+    });
+  }, []);
   return (
     <main className={styles.Wrap}>
       <div className={styles.Header}>

@@ -16,7 +16,7 @@ export function FilialsByAges() {
           Филиалы по возрастам
         </Typography>
         <div className={styles.Grid}>
-          <Link url="/filials/?group=junior" className={styles.Card}>
+          <Link url="/filials?group=junior" className={styles.Card}>
             <Typography className={styles.Title} weight="demiBold">
               Дети 3-6 лет
             </Typography>
@@ -25,7 +25,7 @@ export function FilialsByAges() {
 
             <ArrowRight width={24} height={24} className={styles.ArrowRight} />
           </Link>
-          <Link url="/filials/?group=middle" className={styles.Card}>
+          <Link url="/filials?group=middle" className={styles.Card}>
             <Typography className={styles.Title} weight="demiBold">
               Дети 7–10 лет
             </Typography>
@@ -34,7 +34,7 @@ export function FilialsByAges() {
 
             <ArrowRight width={24} height={24} className={styles.ArrowRight} />
           </Link>
-          <Link url="/filials/?group=senior" className={styles.Card}>
+          <Link url="/filials?group=senior" className={styles.Card}>
             <Typography className={styles.Title} weight="demiBold">
               Дети 11–15 лет
             </Typography>
@@ -43,7 +43,7 @@ export function FilialsByAges() {
 
             <ArrowRight width={24} height={24} className={styles.ArrowRight} />
           </Link>
-          <Link url="/filials/?group=staff" className={styles.Card}>
+          <Link url="/filials?group=staff" className={styles.Card}>
             <Typography className={styles.Title} weight="demiBold">
               Взрослые и подростки 16+
             </Typography>

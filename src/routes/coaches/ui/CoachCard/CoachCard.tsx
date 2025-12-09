@@ -1,4 +1,4 @@
-import { useRouter } from '@tramvai/module-router';
+import { useRouter, Link } from '@tramvai/module-router';
 import { Typography } from '~shared/ui/typography';
 import { Button } from '~shared/ui/button/Button';
 import styles from './CoachCard.module.css';
@@ -27,7 +27,7 @@ export function CoachCard({ name, level, photo, id, nick }: TCoachCardProps) {
         <Button target="_self" color="white" url="">
           О тренере
         </Button>
-        <Button target="_self" color="white" url={`/filials/?coach=${id}`}>
+        <Button target="_self" color="white" url={`/filials?coach=${id}`}>
           Филиалы
         </Button>
       </div>
