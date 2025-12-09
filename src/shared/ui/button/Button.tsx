@@ -28,6 +28,7 @@ export function Button({
       className={cn(className, styles.Button, styles[color], styles[size])}
       url={url}
       target={target}
+      onClick={onClick}
       viewTransition
     >
       {children}

@@ -24,10 +24,23 @@ export function CoachCard({ name, level, photo, id, nick }: TCoachCardProps) {
       </Typography>
       <Typography className={styles.Level}>{`${level} ${nick}`}</Typography>
       <div className={styles.Buttons}>
-        <Button target="_self" color="white" url="">
+        <Button
+          target="_self"
+          color="white"
+          onClick={(event) =>
+            event?.stopPropagation() ||
+            router.navigate(`/coaches/${id?.replace('.', '_')}`)
+          }
+        >
           О тренере
         </Button>
-        <Button target="_self" color="white" url={`/filials?coach=${id}`}>
+        <Button
+          target="_self"
+          color="white"
+          onClick={(event) =>
+            event?.stopPropagation() || router.navigate(`/filials?coach=${id}`)
+          }
+        >
           Филиалы
         </Button>
       </div>

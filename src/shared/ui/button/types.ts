@@ -6,7 +6,7 @@ type TButtonSize = 'big' | 'medium';
 export type TButtonProps = {
   color?: TButtonColor;
   size?: TButtonSize;
-  onClick?: () => void;
+  onClick?: (event?: React.MouseEvent<HTMLButtonElement>) => void;
   children: ReactNode;
   className?: string;
   isLink?: boolean;
