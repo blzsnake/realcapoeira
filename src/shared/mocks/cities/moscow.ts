@@ -232,11 +232,6 @@ export const moscow = [
       [],
       [
         {
-          group: 'Группа 7–10 лет',
-          time: '16:00-17:00',
-          id: 'middle',
-        },
-        {
           group: 'Группа 3-6 лет',
           time: '17:15-18:00',
           id: 'junior',
@@ -253,18 +248,13 @@ export const moscow = [
         },
         {
           group: 'Группа 16+',
-          time: '20:30-22:00',
+          time: '20:15-21:30',
           id: 'staff',
         },
       ],
       [],
       [
         {
-          group: 'Группа 7–10 лет',
-          time: '16:00-17:00',
-          id: 'middle',
-        },
-        {
           group: 'Группа 3-6 лет',
           time: '17:15-18:00',
           id: 'junior',
@@ -281,7 +271,7 @@ export const moscow = [
         },
         {
           group: 'Группа 16+',
-          time: '20:30-22:00',
+          time: '20:15-21:30',
           id: 'staff',
         },
       ],
@@ -1333,7 +1323,7 @@ export const moscow = [
         name: 'Медведково',
         color: '#f58220',
       },
-      street: 'ул. Полярная 9, КДЦ Полярный',
+      street: 'ул. Полярная 33 стр 3',
       lat: 55.87438,
       lng: 37.636051,
     },
@@ -1419,7 +1409,7 @@ export const moscow = [
         },
         {
           group: 'Группа 16+',
-          time: '20:00-21:30',
+          time: '20:00-21:00',
           id: 'staff',
         },
       ],
