@@ -171,7 +171,7 @@ export function SignUpForm({ contactsVariant = false }: TSignUpFormProps) {
         filial,
       }).toString();
       fetch(
-        'https://script.google.com/macros/s/AKfycbxL78344WZLN5tod8P_FGPLPZXdeAsS-njMdeiayRSK48fEhpWtbrvTu_vCk3Za4Vu5/exec',
+        'https://script.google.com/macros/s/AKfycbzKwRakWgdXd0lzG8lZGmJqtsGVKFf4pIZDuWcSWu7s68ubnSKOso9JsoaCO75-Tubp/exec',
         {
           method: 'POST',
           headers: {
