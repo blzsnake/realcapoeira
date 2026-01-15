@@ -22,10 +22,15 @@ export function SchoolPhoto({ scrollHandler }: { scrollHandler: () => void }) {
           REAL CAPOEIRA
         </h1>
         <div className={styles.ButtonsBlockMobile}>
-          <Button className={styles.Button} url="/about-school/">
+          <Button className={styles.Button} url="/about-school/" target="_self">
             О школе
           </Button>
-          <Button url="/filials/" color="white" className={styles.Button}>
+          <Button
+            url="/filials/"
+            color="white"
+            className={styles.Button}
+            target="_self"
+          >
             Филиалы
           </Button>
         </div>
