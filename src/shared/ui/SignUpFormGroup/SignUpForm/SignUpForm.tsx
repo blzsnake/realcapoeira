@@ -15,6 +15,9 @@ import type { TSignUpFormErrors, TSignUpFormProps } from './types';
 import styles from './SignUpForm.module.css';
 import { FormResultModal } from './modals/FormResultModal/FormResultModal';
 
+const GOOGLE_API =
+  'https://script.google.com/macros/s/AKfycbxTENMLVwQqI9EV99pLIMm5e0-7Jv_k2usEC6ZDZjjb6ZskO31ARW_5jc1pSMIj5wVh/exec';
+
 const OPTIONS = [
   { address: { city: 'Любой', street: '' } },
   ...FILIALS_MOCK.moscow,
@@ -170,16 +173,13 @@ export function SignUpForm({ contactsVariant = false }: TSignUpFormProps) {
         phone: phone.replace('+', ''),
         filial,
       }).toString();
-      fetch(
-        'https://script.google.com/macros/s/AKfycbxL78344WZLN5tod8P_FGPLPZXdeAsS-njMdeiayRSK48fEhpWtbrvTu_vCk3Za4Vu5/exec',
-        {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/x-www-form-urlencoded',
-          },
-          body: data,
-        }
-      )
+      fetch(GOOGLE_API, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        body: data,
+      })
         .then(() => {
           setFormState({ ...intitialFormState, state: 'success' });
           onModalSetState(true)();
@@ -198,7 +198,7 @@ export function SignUpForm({ contactsVariant = false }: TSignUpFormProps) {
         ref={formRef}
         className={styles.Form}
         method="POST"
-        action="https://script.google.com/macros/s/AKfycbxL78344WZLN5tod8P_FGPLPZXdeAsS-njMdeiayRSK48fEhpWtbrvTu_vCk3Za4Vu5/exec"
+        action={GOOGLE_API}
       >
         {contactsVariant && (
           <Typography weight="demiBold" className={styles.Title}>
