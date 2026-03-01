@@ -14,6 +14,7 @@ import {
 } from '@tramvai/tokens-render';
 import { Layout } from '~shared/ui/layout';
 import { ModalStore } from '~shared/ui/modal/store';
+import { CoachesStore } from '~shared/stores/coaches';
 import './app/styles/index.css';
 import { HeaderModule } from '~shared/ui/header';
 import { FooterModule } from '~shared/ui/footer';
@@ -48,11 +49,14 @@ createApp({
       useValue: ModalStore,
     },
     {
+      provide: COMBINE_REDUCERS,
+      multi: true,
+      useValue: CoachesStore,
+    },
+    {
       provide: LAYOUT_OPTIONS,
       useValue: {
-        // React components
         components: {
-          // global layout component
           layout: Layout,
         },
       },

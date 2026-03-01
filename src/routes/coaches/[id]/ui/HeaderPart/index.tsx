@@ -1,27 +1,28 @@
 import { useMemo } from 'react';
 import { useRoute } from '@tramvai/module-router';
+import { useSelector } from '@tramvai/state';
 import { Typography } from '~shared/ui/typography';
 import { Button } from '~shared/ui/button/Button';
 import { CoachAvatar } from 'src/routes/coaches/ui/CoachAvatar';
-import { COACHES } from '~shared/mocks/coaches';
+import { CoachesStore } from '~shared/stores/coaches';
 import Telegram from '~app/assets/socialIcons/Telegram.svg?react';
 import Whatsapp from '~app/assets/socialIcons/Whatsapp.svg?react';
 import Vk from '~app/assets/socialIcons/Vk.svg?react';
-import { COACH_PHOTOS } from '../../../utils';
 import styles from './HeaderPart.module.css';
 
 export function HeaderPart() {
   const route = useRoute();
   const { id } = route.params;
-  const formatedId = id.replace('_', '.');
+  const coaches = useSelector(CoachesStore, (state) => state.coaches);
+
   const coach = useMemo(
-    () => COACHES.find((c) => c.id === formatedId),
-    [formatedId]
+    () => coaches?.find((c) => c.slug === id),
+    [coaches, id]
   );
 
   if (!coach) return null;
 
-  const { level, photo, nick, name, id: coachId } = coach;
+  const { level, photo, nick, name, slug } = coach;
 
   const handleScrollToForm = () => {
     const formElement = document.getElementById('signup');
@@ -34,7 +35,7 @@ export function HeaderPart() {
     <>
       <section className={styles.MobileHeader} id="#headerScrollMarker">
         <CoachAvatar
-          photo={photo || COACH_PHOTOS[formatedId]}
+          photo={photo?.url || ''}
           name={name}
           level={level}
           variant="medium"
@@ -66,7 +67,7 @@ export function HeaderPart() {
           <Button
             className={styles.Button}
             color="white"
-            url={`/filials?coach=${coachId}`}
+            url={`/filials?coach=${slug}`}
             target="_self"
           >
             Филиалы
@@ -102,43 +103,49 @@ export function HeaderPart() {
               <Button
                 className={styles.DesktopButton}
                 color="white"
-                url={`/filials?coach=${coachId}`}
+                url={`/filials?coach=${slug}`}
                 target="_self"
               >
                 Филиалы
               </Button>
             </div>
             <div className={styles.DesktopSocials}>
-              <a
-                className={styles.SocialLink}
-                href={`https://t.me/${coach.links.tg}`}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <Telegram />
-              </a>
-              <a
-                className={styles.SocialLink}
-                href={`https://wa.me/${coach.links.wa}`}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <Whatsapp />
-              </a>
-              <a
-                className={styles.SocialLink}
-                href={`https://vk.com/${coach.links.vk}`}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <Vk />
-              </a>
+              {coach.linkTg && (
+                <a
+                  className={styles.SocialLink}
+                  href={`https://t.me/${coach.linkTg}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <Telegram />
+                </a>
+              )}
+              {coach.linkWa && (
+                <a
+                  className={styles.SocialLink}
+                  href={`https://wa.me/${coach.linkWa}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <Whatsapp />
+                </a>
+              )}
+              {coach.linkVk && (
+                <a
+                  className={styles.SocialLink}
+                  href={`https://vk.com/${coach.linkVk}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <Vk />
+                </a>
+              )}
             </div>
           </div>
         </div>
         <div className={styles.CoachAvatarWrapper}>
           <CoachAvatar
-            photo={photo || COACH_PHOTOS[formatedId]}
+            photo={photo?.url || ''}
             name={name}
             level={level}
             variant="large"

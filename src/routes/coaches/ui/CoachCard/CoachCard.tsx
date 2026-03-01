@@ -1,20 +1,19 @@
-import { useRouter, Link } from '@tramvai/module-router';
+import { useRouter } from '@tramvai/module-router';
 import { Typography } from '~shared/ui/typography';
 import { Button } from '~shared/ui/button/Button';
 import styles from './CoachCard.module.css';
 import type { TCoachCardProps } from './types';
-import { COACH_PHOTOS } from '../../utils';
 import { CoachAvatar } from '../CoachAvatar';
 
-export function CoachCard({ name, level, photo, id, nick }: TCoachCardProps) {
+export function CoachCard({ name, level, photo, slug, nick }: TCoachCardProps) {
   const router = useRouter();
   return (
     <div
       className={styles.CoachCard}
-      onClick={() => router.navigate(`/coaches/${id?.replace('.', '_')}`)}
+      onClick={() => router.navigate(`/coaches/${slug}`)}
     >
       <CoachAvatar
-        photo={photo || COACH_PHOTOS[id]}
+        photo={photo || ''}
         name={name}
         level={level}
         variant="small"
@@ -28,8 +27,7 @@ export function CoachCard({ name, level, photo, id, nick }: TCoachCardProps) {
           target="_self"
           color="white"
           onClick={(event) =>
-            event?.stopPropagation() ||
-            router.navigate(`/coaches/${id?.replace('.', '_')}`)
+            event?.stopPropagation() || router.navigate(`/coaches/${slug}`)
           }
         >
           О тренере
@@ -38,7 +36,8 @@ export function CoachCard({ name, level, photo, id, nick }: TCoachCardProps) {
           target="_self"
           color="white"
           onClick={(event) =>
-            event?.stopPropagation() || router.navigate(`/filials?coach=${id}`)
+            event?.stopPropagation() ||
+            router.navigate(`/filials?coach=${slug}`)
           }
         >
           Филиалы

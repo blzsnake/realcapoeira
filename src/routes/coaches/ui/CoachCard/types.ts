@@ -1,7 +1,7 @@
 export type TCoachCardProps = {
   name: string;
   level: string;
-  id: string;
+  slug: string;
   photo?: string;
   nick: string;
 };

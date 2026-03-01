@@ -1,6 +1,13 @@
 import { useEffect, useMemo } from 'react';
 import { useRoute } from '@tramvai/module-router';
-import { COACHES } from '~shared/mocks/coaches';
+import { useSelector } from '@tramvai/state';
+import { declareAction } from '@tramvai/core';
+import { StructuredText } from 'react-datocms/structured-text';
+import { datocmsRequest } from '~shared/api/datocms';
+import { ALL_COACHES_QUERY } from '~shared/api/queries/coaches';
+import { CoachesStore, setCoaches } from '~shared/stores/coaches';
+import { getCoachLinks } from '~shared/api/types/coach';
+import type { AllCoachesResponse } from '~shared/api/types/coach';
 import { SignUpFormGroup } from '~shared/ui/SignUpFormGroup';
 import { Typography } from '~shared/ui/typography';
 import ArrowRight from '~app/assets/ArrowRight.svg?react';
@@ -10,27 +17,50 @@ import { Numbers } from './ui/Numbers';
 import { Quote } from './ui/Quote';
 import { Groups } from './ui/Groups';
 import { Socials } from './ui/Socials';
-import { COACH_PHOTOS } from '../utils';
 import styles from './Coach.module.css';
+
+const fetchCoachesAction = declareAction({
+  name: 'fetchCoachesForDetail',
+  async fn() {
+    const currentCoaches = this.getState(CoachesStore);
+
+    if (currentCoaches.length > 0) {
+      return;
+    }
+
+    try {
+      const data = await datocmsRequest<AllCoachesResponse>({
+        query: ALL_COACHES_QUERY,
+      });
+
+      this.dispatch(setCoaches(data.allCoaches));
+    } catch (error) {
+      console.error('Failed to fetch coaches from DatoCMS:', error);
+    }
+  },
+});
 
 function CoachPage() {
   const route = useRoute();
   const { id } = route.params;
-  const formatedId = id.replace('_', '.');
+  const coaches = useSelector(CoachesStore, (state) => state.coaches);
+
   const coach = useMemo(
-    () => COACHES.find((c) => c.id === formatedId),
-    [formatedId]
+    () => coaches.find((c) => c.slug === id),
+    [coaches, id]
   );
 
   useEffect(() => {
     window.scrollTo({
       top: 0,
       left: 0,
-      behavior: 'instant', // 'auto' | 'smooth' | 'instant'
+      behavior: 'instant',
     });
   }, [id]);
 
   if (!coach) return null;
+
+  const links = getCoachLinks(coach);
 
   return (
     <main className={styles.PageWrap}>
@@ -45,14 +75,16 @@ function CoachPage() {
         <div className={styles.ContentBlock}>
           <div className={styles.InfoBlock}>
             <Groups groups={coach.groups} />
-            <Socials links={coach.links} />
+            <Socials links={links} />
           </div>
           <div className={styles.TextBlock}>
-            <Typography className={styles.Description}>
-              {coach.selfDescription}
-            </Typography>
+            <div className={styles.Description}>
+              {coach.selfDescription?.value && (
+                <StructuredText data={coach.selfDescription} />
+              )}
+            </div>
             <a
-              href={`/filials?coach=${coach.id}`}
+              href={`/filials?coach=${coach.slug}`}
               className={styles.FilialsCard}
             >
               <img
@@ -78,16 +110,18 @@ function CoachPage() {
             </Typography>
           </div>
           <div className={styles.TextBlock}>
-            <Typography className={styles.Description}>
-              {coach.trainDescription}
-            </Typography>
+            <div className={styles.Description}>
+              {coach.trainDescription?.value && (
+                <StructuredText data={coach.trainDescription} />
+              )}
+            </div>
           </div>
         </div>
       </div>
       <Quote
         name={coach.name}
         title={`${coach.level} ${coach.nick}`}
-        photo={coach.photo || COACH_PHOTOS[coach.id]}
+        photo={coach.photo?.url || ''}
         level={coach.level}
         quote={coach.quote}
       />
@@ -99,6 +133,8 @@ function CoachPage() {
     </main>
   );
 }
+
+CoachPage.actions = [fetchCoachesAction];
 
 CoachPage.seo = {
   metaTags: {
