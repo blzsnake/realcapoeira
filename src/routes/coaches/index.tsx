@@ -1,21 +1,18 @@
 import { useEffect } from 'react';
-import { useSelector, useActions } from '@tramvai/state';
+import { useSelector } from '@tramvai/state';
 import { declareAction } from '@tramvai/core';
 import { useQueryParams } from '~shared/hooks/useQueryParams';
 import { Typography } from '~shared/ui/typography';
-import { datocmsRequest } from '~shared/api/datocms';
-import { ALL_COACHES_QUERY } from '~shared/api/queries/coaches';
 import { CoachesStore, setCoaches } from '~shared/stores/coaches';
-import type { AllCoachesResponse } from '~shared/api/types/coach';
+import { loadCoachesWithFallback } from '~shared/content/coaches';
 import { Filter } from './ui/Filter/Filter';
 import { CoachCard } from './ui/CoachCard';
 
 import styles from './Coaches.module.css';
 
 /**
- * Tramvai action — загружает тренеров из DatoCMS.
- * При SSG выполняется на этапе сборки.
- * При SPA-навигации выполняется на клиенте (но данные уже в store если пришли с главной).
+ * Tramvai action — загружает тренеров через content-layer.
+ * На сервере и в браузере использует одинаковый fallback на моки.
  */
 const fetchCoachesAction = declareAction({
   name: 'fetchCoaches',
@@ -27,18 +24,9 @@ const fetchCoachesAction = declareAction({
       return;
     }
 
-    try {
-      const data = await datocmsRequest<AllCoachesResponse>({
-        query: ALL_COACHES_QUERY,
-      });
+    const coaches = await loadCoachesWithFallback();
 
-      this.dispatch(setCoaches(data.allCoaches));
-    } catch (error) {
-      console.error('Failed to fetch coaches from DatoCMS:', error);
-    }
-  },
-  conditions: {
-    onlyBrowser: true,
+    this.dispatch(setCoaches(coaches));
   },
 });
 

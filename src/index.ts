@@ -15,6 +15,7 @@ import {
 import { Layout } from '~shared/ui/layout';
 import { ModalStore } from '~shared/ui/modal/store';
 import { CoachesStore } from '~shared/stores/coaches';
+import { FilialsStore } from '~shared/stores/filials';
 import './app/styles/index.css';
 import { HeaderModule } from '~shared/ui/header';
 import { FooterModule } from '~shared/ui/footer';
@@ -52,6 +53,11 @@ createApp({
       provide: COMBINE_REDUCERS,
       multi: true,
       useValue: CoachesStore,
+    },
+    {
+      provide: COMBINE_REDUCERS,
+      multi: true,
+      useValue: FilialsStore,
     },
     {
       provide: LAYOUT_OPTIONS,

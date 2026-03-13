@@ -13,7 +13,6 @@ export async function datocmsRequest<T = unknown>({
 }: DatoCMSRequestOptions): Promise<T> {
   const token =
     process.env.DATOCMS_API_TOKEN || 'df33316b1e272f5a8a25cab6746eec';
-  console.log(process.env, '----');
 
   if (!token) {
     throw new Error('DATOCMS_API_TOKEN is not set');

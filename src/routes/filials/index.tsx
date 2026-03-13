@@ -3,7 +3,10 @@ import cn from 'classnames';
 import { useEvents, useSelector } from '@tramvai/state';
 import { YMaps, Map, Placemark, Clusterer } from '@pbe/react-yandex-maps';
 import { useUrl } from '@tramvai/module-router';
-import { FILIALS_MOCK } from '~shared/mocks';
+import {
+  getFallbackFilialsSource,
+  loadFilialsSourceWithFallback,
+} from '~shared/content/filials';
 import Pin from '~app/assets/Pin.svg';
 import PinActive from '~app/assets/PinActive.svg';
 import { setModalState, ModalStore } from '~shared/ui/modal/store';
@@ -18,6 +21,7 @@ import { FilialCard } from './ui/FilialCard/FilialCard';
 import { Filter } from './ui/Filter/Filter';
 
 import styles from './Filials.module.css';
+import type { TQuery } from './utils/filter';
 import { filterFilials } from './utils/filter';
 import { useStickyFilter } from './utils/useStickyFilter';
 import { FilterModal } from './modals/FilterModal/FilterModal';
@@ -67,7 +71,7 @@ export function FilialsPage() {
   const [activeId, setActiveId] = useState<number | null>(null);
   const onModalSetState =
     (
-      coaches?: {
+      selectedCoaches?: {
         name: string;
         phone: string;
       }[],
@@ -75,8 +79,8 @@ export function FilialsPage() {
     ) =>
     (state: boolean, type: string) =>
     () => {
-      if (coaches) {
-        setCoaches(coaches);
+      if (selectedCoaches) {
+        setCoaches(selectedCoaches);
       }
       $setModalState({ type, isOpen: state, address });
     };
@@ -96,10 +100,10 @@ export function FilialsPage() {
     ModalStore,
     ({ modals }) => modals.filter?.isOpen
   );
-  const [filials = [], markers = []] = useMemo(
-    // @ts-ignore
-    () => filterFilials(FILIALS_MOCK, query),
-    [query]
+  const [filialsSource, setFilialsSource] = useState(getFallbackFilialsSource);
+  const [, markers = []] = useMemo(
+    () => filterFilials(filialsSource, query as TQuery),
+    [filialsSource, query]
   );
 
   const moveToPin = (coords: number[]) => {
@@ -127,6 +131,24 @@ export function FilialsPage() {
   const position = useStickyFilter();
   const getCounterStyles = () =>
     cn(styles[`Counter${position}`], styles.Counter);
+
+  useEffect(() => {
+    let cancelled = false;
+
+    const loadFilials = async () => {
+      const nextSource = await loadFilialsSourceWithFallback();
+
+      if (!cancelled) {
+        setFilialsSource(nextSource);
+      }
+    };
+
+    loadFilials();
+
+    return () => {
+      cancelled = true;
+    };
+  }, []);
 
   useEffect(() => {
     const isMobile = window.matchMedia('(max-width: 1280px)').matches;

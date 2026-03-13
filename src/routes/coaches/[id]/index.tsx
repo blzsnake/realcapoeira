@@ -3,11 +3,12 @@ import { useRoute } from '@tramvai/module-router';
 import { useSelector } from '@tramvai/state';
 import { declareAction } from '@tramvai/core';
 import { StructuredText } from 'react-datocms/structured-text';
-import { datocmsRequest } from '~shared/api/datocms';
-import { ALL_COACHES_QUERY } from '~shared/api/queries/coaches';
 import { CoachesStore, setCoaches } from '~shared/stores/coaches';
 import { getCoachLinks } from '~shared/api/types/coach';
-import type { AllCoachesResponse } from '~shared/api/types/coach';
+import {
+  loadCoachesWithFallback,
+  normalizeCoachSlug,
+} from '~shared/content/coaches';
 import { SignUpFormGroup } from '~shared/ui/SignUpFormGroup';
 import { Typography } from '~shared/ui/typography';
 import ArrowRight from '~app/assets/ArrowRight.svg?react';
@@ -28,15 +29,9 @@ const fetchCoachesAction = declareAction({
       return;
     }
 
-    try {
-      const data = await datocmsRequest<AllCoachesResponse>({
-        query: ALL_COACHES_QUERY,
-      });
+    const coaches = await loadCoachesWithFallback();
 
-      this.dispatch(setCoaches(data.allCoaches));
-    } catch (error) {
-      console.error('Failed to fetch coaches from DatoCMS:', error);
-    }
+    this.dispatch(setCoaches(coaches));
   },
 });
 
@@ -46,7 +41,10 @@ function CoachPage() {
   const coaches = useSelector(CoachesStore, (state) => state.coaches);
 
   const coach = useMemo(
-    () => coaches.find((c) => c.slug === id),
+    () =>
+      coaches.find(
+        (c) => normalizeCoachSlug(c.slug) === normalizeCoachSlug(id)
+      ),
     [coaches, id]
   );
 

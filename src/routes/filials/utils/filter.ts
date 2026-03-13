@@ -10,6 +10,8 @@ export type TQuery = {
   coach: string;
 };
 
+const normalizeCoachId = (value: string) => value.replace(/\./g, '_');
+
 export const filterCity = (
   obj: Record<string, TFilialType[]>,
   city: string
@@ -25,7 +27,9 @@ export const findAgeGroup = (arr: TFilialScheduleType[], ageGroup: string) => {
 
 export const findCoachGroup = (arr: TFilialCoachType[], coach: string) => {
   return coach && arr?.length
-    ? arr.find((item) => coach.includes(item.id))
+    ? arr.find((item) =>
+        normalizeCoachId(coach).includes(normalizeCoachId(item.id))
+      )
     : arr;
 };
 

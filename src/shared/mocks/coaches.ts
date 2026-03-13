@@ -555,8 +555,8 @@ export const COACHES = [
       vk: 'ritmista_rc',
       wa: '+79687801086',
     },
-    since: '2024',
-    incapoeira: '2016',
+    since: '2016',
+    incapoeira: '2014',
     city: 'Москва',
   },
 
