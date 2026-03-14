@@ -1,7 +1,10 @@
 import { forwardRef, useEffect, useMemo, useState } from 'react';
+import { Link } from '@tramvai/module-router';
 import cn from 'classnames';
 import { Typography } from '~shared/ui/typography';
 import { Button } from '~shared/ui/button/Button';
+import ArrowRight from '~app/assets/ArrowRight.svg?react';
+import { getFilialSlug, getFilialTitle } from '~shared/content/filials';
 
 import CallButton from '~app/assets/call_button.svg?react';
 
@@ -13,6 +16,8 @@ import type { TFilialScheduleType } from '../Filter/types';
 export type TFilialCardData = {
   activeId: number | null;
   id: number;
+  slug?: string;
+  title?: string;
   address: {
     city: string;
     metro: {
@@ -36,10 +41,19 @@ export type Ref = HTMLDivElement;
 
 export const FilialCard = forwardRef<Ref, TFilialCardData>((props, ref) => {
   const [cardActive, setCardActive] = useState(props.id === props.activeId);
-  const [activeSchedule, setActiveSchedule] = useState(
-    props.schedule?.findIndex((item) => item.length)
-  );
-  const { address, onButtonClick, onCardClick } = props;
+  const { address, onButtonClick, onCardClick, slug, title } = props;
+  const filialSlug = getFilialSlug({
+    ...props,
+    slug,
+    title,
+    address,
+  });
+  const filialTitle = getFilialTitle({
+    ...props,
+    slug,
+    title,
+    address,
+  });
   const handleToggleSchedule = () => {
     setCardActive(!cardActive);
     onCardClick();
@@ -63,10 +77,32 @@ export const FilialCard = forwardRef<Ref, TFilialCardData>((props, ref) => {
         [styles.FilialCardActive]: cardActive,
       })}
     >
-      <div className={styles.HeaderWrap} onClick={onCardClick}>
-        <Typography weight="demiBold" className={styles.Head}>
-          {address?.metro?.name || address?.city}
-        </Typography>
+      <div className={styles.HeaderWrap}>
+        <div className={styles.TitleWrap}>
+          <button
+            type="button"
+            className={styles.HeadButton}
+            onClick={onCardClick}
+            aria-label={`Показать филиал ${filialTitle} на карте`}
+          >
+            <Typography weight="demiBold" className={styles.Head}>
+              {filialTitle}
+            </Typography>
+          </button>
+          {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
+          <Link
+            viewTransition
+            url={`/filials/${filialSlug}`}
+            aria-label={`Открыть страницу филиала ${filialTitle}`}
+            className={styles.HeadLink}
+          >
+            <ArrowRight
+              width={20}
+              height={20}
+              className={styles.HeadLinkIcon}
+            />
+          </Link>
+        </div>
         <div className={styles.ButtonWrap}>
           <Button
             color="yellow"
@@ -81,7 +117,7 @@ export const FilialCard = forwardRef<Ref, TFilialCardData>((props, ref) => {
           />
         </div>
       </div>
-      <Typography className={styles.Address}>
+      <div className={styles.Address}>
         {address.metro && (
           <div
             className={styles.AddressIcon}
@@ -89,7 +125,7 @@ export const FilialCard = forwardRef<Ref, TFilialCardData>((props, ref) => {
           />
         )}
         {addressName}
-      </Typography>
+      </div>
       {props?.coaches?.map((coach) => (
         <Typography
           className={styles.Coach}
@@ -148,9 +184,13 @@ export const FilialCard = forwardRef<Ref, TFilialCardData>((props, ref) => {
             </div> */}
         </div>
       ) : null}
-      <div onClick={handleToggleSchedule} className={styles.ScheduleToggle}>
+      <button
+        type="button"
+        onClick={handleToggleSchedule}
+        className={styles.ScheduleToggle}
+      >
         {cardActive ? 'Свернуть' : 'Показать расписание'}
-      </div>
+      </button>
       <div className={styles.ButtonBottomWrap}>
         <Button
           color="yellow"

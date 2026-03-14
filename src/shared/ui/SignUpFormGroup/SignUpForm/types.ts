@@ -1,6 +1,7 @@
 export type TSignUpFormProps = {
   contactsVariant?: boolean;
   theme?: string;
+  defaultFilial?: string;
 };
 
 export type TSignUpFormValues = {

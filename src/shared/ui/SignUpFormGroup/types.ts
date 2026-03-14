@@ -5,4 +5,5 @@ export type TSignUpFormGroupProps = {
   phone: string;
   children?: React.ReactNode;
   className?: string;
+  defaultFilial?: string;
 };

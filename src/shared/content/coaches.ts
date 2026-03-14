@@ -10,6 +10,7 @@ import { COACHES as COACHES_MOCK } from '~shared/mocks/coaches';
 type MockCoach = (typeof COACHES_MOCK)[number];
 
 const compareByName = new Intl.Collator('ru').compare;
+let cachedCoaches: Coach[] | null = null;
 
 export const normalizeCoachSlug = (value: string) => value.replace(/\./g, '_');
 
@@ -106,17 +107,27 @@ const mergeCoachesWithFallback = (coaches: Coach[]) => {
 export const getFallbackCoaches = () => FALLBACK_COACHES;
 
 export async function loadCoachesWithFallback() {
+  if (cachedCoaches) {
+    return cachedCoaches;
+  }
+
   try {
     const data = await datocmsRequest<AllCoachesResponse>({
       query: ALL_COACHES_QUERY,
     });
 
     if (!Array.isArray(data.allCoaches) || data.allCoaches.length === 0) {
-      return getFallbackCoaches();
+      cachedCoaches = getFallbackCoaches();
+
+      return cachedCoaches;
     }
 
-    return mergeCoachesWithFallback(data.allCoaches);
+    cachedCoaches = mergeCoachesWithFallback(data.allCoaches);
+
+    return cachedCoaches;
   } catch {
-    return getFallbackCoaches();
+    cachedCoaches = getFallbackCoaches();
+
+    return cachedCoaches;
   }
 }

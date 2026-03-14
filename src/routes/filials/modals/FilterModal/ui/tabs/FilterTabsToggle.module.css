@@ -3,10 +3,15 @@
 }
 
 .TabItem {
+  width: 100%;
   position: relative;
   padding: 16px 0;
   padding-right: 24px;
+  background: transparent;
+  border: none;
   border-bottom: 1px solid #ECECEC;
+  text-align: left;
+  cursor: pointer;
 
   &::after {
     content: '';

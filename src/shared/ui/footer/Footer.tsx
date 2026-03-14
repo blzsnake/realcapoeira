@@ -10,8 +10,9 @@ export function Footer() {
   const { path } = useRoute();
 
   const isGrayFooter = path === '/about-capoeira/';
+  const isFilialsListRoute = path === '/filials/';
 
-  return path.includes('filials') ? null : (
+  return isFilialsListRoute ? null : (
     <footer className={cn(styles.Footer, { [styles.Dark]: isGrayFooter })}>
       <div className={styles.InnerContainer}>
         <div className={styles.Copyright}>

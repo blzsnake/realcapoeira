@@ -1,6 +1,3 @@
-import { useState } from 'react';
-import { Typography } from '~shared/ui/typography';
-import { GROUPED_PLACES } from '~shared/mocks';
 import { Radio } from '~shared/ui/Radio/Radio';
 import type { TabsContentCityProps } from './types';
 
@@ -28,13 +25,14 @@ function RadioOption({
   );
 }
 
-export function TabsContentCity({ changeHander, city }: TabsContentCityProps) {
-  // const onTabClickHandler = (activeTab: string) => () =>
-  //   setActiveTab(activeTab);
-
+export function TabsContentCity({
+  changeHander,
+  city,
+  options,
+}: TabsContentCityProps) {
   return (
     <div className={styles.TabsContentCity}>
-      {GROUPED_PLACES[0].options.map((item) => (
+      {options.map((item) => (
         <RadioOption
           key={item.value}
           label={item.label}

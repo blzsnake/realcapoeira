@@ -1,4 +1,4 @@
-import type { TypeOption } from '~shared/hooks/useQueryParams';
+import type { TypeOption } from '~shared/types/filials';
 
 export type TabsContentProps = {
   setActiveTab: (tab: string) => void;
@@ -7,13 +7,14 @@ export type TabsContentProps = {
 
 export type TabsContentCityProps = {
   activeTab?: string;
-  changeHander: (a: string) => () => void;
+  changeHander: (value: TypeOption | null) => void;
   city?: string;
+  options: TypeOption[];
 };
 
 export type TabsContenGroupsProps = {
   activeTab?: string;
-  changeHander: () => void;
+  changeHander: (value: TypeOption[]) => void;
   groups: TypeOption[];
-  selectedGroups: TypeOption[];
+  selectedGroups: TypeOption[] | null;
 };

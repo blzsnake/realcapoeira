@@ -4,7 +4,7 @@ import Close from '~app/assets/Close.svg?react';
 import ArrowRight from '~app/assets/ArrowRight.svg?react';
 import { Modal, ModalBody } from '~shared/ui/modal';
 import { useQueryParams } from '~shared/hooks/useQueryParams';
-import { AGE_GROUPS, COACHES } from '~shared/mocks';
+import { getAgeGroupOptions } from '~shared/content/catalogs';
 import { FilterTabsToggle } from './ui/tabs/FilterTabsToggle';
 import { TabsContentCity } from './ui/TabsContent/TabsContentCity';
 import { TabsContentGroups } from './ui/TabsContent/TabsContenGroups';
@@ -12,7 +12,12 @@ import { TabsContentGroups } from './ui/TabsContent/TabsContenGroups';
 import type { FilterModalProps } from './types';
 import styles from './FilterModal.module.css';
 
-export function FilterModal({ isOpen, closeModal }: FilterModalProps) {
+export function FilterModal({
+  isOpen,
+  closeModal,
+  cityOptions,
+  coachOptions,
+}: FilterModalProps) {
   const [tabState, setTabState] = useState<string>('Фильтры');
   const [
     selectedAgeGroup,
@@ -20,7 +25,12 @@ export function FilterModal({ isOpen, closeModal }: FilterModalProps) {
     selectedCity,
     setQueryParam,
     resetFilter,
-  ] = useQueryParams();
+  ] = useQueryParams({
+    pathname: '/filials',
+    cityOptions,
+    ageGroupOptions: getAgeGroupOptions(),
+    coachOptions,
+  });
 
   const handleCloseModal = () => {
     setTabState('Фильтры');
@@ -82,19 +92,20 @@ export function FilterModal({ isOpen, closeModal }: FilterModalProps) {
           {tabState === 'Город' ? (
             <TabsContentCity
               city={selectedCity ? selectedCity[0]?.value : null}
+              options={cityOptions[0]?.options || []}
               changeHander={setQueryParam('city')}
             />
           ) : null}
           {tabState === 'Возраст ученика' ? (
             <TabsContentGroups
-              groups={AGE_GROUPS}
+              groups={getAgeGroupOptions()}
               selectedGroups={selectedAgeGroup || null}
               changeHander={setQueryParam('group')}
             />
           ) : null}
           {tabState === 'Тренер' ? (
             <TabsContentGroups
-              groups={COACHES}
+              groups={coachOptions}
               selectedGroups={selectedCoach || null}
               changeHander={setQueryParam('coach')}
             />

@@ -1,9 +1,12 @@
+import { useRouter } from '@tramvai/module-router';
 import EmptyFilter from '~app/assets/empty_filter.png';
 import { Button } from '~shared/ui/button/Button';
 import { Typography } from '~shared/ui/typography';
 import styles from './EmptyCard.module.css';
 
 export function EmptyCard() {
+  const router = useRouter();
+
   return (
     <div className={styles.EmptyCard}>
       <img className={styles.Image} src={EmptyFilter} alt="Ничего не найдено" />
@@ -17,9 +20,7 @@ export function EmptyCard() {
         size="big"
         color="yellow"
         className={styles.Button}
-        onClick={() => {
-          window.history.pushState({}, '', '/filials/');
-        }}
+        onClick={() => router.navigate('/filials')}
       >
         Найти школу поблизости
       </Button>

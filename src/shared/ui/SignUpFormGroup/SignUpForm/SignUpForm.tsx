@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import { InputMask } from '@react-input/mask';
 import cn from 'classnames';
 import Select from 'react-select';
@@ -107,15 +107,29 @@ const intitialFormState = {
   agreement: false,
 };
 
-export function SignUpForm({ contactsVariant = false }: TSignUpFormProps) {
+const getInitialFormState = (filial = '') => ({
+  ...intitialFormState,
+  filial,
+});
+
+export function SignUpForm({
+  contactsVariant = false,
+  defaultFilial = '',
+}: TSignUpFormProps) {
   const formRef = useRef<HTMLFormElement>(undefined);
   const [errors, setFormErrors] = useState<TSignUpFormErrors | null>(null);
   const address = useSelector(
     ModalStore,
     ({ modals }) => modals.signUp?.address
   );
-  const [formData, setFormState] = useState(
-    address ? { ...intitialFormState, filial: address } : intitialFormState
+  const initialFilial = address || defaultFilial;
+  const [formData, setFormState] = useState(getInitialFormState(initialFilial));
+  const selectedFilialOption = useMemo(
+    () =>
+      OPTIONS.find((option) => option.value === formData.filial) ||
+      OPTIONS.find((option) => option.value === initialFilial) ||
+      OPTIONS[0],
+    [formData.filial, initialFilial]
   );
   const $setModalState = useEvents(setModalState);
   const onModalSetState = (state: boolean) => () => {
@@ -128,6 +142,31 @@ export function SignUpForm({ contactsVariant = false }: TSignUpFormProps) {
     ModalStore,
     ({ modals }) => modals.formResult?.isOpen
   );
+
+  useEffect(() => {
+    setFormState((prevData) => {
+      const nextFilial = initialFilial || '';
+
+      if (
+        prevData.name ||
+        prevData.phone ||
+        prevData.agreement ||
+        prevData.state === 'dirty'
+      ) {
+        return prevData;
+      }
+
+      if (prevData.filial === nextFilial) {
+        return prevData;
+      }
+
+      return {
+        ...prevData,
+        filial: nextFilial,
+      };
+    });
+  }, [initialFilial]);
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormErrors({
@@ -181,12 +220,15 @@ export function SignUpForm({ contactsVariant = false }: TSignUpFormProps) {
         body: data,
       })
         .then(() => {
-          setFormState({ ...intitialFormState, state: 'success' });
+          setFormState({
+            ...getInitialFormState(initialFilial),
+            state: 'success',
+          });
           onModalSetState(true)();
           formRef?.current?.reset();
         })
         .catch(() => {
-          setFormState(intitialFormState);
+          setFormState(getInitialFormState(initialFilial));
           formRef?.current?.reset();
         });
     }
@@ -267,12 +309,10 @@ export function SignUpForm({ contactsVariant = false }: TSignUpFormProps) {
               options={OPTIONS}
               hideSelectedOptions={false}
               styles={customStyles}
-              defaultValue={
-                address ? { label: address, value: address } : OPTIONS[0]
-              }
+              value={selectedFilialOption}
               closeMenuOnSelect
               className={styles.Select}
-              isDisabled={address || formData.state === 'pending'}
+              isDisabled={formData.state === 'pending'}
               onChange={handleFilialChange}
             />
           </label>

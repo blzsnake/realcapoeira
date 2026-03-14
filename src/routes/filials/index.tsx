@@ -4,6 +4,10 @@ import { useEvents, useSelector } from '@tramvai/state';
 import { YMaps, Map, Placemark, Clusterer } from '@pbe/react-yandex-maps';
 import { useUrl } from '@tramvai/module-router';
 import {
+  getCityOptionsFromFilialsSource,
+  getCoachOptionsFromFilialsSource,
+} from '~shared/content/catalogs';
+import {
   getFallbackFilialsSource,
   loadFilialsSourceWithFallback,
 } from '~shared/content/filials';
@@ -101,6 +105,14 @@ export function FilialsPage() {
     ({ modals }) => modals.filter?.isOpen
   );
   const [filialsSource, setFilialsSource] = useState(getFallbackFilialsSource);
+  const cityOptions = useMemo(
+    () => getCityOptionsFromFilialsSource(filialsSource),
+    [filialsSource]
+  );
+  const coachOptions = useMemo(
+    () => getCoachOptionsFromFilialsSource(filialsSource),
+    [filialsSource]
+  );
   const [, markers = []] = useMemo(
     () => filterFilials(filialsSource, query as TQuery),
     [filialsSource, query]
@@ -195,7 +207,7 @@ export function FilialsPage() {
       <main className={styles.Wrap}>
         <div className={styles.InfoWrap} draggable="true" id="#infoWrap">
           <div className={styles.Filter}>
-            <Filter />
+            <Filter cityOptions={cityOptions} coachOptions={coachOptions} />
           </div>
           <div className={getCounterStyles()}>
             {markers?.length ? `Найдено ${markers?.length} филиалов` : ''}
@@ -314,6 +326,8 @@ export function FilialsPage() {
         <FilterModal
           isOpen={isModalFiterOpen}
           closeModal={onModalSetState()(false, 'filter')}
+          cityOptions={cityOptions}
+          coachOptions={coachOptions}
         />
       </main>
     </YMaps>

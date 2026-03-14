@@ -14,6 +14,7 @@ export function SignUpFormGroup({
   phone,
   className,
   children,
+  defaultFilial,
 }: TSignUpFormGroupProps) {
   return (
     <div
@@ -55,7 +56,7 @@ export function SignUpFormGroup({
         )}
       </div>
       <div className={styles.Form}>
-        <SignUpForm />
+        <SignUpForm defaultFilial={defaultFilial} />
       </div>
     </div>
   );

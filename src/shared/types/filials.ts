@@ -22,6 +22,8 @@ export type TFilialScheduleType = {
 };
 
 export type TFilialType = {
+  slug?: string;
+  title?: string;
   coords: number[];
   city: string;
   metro: string;
