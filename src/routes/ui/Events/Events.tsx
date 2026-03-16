@@ -1,8 +1,19 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import {
+  getFallbackHomeNewsSection,
+  loadHomeNewsSectionWithFallback,
+  type HomeNewsSection,
+} from '~shared/content/news';
 import { Typography } from '~shared/ui/typography';
 import { Button } from '~shared/ui/button/Button';
 import { EventCard } from '~shared/ui/EventCard/EventCard';
-import { News1, News2, News3, News4 } from './ui/LatestNews/LatestNews';
+import {
+  CmsNewsContent,
+  News1,
+  News2,
+  News3,
+  News4,
+} from './ui/LatestNews/LatestNews';
 import { EventModal } from './modals/EventModal/EventModal';
 import type { EventModalProps } from './modals/EventModal/types';
 import styles from './Events.module.css';
@@ -23,45 +34,67 @@ function ButtonsBlock() {
 }
 
 type CardInfo = Omit<EventModalProps, 'isOpen' | 'closeModal'> & {
+  id: string;
   cardTitle: string;
   description: string;
 };
 
+const FALLBACK_CONTENT_BY_ID = {
+  groups: News1,
+  'kids-camp': News2,
+  'adult-camp': News3,
+  ecosystem: News4,
+} as const;
+
 export function Events() {
+  const [homeNewsSection, setHomeNewsSection] = useState<HomeNewsSection>(
+    getFallbackHomeNewsSection()
+  );
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
   const isModalOpen = activeIndex !== null;
   const closeModal = () => setActiveIndex(null);
 
-  const cardInfos: CardInfo[] = [
-    {
-      cardTitle: 'Идет набор в группы',
-      fullTitle: 'Идет набор в группы по капоэйре',
-      description:
-        'Попробуйте капоэйру — поможем стать сильнее, гибче и выносливее. Будем рады и детям, и взрослым',
-      children: <News1 />,
-    },
-    {
-      cardTitle: 'Спортивные сборы 7+',
-      fullTitle: 'Спортивные сборы для школьников',
-      description:
-        'Ежедневные тренировки и игры на свежем воздухе для школьников',
-      children: <News2 />,
-    },
-    {
-      cardTitle: 'Спортивные сборы 16+',
-      fullTitle: 'Спортивные сборы для взрослых',
-      description:
-        'Приглашаем в лагерь для взрослых — с мастер-классами от бразильских мастеров и танцами',
-      children: <News3 />,
-    },
-    {
-      cardTitle: 'Экосистема Real Capoeira',
-      fullTitle: 'Станьте частью сообщества',
-      description:
-        'Следите за нами в удобной соцсети. Чтобы не пропустить новости школы, подпишитесь на чат-бот в Telegram',
-      children: <News4 />,
-    },
-  ];
+  useEffect(() => {
+    let isMounted = true;
+
+    const loadNews = async () => {
+      try {
+        const nextHomeNewsSection = await loadHomeNewsSectionWithFallback();
+
+        if (!isMounted) {
+          return;
+        }
+
+        setHomeNewsSection(nextHomeNewsSection);
+      } catch {
+        // Keep fallback content if the client request fails.
+      }
+    };
+
+    loadNews();
+
+    return () => {
+      isMounted = false;
+    };
+  }, []);
+
+  const cardInfos: CardInfo[] = homeNewsSection.items.map((item) => {
+    const FallbackContent =
+      FALLBACK_CONTENT_BY_ID[item.id as keyof typeof FALLBACK_CONTENT_BY_ID];
+
+    return {
+      id: item.id,
+      cardTitle: item.shortTitle,
+      fullTitle: item.title,
+      description: item.shortDescription,
+      children:
+        homeNewsSection.source === 'fallback' && FallbackContent ? (
+          <FallbackContent />
+        ) : (
+          <CmsNewsContent item={item} />
+        ),
+    };
+  });
 
   const active = activeIndex !== null ? cardInfos[activeIndex] : null;
 
@@ -69,16 +102,21 @@ export function Events() {
     <div className={styles.Events}>
       <div className={styles.HeadingBlock}>
         <Typography component="h2" weight="demiBold" className={styles.Heading}>
-          События
+          {homeNewsSection.title}
         </Typography>
         <ButtonsBlock />
       </div>
+      {homeNewsSection.description ? (
+        <Typography className={styles.Description}>
+          {homeNewsSection.description}
+        </Typography>
+      ) : null}
 
       <div className={styles.Cards}>
         <div className={styles.EmptyPlug} />
         {cardInfos.map((evt, i) => (
           <EventCard
-            key={evt.cardTitle}
+            key={evt.id}
             onClick={() => setActiveIndex(i)}
             title={evt.cardTitle}
             description={evt.description}
