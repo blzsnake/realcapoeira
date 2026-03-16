@@ -1,9 +1,9 @@
 import { createEvent, createReducer } from '@tramvai/state';
-import type { Filial } from '~shared/api/types/filial';
+import type { FilialsSource } from '~shared/content/filials';
 
-export const setFilials = createEvent<Filial[]>('setFilials');
+export const setFilialsSource = createEvent<FilialsSource>('setFilialsSource');
 
-export const FilialsStore = createReducer('filials', [] as Filial[]).on(
-  setFilials,
-  (_state, filials) => filials
+export const FilialsStore = createReducer('filials', {} as FilialsSource).on(
+  setFilialsSource,
+  (_state, filialsSource) => filialsSource
 );

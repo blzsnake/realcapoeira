@@ -77,7 +77,7 @@ export const FILIALS_AND_COACHES_QUERY = `
       ${FILIAL_FIELDS}
     }
 
-    allCoaches(orderBy: name_ASC) {
+    allCoaches(first: 100, orderBy: name_ASC) {
       slug
       name
       nick

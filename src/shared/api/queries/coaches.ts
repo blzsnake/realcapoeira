@@ -1,6 +1,6 @@
 export const ALL_COACHES_QUERY = `
   query AllCoaches {
-    allCoaches(orderBy: name_ASC) {
+    allCoaches(first: 100, orderBy: name_ASC) {
       slug
       name
       nick

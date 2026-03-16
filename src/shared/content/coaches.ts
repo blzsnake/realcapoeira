@@ -6,6 +6,7 @@ import type {
   DatoCMSStructuredText,
 } from '~shared/api/types/coach';
 import { COACHES as COACHES_MOCK } from '~shared/mocks/coaches';
+import { COACH_PHOTOS } from '../../routes/coaches/utils';
 
 type MockCoach = (typeof COACHES_MOCK)[number];
 
@@ -13,6 +14,13 @@ const compareByName = new Intl.Collator('ru').compare;
 let cachedCoaches: Coach[] | null = null;
 
 export const normalizeCoachSlug = (value: string) => value.replace(/\./g, '_');
+
+const getFallbackCoachPhoto = (slug: string) => {
+  const normalizedSlug = slug.trim();
+  const legacySlug = normalizedSlug.replace(/_/g, '.');
+
+  return COACH_PHOTOS[normalizedSlug] || COACH_PHOTOS[legacySlug] || '';
+};
 
 const plainTextToStructuredText = (
   text: string | undefined
@@ -47,37 +55,53 @@ const plainTextToStructuredText = (
   };
 };
 
-const mapMockCoachToCoach = (coach: MockCoach): Coach => ({
-  slug: normalizeCoachSlug(coach.id),
-  name: coach.name,
-  nick: coach.nick || '',
-  level: coach.level || '',
-  phone: coach.phone || '',
-  quote: coach.quote || '',
-  city: coach.city || '',
-  since: coach.since || '',
-  incapoeira: coach.incapoeira || '',
-  groups: coach.groups || [],
-  selfDescription: plainTextToStructuredText(coach.selfDescription),
-  trainDescription: plainTextToStructuredText(coach.trainDescription),
-  photo: coach.photo
-    ? {
-        url: coach.photo,
-        alt: coach.name,
-      }
-    : null,
-  linkTg: coach.links?.tg || null,
-  linkInst: coach.links?.inst || null,
-  linkVk: coach.links?.vk || null,
-  linkWa: coach.links?.wa || null,
-  linkYoutube: coach.links?.youtube || null,
-});
+const mapMockCoachToCoach = (coach: MockCoach): Coach => {
+  const photoUrl = coach.photo || getFallbackCoachPhoto(coach.id);
 
-const normalizeCoachRecord = (coach: Coach): Coach => ({
-  ...coach,
-  slug: normalizeCoachSlug(coach.slug),
-  groups: coach.groups || [],
-});
+  return {
+    slug: normalizeCoachSlug(coach.id),
+    name: coach.name,
+    nick: coach.nick || '',
+    level: coach.level || '',
+    phone: coach.phone || '',
+    quote: coach.quote || '',
+    city: coach.city || '',
+    since: coach.since || '',
+    incapoeira: coach.incapoeira || '',
+    groups: coach.groups || [],
+    selfDescription: plainTextToStructuredText(coach.selfDescription),
+    trainDescription: plainTextToStructuredText(coach.trainDescription),
+    photo: photoUrl
+      ? {
+          url: photoUrl,
+          alt: coach.name,
+        }
+      : null,
+    linkTg: coach.links?.tg || null,
+    linkInst: coach.links?.inst || null,
+    linkVk: coach.links?.vk || null,
+    linkWa: coach.links?.wa || null,
+    linkYoutube: coach.links?.youtube || null,
+  };
+};
+
+const normalizeCoachRecord = (coach: Coach): Coach => {
+  const normalizedSlug = normalizeCoachSlug(coach.slug);
+  const fallbackPhotoUrl = getFallbackCoachPhoto(normalizedSlug);
+  const photoUrl = coach.photo?.url || fallbackPhotoUrl;
+
+  return {
+    ...coach,
+    slug: normalizedSlug,
+    groups: coach.groups || [],
+    photo: photoUrl
+      ? {
+          url: photoUrl,
+          alt: coach.photo?.alt || coach.name,
+        }
+      : null,
+  };
+};
 
 const isCoachRecordValid = (
   coach: Partial<Coach> | null | undefined

@@ -5,7 +5,12 @@ import Select from 'react-select';
 import { Typography } from '~shared/ui/typography';
 import { Button } from '~shared/ui/button/Button';
 import { Checkbox } from '~shared/ui/Checkbox/Checkbox';
-import { FILIALS_MOCK } from '~shared/mocks';
+import {
+  getCoachDefaultFilialValueFromSource,
+  getFallbackSignUpFilialOptions,
+  getSignUpFilialOptionsFromSource,
+  loadFilialsSourceWithFallback,
+} from '~shared/content/filials';
 import { ModalStore, setModalState } from '~shared/ui/modal/store';
 import { useEvents, useSelector } from '@tramvai/state';
 import Success from '~app/assets/sucsess.png';
@@ -17,33 +22,6 @@ import { FormResultModal } from './modals/FormResultModal/FormResultModal';
 
 const GOOGLE_API =
   'https://script.google.com/macros/s/AKfycbxTENMLVwQqI9EV99pLIMm5e0-7Jv_k2usEC6ZDZjjb6ZskO31ARW_5jc1pSMIj5wVh/exec';
-
-const OPTIONS = [
-  { address: { city: 'Любой', street: '' } },
-  ...FILIALS_MOCK.moscow,
-  ...FILIALS_MOCK.korolev,
-  ...FILIALS_MOCK.krasnodar,
-  ...FILIALS_MOCK.krasnogorsk,
-  ...FILIALS_MOCK.kazan,
-  ...FILIALS_MOCK.lissabon,
-  ...FILIALS_MOCK.mytishi,
-].reduce((arr, item) => {
-  const idDuplicate = arr.find(
-    (el) =>
-      el.value ===
-      `${item.address.city} ${item.address?.metro?.name || item.address?.street}`
-  );
-
-  return !idDuplicate
-    ? [
-        ...arr,
-        {
-          value: `${item.address.city} ${item.address?.metro?.name || item.address?.street}`,
-          label: `${item.address.city} ${item.address?.metro?.name || item.address?.street}`,
-        },
-      ]
-    : arr;
-}, []);
 
 export const customStyles = {
   container: (base) => ({
@@ -115,9 +93,16 @@ const getInitialFormState = (filial = '') => ({
 export function SignUpForm({
   contactsVariant = false,
   defaultFilial = '',
+  filialOptions: filialOptionsProp,
+  preferredCoachSlug,
 }: TSignUpFormProps) {
   const formRef = useRef<HTMLFormElement>(undefined);
   const [errors, setFormErrors] = useState<TSignUpFormErrors | null>(null);
+  const [filialOptions, setFilialOptions] = useState(() =>
+    filialOptionsProp?.length
+      ? filialOptionsProp
+      : getFallbackSignUpFilialOptions()
+  );
   const address = useSelector(
     ModalStore,
     ({ modals }) => modals.signUp?.address
@@ -126,10 +111,15 @@ export function SignUpForm({
   const [formData, setFormState] = useState(getInitialFormState(initialFilial));
   const selectedFilialOption = useMemo(
     () =>
-      OPTIONS.find((option) => option.value === formData.filial) ||
-      OPTIONS.find((option) => option.value === initialFilial) ||
-      OPTIONS[0],
-    [formData.filial, initialFilial]
+      filialOptions.find((option) => option.value === formData.filial) ||
+      filialOptions.find((option) => option.value === initialFilial) ||
+      (initialFilial
+        ? {
+            value: initialFilial,
+            label: initialFilial,
+          }
+        : filialOptions[0]),
+    [filialOptions, formData.filial, initialFilial]
   );
   const $setModalState = useEvents(setModalState);
   const onModalSetState = (state: boolean) => () => {
@@ -142,6 +132,54 @@ export function SignUpForm({
     ModalStore,
     ({ modals }) => modals.formResult?.isOpen
   );
+
+  useEffect(() => {
+    if (filialOptionsProp?.length) {
+      setFilialOptions(filialOptionsProp);
+
+      return;
+    }
+
+    let cancelled = false;
+
+    loadFilialsSourceWithFallback().then((filialsSource) => {
+      if (cancelled) {
+        return;
+      }
+
+      setFilialOptions(getSignUpFilialOptionsFromSource(filialsSource));
+
+      if (!initialFilial && preferredCoachSlug) {
+        const coachDefaultFilial = getCoachDefaultFilialValueFromSource(
+          filialsSource,
+          preferredCoachSlug
+        );
+
+        if (coachDefaultFilial) {
+          setFormState((prevData) => {
+            if (
+              prevData.name ||
+              prevData.phone ||
+              prevData.agreement ||
+              prevData.state === 'dirty' ||
+              prevData.filial
+            ) {
+              return prevData;
+            }
+
+            return {
+              ...prevData,
+              filial: coachDefaultFilial,
+            };
+          });
+        }
+      }
+    });
+
+    return () => {
+      cancelled = true;
+    };
+  }, [filialOptionsProp, initialFilial, preferredCoachSlug]);
 
   useEffect(() => {
     setFormState((prevData) => {
@@ -306,7 +344,7 @@ export function SignUpForm({
           <label htmlFor="filial" className={styles.FieldLabel}>
             <Typography weight="demiBold">Выберите филиал</Typography>
             <Select
-              options={OPTIONS}
+              options={filialOptions}
               hideSelectedOptions={false}
               styles={customStyles}
               value={selectedFilialOption}

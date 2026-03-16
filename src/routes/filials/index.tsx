@@ -9,6 +9,7 @@ import {
 } from '~shared/content/catalogs';
 import {
   getFallbackFilialsSource,
+  getSignUpFilialValue,
   loadFilialsSourceWithFallback,
 } from '~shared/content/filials';
 import Pin from '~app/assets/Pin.svg';
@@ -226,7 +227,7 @@ export function FilialsPage() {
                 ref={(el) => (listRef.current[item.id] = el)}
                 onButtonClick={onModalSetState(
                   item.coaches,
-                  `${item.city} ${item.address.metro ? item.address.metro.name : item.address.street}`
+                  getSignUpFilialValue(item)
                 )}
                 onCardClick={handleFilialClick(item.id, item.coords)}
               />

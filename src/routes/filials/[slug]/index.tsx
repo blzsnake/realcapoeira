@@ -7,6 +7,7 @@ import { Button } from '~shared/ui/button/Button';
 import { loadCoachesWithFallback } from '~shared/content/coaches';
 import {
   getFallbackFilialDetail,
+  getSignUpFilialValue,
   getFilialTitle,
   loadFilialDetailWithFallback,
 } from '~shared/content/filials';
@@ -126,9 +127,7 @@ function FilialDetailPage() {
   }, [slug]);
 
   const title = filial ? `Филиал на ${getFilialTitle(filial)}` : 'Филиал';
-  const signUpFilial =
-    filial &&
-    `${filial.address.city} ${filial.address.metro?.name || filial.address.street}`;
+  const signUpFilial = filial ? getSignUpFilialValue(filial) : '';
   const address = (() => {
     if (!filial) {
       return 'Страница филиала временно недоступна.';
@@ -403,14 +402,14 @@ function FilialDetailPage() {
                     >
                       Записаться на занятие
                     </Button>
-                    <Button
-                      color="black"
-                      className={styles.CoachActionButton}
+                    {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
+                    <Link
+                      viewTransition
                       url={`/coaches/${coach.slug}`}
-                      target="_self"
+                      className={`${styles.CoachActionButton} ${styles.CoachLinkButton}`}
                     >
                       О тренере
-                    </Button>
+                    </Link>
                   </div>
                 </article>
               ))}

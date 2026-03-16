@@ -15,6 +15,8 @@ export function SignUpFormGroup({
   className,
   children,
   defaultFilial,
+  filialOptions,
+  preferredCoachSlug,
 }: TSignUpFormGroupProps) {
   return (
     <div
@@ -56,7 +58,11 @@ export function SignUpFormGroup({
         )}
       </div>
       <div className={styles.Form}>
-        <SignUpForm defaultFilial={defaultFilial} />
+        <SignUpForm
+          defaultFilial={defaultFilial}
+          filialOptions={filialOptions}
+          preferredCoachSlug={preferredCoachSlug}
+        />
       </div>
     </div>
   );

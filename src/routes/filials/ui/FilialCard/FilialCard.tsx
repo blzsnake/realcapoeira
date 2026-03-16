@@ -3,7 +3,6 @@ import { Link } from '@tramvai/module-router';
 import cn from 'classnames';
 import { Typography } from '~shared/ui/typography';
 import { Button } from '~shared/ui/button/Button';
-import ArrowRight from '~app/assets/ArrowRight.svg?react';
 import { getFilialSlug, getFilialTitle } from '~shared/content/filials';
 
 import CallButton from '~app/assets/call_button.svg?react';
@@ -79,28 +78,16 @@ export const FilialCard = forwardRef<Ref, TFilialCardData>((props, ref) => {
     >
       <div className={styles.HeaderWrap}>
         <div className={styles.TitleWrap}>
-          <button
-            type="button"
-            className={styles.HeadButton}
-            onClick={onCardClick}
-            aria-label={`Показать филиал ${filialTitle} на карте`}
-          >
-            <Typography weight="demiBold" className={styles.Head}>
-              {filialTitle}
-            </Typography>
-          </button>
           {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
           <Link
             viewTransition
             url={`/filials/${filialSlug}`}
             aria-label={`Открыть страницу филиала ${filialTitle}`}
-            className={styles.HeadLink}
+            className={styles.HeadButton}
           >
-            <ArrowRight
-              width={20}
-              height={20}
-              className={styles.HeadLinkIcon}
-            />
+            <Typography weight="demiBold" className={styles.Head}>
+              {filialTitle}
+            </Typography>
           </Link>
         </div>
         <div className={styles.ButtonWrap}>

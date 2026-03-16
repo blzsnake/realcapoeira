@@ -12,7 +12,9 @@ import type {
   TFilialCoachType,
   TFilialScheduleType,
   TFilialType,
+  TypeOption,
 } from '~shared/types/filials';
+import { normalizeCoachSlug } from './coaches';
 
 export type FilialsSource = Record<string, TFilialType[]>;
 export type FilialDetailData = TFilialType & {
@@ -27,7 +29,24 @@ export type FilialDetailData = TFilialType & {
 const FALLBACK_FILIALS_SOURCE = FILIALS_MOCK as FilialsSource;
 let cachedFilialsSource: FilialsSource | null = null;
 let cachedFilialDetails: Record<string, FilialDetailData> | null = null;
+let filialsSourcePromise: Promise<FilialsSource> | null = null;
 export const getFallbackFilialsSource = () => FALLBACK_FILIALS_SOURCE;
+
+const DEFAULT_SIGN_UP_FILIAL_OPTION: TypeOption = {
+  value: 'Любой',
+  label: 'Любой',
+};
+
+const normalizeComparableLabel = (value: string) =>
+  value
+    .toLowerCase()
+    .replace(/^г\.?\s*/i, '')
+    .trim();
+
+const formatFilialCityLabel = (city: string) =>
+  /^г\.?\s+/i.test(city) ? city : `г. ${city}`;
+
+const normalizeCoachId = (value: string) => value.replace(/\./g, '_');
 
 const WEEKDAY_TO_INDEX: Record<FilialWeekday, number> = {
   mon: 0,
@@ -59,6 +78,58 @@ export const getFilialSlug = (filial: TFilialType) =>
     `${getFilialTitle(filial)} ${filial.address.street} ${filial.address.city}`
   );
 
+export const getSignUpFilialValue = (filial: TFilialType) => {
+  const cityLabel = formatFilialCityLabel(filial.address.city);
+  const metroName = filial.address.metro?.name?.trim();
+  const shouldUseMetro =
+    Boolean(metroName) &&
+    normalizeComparableLabel(metroName || '') !==
+      normalizeComparableLabel(filial.address.city);
+  const locationLabel = shouldUseMetro ? metroName : filial.address.street;
+
+  return `${cityLabel} ${locationLabel}`;
+};
+
+export const getSignUpFilialOptionsFromSource = (
+  filialsSource: FilialsSource
+): TypeOption[] => {
+  const optionMap = new Map<string, TypeOption>();
+
+  Object.values(filialsSource)
+    .flat()
+    .forEach((filial) => {
+      const value = getSignUpFilialValue(filial);
+
+      if (!optionMap.has(value)) {
+        optionMap.set(value, {
+          value,
+          label: value,
+        });
+      }
+    });
+
+  return [DEFAULT_SIGN_UP_FILIAL_OPTION, ...Array.from(optionMap.values())];
+};
+
+export const getFallbackSignUpFilialOptions = () =>
+  getSignUpFilialOptionsFromSource(getFallbackFilialsSource());
+
+export const getCoachDefaultFilialValueFromSource = (
+  filialsSource: FilialsSource,
+  coachSlug: string
+) => {
+  const normalizedCoachSlug = normalizeCoachId(coachSlug);
+  const coachFilial = Object.values(filialsSource)
+    .flat()
+    .find((filial) =>
+      filial.coaches.some(
+        (coach) => normalizeCoachId(coach.id) === normalizedCoachSlug
+      )
+    );
+
+  return coachFilial ? getSignUpFilialValue(coachFilial) : undefined;
+};
+
 const buildFilialSchedule = (
   scheduleItems: FilialScheduleItem[]
 ): TFilialScheduleType[][] => {
@@ -82,7 +153,7 @@ const buildFilialSchedule = (
 };
 
 const mapCoach = (coach: Filial['coaches'][number]): TFilialCoachType => ({
-  id: coach.slug,
+  id: normalizeCoachSlug(coach.slug || coach.id),
   name: coach.name,
   phone: coach.phone || '',
 });
@@ -132,7 +203,7 @@ const mapCoachRecord = (
   coach: Filial['coaches'][number]
 ): FilialLinkedCoach => ({
   id: coach.id,
-  slug: coach.slug,
+  slug: normalizeCoachSlug(coach.slug || coach.id),
   name: coach.name,
   phone: coach.phone || '',
   level: coach.level || '',
@@ -184,7 +255,7 @@ const mapFallbackFilialToDetailData = (
   monthlyPrice: null,
   coachRecords: filial.coaches.map((coach) => ({
     id: coach.id,
-    slug: coach.id,
+    slug: normalizeCoachSlug(coach.id),
     name: coach.name,
     phone: coach.phone || '',
     level: '',
@@ -224,33 +295,50 @@ export async function loadFilialsSourceWithFallback() {
     return cachedFilialsSource;
   }
 
-  try {
-    const data = await datocmsRequest<AllFilialsResponse>({
-      query: ALL_FILIALS_QUERY,
-    });
-
-    if (!Array.isArray(data.allFilials) || data.allFilials.length === 0) {
-      cachedFilialsSource = getFallbackFilialsSource();
-      cachedFilialDetails = getFallbackFilialDetails();
-
-      return cachedFilialsSource;
-    }
-
-    setFilialsCaches(data.allFilials);
-
-    if (!cachedFilialsSource) {
-      cachedFilialsSource = getFallbackFilialsSource();
-      cachedFilialDetails = getFallbackFilialDetails();
-      return cachedFilialsSource;
-    }
-
-    return cachedFilialsSource;
-  } catch {
-    cachedFilialsSource = getFallbackFilialsSource();
-    cachedFilialDetails = getFallbackFilialDetails();
-
-    return cachedFilialsSource;
+  if (filialsSourcePromise) {
+    return filialsSourcePromise;
   }
+
+  filialsSourcePromise = (async () => {
+    try {
+      const data = await datocmsRequest<AllFilialsResponse>({
+        query: ALL_FILIALS_QUERY,
+      });
+
+      if (!Array.isArray(data.allFilials) || data.allFilials.length === 0) {
+        cachedFilialsSource = getFallbackFilialsSource();
+        cachedFilialDetails = getFallbackFilialDetails();
+
+        return cachedFilialsSource;
+      }
+
+      setFilialsCaches(data.allFilials);
+
+      if (!cachedFilialsSource) {
+        cachedFilialsSource = getFallbackFilialsSource();
+        cachedFilialDetails = getFallbackFilialDetails();
+
+        return cachedFilialsSource;
+      }
+
+      return cachedFilialsSource;
+    } catch {
+      cachedFilialsSource = getFallbackFilialsSource();
+      cachedFilialDetails = getFallbackFilialDetails();
+
+      return cachedFilialsSource;
+    } finally {
+      filialsSourcePromise = null;
+    }
+  })();
+
+  return filialsSourcePromise;
+}
+
+export async function loadSignUpFilialOptionsWithFallback() {
+  const filialsSource = await loadFilialsSourceWithFallback();
+
+  return getSignUpFilialOptionsFromSource(filialsSource);
 }
 
 export async function loadFilialDetailWithFallback(slug: string) {

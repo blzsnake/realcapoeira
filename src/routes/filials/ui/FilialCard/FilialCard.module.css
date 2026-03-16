@@ -41,26 +41,17 @@
 .TitleWrap {
   display: flex;
   align-items: center;
-  gap: 8px;
 }
 
 .HeadButton {
+  display: inline-flex;
   padding: 0;
   border: none;
   background: transparent;
   text-align: left;
   cursor: pointer;
-}
-
-.HeadLink {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  color: #256eff;
-}
-
-.HeadLinkIcon {
-  transform: rotate(-45deg);
+  color: inherit;
+  text-decoration: none;
 }
 
 .Address {

@@ -1,4 +1,7 @@
 import { useRef } from 'react';
+import { declareAction } from '@tramvai/core';
+import { FilialsStore, setFilialsSource } from '~shared/stores/filials';
+import { loadFilialsSourceWithFallback } from '~shared/content/filials';
 import { SchoolPhoto } from './ui/SchoolPhoto';
 import { Events } from './ui/Events';
 import { About } from './ui/About';
@@ -8,6 +11,21 @@ import { SignUp } from './ui/SignUp';
 import { Video } from './ui/Video';
 import { Worldwide } from './ui/Worldwide';
 import styles from './index.module.css';
+
+const fetchFilialsForHomeAction = declareAction({
+  name: 'fetchFilialsForHome',
+  async fn() {
+    const currentFilialsSource = this.getState(FilialsStore);
+
+    if (Object.keys(currentFilialsSource).length > 0) {
+      return;
+    }
+
+    const filialsSource = await loadFilialsSourceWithFallback();
+
+    this.dispatch(setFilialsSource(filialsSource));
+  },
+});
 
 export function IndexPage() {
   const eventsRef = useRef<HTMLDivElement | null>(null);
@@ -36,6 +54,8 @@ export function IndexPage() {
     </main>
   );
 }
+
+IndexPage.actions = [fetchFilialsForHomeAction];
 
 IndexPage.seo = {
   metaTags: {

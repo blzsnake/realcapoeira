@@ -48,10 +48,10 @@ export const COACH_PHOTOS: Record<string, string> = {
   'd.popov': DPopov,
   'e.renne': ERenne,
   'k.malyh': KMalyh,
-  'r.minnulin': RMinnullin,
+  'r.minullin': RMinnullin,
   's.polyakova': SPolyakova,
   'k.sofiyskaya': KSofiyskaya,
-  'i.kuznetsov': IKuznecov,
+  'i.kuznecov': IKuznecov,
   'a.politov': APolitov,
   'k.samohina': KSamohina,
 };
