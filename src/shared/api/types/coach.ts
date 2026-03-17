@@ -9,6 +9,11 @@ export interface DatoCMSImage {
   alt: string | null;
 }
 
+export interface CoachCityObject {
+  cityKey: string | null;
+  cityName: string | null;
+}
+
 /** Coach record from DatoCMS */
 export interface Coach {
   slug: string;
@@ -31,6 +36,10 @@ export interface Coach {
   linkYoutube: string | null;
 }
 
+export interface CoachApiRecord extends Omit<Coach, 'city'> {
+  city: CoachCityObject | null;
+}
+
 /** Helper: convert DatoCMS coach links to the format used by components */
 export function getCoachLinks(coach: Coach) {
   const links: Record<string, string> = {};
@@ -44,9 +53,9 @@ export function getCoachLinks(coach: Coach) {
 
 /** Response types for GraphQL queries */
 export interface AllCoachesResponse {
-  allCoaches: Coach[];
+  allCoaches: CoachApiRecord[];
 }
 
 export interface CoachBySlugResponse {
-  coach: Coach | null;
+  coach: CoachApiRecord | null;
 }

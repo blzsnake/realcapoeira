@@ -1,22 +1,37 @@
-import { useMemo } from 'react';
-import { useSelector } from '@tramvai/state';
+import { useEffect, useState } from 'react';
 import { Typography } from '~shared/ui/typography';
-import { getSignUpFilialOptionsFromSource } from '~shared/content/filials';
-import { FilialsStore } from '~shared/stores/filials';
+import {
+  getFallbackSignUpFilialOptions,
+  loadSignUpFilialOptionsWithFallback,
+} from '~shared/content/filials';
 import { SignUpFormGroup } from '~shared/ui/SignUpFormGroup';
 import DreamTeam from '~app/assets/dream_team_photo.png';
+import type { TypeOption } from '~shared/types/filials';
 
 import styles from './SignUp.module.css';
 
 export function SignUp() {
-  const filialsSource = useSelector(FilialsStore, (state) => state.filials);
-  const filialOptions = useMemo(
-    () =>
-      Object.keys(filialsSource).length
-        ? getSignUpFilialOptionsFromSource(filialsSource)
-        : undefined,
-    [filialsSource]
+  const [filialOptions, setFilialOptions] = useState<TypeOption[]>(
+    getFallbackSignUpFilialOptions
   );
+
+  useEffect(() => {
+    let cancelled = false;
+
+    loadSignUpFilialOptionsWithFallback()
+      .then((nextFilialOptions) => {
+        if (!cancelled) {
+          setFilialOptions(nextFilialOptions);
+        }
+      })
+      .catch(() => {
+        // Keep snapshot-based options if the client request fails.
+      });
+
+    return () => {
+      cancelled = true;
+    };
+  }, []);
 
   return (
     <div className={styles.SignUp} id="signup">

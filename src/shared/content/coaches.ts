@@ -2,15 +2,30 @@ import { datocmsRequest } from '~shared/api/datocms';
 import { ALL_COACHES_QUERY } from '~shared/api/queries/coaches';
 import type {
   AllCoachesResponse,
+  CoachApiRecord,
   Coach,
-  DatoCMSStructuredText,
 } from '~shared/api/types/coach';
-import { COACHES as COACHES_MOCK } from '~shared/mocks/coaches';
+import { CMS_FALLBACK } from '~shared/generated/snapshot';
 import { COACH_PHOTOS } from '../../routes/coaches/utils';
 
-type MockCoach = (typeof COACHES_MOCK)[number];
-
 const compareByName = new Intl.Collator('ru').compare;
+const COACH_LEVEL_ORDER = [
+  'contra-mestre',
+  'professor',
+  'instrutor',
+  'monitor',
+  'minitor',
+] as const;
+
+const COACH_LEVEL_ALIASES: Record<string, (typeof COACH_LEVEL_ORDER)[number]> =
+  {
+    'contra-mestra': 'contra-mestre',
+    professora: 'professor',
+    instrutora: 'instrutor',
+    monitora: 'monitor',
+    minitora: 'minitor',
+  };
+
 let cachedCoaches: Coach[] | null = null;
 
 export const normalizeCoachSlug = (value: string) => value.replace(/\./g, '_');
@@ -22,70 +37,31 @@ const getFallbackCoachPhoto = (slug: string) => {
   return COACH_PHOTOS[normalizedSlug] || COACH_PHOTOS[legacySlug] || '';
 };
 
-const plainTextToStructuredText = (
-  text: string | undefined
-): DatoCMSStructuredText | null => {
-  if (!text?.trim()) {
-    return null;
-  }
+const normalizeCoachCity = (city: CoachApiRecord['city']) =>
+  city?.cityName?.trim() || '';
 
-  const paragraphs = text
-    .trim()
-    .split(/\n{2,}/)
-    .map((paragraph) => paragraph.trim())
-    .filter(Boolean)
-    .map((paragraph) => ({
-      type: 'paragraph',
-      children: [
-        {
-          type: 'span',
-          value: paragraph,
-        },
-      ],
-    }));
+export const getCoachLevelRank = (level: string) => {
+  const normalizedLevel = level.trim().toLowerCase();
+  const baseLevel = COACH_LEVEL_ALIASES[normalizedLevel] || normalizedLevel;
+  const rank = COACH_LEVEL_ORDER.indexOf(
+    baseLevel as (typeof COACH_LEVEL_ORDER)[number]
+  );
 
-  return {
-    value: {
-      schema: 'dast',
-      document: {
-        type: 'root',
-        children: paragraphs,
-      },
-    },
-  };
+  return rank === -1 ? COACH_LEVEL_ORDER.length : rank;
 };
 
-const mapMockCoachToCoach = (coach: MockCoach): Coach => {
-  const photoUrl = coach.photo || getFallbackCoachPhoto(coach.id);
+export const sortCoachesByName = (coaches: Coach[]) =>
+  [...coaches].sort((left, right) => compareByName(left.name, right.name));
 
-  return {
-    slug: normalizeCoachSlug(coach.id),
-    name: coach.name,
-    nick: coach.nick || '',
-    level: coach.level || '',
-    phone: coach.phone || '',
-    quote: coach.quote || '',
-    city: coach.city || '',
-    since: coach.since || '',
-    incapoeira: coach.incapoeira || '',
-    groups: coach.groups || [],
-    selfDescription: plainTextToStructuredText(coach.selfDescription),
-    trainDescription: plainTextToStructuredText(coach.trainDescription),
-    photo: photoUrl
-      ? {
-          url: photoUrl,
-          alt: coach.name,
-        }
-      : null,
-    linkTg: coach.links?.tg || null,
-    linkInst: coach.links?.inst || null,
-    linkVk: coach.links?.vk || null,
-    linkWa: coach.links?.wa || null,
-    linkYoutube: coach.links?.youtube || null,
-  };
-};
+export const sortCoachesForList = (coaches: Coach[]) =>
+  [...coaches].sort((left, right) => {
+    const rankDiff =
+      getCoachLevelRank(left.level) - getCoachLevelRank(right.level);
 
-const normalizeCoachRecord = (coach: Coach): Coach => {
+    return rankDiff || compareByName(left.name, right.name);
+  });
+
+export const normalizeCoachRecord = (coach: CoachApiRecord): Coach => {
   const normalizedSlug = normalizeCoachSlug(coach.slug);
   const fallbackPhotoUrl = getFallbackCoachPhoto(normalizedSlug);
   const photoUrl = coach.photo?.url || fallbackPhotoUrl;
@@ -93,6 +69,7 @@ const normalizeCoachRecord = (coach: Coach): Coach => {
   return {
     ...coach,
     slug: normalizedSlug,
+    city: normalizeCoachCity(coach.city),
     groups: coach.groups || [],
     photo: photoUrl
       ? {
@@ -107,11 +84,33 @@ const isCoachRecordValid = (
   coach: Partial<Coach> | null | undefined
 ): coach is Coach => Boolean(coach?.slug && coach?.name);
 
-const FALLBACK_COACHES = COACHES_MOCK.map(mapMockCoachToCoach)
-  .filter(isCoachRecordValid)
-  .sort((left, right) => compareByName(left.name, right.name));
+export const normalizeFallbackCoach = (coach: Coach): Coach => {
+  const normalizedSlug = normalizeCoachSlug(coach.slug);
+  const fallbackPhotoUrl = getFallbackCoachPhoto(normalizedSlug);
+  const photoUrl = coach.photo?.url || fallbackPhotoUrl;
 
-const mergeCoachesWithFallback = (coaches: Coach[]) => {
+  return {
+    ...coach,
+    slug: normalizedSlug,
+    city: coach.city || '',
+    groups: coach.groups || [],
+    photo: photoUrl
+      ? {
+          url: photoUrl,
+          alt: coach.photo?.alt || coach.name,
+        }
+      : null,
+  };
+};
+
+export const buildFallbackCoaches = (coaches: Coach[]) =>
+  sortCoachesByName(
+    coaches.map(normalizeFallbackCoach).filter(isCoachRecordValid)
+  );
+
+const FALLBACK_COACHES = buildFallbackCoaches(CMS_FALLBACK.coaches);
+
+const mergeApiCoachesWithFallback = (coaches: CoachApiRecord[]) => {
   const coachMap = new Map(
     FALLBACK_COACHES.map((coach) => [coach.slug, coach])
   );
@@ -123,12 +122,26 @@ const mergeCoachesWithFallback = (coaches: Coach[]) => {
       coachMap.set(coach.slug, coach);
     });
 
-  return Array.from(coachMap.values()).sort((left, right) =>
-    compareByName(left.name, right.name)
-  );
+  return sortCoachesByName(Array.from(coachMap.values()));
 };
 
 export const getFallbackCoaches = () => FALLBACK_COACHES;
+
+export const getCachedCoaches = () => cachedCoaches;
+
+export const setCoachesCacheFromApiRecords = (
+  coaches: CoachApiRecord[] | null | undefined
+) => {
+  if (!Array.isArray(coaches) || coaches.length === 0) {
+    cachedCoaches = getFallbackCoaches();
+
+    return cachedCoaches;
+  }
+
+  cachedCoaches = mergeApiCoachesWithFallback(coaches);
+
+  return cachedCoaches;
+};
 
 export async function loadCoachesWithFallback() {
   if (cachedCoaches) {
@@ -146,7 +159,7 @@ export async function loadCoachesWithFallback() {
       return cachedCoaches;
     }
 
-    cachedCoaches = mergeCoachesWithFallback(data.allCoaches);
+    cachedCoaches = setCoachesCacheFromApiRecords(data.allCoaches);
 
     return cachedCoaches;
   } catch {

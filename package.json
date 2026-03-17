@@ -3,9 +3,10 @@
   "private": true,
   "scripts": {
     "start": "tramvai start realcapoeira-front",
-    "build": "tramvai build realcapoeira-front",
-    "build-static": "tramvai static realcapoeira-front && npm run copy-static && npm run generate-static-routes",
+    "build": "npm run refresh-fallbacks && tramvai build realcapoeira-front",
+    "build-static": "npm run refresh-fallbacks && tramvai static realcapoeira-front && npm run generate-static-routes && npm run copy-static",
     "copy-static": "cp -r dist/static/* dist/ && cp -r meta/* dist/",
+    "refresh-fallbacks": "node scripts/refresh-cms-fallback.mjs",
     "generate-static-routes": "node scripts/generate-static-routes.mjs",
     "preview": "tramvai start-prod realcapoeira-front",
     "analyze": "tramvai analyze realcapoeira-front",

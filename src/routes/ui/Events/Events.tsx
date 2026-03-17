@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import {
+  getCachedHomeNewsSection,
   getFallbackHomeNewsSection,
   loadHomeNewsSectionWithFallback,
   type HomeNewsSection,
@@ -7,13 +8,7 @@ import {
 import { Typography } from '~shared/ui/typography';
 import { Button } from '~shared/ui/button/Button';
 import { EventCard } from '~shared/ui/EventCard/EventCard';
-import {
-  CmsNewsContent,
-  News1,
-  News2,
-  News3,
-  News4,
-} from './ui/LatestNews/LatestNews';
+import { CmsNewsContent } from './ui/LatestNews/LatestNews';
 import { EventModal } from './modals/EventModal/EventModal';
 import type { EventModalProps } from './modals/EventModal/types';
 import styles from './Events.module.css';
@@ -39,16 +34,9 @@ type CardInfo = Omit<EventModalProps, 'isOpen' | 'closeModal'> & {
   description: string;
 };
 
-const FALLBACK_CONTENT_BY_ID = {
-  groups: News1,
-  'kids-camp': News2,
-  'adult-camp': News3,
-  ecosystem: News4,
-} as const;
-
 export function Events() {
   const [homeNewsSection, setHomeNewsSection] = useState<HomeNewsSection>(
-    getFallbackHomeNewsSection()
+    getCachedHomeNewsSection() ?? getFallbackHomeNewsSection()
   );
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
   const isModalOpen = activeIndex !== null;
@@ -79,20 +67,12 @@ export function Events() {
   }, []);
 
   const cardInfos: CardInfo[] = homeNewsSection.items.map((item) => {
-    const FallbackContent =
-      FALLBACK_CONTENT_BY_ID[item.id as keyof typeof FALLBACK_CONTENT_BY_ID];
-
     return {
       id: item.id,
       cardTitle: item.shortTitle,
       fullTitle: item.title,
       description: item.shortDescription,
-      children:
-        homeNewsSection.source === 'fallback' && FallbackContent ? (
-          <FallbackContent />
-        ) : (
-          <CmsNewsContent item={item} />
-        ),
+      children: <CmsNewsContent item={item} />,
     };
   });
 

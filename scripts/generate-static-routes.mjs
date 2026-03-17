@@ -12,15 +12,17 @@ const ROUTES_QUERY = `
     allCoaches(first: 100, orderBy: name_ASC) {
       slug
     }
-    allFilials(orderBy: sortOrder_ASC, filter: { isactive: { eq: true } }) {
+    allFilials(
+      first: 100
+      orderBy: sortOrder_ASC
+      filter: { isactive: { eq: true } }
+    ) {
       slug
-      title
-      cityName
-      metroName
-      street: address
     }
   }
 `;
+
+const SNAPSHOT_PATH = path.resolve('src/shared/generated/cms-fallback.json');
 
 const normalizeCoachSlug = (value) => value.replace(/\./g, '_');
 
@@ -35,48 +37,56 @@ const slugifyFilialValue = (value) =>
 const getFallbackFilialSlug = ({ title, city, metro, street }) =>
   slugifyFilialValue(`${title || metro || city} ${street} ${city}`);
 
+const readSnapshot = () => {
+  if (!fs.existsSync(SNAPSHOT_PATH)) {
+    return null;
+  }
+
+  return JSON.parse(fs.readFileSync(SNAPSHOT_PATH, 'utf8'));
+};
+
 const readFallbackCoachSlugs = () => {
-  const coachesPath = path.resolve('src/shared/mocks/coaches.ts');
-  const source = fs.readFileSync(coachesPath, 'utf8');
-  const matches = source.matchAll(/id:\s*'([^']+)'/g);
+  const snapshot = readSnapshot();
+
+  if (!Array.isArray(snapshot?.coaches)) {
+    return [];
+  }
 
   return Array.from(
-    new Set(Array.from(matches, ([, slug]) => normalizeCoachSlug(slug)))
+    new Set(
+      snapshot.coaches
+        .map((coach) => coach?.slug)
+        .filter(Boolean)
+        .map(normalizeCoachSlug)
+    )
   );
 };
 
 const readFallbackFilialSlugs = () => {
-  const citiesDir = path.resolve('src/shared/mocks/cities');
-  const files = fs.readdirSync(citiesDir).filter((file) => file.endsWith('.ts'));
-  const slugs = new Set();
+  const snapshot = readSnapshot();
 
-  files.forEach((fileName) => {
-    const source = fs.readFileSync(path.join(citiesDir, fileName), 'utf8');
-    const addressBlocks = source.matchAll(
-      /address:\s*{([\s\S]*?)}\s*,\s*coaches:/g
-    );
+  if (!Array.isArray(snapshot?.filials)) {
+    return [];
+  }
 
-    Array.from(addressBlocks).forEach(([, block]) => {
-      const cityMatch = block.match(/city:\s*'([^']+)'/);
-      const streetMatch = block.match(/street:\s*'([^']+)'/);
-      const metroMatch = block.match(/metro:\s*{[\s\S]*?name:\s*'([^']+)'/);
+  const slugs = snapshot.filials
+    .map((filial) => filial?.slug)
+    .filter(Boolean);
 
-      if (!cityMatch || !streetMatch) {
-        return;
-      }
+  if (slugs.length) {
+    return Array.from(new Set(slugs));
+  }
 
-      slugs.add(
-        getFallbackFilialSlug({
-          city: cityMatch[1],
-          metro: metroMatch?.[1] || '',
-          street: streetMatch[1],
-          title: '',
-        })
-      );
-    });
-  });
-
-  return Array.from(slugs);
+  return snapshot.filials
+    .map((filial) =>
+      getFallbackFilialSlug({
+        title: filial?.title || '',
+        city: filial?.cityObject?.cityName || '',
+        metro: filial?.metroName || '',
+        street: filial?.street || '',
+      })
+    )
+    .filter(Boolean);
 };
 
 const fetchStaticRoutes = async () => {
@@ -127,7 +137,7 @@ const getStaticRoutes = async () => {
     }
   } catch (error) {
     console.warn(
-      '[generate-static-routes] Falling back to local mocks:',
+      '[generate-static-routes] Falling back to generated snapshot:',
       error instanceof Error ? error.message : error
     );
   }

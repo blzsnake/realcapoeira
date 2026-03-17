@@ -3,12 +3,12 @@ import { Link } from '@tramvai/module-router';
 import cn from 'classnames';
 import { Typography } from '~shared/ui/typography';
 import { Button } from '~shared/ui/button/Button';
+import { WEEK_DAYS } from '~shared/consts/weekDays';
 import { getFilialSlug, getFilialTitle } from '~shared/content/filials';
 
 import CallButton from '~app/assets/call_button.svg?react';
 
 import styles from './FilialCard.module.css';
-import { WEEK_DAYS } from '../../../../shared/mocks';
 
 import type { TFilialScheduleType } from '../Filter/types';
 

@@ -4,8 +4,10 @@ export const FILIAL_FIELDS = `
   slug
   isActive: isactive
   sortOrder
-  cityKey: cityId
-  cityName
+  cityObject {
+    cityKey: cityId
+    cityName
+  }
   metroName
   metroColor {
     hex
@@ -84,7 +86,10 @@ export const FILIALS_AND_COACHES_QUERY = `
       level
       phone
       quote
-      city
+      city {
+        cityKey: cityId
+        cityName
+      }
       since
       incapoeira
       groups

@@ -1,20 +1,30 @@
 import { datocmsRequest } from '~shared/api/datocms';
-import { ALL_FILIALS_QUERY } from '~shared/api/queries/filials';
+import {
+  ALL_FILIALS_QUERY,
+  FILIALS_AND_COACHES_QUERY,
+} from '~shared/api/queries/filials';
+import type { Coach } from '~shared/api/types/coach';
 import type {
   AllFilialsResponse,
   Filial,
   FilialLinkedCoach,
+  FilialsAndCoachesResponse,
   FilialScheduleItem,
   FilialWeekday,
 } from '~shared/api/types/filial';
-import { FILIALS_MOCK } from '~shared/mocks';
 import type {
   TFilialCoachType,
   TFilialScheduleType,
   TFilialType,
   TypeOption,
 } from '~shared/types/filials';
-import { normalizeCoachSlug } from './coaches';
+import { CMS_FALLBACK } from '~shared/generated/snapshot';
+import {
+  getCachedCoaches,
+  getFallbackCoaches,
+  normalizeCoachSlug,
+  setCoachesCacheFromApiRecords,
+} from './coaches';
 
 export type FilialsSource = Record<string, TFilialType[]>;
 export type FilialDetailData = TFilialType & {
@@ -26,11 +36,15 @@ export type FilialDetailData = TFilialType & {
   coachRecords: FilialLinkedCoach[];
 };
 
-const FALLBACK_FILIALS_SOURCE = FILIALS_MOCK as FilialsSource;
 let cachedFilialsSource: FilialsSource | null = null;
 let cachedFilialDetails: Record<string, FilialDetailData> | null = null;
 let filialsSourcePromise: Promise<FilialsSource> | null = null;
-export const getFallbackFilialsSource = () => FALLBACK_FILIALS_SOURCE;
+let filialPageDataPromise: Promise<{
+  filial: FilialDetailData | null;
+  coaches: Coach[];
+}> | null = null;
+let fallbackFilialsSourceCache: FilialsSource | null = null;
+let fallbackFilialDetailsCache: Record<string, FilialDetailData> | null = null;
 
 const DEFAULT_SIGN_UP_FILIAL_OPTION: TypeOption = {
   value: 'Любой',
@@ -111,9 +125,6 @@ export const getSignUpFilialOptionsFromSource = (
   return [DEFAULT_SIGN_UP_FILIAL_OPTION, ...Array.from(optionMap.values())];
 };
 
-export const getFallbackSignUpFilialOptions = () =>
-  getSignUpFilialOptionsFromSource(getFallbackFilialsSource());
-
 export const getCoachDefaultFilialValueFromSource = (
   filialsSource: FilialsSource,
   coachSlug: string
@@ -158,32 +169,44 @@ const mapCoach = (coach: Filial['coaches'][number]): TFilialCoachType => ({
   phone: coach.phone || '',
 });
 
-const isFilialRecordValid = (
+export const getFilialCityKey = (filial: Filial) =>
+  filial.cityObject?.cityKey || 'other';
+
+export const getFilialCityName = (filial: Filial) =>
+  filial.cityObject?.cityName?.trim() ||
+  filial.metroName?.trim() ||
+  filial.title ||
+  'Не указан';
+
+export const isFilialRecordValid = (
   filial: Partial<Filial> | null | undefined
 ): filial is Filial =>
   Boolean(
     filial?.slug &&
       filial?.title &&
-      filial?.cityKey &&
       filial?.street &&
       filial?.location?.latitude !== undefined &&
       filial?.location?.longitude !== undefined
   );
 
+export const getFallbackFilials = () =>
+  CMS_FALLBACK.filials.filter(isFilialRecordValid);
+
 const mapFilialToCardData = (filial: Filial, index: number): TFilialType => {
   const lat = filial.location?.latitude ?? 0;
   const lng = filial.location?.longitude ?? 0;
+  const cityName = getFilialCityName(filial);
 
   return {
     slug: filial.slug,
     title: filial.title,
     id: filial.sortOrder ?? Math.round((lat * 1000 + lng * 1000) * (index + 1)),
     coords: [lat, lng],
-    city: filial.cityName,
-    metro: filial.metroName || filial.cityName,
+    city: cityName,
+    metro: filial.metroName || cityName,
     street: filial.street,
     address: {
-      city: filial.cityName,
+      city: cityName,
       metro: filial.metroName
         ? {
             name: filial.metroName,
@@ -211,9 +234,9 @@ const mapCoachRecord = (
   photo: coach.photo || null,
 });
 
-const buildFilialsSource = (filials: Filial[]) =>
+export const buildFilialsSource = (filials: Filial[]) =>
   filials.reduce<FilialsSource>((acc, filial, index) => {
-    const cityKey = filial.cityKey || 'other';
+    const cityKey = getFilialCityKey(filial);
     const items = acc[cityKey] || [];
 
     items.push(mapFilialToCardData(filial, index));
@@ -235,7 +258,7 @@ const mapFilialToDetailData = (
   coachRecords: filial.coaches.map(mapCoachRecord),
 });
 
-const buildFilialDetailsMap = (filials: Filial[]) =>
+export const buildFilialDetailsMap = (filials: Filial[]) =>
   filials.reduce<Record<string, FilialDetailData>>((acc, filial, index) => {
     const detail = mapFilialToDetailData(filial, index);
 
@@ -244,36 +267,40 @@ const buildFilialDetailsMap = (filials: Filial[]) =>
     return acc;
   }, {});
 
-const mapFallbackFilialToDetailData = (
-  filial: TFilialType
-): FilialDetailData => ({
-  ...filial,
-  heroImage: null,
-  hallDescription: null,
-  trialLessonPrice: null,
-  singleLessonPrice: null,
-  monthlyPrice: null,
-  coachRecords: filial.coaches.map((coach) => ({
-    id: coach.id,
-    slug: normalizeCoachSlug(coach.id),
-    name: coach.name,
-    phone: coach.phone || '',
-    level: '',
-    nick: '',
-    photo: null,
-  })),
-});
+export const buildFallbackFilialsData = (filials: Filial[]) => {
+  const validFilials = filials.filter(isFilialRecordValid);
 
-const getFallbackFilialDetails = () =>
-  Object.values(getFallbackFilialsSource())
-    .flat()
-    .reduce<Record<string, FilialDetailData>>((acc, filial) => {
-      const detail = mapFallbackFilialToDetailData(filial);
+  return {
+    filials: validFilials,
+    source: buildFilialsSource(validFilials),
+    details: buildFilialDetailsMap(validFilials),
+  };
+};
 
-      acc[getFilialSlug(detail)] = detail;
+export const getFallbackSignUpFilialOptions = () =>
+  getSignUpFilialOptionsFromSource(getFallbackFilialsSource());
 
-      return acc;
-    }, {});
+export function getFallbackFilialsSource() {
+  if (fallbackFilialsSourceCache) {
+    return fallbackFilialsSourceCache;
+  }
+
+  fallbackFilialsSourceCache =
+    buildFallbackFilialsData(getFallbackFilials()).source;
+
+  return fallbackFilialsSourceCache;
+}
+
+const getFallbackFilialDetails = () => {
+  if (fallbackFilialDetailsCache) {
+    return fallbackFilialDetailsCache;
+  }
+
+  fallbackFilialDetailsCache =
+    buildFallbackFilialsData(getFallbackFilials()).details;
+
+  return fallbackFilialDetailsCache;
+};
 
 const setFilialsCaches = (filials: Filial[]) => {
   const validFilials = filials.filter(isFilialRecordValid);
@@ -365,4 +392,62 @@ export async function loadFilialDetailWithFallback(slug: string) {
 
     return cachedFilialDetails[slug] || null;
   }
+}
+
+export async function loadFilialPageDataWithFallback(slug: string) {
+  const cachedCoaches = getCachedCoaches();
+
+  if (cachedFilialDetails?.[slug] && cachedCoaches) {
+    return {
+      filial: cachedFilialDetails[slug],
+      coaches: cachedCoaches,
+    };
+  }
+
+  if (filialPageDataPromise) {
+    const data = await filialPageDataPromise;
+
+    return {
+      filial: cachedFilialDetails?.[slug] || data.filial,
+      coaches: getCachedCoaches() || data.coaches,
+    };
+  }
+
+  filialPageDataPromise = (async () => {
+    try {
+      const data = await datocmsRequest<FilialsAndCoachesResponse>({
+        query: FILIALS_AND_COACHES_QUERY,
+      });
+
+      if (Array.isArray(data.allFilials) && data.allFilials.length > 0) {
+        setFilialsCaches(data.allFilials);
+      } else {
+        cachedFilialsSource = getFallbackFilialsSource();
+        cachedFilialDetails = getFallbackFilialDetails();
+      }
+
+      const coaches = setCoachesCacheFromApiRecords(data.allCoaches);
+
+      return {
+        filial: cachedFilialDetails?.[slug] || getFallbackFilialDetail(slug),
+        coaches,
+      };
+    } catch {
+      if (!cachedFilialsSource || !cachedFilialDetails) {
+        cachedFilialsSource = getFallbackFilialsSource();
+        cachedFilialDetails = getFallbackFilialDetails();
+      }
+
+      const coaches = getCachedCoaches() || getFallbackCoaches();
+
+      return {
+        filial: cachedFilialDetails?.[slug] || getFallbackFilialDetail(slug),
+        coaches,
+      };
+    } finally {
+      filialPageDataPromise = null;
+    }
+  })();
+
+  return filialPageDataPromise;
 }

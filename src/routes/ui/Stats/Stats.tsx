@@ -1,7 +1,45 @@
+import { useEffect, useState } from 'react';
+import {
+  getCachedHomeStats,
+  getFallbackHomeStats,
+  loadHomeStatsWithFallback,
+  type HomeStats,
+} from '~shared/content/stats';
 import { Typography } from '~shared/ui/typography';
 import styles from './Stats.module.css';
 
+const formatInteger = (value: number) =>
+  new Intl.NumberFormat('ru-RU').format(value);
+
 export function Stats() {
+  const [stats, setStats] = useState<HomeStats>(
+    getCachedHomeStats() ?? getFallbackHomeStats()
+  );
+
+  useEffect(() => {
+    let isMounted = true;
+
+    const loadStats = async () => {
+      try {
+        const nextStats = await loadHomeStatsWithFallback();
+
+        if (!isMounted) {
+          return;
+        }
+
+        setStats(nextStats);
+      } catch {
+        // Keep fallback values if the client request fails.
+      }
+    };
+
+    loadStats();
+
+    return () => {
+      isMounted = false;
+    };
+  }, []);
+
   return (
     <div className={styles.Stats}>
       <div className={styles.Item}>
@@ -9,7 +47,7 @@ export function Stats() {
           Обучаем капоэйре
         </Typography>
         <Typography weight="demiBold" className={styles.Number}>
-          18&nbsp;лет
+          {stats.trainingYears}&nbsp;лет
         </Typography>
       </div>
 
@@ -19,7 +57,7 @@ export function Stats() {
             Филиалов
           </Typography>
           <Typography weight="demiBold" className={styles.Number}>
-            45
+            {formatInteger(stats.quantityFilials)}
           </Typography>
         </div>
         <div className={styles.Item}>
@@ -27,7 +65,7 @@ export function Stats() {
             Учеников
           </Typography>
           <Typography weight="demiBold" className={styles.Number}>
-            1&nbsp;300+
+            {formatInteger(stats.quantityTraineers)}+
           </Typography>
         </div>
       </div>

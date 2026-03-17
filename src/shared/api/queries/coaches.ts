@@ -7,7 +7,10 @@ export const ALL_COACHES_QUERY = `
       level
       phone
       quote
-      city
+      city {
+        cityKey: cityId
+        cityName
+      }
       since
       incapoeira
       groups
@@ -39,7 +42,10 @@ export const COACH_BY_SLUG_QUERY = `
       level
       phone
       quote
-      city
+      city {
+        cityKey: cityId
+        cityName
+      }
       since
       incapoeira
       groups

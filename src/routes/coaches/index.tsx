@@ -12,40 +12,12 @@ import { CoachesStore, setCoaches } from '~shared/stores/coaches';
 import {
   getFallbackCoaches,
   loadCoachesWithFallback,
+  sortCoachesForList,
 } from '~shared/content/coaches';
 import { Filter } from './ui/Filter/Filter';
 import { CoachCard } from './ui/CoachCard';
 
 import styles from './Coaches.module.css';
-
-const COACH_LEVEL_ORDER = [
-  'contra-mestre',
-  'professor',
-  'instrutor',
-  'monitor',
-  'minitor',
-] as const;
-
-const COACH_LEVEL_ALIASES: Record<string, (typeof COACH_LEVEL_ORDER)[number]> =
-  {
-    'contra-mestra': 'contra-mestre',
-    professora: 'professor',
-    instrutora: 'instrutor',
-    monitora: 'monitor',
-    minitora: 'minitor',
-  };
-
-const compareByName = new Intl.Collator('ru').compare;
-
-const getCoachLevelRank = (level: string) => {
-  const normalizedLevel = level.trim().toLowerCase();
-  const baseLevel = COACH_LEVEL_ALIASES[normalizedLevel] || normalizedLevel;
-  const rank = COACH_LEVEL_ORDER.indexOf(
-    baseLevel as (typeof COACH_LEVEL_ORDER)[number]
-  );
-
-  return rank === -1 ? COACH_LEVEL_ORDER.length : rank;
-};
 
 /**
  * Tramvai action — загружает тренеров через content-layer.
@@ -90,13 +62,8 @@ export function CoachesPage() {
       selectedAgeGroup?.length
         ? selectedAgeGroup?.find((i) => el.groups?.includes(i.value))
         : true
-    )
-    .sort((left, right) => {
-      const rankDiff =
-        getCoachLevelRank(left.level) - getCoachLevelRank(right.level);
-
-      return rankDiff || compareByName(left.name, right.name);
-    });
+    );
+  const coachesSorted = sortCoachesForList(coachesFiltered);
 
   useEffect(() => {
     window.scrollTo({
@@ -115,7 +82,7 @@ export function CoachesPage() {
         <Filter cityOptions={cityOptions} />
       </div>
       <div className={styles.Coaches}>
-        {coachesFiltered.map((coach) => (
+        {coachesSorted.map((coach) => (
           <CoachCard
             key={coach.slug}
             name={coach.name}

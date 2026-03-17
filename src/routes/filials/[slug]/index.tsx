@@ -4,20 +4,18 @@ import { YMaps, Map, Placemark } from '@pbe/react-yandex-maps';
 import { StructuredText } from 'react-datocms/structured-text';
 import ArrowRight from '~app/assets/ArrowRight.svg?react';
 import { Button } from '~shared/ui/button/Button';
-import { loadCoachesWithFallback } from '~shared/content/coaches';
+import { WEEK_DAYS } from '~shared/consts/weekDays';
+import { getFilialPagePayload } from '~shared/generated';
 import {
-  getFallbackFilialDetail,
   getSignUpFilialValue,
   getFilialTitle,
-  loadFilialDetailWithFallback,
+  loadFilialPageDataWithFallback,
 } from '~shared/content/filials';
 import type { Coach } from '~shared/api/types/coach';
 import { SignUpFormGroup } from '~shared/ui/SignUpFormGroup';
 import { Typography } from '~shared/ui/typography';
 
 import styles from './FilialDetail.module.css';
-
-const WEEK_DAYS = ['Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб', 'Вс'];
 
 const GROUP_LABELS: Record<string, string> = {
   junior: 'Дети 3–6 лет',
@@ -92,8 +90,11 @@ const DESKTOP_SCHEDULE_ITEM_GAP = 18;
 function FilialDetailPage() {
   const route = useRoute();
   const { slug } = route.params;
-  const [filial, setFilial] = useState(() => getFallbackFilialDetail(slug));
-  const [coaches, setCoaches] = useState<Coach[]>([]);
+  const initialPayload = useMemo(() => getFilialPagePayload(slug), [slug]);
+  const [filial, setFilial] = useState(() => initialPayload.data.filial);
+  const [coaches, setCoaches] = useState<Coach[]>(
+    () => initialPayload.data.coaches
+  );
   const [openPreparationIndex, setOpenPreparationIndex] = useState(0);
 
   useEffect(() => {
@@ -105,13 +106,16 @@ function FilialDetailPage() {
   }, [slug]);
 
   useEffect(() => {
+    setFilial(initialPayload.data.filial);
+    setCoaches(initialPayload.data.coaches);
+  }, [initialPayload]);
+
+  useEffect(() => {
     let cancelled = false;
 
     const loadData = async () => {
-      const [nextFilial, nextCoaches] = await Promise.all([
-        loadFilialDetailWithFallback(slug),
-        loadCoachesWithFallback(),
-      ]);
+      const { filial: nextFilial, coaches: nextCoaches } =
+        await loadFilialPageDataWithFallback(slug);
 
       if (!cancelled) {
         setFilial(nextFilial);

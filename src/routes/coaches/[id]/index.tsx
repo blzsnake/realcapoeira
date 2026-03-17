@@ -3,6 +3,7 @@ import { useRoute } from '@tramvai/module-router';
 import { useSelector } from '@tramvai/state';
 import { declareAction } from '@tramvai/core';
 import { StructuredText } from 'react-datocms/structured-text';
+import { getCoachPagePayload } from '~shared/generated';
 import { CoachesStore, setCoaches } from '~shared/stores/coaches';
 import { getCoachLinks } from '~shared/api/types/coach';
 import {
@@ -39,13 +40,14 @@ function CoachPage() {
   const route = useRoute();
   const { id } = route.params;
   const coaches = useSelector(CoachesStore, (state) => state.coaches);
+  const initialPayload = useMemo(() => getCoachPagePayload(id), [id]);
 
   const coach = useMemo(
     () =>
       coaches.find(
         (c) => normalizeCoachSlug(c.slug) === normalizeCoachSlug(id)
-      ),
-    [coaches, id]
+      ) || initialPayload.data.coach,
+    [coaches, id, initialPayload]
   );
 
   useEffect(() => {

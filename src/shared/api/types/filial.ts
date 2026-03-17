@@ -1,4 +1,8 @@
-import type { Coach, DatoCMSImage, DatoCMSStructuredText } from './coach';
+import type {
+  CoachApiRecord,
+  DatoCMSImage,
+  DatoCMSStructuredText,
+} from './coach';
 
 export type FilialWeekday =
   | 'mon'
@@ -18,6 +22,11 @@ export interface FilialLocation {
 
 export interface DatoCMSColor {
   hex: string;
+}
+
+export interface FilialCityObject {
+  cityKey: string | null;
+  cityName: string | null;
 }
 
 export interface FilialLinkedCoach {
@@ -52,8 +61,7 @@ export interface Filial {
   slug: string;
   isActive: boolean;
   sortOrder: number | null;
-  cityKey: string;
-  cityName: string;
+  cityObject: FilialCityObject | null;
   metroName: string | null;
   metroColor: DatoCMSColor | null;
   street: string;
@@ -79,5 +87,5 @@ export interface FilialBySlugResponse {
 
 export interface FilialsAndCoachesResponse {
   allFilials: Filial[];
-  allCoaches: Coach[];
+  allCoaches: CoachApiRecord[];
 }
