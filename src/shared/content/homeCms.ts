@@ -90,7 +90,8 @@ const EMERGENCY_HOME_STATS: HomeStats = {
 };
 
 const HOME_CMS_CACHE_KEY = 'realcapoeira-home-cms-v1';
-const HOME_CMS_CACHE_TTL = 1000 * 60 * 15;
+const HOME_CMS_CACHE_TTL =
+  process.env.NODE_ENV === 'development' ? 1000 * 60 * 3 : 1000 * 60 * 15;
 const HOME_CMS_DEBUG_KEY = 'realcapoeira-debug-home-cms';
 
 let cachedHomeCmsData: HomeCmsData | null = null;
