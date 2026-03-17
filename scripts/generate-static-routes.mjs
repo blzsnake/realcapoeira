@@ -3,6 +3,7 @@ import path from 'node:path';
 
 const DIST_DIR = path.resolve('dist');
 const INDEX_HTML_PATH = path.join(DIST_DIR, 'index.html');
+const STATIC_INDEX_HTML_PATH = path.join(DIST_DIR, 'static', 'index.html');
 const DATOCMS_API_URL = 'https://graphql.datocms.com/';
 const DATOCMS_API_TOKEN =
   process.env.DATOCMS_API_TOKEN || 'df33316b1e272f5a8a25cab6746eec';
@@ -154,12 +155,21 @@ const ensureRouteFile = (baseDir, routePath, html) => {
   fs.writeFileSync(path.join(routeDir, 'index.html'), html);
 };
 
-const main = async () => {
-  if (!fs.existsSync(INDEX_HTML_PATH)) {
-    throw new Error(`Missing shell HTML: ${INDEX_HTML_PATH}`);
+const getShellHtmlPath = () => {
+  if (fs.existsSync(INDEX_HTML_PATH)) {
+    return INDEX_HTML_PATH;
   }
 
-  const html = fs.readFileSync(INDEX_HTML_PATH, 'utf8');
+  if (fs.existsSync(STATIC_INDEX_HTML_PATH)) {
+    return STATIC_INDEX_HTML_PATH;
+  }
+
+  throw new Error(`Missing shell HTML: ${INDEX_HTML_PATH}`);
+};
+
+const main = async () => {
+  const shellHtmlPath = getShellHtmlPath();
+  const html = fs.readFileSync(shellHtmlPath, 'utf8');
   const { coaches, filials } = await getStaticRoutes();
 
   coaches.forEach((slug) => {
