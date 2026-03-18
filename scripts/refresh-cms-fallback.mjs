@@ -6,7 +6,7 @@ const DATOCMS_API_TOKEN =
   process.env.DATOCMS_API_TOKEN || 'df33316b1e272f5a8a25cab6746eec';
 
 const OUTPUT_PATH = path.resolve('src/shared/generated/cms-fallback.json');
-const SCHEMA_VERSION = 1;
+const SCHEMA_VERSION = 2;
 
 const HOME_QUERY = `
   query HomeCmsFallback {
@@ -22,6 +22,18 @@ const HOME_QUERY = `
       trainingYears
       quantityFilials
       quantityTraineers
+    }
+    allCitiesLists(orderBy: position_ASC, filter: { showOnMain: { eq: true } }) {
+      id
+      cityId
+      cityName
+      country
+      cityFriend
+      showOnMain
+      cityImage {
+        url
+        alt
+      }
     }
   }
 `;
@@ -176,7 +188,9 @@ const normalizeNewsSection = (allNews) => ({
 
 const normalizeStats = (dataCommon) => ({
   trainingYears:
-    typeof dataCommon?.trainingYears === 'number' ? dataCommon.trainingYears : 18,
+    typeof dataCommon?.trainingYears === 'number'
+      ? dataCommon.trainingYears
+      : 18,
   quantityFilials:
     typeof dataCommon?.quantityFilials === 'number'
       ? dataCommon.quantityFilials
@@ -186,6 +200,31 @@ const normalizeStats = (dataCommon) => ({
       ? dataCommon.quantityTraineers
       : 1300,
 });
+
+const normalizeWorldwideCities = (allCitiesLists) =>
+  (Array.isArray(allCitiesLists) ? allCitiesLists : [])
+    .map((city) => {
+      const cityId = normalizeText(city?.cityId);
+      const cityName = normalizeText(city?.cityName);
+      const country = normalizeText(city?.country);
+      const imageUrl = normalizeText(city?.cityImage?.url);
+      const cityFriend = Boolean(city?.cityFriend);
+
+      if (!country || !imageUrl || (!cityFriend && !cityName)) {
+        return null;
+      }
+
+      return {
+        id: city.id,
+        cityId,
+        cityName,
+        country,
+        cityFriend,
+        imageUrl,
+        imageAlt: normalizeText(city?.cityImage?.alt) || cityName || country,
+      };
+    })
+    .filter(Boolean);
 
 const normalizeCoach = (coach) => ({
   slug: normalizeCoachSlug(coach.slug),
@@ -262,7 +301,9 @@ const normalizeFilial = (filial) => ({
   coaches: (Array.isArray(filial.coaches) ? filial.coaches : []).map(
     normalizeFilialCoach
   ),
-  scheduleItems: Array.isArray(filial.scheduleItems) ? filial.scheduleItems : [],
+  scheduleItems: Array.isArray(filial.scheduleItems)
+    ? filial.scheduleItems
+    : [],
   createdAt: filial.createdAt || '',
   updatedAt: filial.updatedAt || '',
 });
@@ -281,11 +322,18 @@ const main = async () => {
       home: {
         newsSection: normalizeNewsSection(homeData.allNews),
         stats: normalizeStats(homeData.dataCommon),
+        worldwideCities: normalizeWorldwideCities(homeData.allCitiesLists),
       },
-      coaches: (Array.isArray(coachesData.allCoaches) ? coachesData.allCoaches : [])
+      coaches: (Array.isArray(coachesData.allCoaches)
+        ? coachesData.allCoaches
+        : []
+      )
         .map(normalizeCoach)
         .filter((coach) => coach.slug && coach.name),
-      filials: (Array.isArray(filialsData.allFilials) ? filialsData.allFilials : [])
+      filials: (Array.isArray(filialsData.allFilials)
+        ? filialsData.allFilials
+        : []
+      )
         .map(normalizeFilial)
         .filter(
           (filial) =>
@@ -299,6 +347,7 @@ const main = async () => {
 
     fs.mkdirSync(path.dirname(OUTPUT_PATH), { recursive: true });
     fs.writeFileSync(OUTPUT_PATH, `${JSON.stringify(snapshot, null, 2)}\n`);
+    // eslint-disable-next-line no-console
     console.log(
       `[refresh-cms-fallback] Updated snapshot: ${snapshot.coaches.length} coaches, ${snapshot.filials.length} filials, ${snapshot.home.newsSection.items.length} news`
     );
@@ -306,6 +355,7 @@ const main = async () => {
     const message = error instanceof Error ? error.message : String(error);
 
     if (fs.existsSync(OUTPUT_PATH)) {
+      // eslint-disable-next-line no-console
       console.warn(
         `[refresh-cms-fallback] Failed to refresh, keeping existing snapshot: ${message}`
       );
@@ -318,6 +368,7 @@ const main = async () => {
 };
 
 main().catch((error) => {
+  // eslint-disable-next-line no-console
   console.error(
     '[refresh-cms-fallback] Failed:',
     error instanceof Error ? error.message : error

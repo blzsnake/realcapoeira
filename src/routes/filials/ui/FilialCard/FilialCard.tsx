@@ -1,4 +1,5 @@
 import { forwardRef, useEffect, useMemo, useState } from 'react';
+import type { KeyboardEvent, MouseEvent } from 'react';
 import { Link } from '@tramvai/module-router';
 import cn from 'classnames';
 import { Typography } from '~shared/ui/typography';
@@ -57,6 +58,29 @@ export const FilialCard = forwardRef<Ref, TFilialCardData>((props, ref) => {
     setCardActive(!cardActive);
     onCardClick();
   };
+  const handleCardClick = (event: MouseEvent<HTMLDivElement>) => {
+    const target = event.target as HTMLElement;
+
+    if (target.closest('a, button')) {
+      return;
+    }
+
+    onCardClick();
+  };
+  const handleCardKeyDown = (event: KeyboardEvent<HTMLDivElement>) => {
+    if (event.key !== 'Enter' && event.key !== ' ') {
+      return;
+    }
+
+    const target = event.target as HTMLElement;
+
+    if (target.closest('a, button')) {
+      return;
+    }
+
+    event.preventDefault();
+    onCardClick();
+  };
   const addressName = useMemo(
     () =>
       address?.metro
@@ -72,6 +96,10 @@ export const FilialCard = forwardRef<Ref, TFilialCardData>((props, ref) => {
   return (
     <div
       ref={ref}
+      onClick={handleCardClick}
+      onKeyDown={handleCardKeyDown}
+      role="button"
+      tabIndex={0}
       className={cn(styles.FilialCard, {
         [styles.FilialCardActive]: cardActive,
       })}

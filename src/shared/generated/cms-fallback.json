@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-03-17T13:18:28.557Z",
-  "schemaVersion": 1,
+  "generatedAt": "2026-03-18T17:09:41.672Z",
+  "schemaVersion": 2,
   "home": {
     "newsSection": {
       "title": "События",
@@ -45,6 +45,14 @@
           "shortDescription": "Ежедневные тренировки и игры на свежем воздухе для школьников",
           "description": "Бразильские мастера капоэйры подготовили увлекательные мастер-классы для детей. В программе тренировки, танцы и игры на свежем воздухе\n\n![](https://www.datocms-assets.com/196565/1773678371-news2.png)\n\n# Даты\n20–22 марта 2026\n27–29 марта 2026\n\n# Программа\n* Утренние тренировки по капоэйре\n* Творческие мастер-классы по бразильским танцам и музыке\n* Игры на свежем воздухе\n* Спортивные соревнования между группами\n* Творческие конкурсы и командные игры\n* Вечерние развлекательные активности\n# Условия проживания\n* Комфортные номера\n* Полноценное питание по расписанию\n* Круглосуточный присмотр опытных вожатых и тренеров\n* Безопасная территория под охраной\n# Что включено в стоимость\n* Трансфер туда-обратно\n* Проживание на период сборов\n* Трехразовое питание\n* Все тренировки и мастер-классы\n* Развлекательная программа\n* Работа тренеров\n# Как записаться\n1.  Заполните форму на сайте [https://realbrazilkids.ru](https://realbrazilkids.ru)\n2.  Внесите предоплату\n3.  Предоставьте необходимые документы\n\nПодарите ребенку незабываемые впечатления, а также возможность стать спортивнее и приобрести новых друзей\n\n# Место проведения\nДом отдыха в Подмосковье — живописная территория с современной инфраструктурой для активного отдыха и тренировок",
           "publishedAt": "2026-03-17T01:50:56.085+03:00"
+        },
+        {
+          "id": "LKrUqbpxSIGXyKmNueXuwA",
+          "shortTitle": "Новость 5511",
+          "title": "новость 55 пять пять (duplicate)",
+          "shortDescription": "новость 55",
+          "description": "тест тут",
+          "publishedAt": "2026-03-17T18:35:24.162+03:00"
         }
       ]
     },
@@ -52,7 +60,90 @@
       "trainingYears": 19,
       "quantityFilials": 45,
       "quantityTraineers": 1300
-    }
+    },
+    "worldwideCities": [
+      {
+        "id": "XpppDazzSaSBNGNrsbUkEA",
+        "cityId": "moscow",
+        "cityName": "Москва",
+        "country": "Россия",
+        "cityFriend": false,
+        "imageUrl": "https://www.datocms-assets.com/196565/1773852393-moscow.png",
+        "imageAlt": "Москва"
+      },
+      {
+        "id": "d-ki69_oTfuBk9jVQvP3yw",
+        "cityId": "kazan",
+        "cityName": "Казань",
+        "country": "Россия",
+        "cityFriend": false,
+        "imageUrl": "https://www.datocms-assets.com/196565/1773852393-kaz.png",
+        "imageAlt": "Казань"
+      },
+      {
+        "id": "Bo-LwOX8QDyOa1dMLuwQkw",
+        "cityId": "krasnodar",
+        "cityName": "Краснодар",
+        "country": "Россия",
+        "cityFriend": false,
+        "imageUrl": "https://www.datocms-assets.com/196565/1773852393-krs.png",
+        "imageAlt": "Краснодар"
+      },
+      {
+        "id": "QtGiImDpQKSzw-Kr4SfTog",
+        "cityId": "lissabon",
+        "cityName": "Лиссабон",
+        "country": "Португалия",
+        "cityFriend": false,
+        "imageUrl": "https://www.datocms-assets.com/196565/1773852393-lis.png",
+        "imageAlt": "Лиссабон"
+      },
+      {
+        "id": "RX1CjblkQNGthOGjnu8_ew",
+        "cityId": "latam",
+        "cityName": "Латинская америка",
+        "country": "Латинская Америка",
+        "cityFriend": true,
+        "imageUrl": "https://www.datocms-assets.com/196565/1773852393-us.png",
+        "imageAlt": "Латинская америка"
+      },
+      {
+        "id": "eKgfh6j-QuW5ZLPnurD22A",
+        "cityId": "europe",
+        "cityName": "Европа",
+        "country": "Европа",
+        "cityFriend": true,
+        "imageUrl": "https://www.datocms-assets.com/196565/1773852393-eu.png",
+        "imageAlt": "Европа"
+      },
+      {
+        "id": "L6RKQ54rQtuNefyimblS3g",
+        "cityId": "asia",
+        "cityName": "Азия",
+        "country": "Азия",
+        "cityFriend": true,
+        "imageUrl": "https://www.datocms-assets.com/196565/1773852393-asia.png",
+        "imageAlt": "Азия"
+      },
+      {
+        "id": "WxM5dhUgQQmjyzA5Cl9z5w",
+        "cityId": "usa",
+        "cityName": "Северная америка",
+        "country": "Северная америка",
+        "cityFriend": true,
+        "imageUrl": "https://www.datocms-assets.com/196565/1773852393-usa.png",
+        "imageAlt": "Северная америка"
+      },
+      {
+        "id": "WTG-xS9RQHODWKe8LilrzQ",
+        "cityId": "zelenograd",
+        "cityName": "Зеленоград",
+        "country": "Россия",
+        "cityFriend": false,
+        "imageUrl": "https://www.datocms-assets.com/196565/1773705434-img_4191.jpg",
+        "imageAlt": "Зеленоград"
+      }
+    ]
   },
   "coaches": [
     {
@@ -4771,69 +4862,6 @@
       ],
       "createdAt": "2026-03-17T03:14:40.746+03:00",
       "updatedAt": "2026-03-17T10:20:31.471+03:00"
-    },
-    {
-      "id": "SjoURPWFR7iszseHc9sKHw",
-      "title": "Testov",
-      "slug": "test_filial",
-      "isActive": true,
-      "sortOrder": null,
-      "cityObject": {
-        "cityKey": "lissabon",
-        "cityName": "Лиссабон"
-      },
-      "metroName": null,
-      "metroColor": {
-        "hex": "#DF1A1A"
-      },
-      "street": "Ленина 5",
-      "location": {
-        "latitude": 25.0827939,
-        "longitude": -104.503632
-      },
-      "heroImage": {
-        "url": "https://www.datocms-assets.com/196565/1773705434-img_4191.jpg",
-        "alt": "Testov"
-      },
-      "hallDescription": {
-        "value": {
-          "schema": "dast",
-          "document": {
-            "type": "root",
-            "children": [
-              {
-                "type": "paragraph",
-                "children": [
-                  {
-                    "type": "span",
-                    "value": "вфцв"
-                  }
-                ]
-              }
-            ]
-          }
-        }
-      },
-      "trialLessonPrice": 0,
-      "singleLessonPrice": 1000,
-      "monthlyPrice": 6000,
-      "coaches": [
-        {
-          "id": "PcjE-WUxSK2Cw0DD0RvbAg",
-          "slug": "m_miheev",
-          "name": "Михеев Михаил",
-          "phone": "+79672867679",
-          "level": "Professor",
-          "nick": "Superhomem",
-          "photo": {
-            "url": "https://www.datocms-assets.com/196565/1772352810-m-miheev.png",
-            "alt": "Михеев Михаил"
-          }
-        }
-      ],
-      "scheduleItems": [],
-      "createdAt": "2026-03-17T16:18:17.221+03:00",
-      "updatedAt": "2026-03-17T16:18:17.224+03:00"
     }
   ]
 }

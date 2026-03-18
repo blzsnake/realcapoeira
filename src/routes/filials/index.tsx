@@ -90,20 +90,17 @@ export function FilialsPage() {
       $setModalState({ type, isOpen: state, address });
     };
   const mapRef = useRef<ymaps.Map | null>(null);
+  const mapWrapRef = useRef<HTMLDivElement | null>(null);
   // eslint-disable-next-line @typescript-eslint/no-empty-object-type
   const listRef = useRef<Record<number, HTMLDivElement | null>>({});
   const { query } = useUrl();
-  const isModalOpen = useSelector(
+  const { isModalOpen, isModalContactOpen, isModalFiterOpen } = useSelector(
     ModalStore,
-    ({ modals }) => modals.signUp?.isOpen
-  );
-  const isModalContactOpen = useSelector(
-    ModalStore,
-    ({ modals }) => modals.contacts?.isOpen
-  );
-  const isModalFiterOpen = useSelector(
-    ModalStore,
-    ({ modals }) => modals.filter?.isOpen
+    ({ modals }) => ({
+      isModalOpen: modals.signUp?.isOpen,
+      isModalContactOpen: modals.contacts?.isOpen,
+      isModalFiterOpen: modals.filter?.isOpen,
+    })
   );
   const [filialsSource, setFilialsSource] = useState(getFallbackFilialsSource);
   const cityOptions = useMemo(
@@ -138,7 +135,15 @@ export function FilialsPage() {
   };
 
   const handleFilialClick = (id: number, coords: number[]) => () => {
+    setActiveId(id);
     moveToPin(coords);
+
+    if (window.matchMedia('(max-width: 1280px)').matches) {
+      mapWrapRef.current?.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start',
+      });
+    }
   };
 
   const position = useStickyFilter();
@@ -250,7 +255,7 @@ export function FilialsPage() {
             </div>
           ) : null}
         </div>
-        <div className={styles.MapWrap}>
+        <div ref={mapWrapRef} className={styles.MapWrap}>
           <CustomZoomControls zoom={zoom} setZoom={setZoom} />
           <Map
             className={styles.Map}

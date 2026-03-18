@@ -25,9 +25,20 @@ export type HomeStats = {
   quantityTraineers: number;
 };
 
+export type HomeWorldwideCity = {
+  id: string;
+  cityId: string;
+  cityName: string;
+  country: string;
+  cityFriend: boolean;
+  imageUrl: string;
+  imageAlt: string;
+};
+
 export type HomeCmsData = {
   newsSection: HomeNewsSection;
   stats: HomeStats;
+  worldwideCities: HomeWorldwideCity[];
 };
 
 type CachedHomeCmsPayload = {
@@ -89,7 +100,82 @@ const EMERGENCY_HOME_STATS: HomeStats = {
   quantityTraineers: 1300,
 };
 
-const HOME_CMS_CACHE_KEY = 'realcapoeira-home-cms-v1';
+const EMERGENCY_HOME_WORLDWIDE_CITIES: HomeWorldwideCity[] = [
+  {
+    id: 'moscow',
+    cityId: 'moscow',
+    cityName: 'Москва',
+    country: 'Россия',
+    cityFriend: false,
+    imageUrl: 'https://www.datocms-assets.com/196565/1773852393-moscow.png',
+    imageAlt: 'Москва',
+  },
+  {
+    id: 'kazan',
+    cityId: 'kazan',
+    cityName: 'Казань',
+    country: 'Россия',
+    cityFriend: false,
+    imageUrl: 'https://www.datocms-assets.com/196565/1773852393-kaz.png',
+    imageAlt: 'Казань',
+  },
+  {
+    id: 'krasnodar',
+    cityId: 'krasnodar',
+    cityName: 'Краснодар',
+    country: 'Россия',
+    cityFriend: false,
+    imageUrl: 'https://www.datocms-assets.com/196565/1773852393-krs.png',
+    imageAlt: 'Краснодар',
+  },
+  {
+    id: 'lissabon',
+    cityId: 'lissabon',
+    cityName: 'Лиссабон',
+    country: 'Португалия',
+    cityFriend: false,
+    imageUrl: 'https://www.datocms-assets.com/196565/1773852393-lis.png',
+    imageAlt: 'Лиссабон',
+  },
+  {
+    id: 'latam',
+    cityId: 'latam',
+    cityName: 'Латинская америка',
+    country: 'Латинская Америка',
+    cityFriend: true,
+    imageUrl: 'https://www.datocms-assets.com/196565/1773852393-us.png',
+    imageAlt: 'Латинская Америка',
+  },
+  {
+    id: 'europe',
+    cityId: 'europe',
+    cityName: 'Европа',
+    country: 'Европа',
+    cityFriend: true,
+    imageUrl: 'https://www.datocms-assets.com/196565/1773852393-eu.png',
+    imageAlt: 'Европа',
+  },
+  {
+    id: 'asia',
+    cityId: 'asia',
+    cityName: 'Азия',
+    country: 'Азия',
+    cityFriend: true,
+    imageUrl: 'https://www.datocms-assets.com/196565/1773852393-asia.png',
+    imageAlt: 'Азия',
+  },
+  {
+    id: 'usa',
+    cityId: 'usa',
+    cityName: 'Северная америка',
+    country: 'Северная америка',
+    cityFriend: true,
+    imageUrl: 'https://www.datocms-assets.com/196565/1773852393-usa.png',
+    imageAlt: 'Северная америка',
+  },
+];
+
+const HOME_CMS_CACHE_KEY = 'realcapoeira-home-cms-v2';
 const HOME_CMS_CACHE_TTL =
   process.env.NODE_ENV === 'development' ? 1000 * 60 * 3 : 1000 * 60 * 15;
 const HOME_CMS_DEBUG_KEY = 'realcapoeira-debug-home-cms';
@@ -179,6 +265,30 @@ const normalizeHomeStats = (
   };
 };
 
+const mapWorldwideCityRecord = (
+  city: HomeCmsResponse['allCitiesLists'][number]
+): HomeWorldwideCity | null => {
+  const cityId = normalizeText(city.cityId);
+  const cityName = normalizeText(city.cityName);
+  const country = normalizeText(city.country);
+  const imageUrl = normalizeText(city.cityImage?.url);
+  const cityFriend = Boolean(city.cityFriend);
+
+  if (!country || !imageUrl || (!cityFriend && !cityName)) {
+    return null;
+  }
+
+  return {
+    id: city.id,
+    cityId,
+    cityName,
+    country,
+    cityFriend,
+    imageUrl,
+    imageAlt: normalizeText(city.cityImage?.alt) || cityName || country,
+  };
+};
+
 const readHomeCmsFromStorage = () => {
   if (!isBrowser()) {
     return null;
@@ -230,6 +340,7 @@ const writeHomeCmsToStorage = (value: HomeCmsData) => {
     window.localStorage.setItem(HOME_CMS_CACHE_KEY, JSON.stringify(payload));
     debugHomeCms('storage cache updated', {
       newsItems: value.newsSection.items.length,
+      worldwideCities: value.worldwideCities.length,
     });
   } catch {
     // Ignore storage write errors and keep the in-memory cache only.
@@ -271,11 +382,32 @@ function getSnapshotHomeStats(): HomeStats {
   return stats;
 }
 
+function getSnapshotHomeWorldwideCities(): HomeWorldwideCity[] {
+  const items = Array.isArray(CMS_FALLBACK.home.worldwideCities)
+    ? CMS_FALLBACK.home.worldwideCities.filter(
+        (item) =>
+          item?.id &&
+          item?.country &&
+          item?.imageUrl &&
+          (item.cityFriend || item.cityName)
+      )
+    : [];
+
+  if (!items.length) {
+    return EMERGENCY_HOME_WORLDWIDE_CITIES;
+  }
+
+  return items;
+}
+
 const buildHomeCmsData = (data: HomeCmsResponse): HomeCmsData => {
   const items = (data.allNews || [])
     .map(mapNewsRecord)
     .filter((item): item is HomeNewsItem => Boolean(item));
   const normalizedStats = normalizeHomeStats(data.dataCommon);
+  const worldwideCities = (data.allCitiesLists || [])
+    .map(mapWorldwideCityRecord)
+    .filter((item): item is HomeWorldwideCity => Boolean(item));
 
   return {
     newsSection: items.length
@@ -287,6 +419,9 @@ const buildHomeCmsData = (data: HomeCmsResponse): HomeCmsData => {
         }
       : getSnapshotHomeNewsSection(),
     stats: normalizedStats || getSnapshotHomeStats(),
+    worldwideCities: worldwideCities.length
+      ? worldwideCities
+      : getSnapshotHomeWorldwideCities(),
   };
 };
 
@@ -297,7 +432,11 @@ export const getFallbackHomeStats = () => getSnapshotHomeStats();
 export const getFallbackHomeCmsData = (): HomeCmsData => ({
   newsSection: getFallbackHomeNewsSection(),
   stats: getFallbackHomeStats(),
+  worldwideCities: getSnapshotHomeWorldwideCities(),
 });
+
+export const getFallbackHomeWorldwideCities = () =>
+  getSnapshotHomeWorldwideCities();
 
 export const getCachedHomeCmsData = () => {
   if (cachedHomeCmsData) {

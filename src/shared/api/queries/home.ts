@@ -15,5 +15,18 @@ export const HOME_CMS_QUERY = `
       quantityFilials
       quantityTraineers
     }
+
+    allCitiesLists(orderBy: position_ASC, filter: { showOnMain: { eq: true } }) {
+      id
+      cityId
+      cityName
+      country
+      cityFriend
+      showOnMain
+      cityImage {
+        url
+        alt
+      }
+    }
   }
 `;

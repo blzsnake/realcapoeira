@@ -1,27 +1,62 @@
+import { useEffect, useRef, useState } from 'react';
+import {
+  getCachedHomeWorldwideCities,
+  getFallbackHomeWorldwideCities,
+  loadHomeWorldwideCitiesWithFallback,
+  type HomeWorldwideCity,
+} from '~shared/content/worldwide';
 import { Typography } from '~shared/ui/typography';
 import { CityCard } from '~shared/ui/CityCard/CityCard';
 import RightArrow from '~app/assets/right_arrow.svg?react';
 import LeftArrow from '~app/assets/left_arrow.svg?react';
 import { Button } from '~shared/ui/button/Button';
-import Moscow from '~app/assets/moscow.png';
-import Kaz from '~app/assets/kaz.png';
-import Krs from '~app/assets/krs.png';
-import Lissabon from '~app/assets/lis.png';
-import Eu from '~app/assets/eu.png';
-import Us from '~app/assets/us.png';
-import Asia from '~app/assets/asia.png';
-import Usa from '~app/assets/usa.png';
-
-import { useRef } from 'react';
 import styles from './Worldwide.module.css';
 
+const getCityCardTitle = (city: HomeWorldwideCity) =>
+  city.cityFriend ? city.country : city.cityName;
+
+const getCityCardSubtitle = (city: HomeWorldwideCity) =>
+  city.cityFriend ? 'Друзья школы' : city.country;
+
+const getCityCardUrl = (city: HomeWorldwideCity) =>
+  city.cityFriend || !city.cityId
+    ? '/filials/'
+    : `/filials/?city=${city.cityId}`;
+
 export function Worldwide() {
+  const [cities, setCities] = useState<HomeWorldwideCity[]>(
+    getCachedHomeWorldwideCities() ?? getFallbackHomeWorldwideCities()
+  );
   const refCountries = useRef<HTMLDivElement>(null);
   const handleClickToScroll = (data: number) => () =>
     refCountries?.current?.scrollBy({
       left: data,
       behavior: 'smooth',
     });
+
+  useEffect(() => {
+    let isMounted = true;
+
+    const loadCities = async () => {
+      try {
+        const nextCities = await loadHomeWorldwideCitiesWithFallback();
+
+        if (!isMounted) {
+          return;
+        }
+
+        setCities(nextCities);
+      } catch {
+        // Keep fallback values if the client request fails.
+      }
+    };
+
+    loadCities();
+
+    return () => {
+      isMounted = false;
+    };
+  }, []);
 
   return (
     <div className={styles.Worldwide}>
@@ -54,54 +89,15 @@ export function Worldwide() {
             className={styles.ArrowRightIcon}
           />
           <div className={styles.EmptyPlug} />
-          <CityCard
-            title="Москва"
-            subtitle="Россия"
-            url="/filials/?city=moscow"
-            image={Moscow}
-          />
-          <CityCard
-            title="Казань"
-            subtitle="Россия"
-            url="/filials/?city=kazan"
-            image={Kaz}
-          />
-          <CityCard
-            title="Краснодар"
-            subtitle="Россия"
-            url="/filials/?city=krasnodar"
-            image={Krs}
-          />
-          <CityCard
-            title="Лиссабон"
-            subtitle="Португалия"
-            url="/filials/?city=lissabon"
-            image={Lissabon}
-          />
-          <CityCard
-            title="Европа"
-            subtitle="Друзья школы"
-            url="/filials/?city=europe"
-            image={Eu}
-          />
-          <CityCard
-            title="Латинская америка"
-            subtitle="Друзья школы"
-            url="/"
-            image={Us}
-          />
-          <CityCard
-            title="Азия"
-            subtitle="Друзья школы"
-            url="/filials/?city=asia"
-            image={Asia}
-          />
-          <CityCard
-            title="Северная америка"
-            subtitle="Друзья школы"
-            url="/filials/?city=america"
-            image={Usa}
-          />
+          {cities.map((city) => (
+            <CityCard
+              key={city.id}
+              title={getCityCardTitle(city)}
+              subtitle={getCityCardSubtitle(city)}
+              url={getCityCardUrl(city)}
+              image={city.imageUrl}
+            />
+          ))}
           <div className={styles.EmptyPlug} />
         </div>
       </div>
