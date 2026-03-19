@@ -1,12 +1,16 @@
 import fs from 'node:fs';
 import path from 'node:path';
+import { spawn } from 'node:child_process';
 
 const DIST_DIR = path.resolve('dist');
-const INDEX_HTML_PATH = path.join(DIST_DIR, 'index.html');
-const STATIC_INDEX_HTML_PATH = path.join(DIST_DIR, 'static', 'index.html');
+const SERVER_ENTRY_PATH = path.join(DIST_DIR, 'server', 'server.js');
 const DATOCMS_API_URL = 'https://graphql.datocms.com/';
 const DATOCMS_API_TOKEN =
   process.env.DATOCMS_API_TOKEN || 'df33316b1e272f5a8a25cab6746eec';
+const SERVER_HOST = '127.0.0.1';
+const SERVER_PORT = Number(process.env.STATIC_ROUTES_PORT || '4310');
+const SERVER_URL = `http://${SERVER_HOST}:${SERVER_PORT}`;
+const SERVER_BOOT_TIMEOUT_MS = 30_000;
 
 const ROUTES_QUERY = `
   query StaticRoutes {
@@ -70,9 +74,7 @@ const readFallbackFilialSlugs = () => {
     return [];
   }
 
-  const slugs = snapshot.filials
-    .map((filial) => filial?.slug)
-    .filter(Boolean);
+  const slugs = snapshot.filials.map((filial) => filial?.slug).filter(Boolean);
 
   if (slugs.length) {
     return Array.from(new Set(slugs));
@@ -125,9 +127,7 @@ const getStaticRoutes = async () => {
           .map(normalizeCoachSlug)
       : [];
     const filials = Array.isArray(data.allFilials)
-      ? data.allFilials
-          .map((filial) => filial?.slug)
-          .filter(Boolean)
+      ? data.allFilials.map((filial) => filial?.slug).filter(Boolean)
       : [];
 
     if (coaches.length || filials.length) {
@@ -155,34 +155,168 @@ const ensureRouteFile = (baseDir, routePath, html) => {
   fs.writeFileSync(path.join(routeDir, 'index.html'), html);
 };
 
-const getShellHtmlPath = () => {
-  if (fs.existsSync(INDEX_HTML_PATH)) {
-    return INDEX_HTML_PATH;
+const resetRouteRoot = (routeRoot) => {
+  const routeRootPath = path.join(DIST_DIR, routeRoot);
+
+  fs.rmSync(routeRootPath, {
+    force: true,
+    recursive: true,
+  });
+  fs.mkdirSync(routeRootPath, { recursive: true });
+};
+
+const delay = (ms) =>
+  new Promise((resolve) => {
+    setTimeout(resolve, ms);
+  });
+
+const waitForServer = async (serverProcess) => {
+  const startedAt = Date.now();
+
+  while (Date.now() - startedAt < SERVER_BOOT_TIMEOUT_MS) {
+    if (serverProcess.exitCode !== null) {
+      throw new Error(
+        `[generate-static-routes] SSR server exited with code ${serverProcess.exitCode}`
+      );
+    }
+
+    try {
+      // Polling the server boot state requires sequential requests.
+      // eslint-disable-next-line no-await-in-loop
+      const response = await fetch(`${SERVER_URL}/`, {
+        headers: {
+          Accept: 'text/html',
+        },
+      });
+
+      if (response.ok) {
+        return;
+      }
+    } catch (error) {
+      // Keep polling until the server starts accepting connections.
+    }
+
+    // Polling the server boot state requires sequential backoff.
+    // eslint-disable-next-line no-await-in-loop
+    await delay(300);
   }
 
-  if (fs.existsSync(STATIC_INDEX_HTML_PATH)) {
-    return STATIC_INDEX_HTML_PATH;
+  throw new Error('[generate-static-routes] Timed out waiting for SSR server');
+};
+
+const renderRouteHtml = async (routePath) => {
+  const response = await fetch(`${SERVER_URL}/${routePath}/`, {
+    headers: {
+      Accept: 'text/html',
+    },
+  });
+
+  if (!response.ok) {
+    throw new Error(
+      `[generate-static-routes] Failed to render ${routePath}: ${response.status}`
+    );
   }
 
-  throw new Error(`Missing shell HTML: ${INDEX_HTML_PATH}`);
+  return response.text();
+};
+
+const startSsrServer = async () => {
+  if (!fs.existsSync(SERVER_ENTRY_PATH)) {
+    throw new Error(
+      `[generate-static-routes] Missing SSR entry: ${SERVER_ENTRY_PATH}`
+    );
+  }
+
+  const serverLogs = [];
+  const serverProcess = spawn(process.execPath, [SERVER_ENTRY_PATH], {
+    cwd: DIST_DIR,
+    env: {
+      ...process.env,
+      ASSETS_PREFIX: '/client/',
+      PORT: String(SERVER_PORT),
+    },
+    stdio: ['ignore', 'pipe', 'pipe'],
+  });
+
+  const pushLogs = (chunk) => {
+    const output = chunk.toString().trim();
+
+    if (output) {
+      serverLogs.push(output);
+    }
+  };
+
+  serverProcess.stdout?.on('data', pushLogs);
+  serverProcess.stderr?.on('data', pushLogs);
+
+  try {
+    await waitForServer(serverProcess);
+
+    return {
+      serverLogs,
+      serverProcess,
+    };
+  } catch (error) {
+    serverProcess.kill('SIGTERM');
+    throw new Error(
+      `${error instanceof Error ? error.message : error}\n${serverLogs.join('\n')}`
+    );
+  }
+};
+
+const stopSsrServer = async (serverProcess) =>
+  new Promise((resolve) => {
+    if (serverProcess.exitCode !== null) {
+      resolve();
+      return;
+    }
+
+    serverProcess.once('close', () => resolve());
+    serverProcess.kill('SIGTERM');
+
+    setTimeout(() => {
+      if (serverProcess.exitCode === null) {
+        serverProcess.kill('SIGKILL');
+      }
+    }, 5_000);
+  });
+
+const writeStaticRoutes = async ({ coaches, filials }) => {
+  resetRouteRoot('coaches');
+  resetRouteRoot('filials');
+
+  await Promise.all(
+    coaches.map(async (slug) => {
+      const routePath = `coaches/${slug}`;
+      const html = await renderRouteHtml(routePath);
+      ensureRouteFile(DIST_DIR, routePath, html);
+    })
+  );
+
+  await Promise.all(
+    filials.map(async (slug) => {
+      const routePath = `filials/${slug}`;
+      const html = await renderRouteHtml(routePath);
+      ensureRouteFile(DIST_DIR, routePath, html);
+    })
+  );
 };
 
 const main = async () => {
-  const shellHtmlPath = getShellHtmlPath();
-  const html = fs.readFileSync(shellHtmlPath, 'utf8');
   const { coaches, filials } = await getStaticRoutes();
+  const { serverProcess } = await startSsrServer();
 
-  coaches.forEach((slug) => {
-    ensureRouteFile(DIST_DIR, path.join('coaches', slug), html);
-  });
-
-  filials.forEach((slug) => {
-    ensureRouteFile(DIST_DIR, path.join('filials', slug), html);
-  });
+  try {
+    await writeStaticRoutes({ coaches, filials });
+  } finally {
+    // Server shutdown must complete before the script exits.
+    // eslint-disable-next-line no-await-in-loop
+    await stopSsrServer(serverProcess);
+  }
 
   const allRoutesCount = coaches.length + filials.length;
   console.log(
-    `[generate-static-routes] Generated ${allRoutesCount} static route shells`
+    `[generate-static-routes] Rendered ${allRoutesCount} dynamic static routes`
   );
 };
 
