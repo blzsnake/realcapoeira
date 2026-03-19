@@ -155,14 +155,25 @@ const ensureRouteFile = (baseDir, routePath, html) => {
   fs.writeFileSync(path.join(routeDir, 'index.html'), html);
 };
 
-const resetRouteRoot = (routeRoot) => {
+const resetDynamicRouteDirs = (routeRoot) => {
   const routeRootPath = path.join(DIST_DIR, routeRoot);
 
-  fs.rmSync(routeRootPath, {
-    force: true,
-    recursive: true,
-  });
   fs.mkdirSync(routeRootPath, { recursive: true });
+
+  const entries = fs.readdirSync(routeRootPath, {
+    withFileTypes: true,
+  });
+
+  entries.forEach((entry) => {
+    if (!entry.isDirectory()) {
+      return;
+    }
+
+    fs.rmSync(path.join(routeRootPath, entry.name), {
+      force: true,
+      recursive: true,
+    });
+  });
 };
 
 const delay = (ms) =>
@@ -282,8 +293,8 @@ const stopSsrServer = async (serverProcess) =>
   });
 
 const writeStaticRoutes = async ({ coaches, filials }) => {
-  resetRouteRoot('coaches');
-  resetRouteRoot('filials');
+  resetDynamicRouteDirs('coaches');
+  resetDynamicRouteDirs('filials');
 
   await Promise.all(
     coaches.map(async (slug) => {
