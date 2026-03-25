@@ -74,7 +74,11 @@ const COACHES_QUERY = `
 
 const FILIALS_QUERY = `
   query FilialsFallback {
-    allFilials(orderBy: sortOrder_ASC, filter: { isactive: { eq: true } }) {
+    allFilials(
+      first: 100
+      orderBy: sortOrder_ASC
+      filter: { isactive: { eq: true } }
+    ) {
       id
       title
       slug

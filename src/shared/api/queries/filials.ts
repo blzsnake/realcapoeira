@@ -59,7 +59,11 @@ export const FILIAL_FIELDS = `
 
 export const ALL_FILIALS_QUERY = `
   query AllFilials {
-    allFilials(orderBy: sortOrder_ASC, filter: { isactive: { eq: true } }) {
+    allFilials(
+      first: 100
+      orderBy: sortOrder_ASC
+      filter: { isactive: { eq: true } }
+    ) {
       ${FILIAL_FIELDS}
     }
   }
@@ -75,7 +79,11 @@ export const FILIAL_BY_SLUG_QUERY = `
 
 export const FILIALS_AND_COACHES_QUERY = `
   query FilialsAndCoaches {
-    allFilials(orderBy: sortOrder_ASC, filter: { isactive: { eq: true } }) {
+    allFilials(
+      first: 100
+      orderBy: sortOrder_ASC
+      filter: { isactive: { eq: true } }
+    ) {
       ${FILIAL_FIELDS}
     }
 

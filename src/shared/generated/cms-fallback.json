@@ -1,27 +1,11 @@
 {
-  "generatedAt": "2026-03-18T17:09:41.672Z",
+  "generatedAt": "2026-03-25T15:15:15.527Z",
   "schemaVersion": 2,
   "home": {
     "newsSection": {
       "title": "События",
       "description": "",
       "items": [
-        {
-          "id": "TIYLs5WNR0Widcg7DEmibg",
-          "shortTitle": "Новость 55",
-          "title": "новость 55 пять пять",
-          "shortDescription": "новость 55",
-          "description": "тест тут",
-          "publishedAt": "2026-03-17T01:57:21.957+03:00"
-        },
-        {
-          "id": "Q72Kw-CzRjuip5ZXDps2mw",
-          "shortTitle": "новость 2",
-          "title": "новость два 2222",
-          "shortDescription": "новость дваааа",
-          "description": "описание тест",
-          "publishedAt": "2026-03-17T01:56:51.725+03:00"
-        },
         {
           "id": "SgoU7s9cQ9iV2wjjbAEurQ",
           "shortTitle": "Идет набор в группы",
@@ -4415,7 +4399,7 @@
         "longitude": 37.70824760000001
       },
       "heroImage": {
-        "url": "https://www.datocms-assets.com/196565/1773413156-voikovskaya.png",
+        "url": "https://www.datocms-assets.com/196565/1774094469-preobrajenskaya_ploshad.heic",
         "alt": "Преображенская площадь"
       },
       "hallDescription": {
@@ -4429,7 +4413,7 @@
                 "children": [
                   {
                     "type": "span",
-                    "value": "Просторный зал (120 м²) в 15 минутах ходьбы от метро Войковская. Вмещает до 20 человек, оснащен матами, снаряжением для акробатики и всем необходимым для динамичных тренировок.\n\nЕсть раздевалки, душ, туалеты, зал ожидания для родителей. Здесь тренируем и взрослых, и детей."
+                    "value": "Большой зал (120 м²) в 8 минутах ходьбы от метро Преображенская площадь. \n\nВмещает до 20 человек, напольное покрытие – татами. Есть всё необходимое для весёлых и эффективных тренировок.\n\nДля удобства занимающихся есть раздевалки, душ, туалеты, зал ожидания для родителей. \n\nЗдесь тренируем и взрослых, и детей."
                   }
                 ]
               }
@@ -4438,8 +4422,8 @@
         }
       },
       "trialLessonPrice": 0,
-      "singleLessonPrice": 1000,
-      "monthlyPrice": 6000,
+      "singleLessonPrice": 1200,
+      "monthlyPrice": 6500,
       "coaches": [
         {
           "id": "XeP6XcmiS_q_31IOEBClSg",
@@ -4451,18 +4435,6 @@
           "photo": {
             "url": "https://www.datocms-assets.com/196565/1772352811-d-popov.png",
             "alt": "Попов Дмитрий"
-          }
-        },
-        {
-          "id": "Q6YIeWVHSQymaT_b_qICEw",
-          "slug": "k_ulezko",
-          "name": "Екатерина Улезко",
-          "phone": "79999999999999",
-          "level": "Aluna",
-          "nick": "Maresia",
-          "photo": {
-            "url": "https://www.datocms-assets.com/196565/1773599255-img_1287-2.jpg",
-            "alt": "Екатерина Улезко"
           }
         }
       ],
@@ -4503,7 +4475,7 @@
           "id": "ATpVeK3eTlieyOoN4r4uYA",
           "weekday": "fri",
           "groupKey": "junior",
-          "groupLabel": "Группа 7-10 лет",
+          "groupLabel": "Группа 3-6 лет",
           "timeFrom": "16:40",
           "timeTo": "17:25"
         },
@@ -4533,7 +4505,7 @@
         }
       ],
       "createdAt": "2026-03-13T17:44:08.796+03:00",
-      "updatedAt": "2026-03-17T10:20:10.971+03:00"
+      "updatedAt": "2026-03-21T22:45:46.330+03:00"
     },
     {
       "id": "RWGDZOYkQVmmitXxCq5boA",
@@ -4677,13 +4649,13 @@
       "metroColor": {
         "hex": "#FFFCFC"
       },
-      "street": "ул. Грабина, 8б",
+      "street": "г. Королёв, ул. Грабина, д. 8б ТЦ \"Каньон\"",
       "location": {
         "latitude": 55.92579139999999,
         "longitude": 37.8203717
       },
       "heroImage": {
-        "url": "https://www.datocms-assets.com/196565/1773599142-img_1287.jpg",
+        "url": "https://www.datocms-assets.com/196565/1774094216-korolev_grabina8big.jpg",
         "alt": "Королёв, Грабина"
       },
       "hallDescription": {
@@ -4697,7 +4669,7 @@
                 "children": [
                   {
                     "type": "span",
-                    "value": "ТЕst"
+                    "value": "Зал 80 кв. метров в 3 минутах от ЖД станции Подлипки-Дачные.\n\nНапольное покрытие: ламинат, татами.\n\nЗал оборудован всем необходимым для весёлых и продуктивных тренировок\n\nВ этом зале тренируемся и со взрослыми, и с детьми"
                   }
                 ]
               }
@@ -4710,30 +4682,86 @@
       "monthlyPrice": 6000,
       "coaches": [
         {
-          "id": "TwXCrkBZRFuOWU5UFIe4Mw",
-          "slug": "a_rogozin",
-          "name": "Александр Рогозин",
-          "phone": "+79262122122",
-          "level": "Contra-Mestre",
-          "nick": "Ninja",
+          "id": "XeP6XcmiS_q_31IOEBClSg",
+          "slug": "d_popov",
+          "name": "Попов Дмитрий",
+          "phone": "+79999809323",
+          "level": "Monitor",
+          "nick": "Alce",
           "photo": {
-            "url": "https://www.datocms-assets.com/196565/1772287667-s-rogozin.png",
-            "alt": "Александр Рогозин"
+            "url": "https://www.datocms-assets.com/196565/1772352811-d-popov.png",
+            "alt": "Попов Дмитрий"
           }
         }
       ],
       "scheduleItems": [
         {
           "id": "dya5SiYUTA-oQN9e-V8jXw",
-          "weekday": "mon",
+          "weekday": "tue",
+          "groupKey": "middle",
+          "groupLabel": "Группа 7-13 лет",
+          "timeFrom": "18:00",
+          "timeTo": "19:00"
+        },
+        {
+          "id": "DFrWEeIHTr-aBPhhRE5FLA",
+          "weekday": "tue",
           "groupKey": "junior",
-          "groupLabel": "шкгаршу",
-          "timeFrom": "17:00",
-          "timeTo": "18:00"
+          "groupLabel": "Группа 3-6 лет",
+          "timeFrom": "19:00",
+          "timeTo": "19:45"
+        },
+        {
+          "id": "XIAgHCVeTAyD0FNkX9jS3Q",
+          "weekday": "tue",
+          "groupKey": "senior",
+          "groupLabel": "Группа 14+ лет",
+          "timeFrom": "20:00",
+          "timeTo": "21:30"
+        },
+        {
+          "id": "aA-aDt6VQoWbZFo8WTCdig",
+          "weekday": "thu",
+          "groupKey": "middle",
+          "groupLabel": "Группа 7-13 лет",
+          "timeFrom": "18:00",
+          "timeTo": "19:00"
+        },
+        {
+          "id": "EeTMRuAeRMq8VRcwPsyI9A",
+          "weekday": "thu",
+          "groupKey": "junior",
+          "groupLabel": "Группа 3-6 лет",
+          "timeFrom": "19:00",
+          "timeTo": "19:45"
+        },
+        {
+          "id": "EXNgknicToelEgC0RamCng",
+          "weekday": "thu",
+          "groupKey": "senior",
+          "groupLabel": "Группа 14+ лет",
+          "timeFrom": "20:00",
+          "timeTo": "21:30"
+        },
+        {
+          "id": "FDr0yWuXT965ZfUYsnjWmQ",
+          "weekday": "tue",
+          "groupKey": "staff",
+          "groupLabel": "Группа 14+ лет",
+          "timeFrom": "20:00",
+          "timeTo": "21:30"
+        },
+        {
+          "id": "Ijz6Z2iDTTmp-bFphwf6bA",
+          "weekday": "thu",
+          "groupKey": "staff",
+          "groupLabel": "Группа 14+ лет",
+          "timeFrom": "20:00",
+          "timeTo": "21:30"
         }
       ],
       "createdAt": "2026-03-15T21:44:36.058+03:00",
-      "updatedAt": "2026-03-17T10:20:44.586+03:00"
+      "updatedAt": "2026-03-21T22:50:13.944+03:00"
     },
     {
       "id": "PWYBjR6QSNqaKKrx14-7Pg",
@@ -4862,6 +4890,4136 @@
       ],
       "createdAt": "2026-03-17T03:14:40.746+03:00",
       "updatedAt": "2026-03-17T10:20:31.471+03:00"
+    },
+    {
+      "id": "DfmAA5WURc2LUbhLUGtd6g",
+      "title": " Королёв, River Park",
+      "slug": "Korolev_river",
+      "isActive": true,
+      "sortOrder": null,
+      "cityObject": {
+        "cityKey": "korolev",
+        "cityName": "Королев"
+      },
+      "metroName": null,
+      "metroColor": null,
+      "street": "г. Королёв, МКРН Первомайский, ул. Советская, д. 42А ТЦ \"Ривер парк\"",
+      "location": {
+        "latitude": 55.9405599,
+        "longitude": 37.8667217
+      },
+      "heroImage": {
+        "url": "https://www.datocms-assets.com/196565/1774092251-sovetskaya42.jpg",
+        "alt": " Королёв, River Park"
+      },
+      "hallDescription": {
+        "value": {
+          "schema": "dast",
+          "document": {
+            "type": "root",
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "span",
+                    "value": "Большой зал (120 м²) \n\nНапольное покрытие – паркет, так же есть татами и маты. Есть всё необходимое для весёлых и эффективных тренировок.\n\nДля удобства занимающихся есть раздевалки,туалеты, зал ожидания для родителей. \n\nЗдесь тренируем и взрослых, и детей."
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      },
+      "trialLessonPrice": 0,
+      "singleLessonPrice": 1200,
+      "monthlyPrice": 6500,
+      "coaches": [
+        {
+          "id": "N3_TXfzMRGGlVOq-4yd-cg",
+          "slug": "d_barhatov",
+          "name": "Бархатов Дмитрий",
+          "phone": "+79672867679",
+          "level": "Professor",
+          "nick": "Remo",
+          "photo": {
+            "url": "https://www.datocms-assets.com/196565/1772352810-d-barhatov.png",
+            "alt": "Бархатов Дмитрий"
+          }
+        }
+      ],
+      "scheduleItems": [
+        {
+          "id": "O7BVPuEkQjWAqNOd0asusQ",
+          "weekday": "mon",
+          "groupKey": "junior",
+          "groupLabel": "Группа 3-6 лет",
+          "timeFrom": "18:00",
+          "timeTo": "19:00"
+        },
+        {
+          "id": "c1H-3PXVTeinLgK-1C-kAg",
+          "weekday": "mon",
+          "groupKey": "middle",
+          "groupLabel": "Группа 7-13 лет",
+          "timeFrom": "19:00",
+          "timeTo": "20:00"
+        },
+        {
+          "id": "Sl64UbIbQwSfz2edxg9Rfw",
+          "weekday": "mon",
+          "groupKey": "senior",
+          "groupLabel": "Группа 14+ лет",
+          "timeFrom": "20:00",
+          "timeTo": "21:30"
+        },
+        {
+          "id": "Drz2d98IQtmOHSGvuSxU_w",
+          "weekday": "wed",
+          "groupKey": "junior",
+          "groupLabel": "Группа 3-6 лет",
+          "timeFrom": "18:00",
+          "timeTo": "19:00"
+        },
+        {
+          "id": "K5Ag5jzbS86iZhtaCwwk4A",
+          "weekday": "wed",
+          "groupKey": "middle",
+          "groupLabel": "Группа 7-13 лет",
+          "timeFrom": "19:00",
+          "timeTo": "20:00"
+        },
+        {
+          "id": "RgU5I3i5SdKS6U4shSDZCw",
+          "weekday": "wed",
+          "groupKey": "senior",
+          "groupLabel": "Группа 14+ лет",
+          "timeFrom": "20:00",
+          "timeTo": "21:30"
+        },
+        {
+          "id": "eIHPYeJbSfKjFPoMRtIBSQ",
+          "weekday": "mon",
+          "groupKey": "staff",
+          "groupLabel": "Группа 14+ лет",
+          "timeFrom": "20:00",
+          "timeTo": "21:30"
+        },
+        {
+          "id": "IaViwoCTQ5uXU_IBrFDoaQ",
+          "weekday": "wed",
+          "groupKey": "staff",
+          "groupLabel": "Группа 14+ лет",
+          "timeFrom": "20:00",
+          "timeTo": "21:30"
+        }
+      ],
+      "createdAt": "2026-03-21T11:27:02.948+03:00",
+      "updatedAt": "2026-03-22T08:32:13.767+03:00"
+    },
+    {
+      "id": "OtXzEQf9QUuKGyCIXyuAPA",
+      "title": "Яблочкова",
+      "slug": "yablochkova",
+      "isActive": true,
+      "sortOrder": null,
+      "cityObject": {
+        "cityKey": "moscow",
+        "cityName": "Москва"
+      },
+      "metroName": "Тимирязевская",
+      "metroColor": {
+        "hex": "#A1A1A1"
+      },
+      "street": "ул. Яблочкова, дом 3",
+      "location": {
+        "latitude": 55.81421,
+        "longitude": 37.58163
+      },
+      "heroImage": {
+        "url": "https://www.datocms-assets.com/196565/1774094518-yablochkova.jpg",
+        "alt": "Яблочкова"
+      },
+      "hallDescription": {
+        "value": {
+          "schema": "dast",
+          "document": {
+            "type": "root",
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "span",
+                    "value": " Зал оборудован матами и всем необходимым для тренировок инвентарем, 4 этаж, от метро 5 минут ходьбы"
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      },
+      "trialLessonPrice": 0,
+      "singleLessonPrice": 1500,
+      "monthlyPrice": 7000,
+      "coaches": [
+        {
+          "id": "TG1nehk_QeK1NIt1NiKtVw",
+          "slug": "a_chmyhov",
+          "name": "Чмыхов Александр",
+          "phone": "+79151384901",
+          "level": "Instrutor",
+          "nick": "Aranha",
+          "photo": {
+            "url": "https://www.datocms-assets.com/196565/1772352809-a-chmyhov.png",
+            "alt": "Чмыхов Александр"
+          }
+        }
+      ],
+      "scheduleItems": [
+        {
+          "id": "bQl6cKBOSg6tgBTaqob7WA",
+          "weekday": "mon",
+          "groupKey": "junior",
+          "groupLabel": "Группа 3-6 лет",
+          "timeFrom": "16:00",
+          "timeTo": "16:45"
+        },
+        {
+          "id": "ewkggbisSQeH4sqDXN5nWg",
+          "weekday": "mon",
+          "groupKey": "middle",
+          "groupLabel": "Группа 7-11 лет",
+          "timeFrom": "17:00",
+          "timeTo": "18:00"
+        },
+        {
+          "id": "DCbZompKSiGPEfCmZVd9zg",
+          "weekday": "mon",
+          "groupKey": "senior",
+          "groupLabel": "Группа 11-16 лет",
+          "timeFrom": "18:00",
+          "timeTo": "19:00"
+        },
+        {
+          "id": "HF7zUIesQQirmke2W38-Pw",
+          "weekday": "mon",
+          "groupKey": "staff",
+          "groupLabel": "Группа 16+ лет",
+          "timeFrom": "19:00",
+          "timeTo": "20:00"
+        },
+        {
+          "id": "djgz2k2eRhydxja8TPjkSg",
+          "weekday": "wed",
+          "groupKey": "junior",
+          "groupLabel": "Группа 3-6 лет",
+          "timeFrom": "16:00",
+          "timeTo": "16:45"
+        },
+        {
+          "id": "Fs4bv7A1S5SdDfrPlV5VfQ",
+          "weekday": "wed",
+          "groupKey": "middle",
+          "groupLabel": "Группа 7-11 лет",
+          "timeFrom": "17:00",
+          "timeTo": "18:00"
+        },
+        {
+          "id": "FeTzUmNiSUOSYOadKNdKNg",
+          "weekday": "wed",
+          "groupKey": "senior",
+          "groupLabel": "Группа 11-16 лет",
+          "timeFrom": "18:00",
+          "timeTo": "19:00"
+        },
+        {
+          "id": "VQrjkwFfTU-thYrcAMVF-g",
+          "weekday": "wed",
+          "groupKey": "staff",
+          "groupLabel": "Группа 16+ лет",
+          "timeFrom": "19:00",
+          "timeTo": "20:00"
+        }
+      ],
+      "createdAt": "2026-03-21T14:46:16.135+03:00",
+      "updatedAt": "2026-03-21T22:44:18.874+03:00"
+    },
+    {
+      "id": "Lxmud1JgR2a82ngAWecxnA",
+      "title": "Бескудниковский бульвар",
+      "slug": "Beskud_Bulv",
+      "isActive": true,
+      "sortOrder": null,
+      "cityObject": {
+        "cityKey": "moscow",
+        "cityName": "Москва"
+      },
+      "metroName": "Верхние лихоборы",
+      "metroColor": {
+        "hex": "#99CC00"
+      },
+      "street": "Бескудниковский бул., дом 12, стр. 1",
+      "location": {
+        "latitude": 55.862656,
+        "longitude": 37.5631556
+      },
+      "heroImage": {
+        "url": "https://www.datocms-assets.com/196565/1774094323-beskudnikovo.jpg",
+        "alt": "Бескудниковский бульвар"
+      },
+      "hallDescription": {
+        "value": {
+          "schema": "dast",
+          "document": {
+            "type": "root",
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "span",
+                    "value": "Зал только после ремонта, просторные раздевалки, 2 этаж, 5 минут от метро"
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      },
+      "trialLessonPrice": 0,
+      "singleLessonPrice": 1500,
+      "monthlyPrice": 7000,
+      "coaches": [
+        {
+          "id": "TG1nehk_QeK1NIt1NiKtVw",
+          "slug": "a_chmyhov",
+          "name": "Чмыхов Александр",
+          "phone": "+79151384901",
+          "level": "Instrutor",
+          "nick": "Aranha",
+          "photo": {
+            "url": "https://www.datocms-assets.com/196565/1772352809-a-chmyhov.png",
+            "alt": "Чмыхов Александр"
+          }
+        }
+      ],
+      "scheduleItems": [
+        {
+          "id": "Mn3D4KOuSHuluw_k7HytWQ",
+          "weekday": "tue",
+          "groupKey": "middle",
+          "groupLabel": "Группа 7-10 лет",
+          "timeFrom": "17:00",
+          "timeTo": "18:00"
+        },
+        {
+          "id": "KxiaQLquRaONoyuWIwcWcg",
+          "weekday": "tue",
+          "groupKey": "senior",
+          "groupLabel": "Группа 11-16 лет",
+          "timeFrom": "18:00",
+          "timeTo": "19:00"
+        },
+        {
+          "id": "QNA1UMzWTJWp2rM46pq4pQ",
+          "weekday": "tue",
+          "groupKey": "staff",
+          "groupLabel": "Группа 16+ лет",
+          "timeFrom": "19:00",
+          "timeTo": "20:00"
+        },
+        {
+          "id": "WkDlivTRS92ereHVSqIDeA",
+          "weekday": "thu",
+          "groupKey": "middle",
+          "groupLabel": "Группа 7-10 лет",
+          "timeFrom": "17:00",
+          "timeTo": "18:00"
+        },
+        {
+          "id": "Ysp6RTrRRv-RDZouSvb5Vw",
+          "weekday": "thu",
+          "groupKey": "staff",
+          "groupLabel": "Группа 16+ лет",
+          "timeFrom": "19:00",
+          "timeTo": "20:00"
+        },
+        {
+          "id": "IPYakIy8SGSN7iBL-fdHyw",
+          "weekday": "thu",
+          "groupKey": "senior",
+          "groupLabel": "Группа 11-16 лет",
+          "timeFrom": "18:00",
+          "timeTo": "19:00"
+        },
+        {
+          "id": "Wq4Fvv1HQki-l_A8uUHqnQ",
+          "weekday": "fri",
+          "groupKey": "middle",
+          "groupLabel": "Группа 7-10 лет",
+          "timeFrom": "17:00",
+          "timeTo": "18:00"
+        },
+        {
+          "id": "bpAaZKy-Q6SQKmL_2sD8jg",
+          "weekday": "fri",
+          "groupKey": "senior",
+          "groupLabel": "Группа 11-16 лет",
+          "timeFrom": "18:00",
+          "timeTo": "19:00"
+        }
+      ],
+      "createdAt": "2026-03-21T14:54:15.487+03:00",
+      "updatedAt": "2026-03-21T22:42:39.646+03:00"
+    },
+    {
+      "id": "X9FoR8bqTJu7V5zuEaSG8w",
+      "title": "Расплетина, 1",
+      "slug": "Raspletina",
+      "isActive": true,
+      "sortOrder": null,
+      "cityObject": {
+        "cityKey": "moscow",
+        "cityName": "Москва"
+      },
+      "metroName": "Октябрьское поле",
+      "metroColor": {
+        "hex": "#7503F3"
+      },
+      "street": "ул. Расплетина, 1",
+      "location": {
+        "latitude": 55.7896027,
+        "longitude": 37.47979
+      },
+      "heroImage": {
+        "url": "https://www.datocms-assets.com/196565/1774094488-oktyabrskoe-pole.jpg",
+        "alt": "Расплетина, 1"
+      },
+      "hallDescription": {
+        "value": {
+          "schema": "dast",
+          "document": {
+            "type": "root",
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "span",
+                    "value": "Атмосферный зал с зеркалами площадью 70 кв. м., "
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      },
+      "trialLessonPrice": 0,
+      "singleLessonPrice": 1500,
+      "monthlyPrice": 7000,
+      "coaches": [
+        {
+          "id": "Nw2RkkZ3Qxq2pQGrXCLqHw",
+          "slug": "e_staynow",
+          "name": "Стейнау Екатерина",
+          "phone": "+79629876165",
+          "level": "Instrutora",
+          "nick": "Trinity",
+          "photo": {
+            "url": "https://www.datocms-assets.com/196565/1772352810-e-staynow.png",
+            "alt": "Стейнау Екатерина"
+          }
+        }
+      ],
+      "scheduleItems": [
+        {
+          "id": "C8XcFV7tS7irOZ5FJOGwuA",
+          "weekday": "tue",
+          "groupKey": "middle",
+          "groupLabel": "Группа 7-10 лет",
+          "timeFrom": "16:00",
+          "timeTo": "17:00"
+        },
+        {
+          "id": "CjlSti7FTQi2ZOT8G5h4OQ",
+          "weekday": "tue",
+          "groupKey": "junior",
+          "groupLabel": "Группа 3-6 лет",
+          "timeFrom": "17:15",
+          "timeTo": "18:00"
+        },
+        {
+          "id": "MsYmZW8oQfyKH7NHfF2ZXQ",
+          "weekday": "tue",
+          "groupKey": "middle",
+          "groupLabel": "Группа 11-16 лет",
+          "timeFrom": "18:00",
+          "timeTo": "19:00"
+        },
+        {
+          "id": "WRFRogMoSxSjQRCNhgmiDQ",
+          "weekday": "tue",
+          "groupKey": "middle",
+          "groupLabel": "Группа 11-16 лет",
+          "timeFrom": "19:00",
+          "timeTo": "20:30"
+        },
+        {
+          "id": "QFDt4NNwSVGoaugFH9hFPw",
+          "weekday": "tue",
+          "groupKey": "middle",
+          "groupLabel": "Группа 16+ лет",
+          "timeFrom": "20:30",
+          "timeTo": "22:00"
+        },
+        {
+          "id": "NmM-h3hWSfGs7ZWbzST22Q",
+          "weekday": "thu",
+          "groupKey": "middle",
+          "groupLabel": "Группа 7-10 лет",
+          "timeFrom": "16:00",
+          "timeTo": "17:00"
+        },
+        {
+          "id": "GubmsTMwSiGm946ZVMSTBA",
+          "weekday": "thu",
+          "groupKey": "junior",
+          "groupLabel": "Группа 3-6 лет",
+          "timeFrom": "17:15",
+          "timeTo": "18:00"
+        },
+        {
+          "id": "diTq-ClkRHWft-OaCAcKdQ",
+          "weekday": "thu",
+          "groupKey": "middle",
+          "groupLabel": "Группа 11-16 лет",
+          "timeFrom": "18:00",
+          "timeTo": "19:00"
+        },
+        {
+          "id": "IsiIEkrJQ2Cwz1yb5qiWug",
+          "weekday": "thu",
+          "groupKey": "middle",
+          "groupLabel": "Группа 11-16 лет",
+          "timeFrom": "19:00",
+          "timeTo": "20:30"
+        },
+        {
+          "id": "PhQ_nlXnSV6ElAXVkWDTHA",
+          "weekday": "thu",
+          "groupKey": "middle",
+          "groupLabel": "Группа 16+ лет",
+          "timeFrom": "20:30",
+          "timeTo": "22:00"
+        }
+      ],
+      "createdAt": "2026-03-21T14:59:09.185+03:00",
+      "updatedAt": "2026-03-22T08:30:29.367+03:00"
+    },
+    {
+      "id": "RgkiqUZQQuCaZN-29qPVMA",
+      "title": "Нахабино",
+      "slug": "Nahabino",
+      "isActive": true,
+      "sortOrder": null,
+      "cityObject": {
+        "cityKey": "krasnogorsk",
+        "cityName": "Красногорск"
+      },
+      "metroName": null,
+      "metroColor": null,
+      "street": "Ул Красноармейская, 68. Клуб Зевс, 2 этаж. ",
+      "location": {
+        "latitude": 55.850661,
+        "longitude": 37.1777249
+      },
+      "heroImage": {
+        "url": "https://www.datocms-assets.com/196565/1774094222-nahabino_zeus.jpg",
+        "alt": "Нахабино"
+      },
+      "hallDescription": {
+        "value": {
+          "schema": "dast",
+          "document": {
+            "type": "root",
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "span",
+                    "value": "Просторный зал с мягким покрытием и большим количеством спортивного инвентаря, что позволит сделать тренировки продуктивнее и веселее. Для удобства, есть раздевалки с душевыми и просторные зоны для ожидания тренировок. "
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      },
+      "trialLessonPrice": 0,
+      "singleLessonPrice": 1000,
+      "monthlyPrice": 5000,
+      "coaches": [
+        {
+          "id": "JmQOt25XQ9KiBTJotLnA-g",
+          "slug": "a_kedrova",
+          "name": "Кедрова Алёна",
+          "phone": "+79154805685",
+          "level": "Instrutor",
+          "nick": "Aranha",
+          "photo": {
+            "url": "https://www.datocms-assets.com/196565/1772352810-a-kedrova.png",
+            "alt": "Кедрова Алёна"
+          }
+        }
+      ],
+      "scheduleItems": [
+        {
+          "id": "fRnXYXl7R0imOOMRKsyuJQ",
+          "weekday": "tue",
+          "groupKey": "junior",
+          "groupLabel": "Группа 3-6 лет",
+          "timeFrom": "17:00",
+          "timeTo": "18:00"
+        },
+        {
+          "id": "MFjla9h4So-Pvt1Hnfq3iA",
+          "weekday": "tue",
+          "groupKey": "middle",
+          "groupLabel": "Группа 7-10 лет",
+          "timeFrom": "18:00",
+          "timeTo": "19:00"
+        },
+        {
+          "id": "bwOVTRRQRCq0B9XJKJ5zMg",
+          "weekday": "tue",
+          "groupKey": "middle",
+          "groupLabel": "Группа 11-16 лет",
+          "timeFrom": "19:00",
+          "timeTo": "20:00"
+        },
+        {
+          "id": "A_beIbx4R-qgHZEseA_Wxw",
+          "weekday": "tue",
+          "groupKey": "middle",
+          "groupLabel": "Групп 16+ лет",
+          "timeFrom": "19:00",
+          "timeTo": "20:00"
+        },
+        {
+          "id": "KnDA8CltSjGwFv_8rkGDmg",
+          "weekday": "thu",
+          "groupKey": "junior",
+          "groupLabel": "Группа 3-6 лет",
+          "timeFrom": "17:00",
+          "timeTo": "18:00"
+        },
+        {
+          "id": "aW1L6jD8S0SGy9HCs6eBGQ",
+          "weekday": "thu",
+          "groupKey": "middle",
+          "groupLabel": "Группа 7-10 лет",
+          "timeFrom": "18:00",
+          "timeTo": "19:00"
+        },
+        {
+          "id": "V9WG7eJERaOA0AiQcybRDg",
+          "weekday": "thu",
+          "groupKey": "middle",
+          "groupLabel": "Группа 11-16 лет",
+          "timeFrom": "19:00",
+          "timeTo": "20:00"
+        },
+        {
+          "id": "ZYCdm0C8Q7qUaDzVpyiVAg",
+          "weekday": "thu",
+          "groupKey": "middle",
+          "groupLabel": "Групп 16+ лет",
+          "timeFrom": "19:00",
+          "timeTo": "20:00"
+        }
+      ],
+      "createdAt": "2026-03-21T15:09:12.161+03:00",
+      "updatedAt": "2026-03-22T08:33:22.877+03:00"
+    },
+    {
+      "id": "ZniwMTjaS8W45yXSHLg-1w",
+      "title": "Юго-восточная",
+      "slug": "Ugo_vostochnaya",
+      "isActive": true,
+      "sortOrder": null,
+      "cityObject": {
+        "cityKey": "moscow",
+        "cityName": "Москва"
+      },
+      "metroName": "Юго-восточная",
+      "metroColor": {
+        "hex": "#DE64A1"
+      },
+      "street": "ул. Ферганская, д. 8",
+      "location": {
+        "latitude": 55.7093685,
+        "longitude": 37.8037777
+      },
+      "heroImage": {
+        "url": "https://www.datocms-assets.com/196565/1774094539-ugo-vostochnaya-jpg.jpg",
+        "alt": "Юго-восточная"
+      },
+      "hallDescription": {
+        "value": {
+          "schema": "dast",
+          "document": {
+            "type": "root",
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "span",
+                    "value": "Танцевальная студия Classfit. Занятия проходят в 2х залах: 65м2 и 82м2. \nПокрытме паркет/ламинат. Большие зеркала. Есть раздевалки, туалеты. \n\nЗал находится в 12 мин. пешком от м. Юго-восточная, 16 мин. от м. Рязанский проспект и Выхино."
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      },
+      "trialLessonPrice": 0,
+      "singleLessonPrice": 1000,
+      "monthlyPrice": 5000,
+      "coaches": [
+        {
+          "id": "AzUD16ZnRjCeDt-bMYrLFQ",
+          "slug": "s_gromova",
+          "name": "Громова Светлана",
+          "phone": "+79852460224",
+          "level": "Monitora",
+          "nick": "Amazonas",
+          "photo": {
+            "url": "https://www.datocms-assets.com/196565/1772352810-s-gromova.png",
+            "alt": "Громова Светлана"
+          }
+        }
+      ],
+      "scheduleItems": [
+        {
+          "id": "RV5rOfnvQb2y24ofTEZcpg",
+          "weekday": "tue",
+          "groupKey": "staff",
+          "groupLabel": "Группа 16+ лет",
+          "timeFrom": "20:00",
+          "timeTo": "21:30"
+        },
+        {
+          "id": "fBpjMusLSiqwK96QYuClew",
+          "weekday": "thu",
+          "groupKey": "staff",
+          "groupLabel": "Группа 16+ лет",
+          "timeFrom": "19:30",
+          "timeTo": "21:00"
+        }
+      ],
+      "createdAt": "2026-03-21T22:39:28.087+03:00",
+      "updatedAt": "2026-03-21T22:40:24.263+03:00"
+    },
+    {
+      "id": "LruaRM98TTCh-vsKMzCEjg",
+      "title": "Марьина роща",
+      "slug": "marina_roscha",
+      "isActive": true,
+      "sortOrder": null,
+      "cityObject": {
+        "cityKey": "moscow",
+        "cityName": "Москва"
+      },
+      "metroName": "Марьина роща",
+      "metroColor": {
+        "hex": "#97D900"
+      },
+      "street": "ул. Октябрьская, д. 58",
+      "location": {
+        "latitude": 55.79509179999999,
+        "longitude": 37.613368
+      },
+      "heroImage": {
+        "url": "https://www.datocms-assets.com/196565/1774094437-marina_rosha.jpeg",
+        "alt": "Марьина роща"
+      },
+      "hallDescription": {
+        "value": {
+          "schema": "dast",
+          "document": {
+            "type": "root",
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "span",
+                    "value": "Спортивный зал, площадью 72 кв. метра с мягким покрытием (ласточкин хвост). В зале имеется инвентарь для занятий спортом (мягкие маты, лапы/ракетки и др.). Идеально подходит для занятий капоэйрой и акробатикой. \n\nИмеется зона для ожидания родителей, туалет, две раздевалки (мужская и женская). \n\nДо зала можно добраться от станции метро Марьина роща выход №4 и 300 метров (4 минуты) пройти до Культурного центра."
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      },
+      "trialLessonPrice": 0,
+      "singleLessonPrice": 1500,
+      "monthlyPrice": 7000,
+      "coaches": [
+        {
+          "id": "Tmdn10w_QCusQg2jZk8a1A",
+          "slug": "s_afonina",
+          "name": "Афонина Светлана",
+          "phone": "+79774073952",
+          "level": "Instrutora",
+          "nick": "Biriba",
+          "photo": {
+            "url": "https://www.datocms-assets.com/196565/1772352810-s-afonina.png",
+            "alt": "Афонина Светлана"
+          }
+        }
+      ],
+      "scheduleItems": [
+        {
+          "id": "Lx00ubAkQ_O16euc5ev55Q",
+          "weekday": "mon",
+          "groupKey": "middle",
+          "groupLabel": "Группа 7-10 лет",
+          "timeFrom": "16:00",
+          "timeTo": "17:00"
+        },
+        {
+          "id": "eExfcnB9TjyKqS1lRKXqwg",
+          "weekday": "mon",
+          "groupKey": "junior",
+          "groupLabel": "Группа 3-6 лет",
+          "timeFrom": "17:00",
+          "timeTo": "17:30"
+        },
+        {
+          "id": "fg3P2-13Temt6NPu6UpOLw",
+          "weekday": "mon",
+          "groupKey": "junior",
+          "groupLabel": "Группа 3-6 лет",
+          "timeFrom": "17:30",
+          "timeTo": "18:15"
+        },
+        {
+          "id": "WBXLvFzrTqS6xS9pVFFHWA",
+          "weekday": "mon",
+          "groupKey": "senior",
+          "groupLabel": "Группа 11-16 лет",
+          "timeFrom": "18:30",
+          "timeTo": "19:30"
+        },
+        {
+          "id": "NSF4seiQTHaDvnhwdClK2Q",
+          "weekday": "mon",
+          "groupKey": "staff",
+          "groupLabel": "Группа 16+ лет",
+          "timeFrom": "19:30",
+          "timeTo": "21:00"
+        },
+        {
+          "id": "WjwFY2w_QrC3uP2k3wEr5Q",
+          "weekday": "wed",
+          "groupKey": "middle",
+          "groupLabel": "Группа 7-10 лет",
+          "timeFrom": "16:00",
+          "timeTo": "17:00"
+        },
+        {
+          "id": "SoenSQ3-T7KHfG-AuNIq4A",
+          "weekday": "wed",
+          "groupKey": "junior",
+          "groupLabel": "Группа 3-6 лет",
+          "timeFrom": "17:00",
+          "timeTo": "17:30"
+        },
+        {
+          "id": "OKvTFr_IRLigggYxdHv69A",
+          "weekday": "wed",
+          "groupKey": "junior",
+          "groupLabel": "Группа 3-6 лет",
+          "timeFrom": "17:30",
+          "timeTo": "18:15"
+        },
+        {
+          "id": "MLfngqIKQgOQfOnOLBrlqg",
+          "weekday": "wed",
+          "groupKey": "senior",
+          "groupLabel": "Группа 11-16 лет",
+          "timeFrom": "18:30",
+          "timeTo": "19:30"
+        },
+        {
+          "id": "e1jN5xUnRMGp-iwYHy1dKg",
+          "weekday": "wed",
+          "groupKey": "staff",
+          "groupLabel": "Группа 16+ лет",
+          "timeFrom": "19:30",
+          "timeTo": "21:00"
+        },
+        {
+          "id": "I7pbjovoQ8iZat9uNHzyIw",
+          "weekday": "fri",
+          "groupKey": "middle",
+          "groupLabel": "Группа 7-10 лет",
+          "timeFrom": "18:00",
+          "timeTo": "19:30"
+        },
+        {
+          "id": "SOwFiTt2RC-bHV2g6-hjKw",
+          "weekday": "fri",
+          "groupKey": "senior",
+          "groupLabel": "Группа 11-16 лет",
+          "timeFrom": "18:00",
+          "timeTo": "19:30"
+        },
+        {
+          "id": "ds4bSrM_Q-6rV2vkad4udw",
+          "weekday": "fri",
+          "groupKey": "staff",
+          "groupLabel": "Группа 16+ лет",
+          "timeFrom": "18:00",
+          "timeTo": "19:30"
+        }
+      ],
+      "createdAt": "2026-03-22T08:49:00.616+03:00",
+      "updatedAt": "2026-03-22T08:49:00.620+03:00"
+    },
+    {
+      "id": "bMQCUfbMSO6GDO7_2jYlPw",
+      "title": "Войковская",
+      "slug": "Voikovskaya",
+      "isActive": true,
+      "sortOrder": null,
+      "cityObject": {
+        "cityKey": "moscow",
+        "cityName": "Москва"
+      },
+      "metroName": "Войковская",
+      "metroColor": {
+        "hex": "#2CCE44"
+      },
+      "street": "Ул. Зои и Александра Космодемьянских, д. 42, Спорт клуб \"Реал\"",
+      "location": {
+        "latitude": 55.824945,
+        "longitude": 37.5278864
+      },
+      "heroImage": {
+        "url": "https://www.datocms-assets.com/196565/1774094537-voikovskaya.heic",
+        "alt": "Войковская"
+      },
+      "hallDescription": {
+        "value": {
+          "schema": "dast",
+          "document": {
+            "type": "root",
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "span",
+                    "value": "Просторный зал, площадью 120 кв. метров с мягким покрытием (ласточкин хвост). В зале имеется инвентарь для занятий спортом (мягкие маты, лапы/ракетки и др.). Идеально подходит для занятий капоэйрой и акробатикой. \n\nИмеется зона для ожидания родителей, туалет, душ, две раздевалки (мужская и женская). \n\nДо зала можно добраться от станции метро Войковская и МЦК Балтийская на автобусах 204, 294, 591, 780 (5 минут) до остановки улица Зои и Александра Космодемьянских. \nЛибо можно прогуляться пешком (около 15-20 минут) "
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      },
+      "trialLessonPrice": 0,
+      "singleLessonPrice": 1500,
+      "monthlyPrice": 7000,
+      "coaches": [
+        {
+          "id": "Tmdn10w_QCusQg2jZk8a1A",
+          "slug": "s_afonina",
+          "name": "Афонина Светлана",
+          "phone": "+79774073952",
+          "level": "Instrutora",
+          "nick": "Biriba",
+          "photo": {
+            "url": "https://www.datocms-assets.com/196565/1772352810-s-afonina.png",
+            "alt": "Афонина Светлана"
+          }
+        },
+        {
+          "id": "DE_d3S9xQt2VopePl6LjfA",
+          "slug": "d_makarevich",
+          "name": "Макаревич Дмитрий",
+          "phone": "+79672867679",
+          "level": "Professor",
+          "nick": "Sereno",
+          "photo": {
+            "url": "https://www.datocms-assets.com/196565/1772352811-d-makarevich.png",
+            "alt": "Макаревич Дмитрий"
+          }
+        }
+      ],
+      "scheduleItems": [
+        {
+          "id": "ejbVrfpqTx2E0VBHUOs4Mw",
+          "weekday": "mon",
+          "groupKey": "middle",
+          "groupLabel": "Группа 7-10 лет",
+          "timeFrom": "16:00",
+          "timeTo": "17:00"
+        },
+        {
+          "id": "LwNCdmj8Qba3pVdK9-NlYg",
+          "weekday": "mon",
+          "groupKey": "junior",
+          "groupLabel": "Группа 3-6 лет",
+          "timeFrom": "17:00",
+          "timeTo": "17:45"
+        },
+        {
+          "id": "OuvHvH0WRPS_3c3GYu6PtQ",
+          "weekday": "mon",
+          "groupKey": "junior",
+          "groupLabel": "Группа 3-6 лет",
+          "timeFrom": "17:45",
+          "timeTo": "18:30"
+        },
+        {
+          "id": "dB4lcjR4Suimxx5Z8InYUA",
+          "weekday": "mon",
+          "groupKey": "senior",
+          "groupLabel": "Группа 11-16 лет",
+          "timeFrom": "18:30",
+          "timeTo": "19:30"
+        },
+        {
+          "id": "TCDqjL8qRGSkIQXpMQ4BWQ",
+          "weekday": "mon",
+          "groupKey": "staff",
+          "groupLabel": "Группа 16+ лет",
+          "timeFrom": "19:30",
+          "timeTo": "21:00"
+        },
+        {
+          "id": "eLxV9_eCQTuWW_7s_UOItg",
+          "weekday": "tue",
+          "groupKey": "senior",
+          "groupLabel": "Группа 11-16 лет",
+          "timeFrom": "17:00",
+          "timeTo": "18:00"
+        },
+        {
+          "id": "QVSkFwWyS_mjsA4K36i27g",
+          "weekday": "tue",
+          "groupKey": "junior",
+          "groupLabel": "Группа 3-6 лет",
+          "timeFrom": "18:00",
+          "timeTo": "18:45"
+        },
+        {
+          "id": "ZmUqI2p-S-CyPSTA-eGmEg",
+          "weekday": "tue",
+          "groupKey": "middle",
+          "groupLabel": "Группа 7-10 лет",
+          "timeFrom": "19:00",
+          "timeTo": "20:00"
+        },
+        {
+          "id": "cqytFbQXS5yJabqruZgWTw",
+          "weekday": "tue",
+          "groupKey": "staff",
+          "groupLabel": "Группа 16+ лет",
+          "timeFrom": "20:00",
+          "timeTo": "21:30"
+        },
+        {
+          "id": "UUQyJK1RRbamM_7-cuNSdA",
+          "weekday": "thu",
+          "groupKey": "staff",
+          "groupLabel": "Группа 16+ лет",
+          "timeFrom": "20:00",
+          "timeTo": "21:30"
+        },
+        {
+          "id": "QxYbxU-tR5utbjtfhct8Jw",
+          "weekday": "thu",
+          "groupKey": "middle",
+          "groupLabel": "Группа 7-10 лет",
+          "timeFrom": "19:00",
+          "timeTo": "20:00"
+        },
+        {
+          "id": "Sycxd8RuRfqTeY-xmy0SGA",
+          "weekday": "thu",
+          "groupKey": "junior",
+          "groupLabel": "Группа 3-6 лет",
+          "timeFrom": "18:00",
+          "timeTo": "18:45"
+        },
+        {
+          "id": "TXLmkPCCTz-NIRQxyDOr5Q",
+          "weekday": "thu",
+          "groupKey": "senior",
+          "groupLabel": "Группа 11-16 лет",
+          "timeFrom": "17:00",
+          "timeTo": "18:00"
+        },
+        {
+          "id": "ULyLqAilTcGmTSvVutHS3g",
+          "weekday": "fri",
+          "groupKey": "middle",
+          "groupLabel": "Группа 7-10 лет",
+          "timeFrom": "16:00",
+          "timeTo": "17:00"
+        },
+        {
+          "id": "Fa9TOeGlTy2qvX3XlDfvVw",
+          "weekday": "fri",
+          "groupKey": "junior",
+          "groupLabel": "Группа 3-6 лет",
+          "timeFrom": "17:00",
+          "timeTo": "17:45"
+        },
+        {
+          "id": "W5uDElJ1R7-3QoVIcXjSoQ",
+          "weekday": "fri",
+          "groupKey": "junior",
+          "groupLabel": "Группа 3-6 лет",
+          "timeFrom": "17:45",
+          "timeTo": "18:30"
+        },
+        {
+          "id": "PakTMA0mQ9WQCjqguAvs7A",
+          "weekday": "fri",
+          "groupKey": "senior",
+          "groupLabel": "Группа 11-16 лет",
+          "timeFrom": "18:30",
+          "timeTo": "19:30"
+        },
+        {
+          "id": "Y_Uhboy3Qv6OL-ILf1KJCA",
+          "weekday": "fri",
+          "groupKey": "staff",
+          "groupLabel": "Группа 16+ лет",
+          "timeFrom": "19:30",
+          "timeTo": "21:00"
+        }
+      ],
+      "createdAt": "2026-03-22T08:56:38.783+03:00",
+      "updatedAt": "2026-03-22T08:56:38.786+03:00"
+    },
+    {
+      "id": "Y_0fWqpwR5KGYlxcKIEXIQ",
+      "title": "Тимирязевская, Дубки",
+      "slug": "dubki",
+      "isActive": true,
+      "sortOrder": null,
+      "cityObject": {
+        "cityKey": "moscow",
+        "cityName": "Москва"
+      },
+      "metroName": "Тимирязевская",
+      "metroColor": {
+        "hex": "#A1A1A1"
+      },
+      "street": "ул. Дубки, д. 7",
+      "location": {
+        "latitude": 55.82065607269953,
+        "longitude": 37.56266903306578
+      },
+      "heroImage": {
+        "url": "https://www.datocms-assets.com/196565/1774205335-timiryazevkaya.jpeg",
+        "alt": "Тимирязевская, Дубки"
+      },
+      "hallDescription": {
+        "value": {
+          "schema": "dast",
+          "document": {
+            "type": "root",
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "span",
+                    "value": "Просторный зал, площадью 80 кв метров, мягкое покрытие (ласточкин хвост). \n\nЕсть оборудование для занятий по акробатике, мешки боксерские для отработки ударов. Также есть раздевалки оборудованные душевыми. Есть места для ожидания. \n\nДо зала можно добраться от метро пешком 12-15 мин."
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      },
+      "trialLessonPrice": 0,
+      "singleLessonPrice": 1200,
+      "monthlyPrice": 6500,
+      "coaches": [
+        {
+          "id": "QMvEVshoRT6MCBl-1ZkGzA",
+          "slug": "a_magdych",
+          "name": "Магдыч Алексей",
+          "phone": "+79264918686",
+          "level": "Professor",
+          "nick": "Faisca",
+          "photo": {
+            "url": "https://www.datocms-assets.com/196565/1772352811-a-magdych.png",
+            "alt": "Магдыч Алексей"
+          }
+        }
+      ],
+      "scheduleItems": [
+        {
+          "id": "ZCXWJ5Y1SLaSLmQyQKCnZg",
+          "weekday": "tue",
+          "groupKey": "middle",
+          "groupLabel": "Группа 7-10 лет",
+          "timeFrom": "16:00",
+          "timeTo": "17:00"
+        },
+        {
+          "id": "JrrjLPBpQ3CBbrJ2zzSc3g",
+          "weekday": "tue",
+          "groupKey": "junior",
+          "groupLabel": "Группа 3-6 лет",
+          "timeFrom": "17:00",
+          "timeTo": "18:00"
+        },
+        {
+          "id": "RorVdO1fRm6gjh4oWJ5F_Q",
+          "weekday": "tue",
+          "groupKey": "senior",
+          "groupLabel": "Группа 11-16 лет",
+          "timeFrom": "18:00",
+          "timeTo": "19:00"
+        },
+        {
+          "id": "enUocCW3Rv-l8BYR5d7PAg",
+          "weekday": "tue",
+          "groupKey": "staff",
+          "groupLabel": "Группа 16+ лет (начинающие)",
+          "timeFrom": "19:00",
+          "timeTo": "20:30"
+        },
+        {
+          "id": "KMcxrz_PQP2cwyPXnGdu8A",
+          "weekday": "tue",
+          "groupKey": "staff",
+          "groupLabel": "Группа 16+ лет (продолжающие)",
+          "timeFrom": "20:30",
+          "timeTo": "22:00"
+        },
+        {
+          "id": "aKnXsvJ_Rsmuw2nzyttyZA",
+          "weekday": "thu",
+          "groupKey": "middle",
+          "groupLabel": "Группа 7-10 лет",
+          "timeFrom": "16:00",
+          "timeTo": "17:00"
+        },
+        {
+          "id": "GMqXzTKTQcylwpp6B3peVA",
+          "weekday": "thu",
+          "groupKey": "junior",
+          "groupLabel": "Группа 3-6 лет",
+          "timeFrom": "17:00",
+          "timeTo": "18:00"
+        },
+        {
+          "id": "WrfYFsSnQfKgceJE3h8dTw",
+          "weekday": "thu",
+          "groupKey": "senior",
+          "groupLabel": "Группа 11-16 лет",
+          "timeFrom": "18:00",
+          "timeTo": "19:00"
+        },
+        {
+          "id": "Ci4fdBfhS6WnzABWa_vbvQ",
+          "weekday": "thu",
+          "groupKey": "staff",
+          "groupLabel": "Группа 16+ лет (начинающие)",
+          "timeFrom": "19:00",
+          "timeTo": "20:30"
+        },
+        {
+          "id": "PuJ4iR24Rg-slrxhz1DsdA",
+          "weekday": "thu",
+          "groupKey": "staff",
+          "groupLabel": "Группа 16+ лет (продолжающие)",
+          "timeFrom": "20:30",
+          "timeTo": "22:00"
+        },
+        {
+          "id": "HJhtt9RrRACWhyCHEdxYzw",
+          "weekday": "sat",
+          "groupKey": "middle",
+          "groupLabel": "Группа 7-10 лет",
+          "timeFrom": "14:00",
+          "timeTo": "15:00"
+        },
+        {
+          "id": "NCGES1mhSoGap7PEmAGe-w",
+          "weekday": "sat",
+          "groupKey": "senior",
+          "groupLabel": "Группа 11-16 лет",
+          "timeFrom": "15:00",
+          "timeTo": "16:00"
+        },
+        {
+          "id": "KTWLZYkQSJGQINVc3PkcOw",
+          "weekday": "sat",
+          "groupKey": "junior",
+          "groupLabel": "Группа 3-6 лет",
+          "timeFrom": "16:00",
+          "timeTo": "17:00"
+        },
+        {
+          "id": "ERKO2Q6uTIiWP5br-FiMAQ",
+          "weekday": "sat",
+          "groupKey": "staff",
+          "groupLabel": "Группа 16+ лет (общая)",
+          "timeFrom": "17:00",
+          "timeTo": "18:30"
+        }
+      ],
+      "createdAt": "2026-03-22T13:43:08.921+03:00",
+      "updatedAt": "2026-03-25T14:16:58.063+03:00"
+    },
+    {
+      "id": "YYCqjjh2RPm2ayhgf05P9A",
+      "title": "Аэропорт, Усевича",
+      "slug": "Aero_Usevicha",
+      "isActive": true,
+      "sortOrder": null,
+      "cityObject": {
+        "cityKey": "moscow",
+        "cityName": "Москва"
+      },
+      "metroName": "Аэропорт",
+      "metroColor": {
+        "hex": "#2DBE2C"
+      },
+      "street": "Ул. Усиевича, 12",
+      "location": {
+        "latitude": 55.8062294,
+        "longitude": 37.5282344
+      },
+      "heroImage": {
+        "url": "https://www.datocms-assets.com/196565/1774094271-aeroport.jpg",
+        "alt": "Аэропорт, Усевича"
+      },
+      "hallDescription": {
+        "value": {
+          "schema": "dast",
+          "document": {
+            "type": "root",
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "span",
+                    "value": "Просторный зал где есть все для занятий по капоэйре. От метро идти 7 мин. Находимся на втором этаже в ТЦ \"Баку место встречи\""
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      },
+      "trialLessonPrice": 700,
+      "singleLessonPrice": 1600,
+      "monthlyPrice": 8000,
+      "coaches": [
+        {
+          "id": "QMvEVshoRT6MCBl-1ZkGzA",
+          "slug": "a_magdych",
+          "name": "Магдыч Алексей",
+          "phone": "+79264918686",
+          "level": "Professor",
+          "nick": "Faisca",
+          "photo": {
+            "url": "https://www.datocms-assets.com/196565/1772352811-a-magdych.png",
+            "alt": "Магдыч Алексей"
+          }
+        }
+      ],
+      "scheduleItems": [
+        {
+          "id": "fa3TVmh7Q02w4gCht6GSqA",
+          "weekday": "mon",
+          "groupKey": "middle",
+          "groupLabel": "Группа 7-15 лет",
+          "timeFrom": "17:00",
+          "timeTo": "18:00"
+        },
+        {
+          "id": "ZIg2f8GsQdSGyBmD5i4quA",
+          "weekday": "mon",
+          "groupKey": "senior",
+          "groupLabel": "Группа 7-15 лет",
+          "timeFrom": "17:00",
+          "timeTo": "18:00"
+        },
+        {
+          "id": "Kz-RwI7LTRmRRsu6ScnAOA",
+          "weekday": "mon",
+          "groupKey": "junior",
+          "groupLabel": "Группа 3-6 лет",
+          "timeFrom": "18:00",
+          "timeTo": "19:00"
+        },
+        {
+          "id": "CfNSc9z4TXO2L1PXPyKpDg",
+          "weekday": "mon",
+          "groupKey": "staff",
+          "groupLabel": "Группа 16+ лет",
+          "timeFrom": "19:00",
+          "timeTo": "20:30"
+        },
+        {
+          "id": "c0EKwFBvSlWe-SQBsV7SNQ",
+          "weekday": "wed",
+          "groupKey": "middle",
+          "groupLabel": "Группа 7-15 лет",
+          "timeFrom": "17:00",
+          "timeTo": "18:00"
+        },
+        {
+          "id": "bQWfRQPvQumI_JSdJL2hSg",
+          "weekday": "wed",
+          "groupKey": "senior",
+          "groupLabel": "Группа 7-15 лет",
+          "timeFrom": "17:00",
+          "timeTo": "18:00"
+        },
+        {
+          "id": "Awlc2fdwRvOrvD3eRDY-sA",
+          "weekday": "wed",
+          "groupKey": "junior",
+          "groupLabel": "Группа 3-6 лет",
+          "timeFrom": "18:00",
+          "timeTo": "19:00"
+        },
+        {
+          "id": "YmHknyZ9TF6c1b0HQ4o7dA",
+          "weekday": "wed",
+          "groupKey": "staff",
+          "groupLabel": "Группа 16+ лет",
+          "timeFrom": "19:00",
+          "timeTo": "20:30"
+        }
+      ],
+      "createdAt": "2026-03-22T13:58:43.816+03:00",
+      "updatedAt": "2026-03-22T13:58:43.820+03:00"
+    },
+    {
+      "id": "A4TIF5OuRWehRW9KO1s4_w",
+      "title": "Дубнинская",
+      "slug": "Dubninskaya",
+      "isActive": true,
+      "sortOrder": null,
+      "cityObject": {
+        "cityKey": "moscow",
+        "cityName": "Москва"
+      },
+      "metroName": "Яхромская",
+      "metroColor": {
+        "hex": "#99CC00"
+      },
+      "street": "Ул. Дубнинская 73А",
+      "location": {
+        "latitude": 55.8828306,
+        "longitude": 37.5565237
+      },
+      "heroImage": {
+        "url": "https://www.datocms-assets.com/196565/1774094578-yahromskaya.jpg",
+        "alt": "Дубнинская"
+      },
+      "hallDescription": {
+        "value": {
+          "schema": "dast",
+          "document": {
+            "type": "root",
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "span",
+                    "value": "Просторный зал, оборудованный матами и всем необходимым для тренировок инвентарем."
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      },
+      "trialLessonPrice": 900,
+      "singleLessonPrice": 1700,
+      "monthlyPrice": 5800,
+      "coaches": [
+        {
+          "id": "MMRV6hpdQdiy2iNWBg9dvg",
+          "slug": "m_rozhkov",
+          "name": "Рожков Максим",
+          "phone": "+79265770381",
+          "level": "Professor",
+          "nick": "Fumaca",
+          "photo": {
+            "url": "https://www.datocms-assets.com/196565/1772352810-m-rozhkov.png",
+            "alt": "Рожков Максим"
+          }
+        }
+      ],
+      "scheduleItems": [
+        {
+          "id": "JhYOx0X4TEGWp3lda74seg",
+          "weekday": "mon",
+          "groupKey": "junior",
+          "groupLabel": "Группа 3-4 года",
+          "timeFrom": "16:15",
+          "timeTo": "17:00"
+        },
+        {
+          "id": "Sc4JQICLTTSZqsYU9ME1tg",
+          "weekday": "mon",
+          "groupKey": "junior",
+          "groupLabel": "Группа 5-6 лет",
+          "timeFrom": "17:00",
+          "timeTo": "17:45"
+        },
+        {
+          "id": "QrFG2lVGTTymH3iyiQ063Q",
+          "weekday": "mon",
+          "groupKey": "middle",
+          "groupLabel": "Группа 7-10 лет",
+          "timeFrom": "17:45",
+          "timeTo": "18:45"
+        },
+        {
+          "id": "OWubY0X_QrWc9DiqnBtbDQ",
+          "weekday": "mon",
+          "groupKey": "senior",
+          "groupLabel": "Группа 11-15 лет",
+          "timeFrom": "18:45",
+          "timeTo": "18:45"
+        },
+        {
+          "id": "ILzSf7c-REmBRBxrt82Ocw",
+          "weekday": "mon",
+          "groupKey": "staff",
+          "groupLabel": "Группа 16+ лет",
+          "timeFrom": "19:45",
+          "timeTo": "20:45"
+        },
+        {
+          "id": "CNGD8I-fSeCLfoOPnFcbNA",
+          "weekday": "wed",
+          "groupKey": "junior",
+          "groupLabel": "Группа 3-4 года",
+          "timeFrom": "16:15",
+          "timeTo": "17:00"
+        },
+        {
+          "id": "QxPjesz2Qh-cgdTvS-5aJg",
+          "weekday": "wed",
+          "groupKey": "junior",
+          "groupLabel": "Группа 5-6 лет",
+          "timeFrom": "17:00",
+          "timeTo": "17:45"
+        },
+        {
+          "id": "asHqB5v4RsOGvprevtcvVQ",
+          "weekday": "wed",
+          "groupKey": "middle",
+          "groupLabel": "Группа 7-10 лет",
+          "timeFrom": "17:45",
+          "timeTo": "18:45"
+        },
+        {
+          "id": "CCskIvaDQhKU6BhE0AYdGw",
+          "weekday": "wed",
+          "groupKey": "senior",
+          "groupLabel": "Группа 11-15 лет",
+          "timeFrom": "18:45",
+          "timeTo": "18:45"
+        },
+        {
+          "id": "EQGElUYkR3eigEPKnyp54w",
+          "weekday": "wed",
+          "groupKey": "staff",
+          "groupLabel": "Группа 16+ лет",
+          "timeFrom": "19:45",
+          "timeTo": "20:45"
+        }
+      ],
+      "createdAt": "2026-03-22T14:10:30.722+03:00",
+      "updatedAt": "2026-03-22T14:10:30.726+03:00"
+    },
+    {
+      "id": "JG_DHMHsS22GvK-yW3VUKQ",
+      "title": "Волоколамская",
+      "slug": "Volokolamskaya",
+      "isActive": true,
+      "sortOrder": null,
+      "cityObject": {
+        "cityKey": "moscow",
+        "cityName": "Москва"
+      },
+      "metroName": "Волоколамская",
+      "metroColor": {
+        "hex": "#0078BF"
+      },
+      "street": "Новотушинский пр., 10",
+      "location": {
+        "latitude": 55.839089,
+        "longitude": 37.3786447
+      },
+      "heroImage": {
+        "url": "https://www.datocms-assets.com/196565/1774094550-volokolamskaya.jpg",
+        "alt": "Волоколамская"
+      },
+      "hallDescription": {
+        "value": {
+          "schema": "dast",
+          "document": {
+            "type": "root",
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "span",
+                    "value": "Просторный зал. Находится в фитнесс-клубе \"Джаст Джим\" на 3 этаже. В 5 мин. ходьбы от м. Волоколамская"
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      },
+      "trialLessonPrice": 0,
+      "singleLessonPrice": 1500,
+      "monthlyPrice": 6000,
+      "coaches": [
+        {
+          "id": "MMRV6hpdQdiy2iNWBg9dvg",
+          "slug": "m_rozhkov",
+          "name": "Рожков Максим",
+          "phone": "+79265770381",
+          "level": "Professor",
+          "nick": "Fumaca",
+          "photo": {
+            "url": "https://www.datocms-assets.com/196565/1772352810-m-rozhkov.png",
+            "alt": "Рожков Максим"
+          }
+        }
+      ],
+      "scheduleItems": [
+        {
+          "id": "BN46KsdZSdS8tCM7oiTHcA",
+          "weekday": "thu",
+          "groupKey": "junior",
+          "groupLabel": "Группа 3-6 лет",
+          "timeFrom": "17:00",
+          "timeTo": "17:45"
+        },
+        {
+          "id": "cLzjzBkmTYuF9pk8uETa9g",
+          "weekday": "thu",
+          "groupKey": "senior",
+          "groupLabel": "Группа 11-16 лет",
+          "timeFrom": "18:00",
+          "timeTo": "19:00"
+        },
+        {
+          "id": "JVfigMwVTQuv9ntzS3m0kw",
+          "weekday": "thu",
+          "groupKey": "middle",
+          "groupLabel": "Группа 7-10 лет",
+          "timeFrom": "19:00",
+          "timeTo": "20:00"
+        },
+        {
+          "id": "KJbvXZ54THOx6dXwrKtx4Q",
+          "weekday": "sat",
+          "groupKey": "junior",
+          "groupLabel": "Группа 3-6 лет",
+          "timeFrom": "12:00",
+          "timeTo": "12:45"
+        },
+        {
+          "id": "ZgWBOEtnQi-PEtE27-mWgQ",
+          "weekday": "sat",
+          "groupKey": "middle",
+          "groupLabel": "Группа 7-10 лет",
+          "timeFrom": "13:00",
+          "timeTo": "14:00"
+        },
+        {
+          "id": "JxeVgZezRY2jhB94o_HzsA",
+          "weekday": "sat",
+          "groupKey": "senior",
+          "groupLabel": "Группа 11-16 лет",
+          "timeFrom": "14:00",
+          "timeTo": "15:00"
+        }
+      ],
+      "createdAt": "2026-03-22T14:19:47.250+03:00",
+      "updatedAt": "2026-03-22T14:19:47.253+03:00"
+    },
+    {
+      "id": "Zc__S5ihRS6LJsISVwVKow",
+      "title": "Тёплый Стан",
+      "slug": "Tyopliy_stan",
+      "isActive": true,
+      "sortOrder": null,
+      "cityObject": {
+        "cityKey": "moscow",
+        "cityName": "Москва"
+      },
+      "metroName": "Тёплый стан",
+      "metroColor": {
+        "hex": "#ED9121"
+      },
+      "street": "Ул. Тёплый Стан, 7",
+      "location": {
+        "latitude": 55.6227803,
+        "longitude": 37.495693
+      },
+      "heroImage": {
+        "url": "https://www.datocms-assets.com/196565/1774094558-tepliy_stan.jpg",
+        "alt": "Тёплый Стан"
+      },
+      "hallDescription": {
+        "value": {
+          "schema": "dast",
+          "document": {
+            "type": "root",
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "span",
+                    "value": "Просторный зал, площадью 80 кв. метров с мягким покрытием. В зале имеется инвентарь для занятий спортом (мягкие маты, лапы/ракетки, шведская лесенка и др.). Идеально подходит для занятий капоэйрой и акробатикой, а также спортивными единоборствами. \n\nИмеется зона для ожидания родителей, туалет, душ, две раздевалки (мужская и женская), а также кулер для воды. \n\nДо зала можно добраться от станции метро Тёплый Стан. Идти около 5-7 минут по прямой "
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      },
+      "trialLessonPrice": 0,
+      "singleLessonPrice": 2000,
+      "monthlyPrice": 9200,
+      "coaches": [
+        {
+          "id": "DE_d3S9xQt2VopePl6LjfA",
+          "slug": "d_makarevich",
+          "name": "Макаревич Дмитрий",
+          "phone": "+79672867679",
+          "level": "Professor",
+          "nick": "Sereno",
+          "photo": {
+            "url": "https://www.datocms-assets.com/196565/1772352811-d-makarevich.png",
+            "alt": "Макаревич Дмитрий"
+          }
+        }
+      ],
+      "scheduleItems": [
+        {
+          "id": "Z_CV7otzSw2hYC3MjccXSA",
+          "weekday": "wed",
+          "groupKey": "middle",
+          "groupLabel": "Группа 7-10 лет",
+          "timeFrom": "16:00",
+          "timeTo": "17:00"
+        },
+        {
+          "id": "MuKWQrP3RzCXjJJcpYejWw",
+          "weekday": "wed",
+          "groupKey": "junior",
+          "groupLabel": "Группа 3-6 лет",
+          "timeFrom": "17:00",
+          "timeTo": "17:50"
+        },
+        {
+          "id": "JiIAtY7ST6ipPkqCDq4KUg",
+          "weekday": "wed",
+          "groupKey": "middle",
+          "groupLabel": "Группа 7-10 лет",
+          "timeFrom": "18:00",
+          "timeTo": "19:00"
+        },
+        {
+          "id": "FowiftUlTZmIJ4ncHNquQQ",
+          "weekday": "wed",
+          "groupKey": "senior",
+          "groupLabel": "Группа 11-16 лет",
+          "timeFrom": "19:00",
+          "timeTo": "20:00"
+        },
+        {
+          "id": "FdYKKXl0T16-2vvZ6NPrQg",
+          "weekday": "wed",
+          "groupKey": "staff",
+          "groupLabel": "Группа 16+ лет",
+          "timeFrom": "20:00",
+          "timeTo": "21:30"
+        },
+        {
+          "id": "cQ0N3jgRSW-_h0Ll45f_Mg",
+          "weekday": "sat",
+          "groupKey": "junior",
+          "groupLabel": "Группа 3-6 лет",
+          "timeFrom": "10:00",
+          "timeTo": "11:00"
+        },
+        {
+          "id": "MwySEXM-S4O40ETYqAPCNw",
+          "weekday": "sat",
+          "groupKey": "middle",
+          "groupLabel": "Группа 7-10 лет",
+          "timeFrom": "11:00",
+          "timeTo": "12:00"
+        },
+        {
+          "id": "OcxsDm07TL2zbJAemlqrZA",
+          "weekday": "sat",
+          "groupKey": "senior",
+          "groupLabel": "Группа 11-16 лет",
+          "timeFrom": "12:00",
+          "timeTo": "13:00"
+        },
+        {
+          "id": "QX0eHIw6Tomin3Zrgpi32g",
+          "weekday": "sat",
+          "groupKey": "staff",
+          "groupLabel": "Группа 16+ лет",
+          "timeFrom": "13:00",
+          "timeTo": "14:00"
+        }
+      ],
+      "createdAt": "2026-03-22T14:26:21.110+03:00",
+      "updatedAt": "2026-03-22T14:26:21.113+03:00"
+    },
+    {
+      "id": "A-6ENczWTCO8lj_yA2LV5A",
+      "title": "Иметрия",
+      "slug": "Imetria",
+      "isActive": true,
+      "sortOrder": null,
+      "cityObject": {
+        "cityKey": "moscow",
+        "cityName": "Москва"
+      },
+      "metroName": "Народное ополчение",
+      "metroColor": {
+        "hex": "#82C0C0"
+      },
+      "street": "Ул. Саляма Адиля 9к3",
+      "location": {
+        "latitude": 55.7747168,
+        "longitude": 37.4651463
+      },
+      "heroImage": {
+        "url": "https://www.datocms-assets.com/196565/1774179204-imetria.jpg",
+        "alt": "Иметрия"
+      },
+      "hallDescription": {
+        "value": {
+          "schema": "dast",
+          "document": {
+            "type": "root",
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "span",
+                    "value": "Размер зала:\nНесколько залов от 30 до 150 м²\nПарковка: есть\nРаздевалки: раздельные, есть туалет(в раздевалках и общий), душ, фен и индивидуальные шкафчики.\nРасположение: центр танцев и спорта imetria. Вход через лифт с улицы, 7 этаж"
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      },
+      "trialLessonPrice": 0,
+      "singleLessonPrice": 1700,
+      "monthlyPrice": 6900,
+      "coaches": [
+        {
+          "id": "W_lqC2y5Tk-h6_vxe05R4Q",
+          "slug": "a_politov",
+          "name": "Политов Артем",
+          "phone": "+79150844667",
+          "level": "Minitor",
+          "nick": "Tagarelo",
+          "photo": {
+            "url": "https://www.datocms-assets.com/196565/1772352809-a-politov.png",
+            "alt": "Политов Артем"
+          }
+        }
+      ],
+      "scheduleItems": [
+        {
+          "id": "dXFYON1hQ7CikI0yy-ujNA",
+          "weekday": "mon",
+          "groupKey": "middle",
+          "groupLabel": "Группа 7-10 лет",
+          "timeFrom": "16:00",
+          "timeTo": "17:00"
+        },
+        {
+          "id": "aHcPVL4-Ta2tcBFloLtOBg",
+          "weekday": "mon",
+          "groupKey": "junior",
+          "groupLabel": "Группа 3-6 лет",
+          "timeFrom": "17:00",
+          "timeTo": "18:00"
+        },
+        {
+          "id": "OaQCco9EQOqGbIzlJL3zCA",
+          "weekday": "mon",
+          "groupKey": "senior",
+          "groupLabel": "Групп 11-16 лет",
+          "timeFrom": "18:00",
+          "timeTo": "19:00"
+        },
+        {
+          "id": "dxcXkwJzQlW-Vljg7egEiw",
+          "weekday": "wed",
+          "groupKey": "middle",
+          "groupLabel": "Группа 7-10 лет",
+          "timeFrom": "16:00",
+          "timeTo": "17:00"
+        },
+        {
+          "id": "L1Vfd09FSX-c6yVOqd4VnA",
+          "weekday": "wed",
+          "groupKey": "junior",
+          "groupLabel": "Группа 3-6 лет",
+          "timeFrom": "17:00",
+          "timeTo": "18:00"
+        },
+        {
+          "id": "c52Ai1TmQ3iIPs5SKm6RgQ",
+          "weekday": "wed",
+          "groupKey": "senior",
+          "groupLabel": "Групп 11-16 лет",
+          "timeFrom": "18:00",
+          "timeTo": "19:00"
+        },
+        {
+          "id": "MncrAgpJT26GZsOrSkMBug",
+          "weekday": "sat",
+          "groupKey": "middle",
+          "groupLabel": "Группа 7-10 лет",
+          "timeFrom": "11:00",
+          "timeTo": "12:00"
+        },
+        {
+          "id": "b3iMydKjQUimPd3nEs98gA",
+          "weekday": "sat",
+          "groupKey": "junior",
+          "groupLabel": "Группа 3-6 лет",
+          "timeFrom": "12:00",
+          "timeTo": "13:00"
+        },
+        {
+          "id": "fx4Lf_DwT6yipyLccQcH8Q",
+          "weekday": "mon",
+          "groupKey": "senior",
+          "groupLabel": "Групп 11-16 лет",
+          "timeFrom": "13:00",
+          "timeTo": "14:00"
+        }
+      ],
+      "createdAt": "2026-03-22T14:32:25.084+03:00",
+      "updatedAt": "2026-03-22T14:33:49.091+03:00"
+    },
+    {
+      "id": "Pv49LToOT1qp0SGhsDJ2VA",
+      "title": "Физтех, Дмитровское шоссе 122Гк1",
+      "slug": "Fizteh_Dmitr",
+      "isActive": true,
+      "sortOrder": null,
+      "cityObject": {
+        "cityKey": "moscow",
+        "cityName": "Москва"
+      },
+      "metroName": "ФИзтех",
+      "metroColor": {
+        "hex": "#99CC00"
+      },
+      "street": "Дмитровское ш. 122Гк1",
+      "location": {
+        "latitude": 55.920139,
+        "longitude": 37.546418
+      },
+      "heroImage": {
+        "url": "https://www.datocms-assets.com/196565/1774094495-fiztech.jpg",
+        "alt": "Физтех, Дмитровское шоссе 122Гк1"
+      },
+      "hallDescription": {
+        "value": {
+          "schema": "dast",
+          "document": {
+            "type": "root",
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "span",
+                    "value": "Уютный зал брейк-данса \"МастерДвиж\", 2 минуты от М. Физтех.\n\nИмеется зона ожидания для родителей, раздевалка, туалет. Зал оснащен зеркалами, матами и разнообразным спортивным оборудованием (ракетки, макивары и т.д.). \n\nПомещение находится на территории охраняемого объекта, требуется предварительная запись. Есть автомобильная парковка."
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      },
+      "trialLessonPrice": 0,
+      "singleLessonPrice": 1200,
+      "monthlyPrice": 6500,
+      "coaches": [
+        {
+          "id": "A5O9qXW9SlKS_ncXz2J3WA",
+          "slug": "s_polyakova",
+          "name": "Полякова Софья",
+          "phone": "+79687801086",
+          "level": "Minitora",
+          "nick": "Ritmista",
+          "photo": {
+            "url": "https://www.datocms-assets.com/196565/1772352809-s-polyakova.png",
+            "alt": "Полякова Софья"
+          }
+        }
+      ],
+      "scheduleItems": [
+        {
+          "id": "QbPVe4DzS6ShWX1_0gcn3w",
+          "weekday": "mon",
+          "groupKey": "middle",
+          "groupLabel": "Группа 7-10 лет",
+          "timeFrom": "16:00",
+          "timeTo": "17:00"
+        },
+        {
+          "id": "bj6BHe5dTNqgZRK0B3dUHg",
+          "weekday": "mon",
+          "groupKey": "senior",
+          "groupLabel": "Группа 11-16 лет",
+          "timeFrom": "17:00",
+          "timeTo": "18:00"
+        },
+        {
+          "id": "dqtPK9EwQcW0JCG8CIszdQ",
+          "weekday": "mon",
+          "groupKey": "junior",
+          "groupLabel": "Группа 3-6 лет",
+          "timeFrom": "18:00",
+          "timeTo": "18:50"
+        },
+        {
+          "id": "ER68t3SzQUm7G85w2HTqLw",
+          "weekday": "wed",
+          "groupKey": "middle",
+          "groupLabel": "Группа 7-10 лет",
+          "timeFrom": "16:00",
+          "timeTo": "17:00"
+        },
+        {
+          "id": "Aw9C8ipKThGTx-Gs_HhzKQ",
+          "weekday": "wed",
+          "groupKey": "senior",
+          "groupLabel": "Группа 11-16 лет",
+          "timeFrom": "17:00",
+          "timeTo": "18:00"
+        },
+        {
+          "id": "L5EtAaNjTJe9pJAuMmDMYA",
+          "weekday": "wed",
+          "groupKey": "junior",
+          "groupLabel": "Группа 3-6 лет",
+          "timeFrom": "18:00",
+          "timeTo": "18:50"
+        },
+        {
+          "id": "BstczFj-TYa6bXGNtPQnwg",
+          "weekday": "fri",
+          "groupKey": "middle",
+          "groupLabel": "Группа 7-16 лет",
+          "timeFrom": "17:00",
+          "timeTo": "18:00"
+        },
+        {
+          "id": "LotV2DukTr-3gJJ0Xagx5w",
+          "weekday": "fri",
+          "groupKey": "senior",
+          "groupLabel": "Группа 7-16 лет",
+          "timeFrom": "17:00",
+          "timeTo": "18:00"
+        }
+      ],
+      "createdAt": "2026-03-22T14:38:43.564+03:00",
+      "updatedAt": "2026-03-22T14:38:43.567+03:00"
+    },
+    {
+      "id": "W-tgjgZZTtCRjvBlCAq_Aw",
+      "title": "Сокол, Новопесчаная",
+      "slug": "Sokol_Novopeschanaya",
+      "isActive": true,
+      "sortOrder": null,
+      "cityObject": {
+        "cityKey": "moscow",
+        "cityName": "Москва"
+      },
+      "metroName": "Сокол",
+      "metroColor": {
+        "hex": "#2DBE2C"
+      },
+      "street": "Новопесчаная ул. 17к4",
+      "location": {
+        "latitude": 55.7974849,
+        "longitude": 37.5158109
+      },
+      "heroImage": {
+        "url": "https://www.datocms-assets.com/196565/1774205365-sokol.jpg",
+        "alt": "Сокол, Новопесчаная"
+      },
+      "hallDescription": {
+        "value": {
+          "schema": "dast",
+          "document": {
+            "type": "root",
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "span",
+                    "value": "Уютный просторный зал в семейном центре \"Дерево сказок\", 11 минут от М. Сокол. \n\nЕсть зона ожидания для родителей, игровая зона для детей, раздевалка, туалеты. Зал оборудован матами и различным спортивным инвентарем. \n\nТребуется предварительная запись через администратора центра."
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      },
+      "trialLessonPrice": 0,
+      "singleLessonPrice": 1000,
+      "monthlyPrice": 7600,
+      "coaches": [
+        {
+          "id": "A5O9qXW9SlKS_ncXz2J3WA",
+          "slug": "s_polyakova",
+          "name": "Полякова Софья",
+          "phone": "+79687801086",
+          "level": "Minitora",
+          "nick": "Ritmista",
+          "photo": {
+            "url": "https://www.datocms-assets.com/196565/1772352809-s-polyakova.png",
+            "alt": "Полякова Софья"
+          }
+        }
+      ],
+      "scheduleItems": [
+        {
+          "id": "WP1ewOkcQFeoDhycRUKvTg",
+          "weekday": "tue",
+          "groupKey": "junior",
+          "groupLabel": "Группа 3-6 лет",
+          "timeFrom": "16:30",
+          "timeTo": "17:20"
+        },
+        {
+          "id": "fImHHP3vS9OFUiFDNN-YUg",
+          "weekday": "tue",
+          "groupKey": "middle",
+          "groupLabel": "Группа 7-16 лет",
+          "timeFrom": "17:30",
+          "timeTo": "18:30"
+        },
+        {
+          "id": "J8N_SXrhQdefdF6kF7HSdg",
+          "weekday": "tue",
+          "groupKey": "senior",
+          "groupLabel": "Группа 7-16 лет",
+          "timeFrom": "17:30",
+          "timeTo": "18:30"
+        },
+        {
+          "id": "bwtvjG2IRrOXsmaAEOQuPA",
+          "weekday": "thu",
+          "groupKey": "junior",
+          "groupLabel": "Группа 3-6 лет",
+          "timeFrom": "16:30",
+          "timeTo": "17:20"
+        },
+        {
+          "id": "Tor501POS9yGHjI1BqXvww",
+          "weekday": "thu",
+          "groupKey": "middle",
+          "groupLabel": "Группа 7-16 лет",
+          "timeFrom": "17:30",
+          "timeTo": "18:30"
+        },
+        {
+          "id": "HXv545MWTz2xvhVIz46V9w",
+          "weekday": "thu",
+          "groupKey": "senior",
+          "groupLabel": "Группа 7-16 лет",
+          "timeFrom": "17:30",
+          "timeTo": "18:30"
+        }
+      ],
+      "createdAt": "2026-03-22T14:45:32.513+03:00",
+      "updatedAt": "2026-03-25T14:16:20.411+03:00"
+    },
+    {
+      "id": "bb5kCmP7RUOYBAERFqp5yQ",
+      "title": "Сходненская, Свободы 91",
+      "slug": "Shodnenskaya",
+      "isActive": true,
+      "sortOrder": null,
+      "cityObject": {
+        "cityKey": "moscow",
+        "cityName": "Москва"
+      },
+      "metroName": "Сходненская",
+      "metroColor": {
+        "hex": "#800080"
+      },
+      "street": "Свободы, 91",
+      "location": {
+        "latitude": 55.8669681,
+        "longitude": 37.4456854
+      },
+      "heroImage": {
+        "url": "https://www.datocms-assets.com/196565/1774092235-svobodi.webp",
+        "alt": "Сходненская, Свободы 91"
+      },
+      "hallDescription": {
+        "value": {
+          "schema": "dast",
+          "document": {
+            "type": "root",
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "span",
+                    "value": "Просторный зал\nЕсть зона ожидания для родителей \nБольшая парковка во дворе \nПропуск не нужен \nДК «Алые паруса»"
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      },
+      "trialLessonPrice": 0,
+      "singleLessonPrice": 1500,
+      "monthlyPrice": 6300,
+      "coaches": [
+        {
+          "id": "cydKy_DoQDGvO6t-KybFlA",
+          "slug": "m_frolova",
+          "name": "Фролова Мария",
+          "phone": "+79653246639",
+          "level": "Instrutora",
+          "nick": "Bonita",
+          "photo": {
+            "url": "https://www.datocms-assets.com/196565/1772352810-m-frolova.png",
+            "alt": "Фролова Мария"
+          }
+        }
+      ],
+      "scheduleItems": [
+        {
+          "id": "TABCkPJXQzeUc_kBZsOiwg",
+          "weekday": "tue",
+          "groupKey": "junior",
+          "groupLabel": "Группа 3-6 лет",
+          "timeFrom": "17:00",
+          "timeTo": "17:45"
+        },
+        {
+          "id": "PKZVWpMYTiSbc6Is5J5tDA",
+          "weekday": "tue",
+          "groupKey": "middle",
+          "groupLabel": "Группа 7-10 лет",
+          "timeFrom": "18:00",
+          "timeTo": "19:00"
+        },
+        {
+          "id": "TUxoz0xVR_eGQSIXyi8Nyw",
+          "weekday": "tue",
+          "groupKey": "middle",
+          "groupLabel": "Группа 7-10 лет",
+          "timeFrom": "19:00",
+          "timeTo": "20:00"
+        },
+        {
+          "id": "BDVMq9V0SNiN0cutTXC7Iw",
+          "weekday": "tue",
+          "groupKey": "senior",
+          "groupLabel": "Группа 11-16 лет и взрослые",
+          "timeFrom": "20:00",
+          "timeTo": "21:30"
+        },
+        {
+          "id": "TKfT7tsPRv-BV1rq0UiUgw",
+          "weekday": "tue",
+          "groupKey": "staff",
+          "groupLabel": "Группа 11-16 лет и взрослые",
+          "timeFrom": "20:00",
+          "timeTo": "21:30"
+        },
+        {
+          "id": "AqbSUdgfQhiLxE3DwfU-NA",
+          "weekday": "fri",
+          "groupKey": "junior",
+          "groupLabel": "Группа 3-6 лет",
+          "timeFrom": "17:00",
+          "timeTo": "17:45"
+        },
+        {
+          "id": "eAb07QjSQs6yfPBz7TCdyQ",
+          "weekday": "fri",
+          "groupKey": "middle",
+          "groupLabel": "Группа 7-10 лет",
+          "timeFrom": "18:00",
+          "timeTo": "19:00"
+        },
+        {
+          "id": "Mqil40tnQqCcTFGS37HHig",
+          "weekday": "fri",
+          "groupKey": "middle",
+          "groupLabel": "Группа 7-10 лет",
+          "timeFrom": "19:00",
+          "timeTo": "20:00"
+        },
+        {
+          "id": "L7J34YinRP-nTh-kowFGBQ",
+          "weekday": "fri",
+          "groupKey": "senior",
+          "groupLabel": "Группа 11-16 лет и взрослые",
+          "timeFrom": "20:00",
+          "timeTo": "21:30"
+        },
+        {
+          "id": "Sv9xCPEeR5mxfoYgrZLrvA",
+          "weekday": "fri",
+          "groupKey": "staff",
+          "groupLabel": "Группа 11-16 лет и взрослые",
+          "timeFrom": "20:00",
+          "timeTo": "21:30"
+        }
+      ],
+      "createdAt": "2026-03-22T14:47:49.248+03:00",
+      "updatedAt": "2026-03-22T14:50:23.275+03:00"
+    },
+    {
+      "id": "f1_W9ZzeTuKmbN7gjcaXHg",
+      "title": "Ховрино, ДК Огонёк",
+      "slug": "Ogonyok",
+      "isActive": true,
+      "sortOrder": null,
+      "cityObject": {
+        "cityKey": "moscow",
+        "cityName": "Москва"
+      },
+      "metroName": "Ховрино",
+      "metroColor": {
+        "hex": "#2DBE2C"
+      },
+      "street": "Зеленоградская 33А",
+      "location": {
+        "latitude": 55.8627216,
+        "longitude": 37.5220979
+      },
+      "heroImage": {
+        "url": "https://www.datocms-assets.com/196565/1774092463-ogonek.jpeg",
+        "alt": "Ховрино, ДК Огонёк"
+      },
+      "hallDescription": {
+        "value": {
+          "schema": "dast",
+          "document": {
+            "type": "root",
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "span",
+                    "value": "Просторный зал\nЕсть зона ожидания для родителей \nПарковка во дворе \nПропуск не нужен \nДК «Огонёк»"
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      },
+      "trialLessonPrice": 0,
+      "singleLessonPrice": 1200,
+      "monthlyPrice": 6500,
+      "coaches": [
+        {
+          "id": "cydKy_DoQDGvO6t-KybFlA",
+          "slug": "m_frolova",
+          "name": "Фролова Мария",
+          "phone": "+79653246639",
+          "level": "Instrutora",
+          "nick": "Bonita",
+          "photo": {
+            "url": "https://www.datocms-assets.com/196565/1772352810-m-frolova.png",
+            "alt": "Фролова Мария"
+          }
+        }
+      ],
+      "scheduleItems": [
+        {
+          "id": "dmtXJJ4vQpazKCQMx50YxQ",
+          "weekday": "mon",
+          "groupKey": "junior",
+          "groupLabel": "Группа 3-6 лет",
+          "timeFrom": "17:00",
+          "timeTo": "18:00"
+        },
+        {
+          "id": "TeCsjdAnTUGDlqIBUgzeUQ",
+          "weekday": "mon",
+          "groupKey": "middle",
+          "groupLabel": "Группа 7-10 лет",
+          "timeFrom": "18:00",
+          "timeTo": "19:00"
+        },
+        {
+          "id": "L1lcEWY9QzmpZmnLrwX9eg",
+          "weekday": "mon",
+          "groupKey": "senior",
+          "groupLabel": "Группа 10-16 лет",
+          "timeFrom": "19:00",
+          "timeTo": "20:00"
+        },
+        {
+          "id": "Cn3HaqeVTaqMtAo3VBG9eA",
+          "weekday": "mon",
+          "groupKey": "staff",
+          "groupLabel": "Группа 16+ лет",
+          "timeFrom": "20:00",
+          "timeTo": "21:45"
+        },
+        {
+          "id": "fM9uFrCBSuG62L2QxV3Pdw",
+          "weekday": "wed",
+          "groupKey": "junior",
+          "groupLabel": "Группа 3-6 лет",
+          "timeFrom": "17:00",
+          "timeTo": "18:00"
+        },
+        {
+          "id": "ZdJ7OONARP2sqFjgfSclqA",
+          "weekday": "wed",
+          "groupKey": "middle",
+          "groupLabel": "Группа 7-10 лет",
+          "timeFrom": "18:00",
+          "timeTo": "19:00"
+        },
+        {
+          "id": "dUYGlL2kQM6HhCixMrx0Kw",
+          "weekday": "wed",
+          "groupKey": "senior",
+          "groupLabel": "Группа 10-16 лет",
+          "timeFrom": "19:00",
+          "timeTo": "20:00"
+        },
+        {
+          "id": "E3bYwK0gStqu-2G-AwvZrQ",
+          "weekday": "wed",
+          "groupKey": "staff",
+          "groupLabel": "Группа 16+ лет",
+          "timeFrom": "20:00",
+          "timeTo": "21:45"
+        }
+      ],
+      "createdAt": "2026-03-22T16:55:30.124+03:00",
+      "updatedAt": "2026-03-22T16:55:30.127+03:00"
+    },
+    {
+      "id": "XBgpZoM1RvqL1WpwU1UXsw",
+      "title": "Ховрино, Базовская 15А",
+      "slug": "Bazovskaya",
+      "isActive": true,
+      "sortOrder": null,
+      "cityObject": {
+        "cityKey": "moscow",
+        "cityName": "Москва"
+      },
+      "metroName": "Ховрино",
+      "metroColor": {
+        "hex": "#2DBE2C"
+      },
+      "street": "Базовская 15А",
+      "location": {
+        "latitude": 55.8779852,
+        "longitude": 37.5113977
+      },
+      "heroImage": {
+        "url": "https://www.datocms-assets.com/196565/1774092392-basovskaya.jpg",
+        "alt": "Ховрино, Базовская 15А"
+      },
+      "hallDescription": {
+        "value": {
+          "schema": "dast",
+          "document": {
+            "type": "root",
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "span",
+                    "value": "Просторный зал\nЕсть раздевалка для детей \nДетская игровая комната \nПарковка во дворе \nДуш есть \nПропуск не нужен \n3 этаж , зал СССР"
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      },
+      "trialLessonPrice": 0,
+      "singleLessonPrice": 1200,
+      "monthlyPrice": 6500,
+      "coaches": [
+        {
+          "id": "cydKy_DoQDGvO6t-KybFlA",
+          "slug": "m_frolova",
+          "name": "Фролова Мария",
+          "phone": "+79653246639",
+          "level": "Instrutora",
+          "nick": "Bonita",
+          "photo": {
+            "url": "https://www.datocms-assets.com/196565/1772352810-m-frolova.png",
+            "alt": "Фролова Мария"
+          }
+        }
+      ],
+      "scheduleItems": [
+        {
+          "id": "JShQlMq_SrurJYVUcgKHug",
+          "weekday": "thu",
+          "groupKey": "junior",
+          "groupLabel": "Группа 3-6 лет",
+          "timeFrom": "17:00",
+          "timeTo": "17:50"
+        },
+        {
+          "id": "LbFQ1QaHQNazFiAf2hwsFw",
+          "weekday": "thu",
+          "groupKey": "middle",
+          "groupLabel": "Группа 7-16 лет",
+          "timeFrom": "18:30",
+          "timeTo": "19:30"
+        },
+        {
+          "id": "aKhhh46nTCewoNX4u3c3CQ",
+          "weekday": "thu",
+          "groupKey": "senior",
+          "groupLabel": "Группа 7-16 лет",
+          "timeFrom": "18:30",
+          "timeTo": "19:30"
+        },
+        {
+          "id": "L7GEudeQRzmKloQrU9Hgpg",
+          "weekday": "sat",
+          "groupKey": "junior",
+          "groupLabel": "Группа 3-6 лет",
+          "timeFrom": "11:00",
+          "timeTo": "11:50"
+        },
+        {
+          "id": "PuaAi8MNRkSRsOjvtzL8Wg",
+          "weekday": "sat",
+          "groupKey": "middle",
+          "groupLabel": "Группа 7-16 лет",
+          "timeFrom": "12:00",
+          "timeTo": "13:00"
+        },
+        {
+          "id": "JuWDm1XfR0iRmvu9o_T1hA",
+          "weekday": "sat",
+          "groupKey": "senior",
+          "groupLabel": "Группа 7-16 лет",
+          "timeFrom": "12:00",
+          "timeTo": "13:00"
+        }
+      ],
+      "createdAt": "2026-03-22T16:59:27.076+03:00",
+      "updatedAt": "2026-03-22T16:59:27.080+03:00"
+    },
+    {
+      "id": "C8GV0njdQFG7hELiUxzetg",
+      "title": "Краснодар, Котлярова 17",
+      "slug": "Kr_Kotlyarova",
+      "isActive": true,
+      "sortOrder": null,
+      "cityObject": {
+        "cityKey": "krasnodar",
+        "cityName": "Краснодар"
+      },
+      "metroName": null,
+      "metroColor": {
+        "hex": "#DF1A1A"
+      },
+      "street": "Ул. Котлярова, 17 ",
+      "location": {
+        "latitude": 45.070026,
+        "longitude": 39.0107947
+      },
+      "heroImage": {
+        "url": "https://www.datocms-assets.com/196565/1774188118-kotlyarova17.jpg",
+        "alt": "Краснодар, Котлярова 17"
+      },
+      "hallDescription": {
+        "value": {
+          "schema": "dast",
+          "document": {
+            "type": "root",
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "span",
+                    "value": "Зал небольшой. Подходит для мини группы 6-8 человек.\nПокрытие мягкое \nЕсть необходимый инвентарь\nПарковка во дворе\nDanny land"
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      },
+      "trialLessonPrice": 400,
+      "singleLessonPrice": 750,
+      "monthlyPrice": 4000,
+      "coaches": [
+        {
+          "id": "Sjd4xDNUS7KCOQ7ARzPA-A",
+          "slug": "i_molodozhnikov",
+          "name": "Молодожников Илья",
+          "phone": "+79284257061",
+          "level": "Instrutor",
+          "nick": "Mangusto",
+          "photo": {
+            "url": "https://www.datocms-assets.com/196565/1772352809-i-molodozhnikov.png",
+            "alt": "Молодожников Илья"
+          }
+        }
+      ],
+      "scheduleItems": [
+        {
+          "id": "OtyyXi4TQ2yO2RdkWiio1A",
+          "weekday": "wed",
+          "groupKey": "middle",
+          "groupLabel": "Группа 7-10 лет",
+          "timeFrom": "17:00",
+          "timeTo": "18:00"
+        },
+        {
+          "id": "EmcJKsQMQEmcUgVhOozvgQ",
+          "weekday": "wed",
+          "groupKey": "senior",
+          "groupLabel": "Группа 11-16 лет",
+          "timeFrom": "18:00",
+          "timeTo": "19:00"
+        },
+        {
+          "id": "EOrQDZsFQOehhVTftILOcQ",
+          "weekday": "wed",
+          "groupKey": "junior",
+          "groupLabel": "Группа 3-6 лет",
+          "timeFrom": "19:00",
+          "timeTo": "19:50"
+        },
+        {
+          "id": "evDJg_PGQHi0kamyAfLe1g",
+          "weekday": "fri",
+          "groupKey": "middle",
+          "groupLabel": "Группа 7-10 лет",
+          "timeFrom": "17:00",
+          "timeTo": "18:00"
+        },
+        {
+          "id": "NjKB18WKT3KGRRp7vG8qvA",
+          "weekday": "fri",
+          "groupKey": "junior",
+          "groupLabel": "Группа 3-6 лет",
+          "timeFrom": "19:00",
+          "timeTo": "19:50"
+        },
+        {
+          "id": "b-DbWhx-SNyv792nldB1TA",
+          "weekday": "fri",
+          "groupKey": "senior",
+          "groupLabel": "Группа 11-16 лет",
+          "timeFrom": "18:00",
+          "timeTo": "19:00"
+        }
+      ],
+      "createdAt": "2026-03-22T17:07:54.836+03:00",
+      "updatedAt": "2026-03-22T17:07:54.840+03:00"
+    },
+    {
+      "id": "aj4k3IjUQ863yMMP3EP3pg",
+      "title": "Краснодар, Московская",
+      "slug": "Kr_Moskovskaya",
+      "isActive": true,
+      "sortOrder": null,
+      "cityObject": {
+        "cityKey": "krasnodar",
+        "cityName": "Краснодар"
+      },
+      "metroName": null,
+      "metroColor": {
+        "hex": "#DF1A1A"
+      },
+      "street": "Ул. Московская, 69/18",
+      "location": {
+        "latitude": 45.0745181,
+        "longitude": 39.0007997
+      },
+      "heroImage": {
+        "url": "https://www.datocms-assets.com/196565/1774205454-krasnodar_moskovskaya.heic",
+        "alt": "Краснодар, Московская"
+      },
+      "hallDescription": {
+        "value": {
+          "schema": "dast",
+          "document": {
+            "type": "root",
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "span",
+                    "value": "Уютный зал\nЕсть необходимый инвентарь\nЕсть зона ожидания для родителей \nЕсть парковка\n2 этаж,ТЦ \"Легенда\""
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      },
+      "trialLessonPrice": 400,
+      "singleLessonPrice": 750,
+      "monthlyPrice": 4500,
+      "coaches": [
+        {
+          "id": "Sjd4xDNUS7KCOQ7ARzPA-A",
+          "slug": "i_molodozhnikov",
+          "name": "Молодожников Илья",
+          "phone": "+79284257061",
+          "level": "Instrutor",
+          "nick": "Mangusto",
+          "photo": {
+            "url": "https://www.datocms-assets.com/196565/1772352809-i-molodozhnikov.png",
+            "alt": "Молодожников Илья"
+          }
+        }
+      ],
+      "scheduleItems": [
+        {
+          "id": "Gk0ugNr8ThqkhOWqfnTntQ",
+          "weekday": "mon",
+          "groupKey": "staff",
+          "groupLabel": "Группа 16+ лет",
+          "timeFrom": "20:30",
+          "timeTo": "21:30"
+        },
+        {
+          "id": "P4bmBww1SwyUxr-AC-y6Ew",
+          "weekday": "wed",
+          "groupKey": "staff",
+          "groupLabel": "Группа 16+ лет",
+          "timeFrom": "20:30",
+          "timeTo": "21:30"
+        }
+      ],
+      "createdAt": "2026-03-22T17:14:02.616+03:00",
+      "updatedAt": "2026-03-25T14:14:47.661+03:00"
+    },
+    {
+      "id": "Mma2BSJcSZ-B0nPQV49RMg",
+      "title": "Краснодар, Монтажников",
+      "slug": "Kr_Montazhnikov",
+      "isActive": true,
+      "sortOrder": null,
+      "cityObject": {
+        "cityKey": "krasnodar",
+        "cityName": "Краснодар"
+      },
+      "metroName": null,
+      "metroColor": null,
+      "street": "Ул. Монтажников, 2",
+      "location": {
+        "latitude": 45.0589518,
+        "longitude": 38.9630246
+      },
+      "heroImage": {
+        "url": "https://www.datocms-assets.com/196565/1774205454-krasnodar_montajnikov.jpg",
+        "alt": "Краснодар, Монтажников"
+      },
+      "hallDescription": {
+        "value": {
+          "schema": "dast",
+          "document": {
+            "type": "root",
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "span",
+                    "value": "Уютный зал\nЕсть необходимый инвентарь\nЕсть зона ожидания для родителей \nЕсть парковка\n2 этаж, ДЦ \"Светлячок\""
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      },
+      "trialLessonPrice": 400,
+      "singleLessonPrice": 750,
+      "monthlyPrice": 4000,
+      "coaches": [
+        {
+          "id": "Sjd4xDNUS7KCOQ7ARzPA-A",
+          "slug": "i_molodozhnikov",
+          "name": "Молодожников Илья",
+          "phone": "+79284257061",
+          "level": "Instrutor",
+          "nick": "Mangusto",
+          "photo": {
+            "url": "https://www.datocms-assets.com/196565/1772352809-i-molodozhnikov.png",
+            "alt": "Молодожников Илья"
+          }
+        }
+      ],
+      "scheduleItems": [
+        {
+          "id": "AtzlwWm9QQ68bvc0c40-eQ",
+          "weekday": "mon",
+          "groupKey": "middle",
+          "groupLabel": "Группа 7-10 лет",
+          "timeFrom": "17:00",
+          "timeTo": "18:00"
+        },
+        {
+          "id": "JbRIs22kT9K5Pptyylt0Eg",
+          "weekday": "mon",
+          "groupKey": "senior",
+          "groupLabel": "Группа 11-16 лет",
+          "timeFrom": "18:00",
+          "timeTo": "19:00"
+        },
+        {
+          "id": "UYRKXIY2TsewBcHo-Tmjow",
+          "weekday": "mon",
+          "groupKey": "staff",
+          "groupLabel": "Группа 16+ лет",
+          "timeFrom": "19:00",
+          "timeTo": "19:50"
+        },
+        {
+          "id": "JvBjwz9cSTiVkrx1h1uTIA",
+          "weekday": "thu",
+          "groupKey": "middle",
+          "groupLabel": "Группа 7-10 лет",
+          "timeFrom": "17:00",
+          "timeTo": "18:00"
+        },
+        {
+          "id": "dN5YyIu1SluQtmccWyxjSg",
+          "weekday": "thu",
+          "groupKey": "senior",
+          "groupLabel": "Группа 11-16 лет",
+          "timeFrom": "18:00",
+          "timeTo": "19:00"
+        },
+        {
+          "id": "D-h0YEjoRXSWaJ-AjN1lhQ",
+          "weekday": "thu",
+          "groupKey": "staff",
+          "groupLabel": "Группа 16+ лет",
+          "timeFrom": "19:00",
+          "timeTo": "19:50"
+        }
+      ],
+      "createdAt": "2026-03-22T17:18:54.363+03:00",
+      "updatedAt": "2026-03-25T14:15:18.865+03:00"
+    },
+    {
+      "id": "CL5XApKPRyGFqZFCCpCATA",
+      "title": "Краснодар, Уральская",
+      "slug": "Kr_Uralskaya",
+      "isActive": true,
+      "sortOrder": null,
+      "cityObject": {
+        "cityKey": "krasnodar",
+        "cityName": "Краснодар"
+      },
+      "metroName": null,
+      "metroColor": null,
+      "street": "Ул. Уральская, 152/1",
+      "location": {
+        "latitude": 45.0374446,
+        "longitude": 39.0910781
+      },
+      "heroImage": {
+        "url": "https://www.datocms-assets.com/196565/1774205454-krasnodar_uralskaya.heic",
+        "alt": "Краснодар, Уральская"
+      },
+      "hallDescription": {
+        "value": {
+          "schema": "dast",
+          "document": {
+            "type": "root",
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "span",
+                    "value": "Просторный зал\nПол мягкий - татами\nЕсть необходимый инвентарь\nЕсть зона ожидания для родителей \nКлуб единоборств \"Колизей\""
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      },
+      "trialLessonPrice": 0,
+      "singleLessonPrice": 750,
+      "monthlyPrice": 4000,
+      "coaches": [
+        {
+          "id": "Sjd4xDNUS7KCOQ7ARzPA-A",
+          "slug": "i_molodozhnikov",
+          "name": "Молодожников Илья",
+          "phone": "+79284257061",
+          "level": "Instrutor",
+          "nick": "Mangusto",
+          "photo": {
+            "url": "https://www.datocms-assets.com/196565/1772352809-i-molodozhnikov.png",
+            "alt": "Молодожников Илья"
+          }
+        }
+      ],
+      "scheduleItems": [
+        {
+          "id": "A_vrfBYrTSWeJnBwTybmmA",
+          "weekday": "tue",
+          "groupKey": "middle",
+          "groupLabel": "Группа 7-10 лет",
+          "timeFrom": "16:30",
+          "timeTo": "17:30"
+        },
+        {
+          "id": "MGXtiz_7Q0i5EcOS0dDWzQ",
+          "weekday": "sat",
+          "groupKey": "junior",
+          "groupLabel": "Группа 3-6 лет",
+          "timeFrom": "11:00",
+          "timeTo": "11:50"
+        },
+        {
+          "id": "UM8W9I4mRjecC8-hX89hEA",
+          "weekday": "sat",
+          "groupKey": "middle",
+          "groupLabel": "Группа 7-10 лет",
+          "timeFrom": "12:00",
+          "timeTo": "13:00"
+        }
+      ],
+      "createdAt": "2026-03-22T17:22:24.692+03:00",
+      "updatedAt": "2026-03-25T14:15:47.461+03:00"
+    },
+    {
+      "id": "ZNXaBKkcQjila4PFORi3pQ",
+      "title": "Краснодар, Трудовой славы",
+      "slug": "Kr_TrudovoySlavi",
+      "isActive": true,
+      "sortOrder": null,
+      "cityObject": {
+        "cityKey": "krasnodar",
+        "cityName": "Краснодар"
+      },
+      "metroName": null,
+      "metroColor": null,
+      "street": "Ул. Трудовой славы, 25",
+      "location": {
+        "latitude": 45.0067209,
+        "longitude": 39.080761
+      },
+      "heroImage": {
+        "url": "https://www.datocms-assets.com/196565/1774189393-25.jpg",
+        "alt": "Краснодар, Трудовой славы"
+      },
+      "hallDescription": {
+        "value": {
+          "schema": "dast",
+          "document": {
+            "type": "root",
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "span",
+                    "value": "Просторный зал\nПол мягкий - татами\nЕсть необходимый инвентарь\nЕсть зона ожидания для родителей \nПарковка во дворе\nКлуб единоборств \"Колизей\""
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      },
+      "trialLessonPrice": 0,
+      "singleLessonPrice": 750,
+      "monthlyPrice": 4000,
+      "coaches": [
+        {
+          "id": "Sjd4xDNUS7KCOQ7ARzPA-A",
+          "slug": "i_molodozhnikov",
+          "name": "Молодожников Илья",
+          "phone": "+79284257061",
+          "level": "Instrutor",
+          "nick": "Mangusto",
+          "photo": {
+            "url": "https://www.datocms-assets.com/196565/1772352809-i-molodozhnikov.png",
+            "alt": "Молодожников Илья"
+          }
+        }
+      ],
+      "scheduleItems": [
+        {
+          "id": "NMmVUGtXSIe-naLDikyq6w",
+          "weekday": "mon",
+          "groupKey": "middle",
+          "groupLabel": "Группа 7-10 лет",
+          "timeFrom": "10:00",
+          "timeTo": "11:00"
+        },
+        {
+          "id": "MF4Y_lRhS46ZLabr0dn1BQ",
+          "weekday": "tue",
+          "groupKey": "middle",
+          "groupLabel": "Группа 7-10 лет",
+          "timeFrom": "19:30",
+          "timeTo": "20:30"
+        },
+        {
+          "id": "OLAjlee_SzS6tqWBMAyGbA",
+          "weekday": "tue",
+          "groupKey": "staff",
+          "groupLabel": "Группа 16+ лет",
+          "timeFrom": "20:30",
+          "timeTo": "21:30"
+        },
+        {
+          "id": "e-gJbQvCSC-Bm56YWWyBnQ",
+          "weekday": "wed",
+          "groupKey": "middle",
+          "groupLabel": "Группа 7-10 лет",
+          "timeFrom": "10:00",
+          "timeTo": "11:00"
+        },
+        {
+          "id": "QDeoJyDgT8O4-chaL3FCIw",
+          "weekday": "sat",
+          "groupKey": "junior",
+          "groupLabel": "Группа 3-6 лет",
+          "timeFrom": "16:00",
+          "timeTo": "16:50"
+        }
+      ],
+      "createdAt": "2026-03-22T17:26:05.768+03:00",
+      "updatedAt": "2026-03-22T17:26:12.060+03:00"
+    },
+    {
+      "id": "CHDlgI2_SnO6XunNOvXcCg",
+      "title": "Мытищи, Комарова 2к2",
+      "slug": "Mytischi_Komarova",
+      "isActive": true,
+      "sortOrder": null,
+      "cityObject": {
+        "cityKey": "mytishi",
+        "cityName": "Мытищи"
+      },
+      "metroName": null,
+      "metroColor": null,
+      "street": "Ул. Комарова д. 2к2",
+      "location": {
+        "latitude": 55.9173954,
+        "longitude": 37.7461182
+      },
+      "heroImage": {
+        "url": "https://www.datocms-assets.com/196565/1774094061-mitishi_komarova.heic",
+        "alt": "Мытищи, Комарова 2к2"
+      },
+      "hallDescription": {
+        "value": {
+          "schema": "dast",
+          "document": {
+            "type": "root",
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "span",
+                    "value": " Школа развития \"Маяк\", просторный зал, резиновое покрытие, есть зона ожидания для родителей, парковка перед залом"
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      },
+      "trialLessonPrice": 0,
+      "singleLessonPrice": 0,
+      "monthlyPrice": 5200,
+      "coaches": [
+        {
+          "id": "bs4vH6_XSAuFFeuhpZGoXg",
+          "slug": "a_aragon",
+          "name": "Арагон Антон",
+          "phone": "+79652027410",
+          "level": "Monitor",
+          "nick": "Aragon",
+          "photo": {
+            "url": "https://www.datocms-assets.com/196565/1772352809-a-aragon.png",
+            "alt": "Арагон Антон"
+          }
+        }
+      ],
+      "scheduleItems": [
+        {
+          "id": "FnTfgdtcQrmeVyzL7Tbzjg",
+          "weekday": "tue",
+          "groupKey": "middle",
+          "groupLabel": "Группа 7-10 лет",
+          "timeFrom": "17:00",
+          "timeTo": "18:00"
+        },
+        {
+          "id": "J36YOseYTZGvqXuCRo9fgw",
+          "weekday": "tue",
+          "groupKey": "junior",
+          "groupLabel": "Группа 3-6 лет",
+          "timeFrom": "18:15",
+          "timeTo": "19:00"
+        },
+        {
+          "id": "BLDY3uHtSl6AzZFPcGUhsQ",
+          "weekday": "tue",
+          "groupKey": "senior",
+          "groupLabel": "Группа 11-16 лет",
+          "timeFrom": "19:00",
+          "timeTo": "20:30"
+        },
+        {
+          "id": "Be1fCjU6QwWUqbq2eRJDmA",
+          "weekday": "thu",
+          "groupKey": "middle",
+          "groupLabel": "Группа 7-10 лет",
+          "timeFrom": "17:00",
+          "timeTo": "18:00"
+        },
+        {
+          "id": "DNlG8v00SsKC4asYF_xbVQ",
+          "weekday": "thu",
+          "groupKey": "junior",
+          "groupLabel": "Группа 3-6 лет",
+          "timeFrom": "18:15",
+          "timeTo": "19:00"
+        },
+        {
+          "id": "JXRp4Pz3RaiKRSuJTHklTg",
+          "weekday": "thu",
+          "groupKey": "senior",
+          "groupLabel": "Группа 11-16 лет",
+          "timeFrom": "19:00",
+          "timeTo": "20:30"
+        }
+      ],
+      "createdAt": "2026-03-22T17:32:05.687+03:00",
+      "updatedAt": "2026-03-25T14:27:17.533+03:00"
+    },
+    {
+      "id": "NBiQQY3BSYm8XTJ6a4ct_Q",
+      "title": "Эшторил",
+      "slug": "Estoril",
+      "isActive": true,
+      "sortOrder": null,
+      "cityObject": {
+        "cityKey": "lissabon",
+        "cityName": "Лиссабон"
+      },
+      "metroName": null,
+      "metroColor": {
+        "hex": "#DF1A1A"
+      },
+      "street": "R. Santa Rita 169b, 2765-280 Estoril",
+      "location": {
+        "latitude": 38.7038915,
+        "longitude": -9.390640699999999
+      },
+      "heroImage": {
+        "url": "https://www.datocms-assets.com/196565/1774094057-estoril_portugal.png",
+        "alt": "Эшторил"
+      },
+      "hallDescription": {
+        "value": {
+          "schema": "dast",
+          "document": {
+            "type": "root",
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "span",
+                    "value": "Центр \"Колобок\". Просторный зал в районе Парка Наций, 5 минут от станции Moscavide. Вмещает до 16 человек, оснащен оборудованием и музыкальными инструментами для занятий Капоэйра.\n\nЕсть туалет, зона ожидания для родителей. Занятия для детей от 3-х лет."
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      },
+      "trialLessonPrice": 20,
+      "singleLessonPrice": 20,
+      "monthlyPrice": 90,
+      "coaches": [
+        {
+          "id": "RXzrujNlSxuOvIhFKCeL5A",
+          "slug": "t_rogozin",
+          "name": "Рогозин Тимур",
+          "phone": "+79999809323",
+          "level": "Contra-Mestre",
+          "nick": "Pirulito",
+          "photo": {
+            "url": "https://www.datocms-assets.com/196565/1772352810-t-rogozin.png",
+            "alt": "Рогозин Тимур"
+          }
+        }
+      ],
+      "scheduleItems": [
+        {
+          "id": "MpdTHKEbR9KNSwSG7koLUA",
+          "weekday": "tue",
+          "groupKey": "junior",
+          "groupLabel": "Группа 3-6 лет",
+          "timeFrom": "17:15",
+          "timeTo": "18:00"
+        },
+        {
+          "id": "UOBJGFYTRfSv-hehWF_--A",
+          "weekday": "tue",
+          "groupKey": "middle",
+          "groupLabel": "Группа 7-10 лет",
+          "timeFrom": "18:00",
+          "timeTo": "19:00"
+        },
+        {
+          "id": "C1O4Y6VvS1Cnqn0sAgZb2A",
+          "weekday": "tue",
+          "groupKey": "senior",
+          "groupLabel": "Группа 11-16 лет",
+          "timeFrom": "19:00",
+          "timeTo": "20:00"
+        },
+        {
+          "id": "MH3kra8rSteU_W-N8joCGw",
+          "weekday": "tue",
+          "groupKey": "staff",
+          "groupLabel": "Группа 16+ лет",
+          "timeFrom": "19:00",
+          "timeTo": "20:00"
+        },
+        {
+          "id": "QrUfNIM0RNO4m9Gz8GFoiQ",
+          "weekday": "thu",
+          "groupKey": "junior",
+          "groupLabel": "Группа 3-6 лет",
+          "timeFrom": "17:15",
+          "timeTo": "18:00"
+        },
+        {
+          "id": "I8-UP5EYT5SrWOijWicbqA",
+          "weekday": "thu",
+          "groupKey": "middle",
+          "groupLabel": "Группа 7-10 лет",
+          "timeFrom": "18:00",
+          "timeTo": "19:00"
+        },
+        {
+          "id": "GUCy0Ms_SBGY-Kim3h2XUQ",
+          "weekday": "thu",
+          "groupKey": "senior",
+          "groupLabel": "Группа 11-16 лет",
+          "timeFrom": "19:00",
+          "timeTo": "20:00"
+        },
+        {
+          "id": "S2VKq2TwTMeagxeHZqxZfQ",
+          "weekday": "thu",
+          "groupKey": "staff",
+          "groupLabel": "Группа 16+ лет",
+          "timeFrom": "19:00",
+          "timeTo": "20:00"
+        }
+      ],
+      "createdAt": "2026-03-25T14:14:15.687+03:00",
+      "updatedAt": "2026-03-25T14:14:15.691+03:00"
+    },
+    {
+      "id": "Sxh9P8QtRx-NdlAu4Oir6w",
+      "title": "Лиссабон, Лориш",
+      "slug": "Lisboa_lorish",
+      "isActive": true,
+      "sortOrder": null,
+      "cityObject": {
+        "cityKey": "lissabon",
+        "cityName": "Лиссабон"
+      },
+      "metroName": null,
+      "metroColor": {
+        "hex": "#DF1A1A"
+      },
+      "street": "Лиссабон, Лориш, Мошкавиди, Alameda dos Oceanos ",
+      "location": {
+        "latitude": 38.7694251,
+        "longitude": -9.095463
+      },
+      "heroImage": {
+        "url": "https://www.datocms-assets.com/196565/1774094065-lissabon_portugal.jpeg",
+        "alt": "Лиссабон, Лориш"
+      },
+      "hallDescription": {
+        "value": {
+          "schema": "dast",
+          "document": {
+            "type": "root",
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "span",
+                    "value": "Studio in. Просторный зал в районе Парка Наций, 5 минут от станции Moscavide. Вмещает до 16 человек, оснащен оборудованием и музыкальными инструментами для занятий Капоэйра.\n\nЕсть раздевалка, душ, туалет, зона ожидания для родителей. Занятия для детей от 3-х лет."
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      },
+      "trialLessonPrice": 20,
+      "singleLessonPrice": 20,
+      "monthlyPrice": 90,
+      "coaches": [
+        {
+          "id": "RXzrujNlSxuOvIhFKCeL5A",
+          "slug": "t_rogozin",
+          "name": "Рогозин Тимур",
+          "phone": "+79999809323",
+          "level": "Contra-Mestre",
+          "nick": "Pirulito",
+          "photo": {
+            "url": "https://www.datocms-assets.com/196565/1772352810-t-rogozin.png",
+            "alt": "Рогозин Тимур"
+          }
+        }
+      ],
+      "scheduleItems": [
+        {
+          "id": "SelvgEZ4QSy8tDIe-du2uA",
+          "weekday": "fri",
+          "groupKey": "junior",
+          "groupLabel": "Группа 3-6 лет",
+          "timeFrom": "17:30",
+          "timeTo": "18:15"
+        },
+        {
+          "id": "ePUOo0-GRLKsKN-4k1vavA",
+          "weekday": "fri",
+          "groupKey": "middle",
+          "groupLabel": "Группа 7-10 лет",
+          "timeFrom": "19:20",
+          "timeTo": "20:20"
+        },
+        {
+          "id": "L7BMujXGSrO_kZVu2_kVFQ",
+          "weekday": "sun",
+          "groupKey": "junior",
+          "groupLabel": "Группа 3-6 лет",
+          "timeFrom": "9:45",
+          "timeTo": "10:30"
+        },
+        {
+          "id": "VLYFwgFZSHmz4EdSl1KHvA",
+          "weekday": "sun",
+          "groupKey": "middle",
+          "groupLabel": "Группа 7-10 лет",
+          "timeFrom": "10:30",
+          "timeTo": "11:30"
+        },
+        {
+          "id": "eJFm1ZXlTSeoVgcSeJcHCg",
+          "weekday": "sun",
+          "groupKey": "senior",
+          "groupLabel": "Группа 11-16 лет",
+          "timeFrom": "11:30",
+          "timeTo": "12:30"
+        },
+        {
+          "id": "BaQRMAKrR4CDrMerWh6DMQ",
+          "weekday": "sun",
+          "groupKey": "staff",
+          "groupLabel": "Группа 16+ лет",
+          "timeFrom": "12:30",
+          "timeTo": "13:30"
+        }
+      ],
+      "createdAt": "2026-03-25T14:23:31.328+03:00",
+      "updatedAt": "2026-03-25T14:23:31.332+03:00"
+    },
+    {
+      "id": "CphDNHmwRfC3nu6ssxe6LQ",
+      "title": "Лиссабон, Avenida de Pádua",
+      "slug": "Lisboa_AvenidaDePadua",
+      "isActive": true,
+      "sortOrder": null,
+      "cityObject": {
+        "cityKey": "lissabon",
+        "cityName": "Лиссабон"
+      },
+      "metroName": null,
+      "metroColor": null,
+      "street": " Лиссабон, Avenida de Pádua",
+      "location": {
+        "latitude": 38.7629167,
+        "longitude": -9.1044543
+      },
+      "heroImage": {
+        "url": "https://www.datocms-assets.com/196565/1774092527-portugal_elya.jpeg",
+        "alt": "Лиссабон, Avenida de Pádua"
+      },
+      "hallDescription": {
+        "value": {
+          "schema": "dast",
+          "document": {
+            "type": "root",
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "span",
+                    "value": "Life Center. Атмофсерный зал с панорамными окнами в 1 мин от станции Cabo Ruivo. Вмещает до 12 человек, оснащен оборудованием для занятий Капоэйра.\n\nЕсть раздевалка, душ, туалет, зона ожидания для родителей. Занятия для детей от 3-х лет."
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      },
+      "trialLessonPrice": 20,
+      "singleLessonPrice": 20,
+      "monthlyPrice": 90,
+      "coaches": [
+        {
+          "id": "HQe9WmklQvC64d9iHiXotg",
+          "slug": "e_renne",
+          "name": "Ренне Эльвира",
+          "phone": "+351911911358",
+          "level": "Monitora",
+          "nick": "Elvira",
+          "photo": {
+            "url": "https://www.datocms-assets.com/196565/1772352810-e-renne.png",
+            "alt": "Ренне Эльвира"
+          }
+        }
+      ],
+      "scheduleItems": [
+        {
+          "id": "SSp7ygHCQNaDbY9WYhrL9g",
+          "weekday": "mon",
+          "groupKey": "junior",
+          "groupLabel": "Группа 3-6 лет",
+          "timeFrom": "18:00",
+          "timeTo": "18:45"
+        }
+      ],
+      "createdAt": "2026-03-25T14:25:54.617+03:00",
+      "updatedAt": "2026-03-25T14:25:59.122+03:00"
+    },
+    {
+      "id": "TP4lOluLRk237-Kr0FAA3A",
+      "title": "Кропоткинская",
+      "slug": "Kropotkinskaya",
+      "isActive": true,
+      "sortOrder": null,
+      "cityObject": {
+        "cityKey": "moscow",
+        "cityName": "Москва"
+      },
+      "metroName": "Кропоткинская",
+      "metroColor": {
+        "hex": "#DF1A1A"
+      },
+      "street": "пер. Сивцев Вражек 20",
+      "location": {
+        "latitude": 55.747614,
+        "longitude": 37.5944143
+      },
+      "heroImage": {
+        "url": "https://www.datocms-assets.com/196565/1774094394-kropotkinskaya.jpg",
+        "alt": "Кропоткинская"
+      },
+      "hallDescription": {
+        "value": {
+          "schema": "dast",
+          "document": {
+            "type": "root",
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "span",
+                    "value": "Танцевальная студия Арбат-класс. Городская парковка. Раздевалки, туалет, душ"
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      },
+      "trialLessonPrice": 0,
+      "singleLessonPrice": 1000,
+      "monthlyPrice": 5500,
+      "coaches": [
+        {
+          "id": "PcjE-WUxSK2Cw0DD0RvbAg",
+          "slug": "m_miheev",
+          "name": "Михеев Михаил",
+          "phone": "+79672867679",
+          "level": "Professor",
+          "nick": "Superhomem",
+          "photo": {
+            "url": "https://www.datocms-assets.com/196565/1772352810-m-miheev.png",
+            "alt": "Михеев Михаил"
+          }
+        }
+      ],
+      "scheduleItems": [
+        {
+          "id": "Th9J8aNER_CBhAGjAC5_iw",
+          "weekday": "mon",
+          "groupKey": "staff",
+          "groupLabel": "Группа 16+ лет",
+          "timeFrom": "19:00",
+          "timeTo": "20:30"
+        },
+        {
+          "id": "ccf4ufeZT2GFBfpuDHbcGQ",
+          "weekday": "wed",
+          "groupKey": "staff",
+          "groupLabel": "Группа 16+ лет",
+          "timeFrom": "19:00",
+          "timeTo": "20:30"
+        }
+      ],
+      "createdAt": "2026-03-25T14:30:41.496+03:00",
+      "updatedAt": "2026-03-25T14:30:41.499+03:00"
+    },
+    {
+      "id": "R8qlzh9USHKNL6bzA4VymA",
+      "title": "Медведково",
+      "slug": "Medvedkovo",
+      "isActive": true,
+      "sortOrder": null,
+      "cityObject": {
+        "cityKey": "moscow",
+        "cityName": "Москва"
+      },
+      "metroName": "Медведково",
+      "metroColor": {
+        "hex": "#F58220"
+      },
+      "street": "ул. Полярная 33, стр 3",
+      "location": {
+        "latitude": 55.88888730000001,
+        "longitude": 37.6443801
+      },
+      "heroImage": {
+        "url": "https://www.datocms-assets.com/196565/1774094439-medvedkovo.jpg",
+        "alt": "Медведково"
+      },
+      "hallDescription": {
+        "value": {
+          "schema": "dast",
+          "document": {
+            "type": "root",
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "span",
+                    "value": "Спортклуб \"FightPro\" на 3-м этаже. Есть парковка. Раздевалки, туалеты, душевые. Покрытие татами. 100м2. "
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      },
+      "trialLessonPrice": 0,
+      "singleLessonPrice": 1200,
+      "monthlyPrice": 6500,
+      "coaches": [
+        {
+          "id": "PcjE-WUxSK2Cw0DD0RvbAg",
+          "slug": "m_miheev",
+          "name": "Михеев Михаил",
+          "phone": "+79672867679",
+          "level": "Professor",
+          "nick": "Superhomem",
+          "photo": {
+            "url": "https://www.datocms-assets.com/196565/1772352810-m-miheev.png",
+            "alt": "Михеев Михаил"
+          }
+        }
+      ],
+      "scheduleItems": [
+        {
+          "id": "Vfkh2mVzTQWrEzmaX-BguA",
+          "weekday": "mon",
+          "groupKey": "middle",
+          "groupLabel": "Группа 7-10 лет",
+          "timeFrom": "15:00",
+          "timeTo": "16:00"
+        },
+        {
+          "id": "JB3wOXPgRVaWS_VkEAH_1Q",
+          "weekday": "mon",
+          "groupKey": "junior",
+          "groupLabel": "Группа 3-6 лет",
+          "timeFrom": "16:00",
+          "timeTo": "17:00"
+        },
+        {
+          "id": "KD8UbUDYQ8OKFUVzIyYqGQ",
+          "weekday": "wed",
+          "groupKey": "middle",
+          "groupLabel": "Группа 7-10 лет",
+          "timeFrom": "15:00",
+          "timeTo": "16:00"
+        },
+        {
+          "id": "Fmj0-p5JQuWQLxsw1rMN-w",
+          "weekday": "wed",
+          "groupKey": "junior",
+          "groupLabel": "Группа 3-6 лет",
+          "timeFrom": "16:00",
+          "timeTo": "17:00"
+        }
+      ],
+      "createdAt": "2026-03-25T14:34:50.481+03:00",
+      "updatedAt": "2026-03-25T14:34:50.485+03:00"
+    },
+    {
+      "id": "SgkqY7kjTAmwidapl9i2kw",
+      "title": "Бабушкинская",
+      "slug": "Babushkinskaya",
+      "isActive": true,
+      "sortOrder": null,
+      "cityObject": {
+        "cityKey": "moscow",
+        "cityName": "Москва"
+      },
+      "metroName": "Бабушкинская",
+      "metroColor": {
+        "hex": "#FBA135"
+      },
+      "street": "ул. Лётчика Бабушкина, 26, ТЦ Орион",
+      "location": {
+        "latitude": 55.8691634,
+        "longitude": 37.6771788
+      },
+      "heroImage": {
+        "url": "https://www.datocms-assets.com/196565/1774094310-babushkinskaya_oreon.jpg",
+        "alt": "Бабушкинская"
+      },
+      "hallDescription": {
+        "value": {
+          "schema": "dast",
+          "document": {
+            "type": "root",
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "span",
+                    "value": "ТЦ \"Орион\", 2 этаж, ДК \"Юность\", есть парковка (платная), зал 160м2, раздевалки, покрытие татами"
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      },
+      "trialLessonPrice": 0,
+      "singleLessonPrice": 2500,
+      "monthlyPrice": 5600,
+      "coaches": [
+        {
+          "id": "PcjE-WUxSK2Cw0DD0RvbAg",
+          "slug": "m_miheev",
+          "name": "Михеев Михаил",
+          "phone": "+79672867679",
+          "level": "Professor",
+          "nick": "Superhomem",
+          "photo": {
+            "url": "https://www.datocms-assets.com/196565/1772352810-m-miheev.png",
+            "alt": "Михеев Михаил"
+          }
+        }
+      ],
+      "scheduleItems": [
+        {
+          "id": "AiUZX-soQqCVr-TvdfG9yQ",
+          "weekday": "tue",
+          "groupKey": "middle",
+          "groupLabel": "Группа 7-10 лет",
+          "timeFrom": "16:00",
+          "timeTo": "17:00"
+        },
+        {
+          "id": "RfIAuYZlQpuDskHRsf4NaA",
+          "weekday": "tue",
+          "groupKey": "junior",
+          "groupLabel": "Группа 3-6 лет",
+          "timeFrom": "17:00",
+          "timeTo": "17:45"
+        },
+        {
+          "id": "defVOnCvS22FmTIZqG_gQA",
+          "weekday": "tue",
+          "groupKey": "junior",
+          "groupLabel": "Группа 3-6 лет",
+          "timeFrom": "18:00",
+          "timeTo": "19:00"
+        },
+        {
+          "id": "dNXjmifcT8yu8yEud6FP_A",
+          "weekday": "tue",
+          "groupKey": "senior",
+          "groupLabel": "Группа 11-16 лет",
+          "timeFrom": "19:00",
+          "timeTo": "20:00"
+        },
+        {
+          "id": "RF7IxKlkQSCTDUAhvOuF9w",
+          "weekday": "tue",
+          "groupKey": "staff",
+          "groupLabel": "Группа 16+ лет",
+          "timeFrom": "20:00",
+          "timeTo": "21:30"
+        },
+        {
+          "id": "B7YO5i8yQ7iDEY3aoA-F2w",
+          "weekday": "thu",
+          "groupKey": "middle",
+          "groupLabel": "Группа 7-10 лет",
+          "timeFrom": "16:00",
+          "timeTo": "17:00"
+        },
+        {
+          "id": "M6kH7BOxQay3bs9W7btiDA",
+          "weekday": "thu",
+          "groupKey": "junior",
+          "groupLabel": "Группа 3-6 лет",
+          "timeFrom": "17:00",
+          "timeTo": "17:45"
+        },
+        {
+          "id": "SpCk1EvnSFOnY3ZtnwNcdQ",
+          "weekday": "thu",
+          "groupKey": "junior",
+          "groupLabel": "Группа 3-6 лет",
+          "timeFrom": "18:00",
+          "timeTo": "19:00"
+        },
+        {
+          "id": "CoH0GXoXSaumcQUcP7OwCA",
+          "weekday": "thu",
+          "groupKey": "senior",
+          "groupLabel": "Группа 11-16 лет",
+          "timeFrom": "19:00",
+          "timeTo": "20:00"
+        },
+        {
+          "id": "PhJTXccvTzmZlFdDU4M9hA",
+          "weekday": "thu",
+          "groupKey": "staff",
+          "groupLabel": "Группа 16+ лет",
+          "timeFrom": "20:00",
+          "timeTo": "21:30"
+        }
+      ],
+      "createdAt": "2026-03-25T14:42:45.030+03:00",
+      "updatedAt": "2026-03-25T14:42:45.039+03:00"
+    },
+    {
+      "id": "UsOXdmTDRYeBj5jFBk0y1A",
+      "title": "Менделеевская",
+      "slug": "Mendeleevskaya",
+      "isActive": true,
+      "sortOrder": null,
+      "cityObject": {
+        "cityKey": "moscow",
+        "cityName": "Москва"
+      },
+      "metroName": "Менделеевская",
+      "metroColor": {
+        "hex": "#A1A1A1"
+      },
+      "street": "Новолесная улица, 6Бс1",
+      "location": {
+        "latitude": 55.7835376,
+        "longitude": 37.5921367
+      },
+      "heroImage": {
+        "url": "https://www.datocms-assets.com/196565/1774094493-mendeleevskaya.jpg",
+        "alt": "Менделеевская"
+      },
+      "hallDescription": {
+        "value": {
+          "schema": "dast",
+          "document": {
+            "type": "root",
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "span",
+                    "value": "Зал находится на первом этаже института психологии им. Милтона Эриксона. Напольное покрытие – ламинат, есть мягкие маты-татами. "
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      },
+      "trialLessonPrice": 0,
+      "singleLessonPrice": 1000,
+      "monthlyPrice": 6000,
+      "coaches": [
+        {
+          "id": "S1ZjPpaFT-iYALBtHKgeqg",
+          "slug": "r_minnulin",
+          "name": "Миннуллин Рамиль",
+          "phone": "+79266906147",
+          "level": "Monitor",
+          "nick": "Ramil",
+          "photo": {
+            "url": "https://www.datocms-assets.com/196565/1772352809-r-minullin.png",
+            "alt": "Миннуллин Рамиль"
+          }
+        }
+      ],
+      "scheduleItems": [
+        {
+          "id": "BlKhZebOR3u5HA7MbIjDew",
+          "weekday": "mon",
+          "groupKey": "staff",
+          "groupLabel": "Группа 16+ лет",
+          "timeFrom": "19:30",
+          "timeTo": "21:00"
+        },
+        {
+          "id": "b4NlLin9Q-ibfoeuXq1OpA",
+          "weekday": "wed",
+          "groupKey": "staff",
+          "groupLabel": "Группа 16+ лет",
+          "timeFrom": "19:30",
+          "timeTo": "21:00"
+        }
+      ],
+      "createdAt": "2026-03-25T14:45:08.922+03:00",
+      "updatedAt": "2026-03-25T14:45:08.925+03:00"
+    },
+    {
+      "id": "LSg92eD4SYa7mM97ETWIgw",
+      "title": "Платформа Лось",
+      "slug": "Platforma_Los",
+      "isActive": true,
+      "sortOrder": null,
+      "cityObject": {
+        "cityKey": "moscow",
+        "cityName": "Москва"
+      },
+      "metroName": "Платформа Лось",
+      "metroColor": null,
+      "street": "Москва, улица Малыгина, 3с2",
+      "location": {
+        "latitude": 55.8776746,
+        "longitude": 37.6996515
+      },
+      "heroImage": {
+        "url": "https://www.datocms-assets.com/196565/1773852393-moscow.png",
+        "alt": "Платформа Лось"
+      },
+      "hallDescription": {
+        "value": {
+          "schema": "dast",
+          "document": {
+            "type": "root",
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "span",
+                    "value": "клуб СВАРОГ. "
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      },
+      "trialLessonPrice": 0,
+      "singleLessonPrice": 1000,
+      "monthlyPrice": 6500,
+      "coaches": [
+        {
+          "id": "DEwwVkHTS-mJaJvF3wyM7A",
+          "slug": "a_zuykin",
+          "name": "Зуйкин Алексей",
+          "phone": "+79776028976",
+          "level": "Monitor",
+          "nick": "Sorriso",
+          "photo": {
+            "url": "https://www.datocms-assets.com/196565/1772352810-a-zuykin.png",
+            "alt": "Зуйкин Алексей"
+          }
+        }
+      ],
+      "scheduleItems": [
+        {
+          "id": "DdketJE4QUS6U7asE3wPcw",
+          "weekday": "tue",
+          "groupKey": "middle",
+          "groupLabel": "Группа 7-10 лет",
+          "timeFrom": "17:00",
+          "timeTo": "18:00"
+        },
+        {
+          "id": "fbeyQlYeSP-PGpJTk4LKvw",
+          "weekday": "tue",
+          "groupKey": "senior",
+          "groupLabel": "Группа 12+ лет",
+          "timeFrom": "18:00",
+          "timeTo": "19:00"
+        },
+        {
+          "id": "Bb1MeumNTpGj78aibGoENA",
+          "weekday": "thu",
+          "groupKey": "middle",
+          "groupLabel": "Группа 7-10 лет",
+          "timeFrom": "17:00",
+          "timeTo": "18:00"
+        },
+        {
+          "id": "LCXMCYdUQHGUBJGERV_djA",
+          "weekday": "thu",
+          "groupKey": "senior",
+          "groupLabel": "Группа 12+ лет",
+          "timeFrom": "18:00",
+          "timeTo": "19:00"
+        },
+        {
+          "id": "BJL5NJqWQ3OwW8IXjRFvKg",
+          "weekday": "sat",
+          "groupKey": "middle",
+          "groupLabel": "Группа 7-10 лет",
+          "timeFrom": "17:00",
+          "timeTo": "18:00"
+        },
+        {
+          "id": "OVxpBNZtTuGoRu889Z3d6A",
+          "weekday": "sat",
+          "groupKey": "senior",
+          "groupLabel": "Группа 12+ лет",
+          "timeFrom": "18:00",
+          "timeTo": "19:00"
+        }
+      ],
+      "createdAt": "2026-03-25T14:50:01.578+03:00",
+      "updatedAt": "2026-03-25T14:50:33.075+03:00"
+    },
+    {
+      "id": "A7v-27mLRCCqk476bh3Jig",
+      "title": "Красногорская",
+      "slug": "Krasnogorskaya",
+      "isActive": true,
+      "sortOrder": null,
+      "cityObject": {
+        "cityKey": "krasnogorsk",
+        "cityName": "Красногорск"
+      },
+      "metroName": null,
+      "metroColor": null,
+      "street": "Московская область, Красногорск, улица Братьев Горожанкиных, 2Б",
+      "location": {
+        "latitude": 55.8297817,
+        "longitude": 37.3000997
+      },
+      "heroImage": {
+        "url": "https://www.datocms-assets.com/196565/1774094202-krasnogorsk_bratiev.jpg",
+        "alt": "Красногорская"
+      },
+      "hallDescription": {
+        "value": {
+          "schema": "dast",
+          "document": {
+            "type": "root",
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "span",
+                    "value": "Спортивный клуб Zeus, второй этаж. Вход со стороны двора. Есть душ, раздевалка. "
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      },
+      "trialLessonPrice": 0,
+      "singleLessonPrice": 1000,
+      "monthlyPrice": 6000,
+      "coaches": [
+        {
+          "id": "DEwwVkHTS-mJaJvF3wyM7A",
+          "slug": "a_zuykin",
+          "name": "Зуйкин Алексей",
+          "phone": "+79776028976",
+          "level": "Monitor",
+          "nick": "Sorriso",
+          "photo": {
+            "url": "https://www.datocms-assets.com/196565/1772352810-a-zuykin.png",
+            "alt": "Зуйкин Алексей"
+          }
+        }
+      ],
+      "scheduleItems": [
+        {
+          "id": "ZQxKinHsQLShW_YedPjkhw",
+          "weekday": "mon",
+          "groupKey": "junior",
+          "groupLabel": "Группа 4-6 лет",
+          "timeFrom": "17:00",
+          "timeTo": "17:45"
+        },
+        {
+          "id": "eJj5ZM1jRc-82xJ8e6Iz6Q",
+          "weekday": "mon",
+          "groupKey": "middle",
+          "groupLabel": "Группа 7-11 лет",
+          "timeFrom": "18:00",
+          "timeTo": "19:00"
+        },
+        {
+          "id": "aGd2mh7gSQC9zRIutDjodw",
+          "weekday": "mon",
+          "groupKey": "senior",
+          "groupLabel": "Группа 12+ лет",
+          "timeFrom": "19:00",
+          "timeTo": "20:00"
+        },
+        {
+          "id": "YogqkKlNRhyTbiZ8hyTAEw",
+          "weekday": "fri",
+          "groupKey": "junior",
+          "groupLabel": "Группа 4-6 лет",
+          "timeFrom": "17:00",
+          "timeTo": "17:45"
+        },
+        {
+          "id": "ZlJ0tHNzQQ2y9G44_WrbSw",
+          "weekday": "fri",
+          "groupKey": "middle",
+          "groupLabel": "Группа 7-11 лет",
+          "timeFrom": "18:00",
+          "timeTo": "19:00"
+        },
+        {
+          "id": "SuM8gktTSP-8AWj5ScR8Og",
+          "weekday": "fri",
+          "groupKey": "senior",
+          "groupLabel": "Группа 12+ лет",
+          "timeFrom": "19:00",
+          "timeTo": "20:00"
+        },
+        {
+          "id": "ZXe5KxdZQ2O4u1we6r9evQ",
+          "weekday": "sat",
+          "groupKey": "junior",
+          "groupLabel": "Группа 4-6 лет",
+          "timeFrom": "17:00",
+          "timeTo": "17:45"
+        },
+        {
+          "id": "Omy7tV31QAmDwcWNMCU7qg",
+          "weekday": "sat",
+          "groupKey": "middle",
+          "groupLabel": "Группа 7-11 лет",
+          "timeFrom": "18:00",
+          "timeTo": "19:00"
+        },
+        {
+          "id": "Z7ngq6eVTE2eYCx2nF1vHQ",
+          "weekday": "sat",
+          "groupKey": "senior",
+          "groupLabel": "Группа 12+ лет",
+          "timeFrom": "19:00",
+          "timeTo": "20:00"
+        }
+      ],
+      "createdAt": "2026-03-25T18:02:42.101+03:00",
+      "updatedAt": "2026-03-25T18:05:44.294+03:00"
     }
   ]
 }
