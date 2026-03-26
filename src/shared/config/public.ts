@@ -4,14 +4,40 @@ type TramvaiState = {
   };
 };
 
+let cachedTramvaiState: TramvaiState | null | undefined;
+
+const readTramvaiState = () => {
+  if (typeof document === 'undefined') {
+    return null;
+  }
+
+  if (cachedTramvaiState !== undefined) {
+    return cachedTramvaiState;
+  }
+
+  const stateElement = document.getElementById('__TRAMVAI_STATE__');
+
+  if (!stateElement?.textContent) {
+    cachedTramvaiState = null;
+
+    return cachedTramvaiState;
+  }
+
+  try {
+    cachedTramvaiState = JSON.parse(stateElement.textContent) as TramvaiState;
+  } catch {
+    cachedTramvaiState = null;
+  }
+
+  return cachedTramvaiState;
+};
+
 const readTramvaiClientEnv = (name: string) => {
   if (typeof window === 'undefined') {
     return '';
   }
 
-  const tramvaiState = Reflect.get(window, '__TRAMVAI_STATE__') as
-    | TramvaiState
-    | undefined;
+  const tramvaiState = readTramvaiState();
 
   return tramvaiState?.stores?.environment?.[name];
 };
