@@ -14,7 +14,7 @@ import {
 import { ModalStore, setModalState } from '~shared/ui/modal/store';
 import { useEvents, useSelector } from '@tramvai/state';
 import Success from '~app/assets/sucsess.png';
-import { SIGNUP_FORM_URL } from '~shared/config/public';
+import { getSignupFormUrl } from '~shared/config/public';
 import { validate } from './utils/validate';
 
 import type { TSignUpFormErrors, TSignUpFormProps } from './types';
@@ -94,6 +94,7 @@ export function SignUpForm({
   filialOptions: filialOptionsProp,
   preferredCoachSlug,
 }: TSignUpFormProps) {
+  const signupFormUrl = getSignupFormUrl();
   const formRef = useRef<HTMLFormElement>(undefined);
   const [errors, setFormErrors] = useState<TSignUpFormErrors | null>(null);
   const [filialOptions, setFilialOptions] = useState(() =>
@@ -248,7 +249,7 @@ export function SignUpForm({
         phone: phone.replace('+', ''),
         filial,
       }).toString();
-      fetch(SIGNUP_FORM_URL, {
+      fetch(signupFormUrl, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/x-www-form-urlencoded',
@@ -276,7 +277,7 @@ export function SignUpForm({
         ref={formRef}
         className={styles.Form}
         method="POST"
-        action={SIGNUP_FORM_URL}
+        action={signupFormUrl}
       >
         {contactsVariant && (
           <Typography weight="demiBold" className={styles.Title}>

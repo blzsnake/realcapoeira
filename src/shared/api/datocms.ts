@@ -1,3 +1,5 @@
+import { getPublicEnv } from '~shared/config/public';
+
 const DATOCMS_API_URL = 'https://graphql.datocms.com/';
 
 interface DatoCMSRequestOptions {
@@ -13,7 +15,7 @@ export async function datocmsRequest<T = unknown>({
 }: DatoCMSRequestOptions): Promise<T> {
   const isBrowser = typeof window !== 'undefined';
   const token = isBrowser
-    ? process.env.DATOCMS_PUBLIC_TOKEN
+    ? getPublicEnv('DATOCMS_PUBLIC_TOKEN')
     : process.env.DATOCMS_PUBLIC_TOKEN || process.env.DATOCMS_API_TOKEN;
 
   if (!token) {

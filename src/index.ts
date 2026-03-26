@@ -5,7 +5,7 @@ import { RenderModule } from '@tramvai/module-render';
 import { ServerModule } from '@tramvai/module-server';
 import { ErrorInterceptorModule } from '@tramvai/module-error-interceptor';
 import { SeoModule } from '@tramvai/module-seo';
-import { COMBINE_REDUCERS } from '@tramvai/tokens-common';
+import { COMBINE_REDUCERS, ENV_USED_TOKEN } from '@tramvai/tokens-common';
 import {
   RENDER_SLOTS,
   ResourceType,
@@ -58,6 +58,15 @@ createApp({
       provide: COMBINE_REDUCERS,
       multi: true,
       useValue: FilialsStore,
+    },
+    {
+      provide: ENV_USED_TOKEN,
+      multi: true,
+      useValue: [
+        { key: 'DATOCMS_PUBLIC_TOKEN', optional: true },
+        { key: 'YMAPS_API_KEY', optional: true },
+        { key: 'SIGNUP_FORM_URL', optional: true },
+      ],
     },
     {
       provide: LAYOUT_OPTIONS,

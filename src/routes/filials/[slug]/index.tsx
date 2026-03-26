@@ -12,7 +12,7 @@ import {
   loadFilialPageDataWithFallback,
 } from '~shared/content/filials';
 import type { Coach } from '~shared/api/types/coach';
-import { YMAPS_API_KEY } from '~shared/config/public';
+import { getYmapsApiKey } from '~shared/config/public';
 import { SignUpFormGroup } from '~shared/ui/SignUpFormGroup';
 import { Typography } from '~shared/ui/typography';
 
@@ -89,6 +89,7 @@ const DESKTOP_SCHEDULE_ITEM_HEIGHT = 104;
 const DESKTOP_SCHEDULE_ITEM_GAP = 18;
 
 function FilialDetailPage() {
+  const ymapsApiKey = getYmapsApiKey();
   const route = useRoute();
   const { slug } = route.params;
   const initialPayload = useMemo(() => getFilialPagePayload(slug), [slug]);
@@ -553,7 +554,9 @@ function FilialDetailPage() {
 
             <div className={styles.MapCard}>
               <div className={styles.MapWrap}>
-                <YMaps query={{ apikey: YMAPS_API_KEY }}>
+                <YMaps
+                  query={ymapsApiKey ? { apikey: ymapsApiKey } : undefined}
+                >
                   <Map
                     className={styles.Map}
                     defaultState={{

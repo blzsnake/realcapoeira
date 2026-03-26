@@ -18,7 +18,7 @@ import { setModalState, ModalStore } from '~shared/ui/modal/store';
 import { SignUpFormGroup } from '~shared/ui/SignUpFormGroup';
 import { Typography } from '~shared/ui/typography';
 import { Button } from '~shared/ui/button/Button';
-import { YMAPS_API_KEY } from '~shared/config/public';
+import { getYmapsApiKey } from '~shared/config/public';
 import CallButton from '~app/assets/call_button.svg?react';
 import FilterIcon from '~app/assets/filter.svg?react';
 import { SignUpModal } from './modals/SignUpModal/SignUpModal';
@@ -65,6 +65,7 @@ function CustomZoomControls({
   );
 }
 export function FilialsPage() {
+  const ymapsApiKey = getYmapsApiKey();
   const [coaches, setCoaches] = useState<
     {
       name: string;
@@ -210,7 +211,7 @@ export function FilialsPage() {
   }, [markers, query]);
 
   return (
-    <YMaps query={{ apikey: YMAPS_API_KEY }}>
+    <YMaps query={ymapsApiKey ? { apikey: ymapsApiKey } : undefined}>
       <main className={styles.Wrap}>
         <div className={styles.InfoWrap} draggable="true" id="#infoWrap">
           <div className={styles.Filter}>
