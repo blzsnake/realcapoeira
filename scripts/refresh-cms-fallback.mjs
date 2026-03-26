@@ -2,8 +2,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 
 const DATOCMS_API_URL = 'https://graphql.datocms.com/';
-const DATOCMS_API_TOKEN =
-  process.env.DATOCMS_API_TOKEN || 'df33316b1e272f5a8a25cab6746eec';
+const DATOCMS_API_TOKEN = process.env.DATOCMS_API_TOKEN || '';
 
 const OUTPUT_PATH = path.resolve('src/shared/generated/cms-fallback.json');
 const SCHEMA_VERSION = 2;
@@ -139,6 +138,10 @@ const normalizeText = (value) => value?.trim() || '';
 const normalizeCoachSlug = (value) => value.replace(/\./g, '_');
 
 const requestDatoCms = async (query) => {
+  if (!DATOCMS_API_TOKEN) {
+    throw new Error('DATOCMS_API_TOKEN is not set');
+  }
+
   const response = await fetch(DATOCMS_API_URL, {
     method: 'POST',
     headers: {

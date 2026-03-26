@@ -17,3 +17,7 @@ node_modules/
 dist
 .tmp
 webpackAssets.json
+
+# Local environment overrides
+.env.local.js
+env.development.local.js

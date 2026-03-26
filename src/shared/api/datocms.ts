@@ -11,11 +11,21 @@ export async function datocmsRequest<T = unknown>({
   variables = {},
   includeDrafts = false,
 }: DatoCMSRequestOptions): Promise<T> {
-  const token =
-    process.env.DATOCMS_API_TOKEN || 'df33316b1e272f5a8a25cab6746eec';
+  const isBrowser = typeof window !== 'undefined';
+  const token = isBrowser
+    ? process.env.DATOCMS_PUBLIC_TOKEN
+    : process.env.DATOCMS_PUBLIC_TOKEN || process.env.DATOCMS_API_TOKEN;
 
   if (!token) {
-    throw new Error('DATOCMS_API_TOKEN is not set');
+    throw new Error(
+      isBrowser
+        ? 'DATOCMS_PUBLIC_TOKEN is not set'
+        : 'DATOCMS_PUBLIC_TOKEN or DATOCMS_API_TOKEN is not set'
+    );
+  }
+
+  if (includeDrafts && isBrowser) {
+    throw new Error('Draft DatoCMS requests are not available in the browser');
   }
 
   const headers: Record<string, string> = {

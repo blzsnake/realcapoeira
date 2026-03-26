@@ -12,6 +12,7 @@ import {
   loadFilialPageDataWithFallback,
 } from '~shared/content/filials';
 import type { Coach } from '~shared/api/types/coach';
+import { YMAPS_API_KEY } from '~shared/config/public';
 import { SignUpFormGroup } from '~shared/ui/SignUpFormGroup';
 import { Typography } from '~shared/ui/typography';
 
@@ -552,9 +553,7 @@ function FilialDetailPage() {
 
             <div className={styles.MapCard}>
               <div className={styles.MapWrap}>
-                <YMaps
-                  query={{ apikey: 'fcf49c8d-b16f-4277-ab7a-d08242e838b8' }}
-                >
+                <YMaps query={{ apikey: YMAPS_API_KEY }}>
                   <Map
                     className={styles.Map}
                     defaultState={{

@@ -18,6 +18,7 @@ import { setModalState, ModalStore } from '~shared/ui/modal/store';
 import { SignUpFormGroup } from '~shared/ui/SignUpFormGroup';
 import { Typography } from '~shared/ui/typography';
 import { Button } from '~shared/ui/button/Button';
+import { YMAPS_API_KEY } from '~shared/config/public';
 import CallButton from '~app/assets/call_button.svg?react';
 import FilterIcon from '~app/assets/filter.svg?react';
 import { SignUpModal } from './modals/SignUpModal/SignUpModal';
@@ -209,7 +210,7 @@ export function FilialsPage() {
   }, [markers, query]);
 
   return (
-    <YMaps query={{ apikey: 'fcf49c8d-b16f-4277-ab7a-d08242e838b8' }}>
+    <YMaps query={{ apikey: YMAPS_API_KEY }}>
       <main className={styles.Wrap}>
         <div className={styles.InfoWrap} draggable="true" id="#infoWrap">
           <div className={styles.Filter}>

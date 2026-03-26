@@ -5,8 +5,7 @@ import { spawn } from 'node:child_process';
 const DIST_DIR = path.resolve('dist');
 const SERVER_ENTRY_PATH = path.join(DIST_DIR, 'server', 'server.js');
 const DATOCMS_API_URL = 'https://graphql.datocms.com/';
-const DATOCMS_API_TOKEN =
-  process.env.DATOCMS_API_TOKEN || 'df33316b1e272f5a8a25cab6746eec';
+const DATOCMS_API_TOKEN = process.env.DATOCMS_API_TOKEN || '';
 const SERVER_HOST = '127.0.0.1';
 const SERVER_PORT = Number(process.env.STATIC_ROUTES_PORT || '4310');
 const SERVER_URL = `http://${SERVER_HOST}:${SERVER_PORT}`;
@@ -93,6 +92,10 @@ const readFallbackFilialSlugs = () => {
 };
 
 const fetchStaticRoutes = async () => {
+  if (!DATOCMS_API_TOKEN) {
+    throw new Error('DATOCMS_API_TOKEN is not set');
+  }
+
   const response = await fetch(DATOCMS_API_URL, {
     method: 'POST',
     headers: {

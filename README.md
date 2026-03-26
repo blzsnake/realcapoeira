@@ -11,6 +11,29 @@ Run installation with selected package manager `npm install`
 - `npm start` - run development server
 - `npm build` - production build
 
+## Environment
+
+- `.env.js` and `env.development.js` are safe tracked configs
+- `.env.local.js` and `env.development.local.js` are local overrides and should stay untracked
+- `DATOCMS_PUBLIC_TOKEN` is used for published runtime requests from the browser
+- `DATOCMS_API_TOKEN` is used only for build-time snapshot refresh and static route generation
+- `YMAPS_API_KEY` and `SIGNUP_FORM_URL` are public runtime configs
+
+### Deployment checklist
+
+- Local development:
+  Use `.env.local.js` or `env.development.local.js`
+- Vercel Preview (`develop`):
+  Set `DATOCMS_PUBLIC_TOKEN`, `YMAPS_API_KEY`, `SIGNUP_FORM_URL`
+- Vercel Preview build-time:
+  Also set `DATOCMS_API_TOKEN` if preview builds must refresh snapshot or generate static dynamic routes
+- GitHub Actions production build:
+  Set both `DATOCMS_PUBLIC_TOKEN` and `DATOCMS_API_TOKEN`
+- Token rotation:
+  After all environments are configured, rotate the old DatoCMS token because it was previously committed
+
+Full migration notes: [`docs/p0-env-migration.md`](./docs/p0-env-migration.md)
+
 ## Project structure
 
 * `src` - application source code

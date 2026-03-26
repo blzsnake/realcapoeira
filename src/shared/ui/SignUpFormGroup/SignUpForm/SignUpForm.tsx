@@ -14,14 +14,12 @@ import {
 import { ModalStore, setModalState } from '~shared/ui/modal/store';
 import { useEvents, useSelector } from '@tramvai/state';
 import Success from '~app/assets/sucsess.png';
+import { SIGNUP_FORM_URL } from '~shared/config/public';
 import { validate } from './utils/validate';
 
 import type { TSignUpFormErrors, TSignUpFormProps } from './types';
 import styles from './SignUpForm.module.css';
 import { FormResultModal } from './modals/FormResultModal/FormResultModal';
-
-const GOOGLE_API =
-  'https://script.google.com/macros/s/AKfycbxTENMLVwQqI9EV99pLIMm5e0-7Jv_k2usEC6ZDZjjb6ZskO31ARW_5jc1pSMIj5wVh/exec';
 
 export const customStyles = {
   container: (base) => ({
@@ -250,7 +248,7 @@ export function SignUpForm({
         phone: phone.replace('+', ''),
         filial,
       }).toString();
-      fetch(GOOGLE_API, {
+      fetch(SIGNUP_FORM_URL, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/x-www-form-urlencoded',
@@ -278,7 +276,7 @@ export function SignUpForm({
         ref={formRef}
         className={styles.Form}
         method="POST"
-        action={GOOGLE_API}
+        action={SIGNUP_FORM_URL}
       >
         {contactsVariant && (
           <Typography weight="demiBold" className={styles.Title}>
