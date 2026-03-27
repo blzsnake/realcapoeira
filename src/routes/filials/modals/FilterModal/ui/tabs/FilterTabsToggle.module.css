@@ -1,5 +1,9 @@
 .Tabs {
   display: block;
+
+  @media (max-width: 1024px) {
+    padding-top: 28px;
+  }
 }
 
 .TabItem {
@@ -32,4 +36,12 @@
   max-width: 100%;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+
+@media (max-width: 1024px) {
+  .TabItem {
+    padding-top: 28px;
+    padding-bottom: 28px;
+    padding-right: 32px;
+  }
 }
