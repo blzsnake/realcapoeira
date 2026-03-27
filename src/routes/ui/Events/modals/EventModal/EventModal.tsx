@@ -1,10 +1,8 @@
-import { Link } from '@tramvai/module-router';
 import { Typography } from '~shared/ui/typography';
 import { Modal, ModalBody, ModalTitle } from '~shared/ui/modal';
 import ShareTg from '~app/assets/ShareTg.svg?react';
 import ShareVk from '~app/assets/ShareVk.svg?react';
 import ShareLink from '~app/assets/ShareLink.svg?react';
-import MiniMapIcon from '~app/assets/MiniMapIcon.png';
 import { useRef } from 'react';
 import type { EventModalProps } from './types';
 import styles from './EventModal.module.css';
@@ -15,15 +13,6 @@ export function EventModal({
   fullTitle,
   children,
 }: EventModalProps) {
-  const shareTgHandler = () => {
-    console.log('Share on Telegram');
-  };
-  const shareVkHandler = () => {
-    console.log('Share on VK');
-  };
-  const shareLinkHandler = () => {
-    console.log('Share via link');
-  };
   const scrollableRef = useRef<HTMLDivElement>(null);
 
   return (
@@ -55,37 +44,16 @@ export function EventModal({
               target="_blank"
               rel="noopener noreferrer"
             >
-              <ShareVk className={styles.Pointer} onClick={shareVkHandler} />
+              <ShareVk className={styles.Pointer} />
             </a>
 
             <a href="/" target="_blank" rel="noopener noreferrer">
-              <ShareLink
-                className={styles.Pointer}
-                onClick={shareLinkHandler}
-              />
+              <ShareLink className={styles.Pointer} />
             </a>
           </div>
         </div>
       </ModalTitle>
-      <ModalBody ref={scrollableRef}>
-        {children}
-        {/* <Link
-          viewTransition
-          url="/filials/"
-          className={styles.FilialsCard}
-          aria-label="Открыть страницу Филиалы"
-        >
-          <img
-            src={MiniMapIcon}
-            alt="Мини-карта филиалов"
-            className={styles.FilialsIcon}
-          />
-          <Typography weight="medium" className={styles.FilialsTitle}>
-            Филиалы и расписание занятий
-          </Typography>
-          <span className={styles.FilialsButton}>Смотреть</span>
-        </Link> */}
-      </ModalBody>
+      <ModalBody ref={scrollableRef}>{children}</ModalBody>
     </Modal>
   );
 }
