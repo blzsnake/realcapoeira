@@ -42,8 +42,10 @@ export function Worldwide() {
       return null;
     }
 
-    const styles = window.getComputedStyle(container);
-    const gap = Number.parseFloat(styles.columnGap || styles.gap || '0');
+    const computedStyles = window.getComputedStyle(container);
+    const gap = Number.parseFloat(
+      computedStyles.columnGap || computedStyles.gap || '0'
+    );
 
     return firstCard.offsetWidth + gap;
   };
