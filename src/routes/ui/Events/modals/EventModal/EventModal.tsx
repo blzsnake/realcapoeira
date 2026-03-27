@@ -4,6 +4,7 @@ import { Modal, ModalBody, ModalTitle } from '~shared/ui/modal';
 import ShareTg from '~app/assets/ShareTg.svg?react';
 import ShareVk from '~app/assets/ShareVk.svg?react';
 import ShareLink from '~app/assets/ShareLink.svg?react';
+import MiniMapIcon from '~app/assets/MiniMapIcon.png';
 import { useRef } from 'react';
 import type { EventModalProps } from './types';
 import styles from './EventModal.module.css';
@@ -66,7 +67,25 @@ export function EventModal({
           </div>
         </div>
       </ModalTitle>
-      <ModalBody ref={scrollableRef}>{children}</ModalBody>
+      <ModalBody ref={scrollableRef}>
+        {children}
+        {/* <Link
+          viewTransition
+          url="/filials/"
+          className={styles.FilialsCard}
+          aria-label="Открыть страницу Филиалы"
+        >
+          <img
+            src={MiniMapIcon}
+            alt="Мини-карта филиалов"
+            className={styles.FilialsIcon}
+          />
+          <Typography weight="medium" className={styles.FilialsTitle}>
+            Филиалы и расписание занятий
+          </Typography>
+          <span className={styles.FilialsButton}>Смотреть</span>
+        </Link> */}
+      </ModalBody>
     </Modal>
   );
 }

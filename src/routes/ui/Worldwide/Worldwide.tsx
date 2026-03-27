@@ -28,11 +28,34 @@ export function Worldwide() {
     getCachedHomeWorldwideCities() ?? getFallbackHomeWorldwideCities()
   );
   const refCountries = useRef<HTMLDivElement>(null);
-  const handleClickToScroll = (data: number) => () =>
+
+  const getDesktopScrollStep = () => {
+    const container = refCountries.current;
+
+    if (!container || window.innerWidth < 1025) {
+      return null;
+    }
+
+    const firstCard = container.querySelector('a');
+
+    if (!(firstCard instanceof HTMLElement)) {
+      return null;
+    }
+
+    const styles = window.getComputedStyle(container);
+    const gap = Number.parseFloat(styles.columnGap || styles.gap || '0');
+
+    return firstCard.offsetWidth + gap;
+  };
+
+  const handleClickToScroll = (direction: 1 | -1) => () => {
+    const scrollStep = getDesktopScrollStep();
+
     refCountries?.current?.scrollBy({
-      left: data,
+      left: scrollStep ? scrollStep * direction : 400 * direction,
       behavior: 'smooth',
     });
+  };
 
   useEffect(() => {
     let isMounted = true;
@@ -77,13 +100,13 @@ export function Worldwide() {
       <div className={styles.Wrap}>
         <div ref={refCountries} className={styles.Countries} id="#countries">
           <LeftArrow
-            onClick={handleClickToScroll(-400)}
+            onClick={handleClickToScroll(-1)}
             width={46}
             height={46}
             className={styles.ArrowLeftIcon}
           />
           <RightArrow
-            onClick={handleClickToScroll(400)}
+            onClick={handleClickToScroll(1)}
             width={46}
             height={46}
             className={styles.ArrowRightIcon}

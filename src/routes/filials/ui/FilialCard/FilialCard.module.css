@@ -20,6 +20,7 @@
 }
 
 .FilialCardActive {
+  background-color: #F6F4F3;
   .Button {
     opacity: 1;
   }

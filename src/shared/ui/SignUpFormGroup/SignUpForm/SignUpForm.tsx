@@ -326,7 +326,7 @@ export function SignUpForm({
                 [styles.InputError]: errors?.phone,
               })}
               id="phone"
-              placeholder="+"
+              placeholder="Введите номер"
               onChange={handleChange}
               disabled={formData.state === 'pending'}
               value={formData.phone}
