@@ -47,7 +47,9 @@ export function Events() {
 
     const loadNews = async () => {
       try {
-        const nextHomeNewsSection = await loadHomeNewsSectionWithFallback();
+        const nextHomeNewsSection = await loadHomeNewsSectionWithFallback({
+          forceFresh: true,
+        });
 
         if (!isMounted) {
           return;

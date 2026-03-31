@@ -407,6 +407,7 @@ const buildHomeCmsData = (data: HomeCmsResponse): HomeCmsData => {
         .map(mapNewsRecord)
         .filter((item): item is HomeNewsItem => Boolean(item))
     : [];
+  const hasValidNewsItems = items.length > 0;
   const normalizedStats = normalizeHomeStats(data.dataCommon);
   const hasWorldwideCitiesArray = Array.isArray(data.allCitiesLists);
   const worldwideCities = hasWorldwideCitiesArray
@@ -415,15 +416,24 @@ const buildHomeCmsData = (data: HomeCmsResponse): HomeCmsData => {
         .filter((item): item is HomeWorldwideCity => Boolean(item))
     : [];
 
+  if (hasNewsArray) {
+    debugHomeCms('news validation result', {
+      totalNewsRecords: data.allNews.length,
+      validNewsItems: items.length,
+      usedFallbackNews: !hasValidNewsItems,
+    });
+  }
+
   return {
-    newsSection: hasNewsArray
-      ? {
-          source: 'cms',
-          title: 'События',
-          description: '',
-          items,
-        }
-      : getSnapshotHomeNewsSection(),
+    newsSection:
+      hasNewsArray && hasValidNewsItems
+        ? {
+            source: 'cms',
+            title: 'События',
+            description: '',
+            items,
+          }
+        : getSnapshotHomeNewsSection(),
     stats: normalizedStats || getSnapshotHomeStats(),
     worldwideCities: hasWorldwideCitiesArray
       ? worldwideCities
