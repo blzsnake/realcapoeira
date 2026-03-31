@@ -66,18 +66,14 @@ jobs:
           DATOCMS_API_TOKEN: ${{ secrets.DATOCMS_API_TOKEN }}
           DATOCMS_PUBLIC_TOKEN: ${{ secrets.DATOCMS_PUBLIC_TOKEN }}
 
-      - name: Configure Object Storage credentials
-        if: steps.pr_check.outputs.should_deploy == 'true'
-        uses: aws-actions/configure-aws-credentials@v4
-        with:
-          aws-access-key-id: ${{ secrets.YC_ACCESS_KEY_ID }}
-          aws-secret-access-key: ${{ secrets.YC_SECRET_ACCESS_KEY }}
-          aws-region: ru-central1
-
       - name: Upload build to Object Storage
         if: steps.pr_check.outputs.should_deploy == 'true'
         run: bash ./scripts/deploy-yc.sh
         env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.YC_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.YC_SECRET_ACCESS_KEY }}
+          AWS_REGION: ru-central1
+          AWS_DEFAULT_REGION: ru-central1
           YC_BUCKET_NAME: realcapoeira-ru
           YC_REGION: ru-central1
           YC_STORAGE_ENDPOINT: https://storage.yandexcloud.net
