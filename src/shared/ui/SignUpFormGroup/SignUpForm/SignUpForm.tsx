@@ -271,6 +271,11 @@ export function SignUpForm({
     }
   };
 
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    submitHander();
+  };
+
   return (
     <div>
       <form
@@ -278,6 +283,7 @@ export function SignUpForm({
         className={styles.Form}
         method="POST"
         action={signupFormUrl}
+        onSubmit={handleSubmit}
       >
         {contactsVariant && (
           <Typography weight="demiBold" className={styles.Title}>
