@@ -1,4 +1,3 @@
-import { Link } from '@tramvai/module-router';
 import { Typography } from '~shared/ui/typography';
 import { Modal, ModalBody, ModalTitle } from '~shared/ui/modal';
 import ShareTg from '~app/assets/ShareTg.svg?react';
@@ -14,15 +13,6 @@ export function EventModal({
   fullTitle,
   children,
 }: EventModalProps) {
-  const shareTgHandler = () => {
-    console.log('Share on Telegram');
-  };
-  const shareVkHandler = () => {
-    console.log('Share on VK');
-  };
-  const shareLinkHandler = () => {
-    console.log('Share via link');
-  };
   const scrollableRef = useRef<HTMLDivElement>(null);
 
   return (
@@ -54,14 +44,11 @@ export function EventModal({
               target="_blank"
               rel="noopener noreferrer"
             >
-              <ShareVk className={styles.Pointer} onClick={shareVkHandler} />
+              <ShareVk className={styles.Pointer} />
             </a>
 
             <a href="/" target="_blank" rel="noopener noreferrer">
-              <ShareLink
-                className={styles.Pointer}
-                onClick={shareLinkHandler}
-              />
+              <ShareLink className={styles.Pointer} />
             </a>
           </div>
         </div>

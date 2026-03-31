@@ -20,7 +20,7 @@ export function CoachAvatar({
       })}
     >
       <div className={styles.PhotoWrapper}>
-        <img src={photo} alt={name} className={styles.Photo} />
+        {photo ? <img src={photo} alt={name} className={styles.Photo} /> : null}
       </div>
     </div>
   );

@@ -70,6 +70,16 @@
     width: 100%;
   }
 
+  .Countries {
+    scroll-snap-type: x mandatory;
+    scroll-padding-left: 0;
+  }
+
+  .Countries > a {
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+  }
+
 }
 
 @media (min-width: 1440px) {

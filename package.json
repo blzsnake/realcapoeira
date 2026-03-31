@@ -3,9 +3,11 @@
   "private": true,
   "scripts": {
     "start": "tramvai start realcapoeira-front",
-    "build": "tramvai build realcapoeira-front",
-    "build-static": "tramvai static realcapoeira-front && npm run copy-static",
+    "build": "npm run refresh-fallbacks && tramvai build realcapoeira-front",
+    "build-static": "npm run refresh-fallbacks && ASSETS_PREFIX=/client/ tramvai static realcapoeira-front && npm run copy-static && npm run generate-static-routes",
     "copy-static": "cp -r dist/static/* dist/ && cp -r meta/* dist/",
+    "refresh-fallbacks": "node scripts/refresh-cms-fallback.mjs",
+    "generate-static-routes": "node scripts/generate-static-routes.mjs",
     "preview": "tramvai start-prod realcapoeira-front",
     "analyze": "tramvai analyze realcapoeira-front",
     "lint": "eslint --ext .ts,.tsx --ignore-path .gitignore ."
@@ -27,6 +29,7 @@
     "@tramvai/tokens-router": "^4.41.104",
     "classnames": "^2.5.1",
     "react": "^18.2.0",
+    "react-datocms": "^8.0.0",
     "react-device-detect": "^2.2.3",
     "react-dom": "^18.2.0",
     "react-responsive": "^10.0.1",

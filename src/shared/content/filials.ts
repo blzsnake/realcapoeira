@@ -1,0 +1,449 @@
+import { datocmsRequest } from '~shared/api/datocms';
+import {
+  ALL_FILIALS_QUERY,
+  FILIALS_AND_COACHES_QUERY,
+} from '~shared/api/queries/filials';
+import type { Coach } from '~shared/api/types/coach';
+import type {
+  AllFilialsResponse,
+  Filial,
+  FilialLinkedCoach,
+  FilialsAndCoachesResponse,
+  FilialScheduleItem,
+  FilialWeekday,
+} from '~shared/api/types/filial';
+import type {
+  TFilialCoachType,
+  TFilialScheduleType,
+  TFilialType,
+  TypeOption,
+} from '~shared/types/filials';
+import { CMS_FALLBACK } from '~shared/generated/snapshot';
+import {
+  getCachedCoaches,
+  getFallbackCoaches,
+  normalizeCoachSlug,
+  setCoachesCacheFromApiRecords,
+} from './coaches';
+
+export type FilialsSource = Record<string, TFilialType[]>;
+export type FilialDetailData = TFilialType & {
+  heroImage: Filial['heroImage'];
+  hallDescription: Filial['hallDescription'];
+  trialLessonPrice: number | null;
+  singleLessonPrice: number | null;
+  monthlyPrice: number | null;
+  coachRecords: FilialLinkedCoach[];
+};
+
+let cachedFilialsSource: FilialsSource | null = null;
+let cachedFilialDetails: Record<string, FilialDetailData> | null = null;
+let filialsSourcePromise: Promise<FilialsSource> | null = null;
+let filialPageDataPromise: Promise<{
+  filial: FilialDetailData | null;
+  coaches: Coach[];
+}> | null = null;
+let fallbackFilialsSourceCache: FilialsSource | null = null;
+let fallbackFilialDetailsCache: Record<string, FilialDetailData> | null = null;
+
+const DEFAULT_SIGN_UP_FILIAL_OPTION: TypeOption = {
+  value: 'Любой',
+  label: 'Любой',
+};
+
+const normalizeComparableLabel = (value: string) =>
+  value
+    .toLowerCase()
+    .replace(/^г\.?\s*/i, '')
+    .trim();
+
+const formatFilialCityLabel = (city: string) =>
+  /^г\.?\s+/i.test(city) ? city : `г. ${city}`;
+
+const normalizeCoachId = (value: string) => value.replace(/\./g, '_');
+
+const WEEKDAY_TO_INDEX: Record<FilialWeekday, number> = {
+  mon: 0,
+  tue: 1,
+  wed: 2,
+  thu: 3,
+  fri: 4,
+  sat: 5,
+  sun: 6,
+};
+
+const normalizeTime = (value: string) =>
+  /^\d{2}-\d{2}$/.test(value) ? value.replace('-', ':') : value;
+
+const slugifyFilialValue = (value: string) =>
+  value
+    .toLowerCase()
+    .trim()
+    .replace(/["']/g, '')
+    .replace(/[^a-zа-я0-9]+/gi, '_')
+    .replace(/^_+|_+$/g, '');
+
+export const getFilialTitle = (filial: TFilialType) =>
+  filial.title || filial.address.metro?.name || filial.address.city;
+
+export const getFilialSlug = (filial: TFilialType) =>
+  filial.slug ||
+  slugifyFilialValue(
+    `${getFilialTitle(filial)} ${filial.address.street} ${filial.address.city}`
+  );
+
+export const getSignUpFilialValue = (filial: TFilialType) => {
+  const cityLabel = formatFilialCityLabel(filial.address.city);
+  const metroName = filial.address.metro?.name?.trim();
+  const shouldUseMetro =
+    Boolean(metroName) &&
+    normalizeComparableLabel(metroName || '') !==
+      normalizeComparableLabel(filial.address.city);
+  const locationLabel = shouldUseMetro ? metroName : filial.address.street;
+
+  return `${cityLabel} ${locationLabel}`;
+};
+
+export const getSignUpFilialOptionsFromSource = (
+  filialsSource: FilialsSource
+): TypeOption[] => {
+  const optionMap = new Map<string, TypeOption>();
+
+  Object.values(filialsSource)
+    .flat()
+    .forEach((filial) => {
+      const value = getSignUpFilialValue(filial);
+
+      if (!optionMap.has(value)) {
+        optionMap.set(value, {
+          value,
+          label: value,
+        });
+      }
+    });
+
+  return [DEFAULT_SIGN_UP_FILIAL_OPTION, ...Array.from(optionMap.values())];
+};
+
+export const getCoachDefaultFilialValueFromSource = (
+  filialsSource: FilialsSource,
+  coachSlug: string
+) => {
+  const normalizedCoachSlug = normalizeCoachId(coachSlug);
+  const coachFilial = Object.values(filialsSource)
+    .flat()
+    .find((filial) =>
+      filial.coaches.some(
+        (coach) => normalizeCoachId(coach.id) === normalizedCoachSlug
+      )
+    );
+
+  return coachFilial ? getSignUpFilialValue(coachFilial) : undefined;
+};
+
+const buildFilialSchedule = (
+  scheduleItems: FilialScheduleItem[]
+): TFilialScheduleType[][] => {
+  const schedule = Array.from({ length: 7 }, () => [] as TFilialScheduleType[]);
+
+  scheduleItems.forEach((item) => {
+    const dayIndex = WEEKDAY_TO_INDEX[item.weekday];
+
+    if (dayIndex === undefined) {
+      return;
+    }
+
+    schedule[dayIndex].push({
+      id: item.groupKey,
+      group: item.groupLabel?.trim() || item.groupKey,
+      time: `${normalizeTime(item.timeFrom)}-${normalizeTime(item.timeTo)}`,
+    });
+  });
+
+  return schedule;
+};
+
+const mapCoach = (coach: Filial['coaches'][number]): TFilialCoachType => ({
+  id: normalizeCoachSlug(coach.slug || coach.id),
+  name: coach.name,
+  phone: coach.phone || '',
+});
+
+export const getFilialCityKey = (filial: Filial) =>
+  filial.cityObject?.cityKey || 'other';
+
+export const getFilialCityName = (filial: Filial) =>
+  filial.cityObject?.cityName?.trim() ||
+  filial.metroName?.trim() ||
+  filial.title ||
+  'Не указан';
+
+export const isFilialRecordValid = (
+  filial: Partial<Filial> | null | undefined
+): filial is Filial =>
+  Boolean(
+    filial?.slug &&
+      filial?.title &&
+      filial?.street &&
+      filial?.location?.latitude !== undefined &&
+      filial?.location?.longitude !== undefined
+  );
+
+export const getFallbackFilials = () =>
+  CMS_FALLBACK.filials.filter(isFilialRecordValid);
+
+const mapFilialToCardData = (filial: Filial, index: number): TFilialType => {
+  const lat = filial.location?.latitude ?? 0;
+  const lng = filial.location?.longitude ?? 0;
+  const cityName = getFilialCityName(filial);
+
+  return {
+    slug: filial.slug,
+    title: filial.title,
+    id: filial.sortOrder ?? Math.round((lat * 1000 + lng * 1000) * (index + 1)),
+    coords: [lat, lng],
+    city: cityName,
+    metro: filial.metroName || cityName,
+    street: filial.street,
+    address: {
+      city: cityName,
+      metro: filial.metroName
+        ? {
+            name: filial.metroName,
+            color: filial.metroColor?.hex || '#000000',
+          }
+        : undefined,
+      street: filial.street,
+      lat,
+      lng,
+    },
+    coaches: filial.coaches.map(mapCoach),
+    schedule: buildFilialSchedule(filial.scheduleItems),
+  };
+};
+
+const mapCoachRecord = (
+  coach: Filial['coaches'][number]
+): FilialLinkedCoach => ({
+  id: coach.id,
+  slug: normalizeCoachSlug(coach.slug || coach.id),
+  name: coach.name,
+  phone: coach.phone || '',
+  level: coach.level || '',
+  nick: coach.nick || '',
+  photo: coach.photo || null,
+});
+
+export const buildFilialsSource = (filials: Filial[]) =>
+  filials.reduce<FilialsSource>((acc, filial, index) => {
+    const cityKey = getFilialCityKey(filial);
+    const items = acc[cityKey] || [];
+
+    items.push(mapFilialToCardData(filial, index));
+    acc[cityKey] = items;
+
+    return acc;
+  }, {});
+
+const mapFilialToDetailData = (
+  filial: Filial,
+  index: number
+): FilialDetailData => ({
+  ...mapFilialToCardData(filial, index),
+  heroImage: filial.heroImage || null,
+  hallDescription: filial.hallDescription || null,
+  trialLessonPrice: filial.trialLessonPrice ?? null,
+  singleLessonPrice: filial.singleLessonPrice ?? null,
+  monthlyPrice: filial.monthlyPrice ?? null,
+  coachRecords: filial.coaches.map(mapCoachRecord),
+});
+
+export const buildFilialDetailsMap = (filials: Filial[]) =>
+  filials.reduce<Record<string, FilialDetailData>>((acc, filial, index) => {
+    const detail = mapFilialToDetailData(filial, index);
+
+    acc[getFilialSlug(detail)] = detail;
+
+    return acc;
+  }, {});
+
+export const buildFallbackFilialsData = (filials: Filial[]) => {
+  const validFilials = filials.filter(isFilialRecordValid);
+
+  return {
+    filials: validFilials,
+    source: buildFilialsSource(validFilials),
+    details: buildFilialDetailsMap(validFilials),
+  };
+};
+
+export const getFallbackSignUpFilialOptions = () =>
+  getSignUpFilialOptionsFromSource(getFallbackFilialsSource());
+
+export function getFallbackFilialsSource() {
+  if (fallbackFilialsSourceCache) {
+    return fallbackFilialsSourceCache;
+  }
+
+  fallbackFilialsSourceCache =
+    buildFallbackFilialsData(getFallbackFilials()).source;
+
+  return fallbackFilialsSourceCache;
+}
+
+const getFallbackFilialDetails = () => {
+  if (fallbackFilialDetailsCache) {
+    return fallbackFilialDetailsCache;
+  }
+
+  fallbackFilialDetailsCache =
+    buildFallbackFilialsData(getFallbackFilials()).details;
+
+  return fallbackFilialDetailsCache;
+};
+
+const setFilialsCaches = (filials: Filial[]) => {
+  const validFilials = filials.filter(isFilialRecordValid);
+  const nextSource = buildFilialsSource(validFilials);
+
+  cachedFilialsSource = nextSource;
+  cachedFilialDetails = buildFilialDetailsMap(validFilials);
+};
+
+export const getFallbackFilialDetail = (slug: string) =>
+  getFallbackFilialDetails()[slug] || null;
+
+export async function loadFilialsSourceWithFallback() {
+  if (cachedFilialsSource) {
+    return cachedFilialsSource;
+  }
+
+  if (filialsSourcePromise) {
+    return filialsSourcePromise;
+  }
+
+  filialsSourcePromise = (async () => {
+    try {
+      const data = await datocmsRequest<AllFilialsResponse>({
+        query: ALL_FILIALS_QUERY,
+      });
+
+      if (!Array.isArray(data.allFilials)) {
+        cachedFilialsSource = getFallbackFilialsSource();
+        cachedFilialDetails = getFallbackFilialDetails();
+
+        return cachedFilialsSource;
+      }
+
+      setFilialsCaches(data.allFilials);
+
+      if (!cachedFilialsSource) {
+        cachedFilialsSource = getFallbackFilialsSource();
+        cachedFilialDetails = getFallbackFilialDetails();
+
+        return cachedFilialsSource;
+      }
+
+      return cachedFilialsSource;
+    } catch {
+      cachedFilialsSource = getFallbackFilialsSource();
+      cachedFilialDetails = getFallbackFilialDetails();
+
+      return cachedFilialsSource;
+    } finally {
+      filialsSourcePromise = null;
+    }
+  })();
+
+  return filialsSourcePromise;
+}
+
+export async function loadSignUpFilialOptionsWithFallback() {
+  const filialsSource = await loadFilialsSourceWithFallback();
+
+  return getSignUpFilialOptionsFromSource(filialsSource);
+}
+
+export async function loadFilialDetailWithFallback(slug: string) {
+  if (cachedFilialDetails?.[slug]) {
+    return cachedFilialDetails[slug];
+  }
+
+  try {
+    const data = await datocmsRequest<AllFilialsResponse>({
+      query: ALL_FILIALS_QUERY,
+    });
+
+    if (!Array.isArray(data.allFilials)) {
+      cachedFilialDetails = getFallbackFilialDetails();
+
+      return cachedFilialDetails[slug] || null;
+    }
+
+    setFilialsCaches(data.allFilials);
+
+    return cachedFilialDetails?.[slug] || null;
+  } catch {
+    cachedFilialDetails = getFallbackFilialDetails();
+
+    return cachedFilialDetails[slug] || null;
+  }
+}
+
+export async function loadFilialPageDataWithFallback(slug: string) {
+  const cachedCoaches = getCachedCoaches();
+
+  if (cachedFilialDetails?.[slug] && cachedCoaches) {
+    return {
+      filial: cachedFilialDetails[slug],
+      coaches: cachedCoaches,
+    };
+  }
+
+  if (filialPageDataPromise) {
+    const data = await filialPageDataPromise;
+
+    return {
+      filial: cachedFilialDetails?.[slug] || data.filial,
+      coaches: getCachedCoaches() || data.coaches,
+    };
+  }
+
+  filialPageDataPromise = (async () => {
+    try {
+      const data = await datocmsRequest<FilialsAndCoachesResponse>({
+        query: FILIALS_AND_COACHES_QUERY,
+      });
+
+      if (Array.isArray(data.allFilials)) {
+        setFilialsCaches(data.allFilials);
+      } else {
+        cachedFilialsSource = getFallbackFilialsSource();
+        cachedFilialDetails = getFallbackFilialDetails();
+      }
+
+      const coaches = setCoachesCacheFromApiRecords(data.allCoaches);
+
+      return {
+        filial: cachedFilialDetails?.[slug] || null,
+        coaches,
+      };
+    } catch {
+      if (!cachedFilialsSource || !cachedFilialDetails) {
+        cachedFilialsSource = getFallbackFilialsSource();
+        cachedFilialDetails = getFallbackFilialDetails();
+      }
+
+      const coaches = getCachedCoaches() || getFallbackCoaches();
+
+      return {
+        filial: cachedFilialDetails?.[slug] || getFallbackFilialDetail(slug),
+        coaches,
+      };
+    } finally {
+      filialPageDataPromise = null;
+    }
+  })();
+
+  return filialPageDataPromise;
+}

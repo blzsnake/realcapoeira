@@ -1,5 +1,5 @@
 import { Checkbox } from '~shared/ui/Checkbox/Checkbox';
-import type { TypeOption } from '~shared/hooks/useQueryParams';
+import type { TypeOption } from '~shared/types/filials';
 import type { TabsContenGroupsProps } from './types';
 
 import styles from './TabsContent.module.css';
@@ -50,7 +50,7 @@ export function TabsContentGroups({
             !!selectedGroups?.find((group) => group.value === item.value)
           }
           onFilterChange={changeHander}
-          onChange={() => {}}
+          onChange={() => null}
         />
       ))}
     </div>

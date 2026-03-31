@@ -51,3 +51,71 @@
   font-size: 24px;
   line-height: 150%;
 }
+
+.FilialsCard {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  width: 100%;
+  margin-top: 40px;
+  padding: 16px 20px;
+  border-radius: 24px;
+  background-color: var(--gray-white);
+  text-decoration: none;
+  color: inherit;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+
+  @media (max-width: 767px) {
+    flex-wrap: wrap;
+  }
+
+  @media (min-width: 1025px) {
+    gap: 24px;
+    padding: 24px;
+  }
+}
+
+.FilialsIcon {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.FilialsTitle {
+  font-size: 18px;
+  line-height: 120%;
+  flex: 1 1 220px;
+
+  @media (min-width: 1025px) {
+    font-size: 24px;
+  }
+}
+
+.FilialsButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 160px;
+  min-height: 62px;
+  padding: 16px 24px;
+  border-radius: 999px;
+  background-color: var(--black);
+  color: var(--white);
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 120%;
+  white-space: nowrap;
+
+  @media (max-width: 767px) {
+    width: 100%;
+  }
+}

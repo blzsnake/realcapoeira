@@ -1,27 +1,87 @@
+import { useEffect, useRef, useState } from 'react';
+import {
+  getCachedHomeWorldwideCities,
+  getFallbackHomeWorldwideCities,
+  loadHomeWorldwideCitiesWithFallback,
+  type HomeWorldwideCity,
+} from '~shared/content/worldwide';
 import { Typography } from '~shared/ui/typography';
 import { CityCard } from '~shared/ui/CityCard/CityCard';
 import RightArrow from '~app/assets/right_arrow.svg?react';
 import LeftArrow from '~app/assets/left_arrow.svg?react';
 import { Button } from '~shared/ui/button/Button';
-import Moscow from '~app/assets/moscow.png';
-import Kaz from '~app/assets/kaz.png';
-import Krs from '~app/assets/krs.png';
-import Lissabon from '~app/assets/lis.png';
-import Eu from '~app/assets/eu.png';
-import Us from '~app/assets/us.png';
-import Asia from '~app/assets/asia.png';
-import Usa from '~app/assets/usa.png';
-
-import { useRef } from 'react';
 import styles from './Worldwide.module.css';
 
+const getCityCardTitle = (city: HomeWorldwideCity) =>
+  city.cityFriend ? city.country : city.cityName;
+
+const getCityCardSubtitle = (city: HomeWorldwideCity) =>
+  city.cityFriend ? 'Друзья школы' : city.country;
+
+const getCityCardUrl = (city: HomeWorldwideCity) =>
+  city.cityFriend || !city.cityId
+    ? '/filials/'
+    : `/filials/?city=${city.cityId}`;
+
 export function Worldwide() {
+  const [cities, setCities] = useState<HomeWorldwideCity[]>(
+    getCachedHomeWorldwideCities() ?? getFallbackHomeWorldwideCities()
+  );
   const refCountries = useRef<HTMLDivElement>(null);
-  const handleClickToScroll = (data: number) => () =>
+
+  const getDesktopScrollStep = () => {
+    const container = refCountries.current;
+
+    if (!container || window.innerWidth < 1025) {
+      return null;
+    }
+
+    const firstCard = container.querySelector('a');
+
+    if (!(firstCard instanceof HTMLElement)) {
+      return null;
+    }
+
+    const computedStyles = window.getComputedStyle(container);
+    const gap = Number.parseFloat(
+      computedStyles.columnGap || computedStyles.gap || '0'
+    );
+
+    return firstCard.offsetWidth + gap;
+  };
+
+  const handleClickToScroll = (direction: 1 | -1) => () => {
+    const scrollStep = getDesktopScrollStep();
+
     refCountries?.current?.scrollBy({
-      left: data,
+      left: scrollStep ? scrollStep * direction : 400 * direction,
       behavior: 'smooth',
     });
+  };
+
+  useEffect(() => {
+    let isMounted = true;
+
+    const loadCities = async () => {
+      try {
+        const nextCities = await loadHomeWorldwideCitiesWithFallback();
+
+        if (!isMounted) {
+          return;
+        }
+
+        setCities(nextCities);
+      } catch {
+        // Keep fallback values if the client request fails.
+      }
+    };
+
+    loadCities();
+
+    return () => {
+      isMounted = false;
+    };
+  }, []);
 
   return (
     <div className={styles.Worldwide}>
@@ -42,66 +102,27 @@ export function Worldwide() {
       <div className={styles.Wrap}>
         <div ref={refCountries} className={styles.Countries} id="#countries">
           <LeftArrow
-            onClick={handleClickToScroll(-400)}
+            onClick={handleClickToScroll(-1)}
             width={46}
             height={46}
             className={styles.ArrowLeftIcon}
           />
           <RightArrow
-            onClick={handleClickToScroll(400)}
+            onClick={handleClickToScroll(1)}
             width={46}
             height={46}
             className={styles.ArrowRightIcon}
           />
           <div className={styles.EmptyPlug} />
-          <CityCard
-            title="Москва"
-            subtitle="Россия"
-            url="/filials/?city=moscow"
-            image={Moscow}
-          />
-          <CityCard
-            title="Казань"
-            subtitle="Россия"
-            url="/filials/?city=kazan"
-            image={Kaz}
-          />
-          <CityCard
-            title="Краснодар"
-            subtitle="Россия"
-            url="/filials/?city=krasnodar"
-            image={Krs}
-          />
-          <CityCard
-            title="Лиссабон"
-            subtitle="Португалия"
-            url="/filials/?city=lissabon"
-            image={Lissabon}
-          />
-          <CityCard
-            title="Европа"
-            subtitle="Друзья школы"
-            url="/filials/?city=europe"
-            image={Eu}
-          />
-          <CityCard
-            title="Латинская америка"
-            subtitle="Друзья школы"
-            url="/"
-            image={Us}
-          />
-          <CityCard
-            title="Азия"
-            subtitle="Друзья школы"
-            url="/filials/?city=asia"
-            image={Asia}
-          />
-          <CityCard
-            title="Северная америка"
-            subtitle="Друзья школы"
-            url="/filials/?city=america"
-            image={Usa}
-          />
+          {cities.map((city) => (
+            <CityCard
+              key={city.id}
+              title={getCityCardTitle(city)}
+              subtitle={getCityCardSubtitle(city)}
+              url={getCityCardUrl(city)}
+              image={city.imageUrl}
+            />
+          ))}
           <div className={styles.EmptyPlug} />
         </div>
       </div>

@@ -5,7 +5,7 @@ import { RenderModule } from '@tramvai/module-render';
 import { ServerModule } from '@tramvai/module-server';
 import { ErrorInterceptorModule } from '@tramvai/module-error-interceptor';
 import { SeoModule } from '@tramvai/module-seo';
-import { COMBINE_REDUCERS } from '@tramvai/tokens-common';
+import { COMBINE_REDUCERS, ENV_USED_TOKEN } from '@tramvai/tokens-common';
 import {
   RENDER_SLOTS,
   ResourceType,
@@ -14,6 +14,8 @@ import {
 } from '@tramvai/tokens-render';
 import { Layout } from '~shared/ui/layout';
 import { ModalStore } from '~shared/ui/modal/store';
+import { CoachesStore } from '~shared/stores/coaches';
+import { FilialsStore } from '~shared/stores/filials';
 import './app/styles/index.css';
 import { HeaderModule } from '~shared/ui/header';
 import { FooterModule } from '~shared/ui/footer';
@@ -48,11 +50,28 @@ createApp({
       useValue: ModalStore,
     },
     {
+      provide: COMBINE_REDUCERS,
+      multi: true,
+      useValue: CoachesStore,
+    },
+    {
+      provide: COMBINE_REDUCERS,
+      multi: true,
+      useValue: FilialsStore,
+    },
+    {
+      provide: ENV_USED_TOKEN,
+      multi: true,
+      useValue: [
+        { key: 'DATOCMS_PUBLIC_TOKEN', optional: true },
+        { key: 'YMAPS_API_KEY', optional: true },
+        { key: 'SIGNUP_FORM_URL', optional: true },
+      ],
+    },
+    {
       provide: LAYOUT_OPTIONS,
       useValue: {
-        // React components
         components: {
-          // global layout component
           layout: Layout,
         },
       },

@@ -1,10 +1,13 @@
 import type { OptionProps } from 'react-select';
 import Select, { components } from 'react-select';
+import {
+  getAgeGroupOptions,
+  type TypeOptionGroup,
+} from '~shared/content/catalogs';
 import { customStyles } from '~shared/ui/SignUpFormGroup/SignUpForm';
 import { Radio } from '~shared/ui/Radio/Radio';
 import { Checkbox } from '~shared/ui/Checkbox/Checkbox';
 import { useQueryParams } from '~shared/hooks/useQueryParams';
-import { AGE_GROUPS, GROUPED_PLACES } from '~shared/mocks';
 import styles from './Filter.module.css';
 
 function CheckboxOption(props: OptionProps) {
@@ -35,24 +38,29 @@ function RadioOption(props: OptionProps) {
   );
 }
 
-export function Filter() {
-  const [selectedAgeGroup, selectedCoach, selectedCity, setQueryParam] =
-    useQueryParams();
+type FilterProps = {
+  cityOptions: TypeOptionGroup[];
+};
 
-  // console.log(setQueryParam, '---');
+export function Filter({ cityOptions }: FilterProps) {
+  const [selectedAgeGroup, , selectedCity, setQueryParam] = useQueryParams({
+    pathname: '/coaches',
+    cityOptions,
+    ageGroupOptions: getAgeGroupOptions(),
+    coachOptions: [],
+  });
 
   return (
     <div className={styles.Filter}>
       <div className={styles.FilterItem}>
         <Select
           name="city"
-          options={GROUPED_PLACES}
+          options={cityOptions}
           closeMenuOnSelect={false}
           hideSelectedOptions={false}
           components={{ Option: RadioOption }}
-          // @ts-ignore
           onChange={setQueryParam('city')}
-          value={selectedCity}
+          value={selectedCity?.[0] || null}
           styles={customStyles}
           isSearchable={false}
           placeholder="Город"
@@ -62,12 +70,11 @@ export function Filter() {
       <div className={styles.FilterItem}>
         <Select
           name="group"
-          options={AGE_GROUPS}
+          options={getAgeGroupOptions()}
           isMulti
           closeMenuOnSelect={false}
           hideSelectedOptions={false}
           components={{ Option: CheckboxOption }}
-          // @ts-ignore
           onChange={setQueryParam('group')}
           value={selectedAgeGroup}
           styles={customStyles}

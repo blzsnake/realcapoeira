@@ -71,11 +71,36 @@ export function Masters() {
   const [isModalOpen, setIsModalOpen] = useState<number | null>(null);
 
   const refMasters = useRef<HTMLDivElement>(null);
-  const handleClickToScroll = (data: number) => () =>
+
+  const getDesktopScrollStep = () => {
+    const container = refMasters.current;
+
+    if (!container || window.innerWidth < 1025) {
+      return null;
+    }
+
+    const firstCard = container.querySelector('[data-master-card="true"]');
+
+    if (!(firstCard instanceof HTMLElement)) {
+      return null;
+    }
+
+    const computedStyles = window.getComputedStyle(container);
+    const gap = Number.parseFloat(
+      computedStyles.columnGap || computedStyles.gap || '0'
+    );
+
+    return firstCard.offsetWidth + gap;
+  };
+
+  const handleClickToScroll = (direction: 1 | -1) => () => {
+    const scrollStep = getDesktopScrollStep();
+
     refMasters?.current?.scrollBy({
-      left: data,
+      left: scrollStep ? scrollStep * direction : 400 * direction,
       behavior: 'smooth',
     });
+  };
 
   return (
     <article className={styles.Masters}>
@@ -90,13 +115,13 @@ export function Masters() {
         </Typography>
         <div className={styles.Arrows}>
           <LeftArrow
-            onClick={handleClickToScroll(-400)}
+            onClick={handleClickToScroll(-1)}
             width={46}
             height={46}
             className={styles.Arrow}
           />
           <RightArrow
-            onClick={handleClickToScroll(400)}
+            onClick={handleClickToScroll(1)}
             width={46}
             height={46}
             className={styles.Arrow}

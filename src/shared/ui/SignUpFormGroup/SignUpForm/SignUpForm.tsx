@@ -1,49 +1,25 @@
-import { useRef, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import { InputMask } from '@react-input/mask';
 import cn from 'classnames';
 import Select from 'react-select';
 import { Typography } from '~shared/ui/typography';
 import { Button } from '~shared/ui/button/Button';
 import { Checkbox } from '~shared/ui/Checkbox/Checkbox';
-import { FILIALS_MOCK } from '~shared/mocks';
+import {
+  getCoachDefaultFilialValueFromSource,
+  getFallbackSignUpFilialOptions,
+  getSignUpFilialOptionsFromSource,
+  loadFilialsSourceWithFallback,
+} from '~shared/content/filials';
 import { ModalStore, setModalState } from '~shared/ui/modal/store';
 import { useEvents, useSelector } from '@tramvai/state';
 import Success from '~app/assets/sucsess.png';
+import { getSignupFormUrl } from '~shared/config/public';
 import { validate } from './utils/validate';
 
 import type { TSignUpFormErrors, TSignUpFormProps } from './types';
 import styles from './SignUpForm.module.css';
 import { FormResultModal } from './modals/FormResultModal/FormResultModal';
-
-const GOOGLE_API =
-  'https://script.google.com/macros/s/AKfycbxTENMLVwQqI9EV99pLIMm5e0-7Jv_k2usEC6ZDZjjb6ZskO31ARW_5jc1pSMIj5wVh/exec';
-
-const OPTIONS = [
-  { address: { city: 'Любой', street: '' } },
-  ...FILIALS_MOCK.moscow,
-  ...FILIALS_MOCK.korolev,
-  ...FILIALS_MOCK.krasnodar,
-  ...FILIALS_MOCK.krasnogorsk,
-  ...FILIALS_MOCK.kazan,
-  ...FILIALS_MOCK.lissabon,
-  ...FILIALS_MOCK.mytishi,
-].reduce((arr, item) => {
-  const idDuplicate = arr.find(
-    (el) =>
-      el.value ===
-      `${item.address.city} ${item.address?.metro?.name || item.address?.street}`
-  );
-
-  return !idDuplicate
-    ? [
-        ...arr,
-        {
-          value: `${item.address.city} ${item.address?.metro?.name || item.address?.street}`,
-          label: `${item.address.city} ${item.address?.metro?.name || item.address?.street}`,
-        },
-      ]
-    : arr;
-}, []);
 
 export const customStyles = {
   container: (base) => ({
@@ -107,15 +83,42 @@ const intitialFormState = {
   agreement: false,
 };
 
-export function SignUpForm({ contactsVariant = false }: TSignUpFormProps) {
+const getInitialFormState = (filial = '') => ({
+  ...intitialFormState,
+  filial,
+});
+
+export function SignUpForm({
+  contactsVariant = false,
+  defaultFilial = '',
+  filialOptions: filialOptionsProp,
+  preferredCoachSlug,
+}: TSignUpFormProps) {
+  const signupFormUrl = getSignupFormUrl();
   const formRef = useRef<HTMLFormElement>(undefined);
   const [errors, setFormErrors] = useState<TSignUpFormErrors | null>(null);
+  const [filialOptions, setFilialOptions] = useState(() =>
+    filialOptionsProp?.length
+      ? filialOptionsProp
+      : getFallbackSignUpFilialOptions()
+  );
   const address = useSelector(
     ModalStore,
     ({ modals }) => modals.signUp?.address
   );
-  const [formData, setFormState] = useState(
-    address ? { ...intitialFormState, filial: address } : intitialFormState
+  const initialFilial = address || defaultFilial;
+  const [formData, setFormState] = useState(getInitialFormState(initialFilial));
+  const selectedFilialOption = useMemo(
+    () =>
+      filialOptions.find((option) => option.value === formData.filial) ||
+      filialOptions.find((option) => option.value === initialFilial) ||
+      (initialFilial
+        ? {
+            value: initialFilial,
+            label: initialFilial,
+          }
+        : filialOptions[0]),
+    [filialOptions, formData.filial, initialFilial]
   );
   const $setModalState = useEvents(setModalState);
   const onModalSetState = (state: boolean) => () => {
@@ -128,6 +131,79 @@ export function SignUpForm({ contactsVariant = false }: TSignUpFormProps) {
     ModalStore,
     ({ modals }) => modals.formResult?.isOpen
   );
+
+  useEffect(() => {
+    if (filialOptionsProp?.length) {
+      setFilialOptions(filialOptionsProp);
+
+      return;
+    }
+
+    let cancelled = false;
+
+    loadFilialsSourceWithFallback().then((filialsSource) => {
+      if (cancelled) {
+        return;
+      }
+
+      setFilialOptions(getSignUpFilialOptionsFromSource(filialsSource));
+
+      if (!initialFilial && preferredCoachSlug) {
+        const coachDefaultFilial = getCoachDefaultFilialValueFromSource(
+          filialsSource,
+          preferredCoachSlug
+        );
+
+        if (coachDefaultFilial) {
+          setFormState((prevData) => {
+            if (
+              prevData.name ||
+              prevData.phone ||
+              prevData.agreement ||
+              prevData.state === 'dirty' ||
+              prevData.filial
+            ) {
+              return prevData;
+            }
+
+            return {
+              ...prevData,
+              filial: coachDefaultFilial,
+            };
+          });
+        }
+      }
+    });
+
+    return () => {
+      cancelled = true;
+    };
+  }, [filialOptionsProp, initialFilial, preferredCoachSlug]);
+
+  useEffect(() => {
+    setFormState((prevData) => {
+      const nextFilial = initialFilial || '';
+
+      if (
+        prevData.name ||
+        prevData.phone ||
+        prevData.agreement ||
+        prevData.state === 'dirty'
+      ) {
+        return prevData;
+      }
+
+      if (prevData.filial === nextFilial) {
+        return prevData;
+      }
+
+      return {
+        ...prevData,
+        filial: nextFilial,
+      };
+    });
+  }, [initialFilial]);
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormErrors({
@@ -173,7 +249,7 @@ export function SignUpForm({ contactsVariant = false }: TSignUpFormProps) {
         phone: phone.replace('+', ''),
         filial,
       }).toString();
-      fetch(GOOGLE_API, {
+      fetch(signupFormUrl, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/x-www-form-urlencoded',
@@ -181,12 +257,15 @@ export function SignUpForm({ contactsVariant = false }: TSignUpFormProps) {
         body: data,
       })
         .then(() => {
-          setFormState({ ...intitialFormState, state: 'success' });
+          setFormState({
+            ...getInitialFormState(initialFilial),
+            state: 'success',
+          });
           onModalSetState(true)();
           formRef?.current?.reset();
         })
         .catch(() => {
-          setFormState(intitialFormState);
+          setFormState(getInitialFormState(initialFilial));
           formRef?.current?.reset();
         });
     }
@@ -198,7 +277,7 @@ export function SignUpForm({ contactsVariant = false }: TSignUpFormProps) {
         ref={formRef}
         className={styles.Form}
         method="POST"
-        action={GOOGLE_API}
+        action={signupFormUrl}
       >
         {contactsVariant && (
           <Typography weight="demiBold" className={styles.Title}>
@@ -247,7 +326,7 @@ export function SignUpForm({ contactsVariant = false }: TSignUpFormProps) {
                 [styles.InputError]: errors?.phone,
               })}
               id="phone"
-              placeholder="+"
+              placeholder="Введите номер"
               onChange={handleChange}
               disabled={formData.state === 'pending'}
               value={formData.phone}
@@ -264,15 +343,13 @@ export function SignUpForm({ contactsVariant = false }: TSignUpFormProps) {
           <label htmlFor="filial" className={styles.FieldLabel}>
             <Typography weight="demiBold">Выберите филиал</Typography>
             <Select
-              options={OPTIONS}
+              options={filialOptions}
               hideSelectedOptions={false}
               styles={customStyles}
-              defaultValue={
-                address ? { label: address, value: address } : OPTIONS[0]
-              }
+              value={selectedFilialOption}
               closeMenuOnSelect
               className={styles.Select}
-              isDisabled={address || formData.state === 'pending'}
+              isDisabled={formData.state === 'pending'}
               onChange={handleFilialChange}
             />
           </label>

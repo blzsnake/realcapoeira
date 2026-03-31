@@ -12,20 +12,33 @@ export function FilterTabsToggle({
 
   return (
     <div className={styles.Tabs}>
-      <div onClick={onTabClickHandler('Город')} className={styles.TabItem}>
-        <Typography className={styles.TabText}>{city || 'Город'}</Typography>
-      </div>
-      <div
+      <button
+        type="button"
+        onClick={onTabClickHandler('Город')}
+        className={styles.TabItem}
+      >
+        <Typography component="span" color="black" className={styles.TabText}>
+          {city || 'Город'}
+        </Typography>
+      </button>
+      <button
+        type="button"
         onClick={onTabClickHandler('Возраст ученика')}
         className={styles.TabItem}
       >
-        <Typography className={styles.TabText}>
+        <Typography component="span" color="black" className={styles.TabText}>
           {age || 'Возраст ученика'}
         </Typography>
-      </div>
-      <div onClick={onTabClickHandler('Тренер')} className={styles.TabItem}>
-        <Typography className={styles.TabText}>{coach || 'Тренер'}</Typography>
-      </div>
+      </button>
+      <button
+        type="button"
+        onClick={onTabClickHandler('Тренер')}
+        className={styles.TabItem}
+      >
+        <Typography component="span" color="black" className={styles.TabText}>
+          {coach || 'Тренер'}
+        </Typography>
+      </button>
     </div>
   );
 }

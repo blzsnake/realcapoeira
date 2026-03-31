@@ -1,5 +1,5 @@
 import type { ReactNode } from 'react';
-import type { TypeOption } from '~shared/hooks/useQueryParams';
+import type { TypeOption } from '~shared/types/filials';
 
 export type TCheckboxProps = {
   name?: string;

@@ -19,13 +19,22 @@
     display: none;
   }
 
-  @media (min-width: 1440px) {
-    margin-left: 40px;
+  @media (min-width: 1024px) {
+    margin-left: 0;
   }
 }
 
 .Heading {
   font-size: 28px;
+}
+
+.Description {
+  margin-left: 20px;
+  max-width: 900px;
+
+  @media (min-width: 1440px) {
+    margin-left: 40px;
+  }
 }
 
 .ButtonsBlock {

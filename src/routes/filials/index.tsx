@@ -1,15 +1,30 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import cn from 'classnames';
 import { useEvents, useSelector } from '@tramvai/state';
-import { YMaps, Map, Placemark, Clusterer } from '@pbe/react-yandex-maps';
+import {
+  YMaps,
+  Map,
+  Placemark,
+  Clusterer,
+  useYMaps,
+} from '@pbe/react-yandex-maps';
 import { useUrl } from '@tramvai/module-router';
-import { FILIALS_MOCK } from '~shared/mocks';
+import {
+  getCityOptionsFromFilialsSource,
+  getCoachOptionsFromFilialsSource,
+} from '~shared/content/catalogs';
+import {
+  getFallbackFilialsSource,
+  getSignUpFilialValue,
+  loadFilialsSourceWithFallback,
+} from '~shared/content/filials';
 import Pin from '~app/assets/Pin.svg';
 import PinActive from '~app/assets/PinActive.svg';
 import { setModalState, ModalStore } from '~shared/ui/modal/store';
 import { SignUpFormGroup } from '~shared/ui/SignUpFormGroup';
 import { Typography } from '~shared/ui/typography';
 import { Button } from '~shared/ui/button/Button';
+import { getYmapsApiKey } from '~shared/config/public';
 import CallButton from '~app/assets/call_button.svg?react';
 import FilterIcon from '~app/assets/filter.svg?react';
 import { SignUpModal } from './modals/SignUpModal/SignUpModal';
@@ -18,15 +33,183 @@ import { FilialCard } from './ui/FilialCard/FilialCard';
 import { Filter } from './ui/Filter/Filter';
 
 import styles from './Filials.module.css';
+import type { TQuery } from './utils/filter';
 import { filterFilials } from './utils/filter';
 import { useStickyFilter } from './utils/useStickyFilter';
 import { FilterModal } from './modals/FilterModal/FilterModal';
 import { EmptyCard } from './ui/EmptyCard/FilialCard/EmptyCard';
 
-const getHintData = (city: string, metro: string, street: string) =>
-  metro
-    ? `<b>Филиал на ${metro}</b><pre><b>метро ${metro}</b><div>${city} ${street}</div>`
-    : `<b>Филиал в ${city}</b><div>${street}</div>`;
+const escapeHtml = (value: string) =>
+  value
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
+
+const normalizeComparableText = (value?: string | null) =>
+  value?.toLowerCase().replace(/[.,]/g, '').replace(/\s+/g, ' ').trim() || '';
+
+const stripStreetPrefix = (value?: string | null) =>
+  value
+    ?.replace(
+      /^(ул\.?|улица|пр-т|проспект|просп\.|ш\.?|шоссе|пер\.?|переулок|наб\.?|набережная|бул\.?|бульвар|проезд|пр-д|пл\.?|площадь)\s+/i,
+      ''
+    )
+    .replace(/,\s*/g, ' ')
+    .replace(/\s+/g, ' ')
+    .trim() || '';
+
+const getHintHeading = ({
+  title,
+  metro,
+  street,
+  city,
+}: {
+  title?: string;
+  metro?: string;
+  street: string;
+  city: string;
+}) => {
+  const normalizedMetro = normalizeComparableText(metro);
+  const titleParts = title
+    ?.split(',')
+    .map((part) => stripStreetPrefix(part))
+    .filter(Boolean);
+  const titleCandidate = titleParts?.[titleParts.length - 1] || titleParts?.[0];
+
+  if (
+    titleCandidate &&
+    normalizeComparableText(titleCandidate) !== normalizedMetro
+  ) {
+    return `Филиал на ${titleCandidate}`;
+  }
+
+  const streetCandidate = stripStreetPrefix(street)
+    .replace(/\s+\d.*$/u, '')
+    .trim();
+
+  if (streetCandidate) {
+    return `Филиал на ${streetCandidate}`;
+  }
+
+  if (metro) {
+    return `Филиал на ${metro}`;
+  }
+
+  return `Филиал в ${city}`;
+};
+
+const getHintData = ({
+  title,
+  city,
+  metro,
+  street,
+}: {
+  title?: string;
+  city: string;
+  metro?: string;
+  street: string;
+}) => {
+  const heading = escapeHtml(
+    getHintHeading({
+      title,
+      city,
+      metro,
+      street,
+    })
+  );
+  const metroLine = metro ? escapeHtml(`м. ${metro}`) : '';
+  const addressLine = escapeHtml(`г. ${city} ${street}`);
+
+  return `
+    <div class="filials-map-hint">
+      <div class="filials-map-hint__card">
+        <div class="filials-map-hint__title">${heading}</div>
+        ${
+          metroLine
+            ? `<div class="filials-map-hint__metro">${metroLine}</div>`
+            : ''
+        }
+        <div class="filials-map-hint__address">${addressLine}</div>
+      </div>
+    </div>
+  `;
+};
+
+const useFilialsCatalogData = (
+  filialsSource: ReturnType<typeof getFallbackFilialsSource>,
+  query: TQuery
+) => {
+  const cityOptions = useMemo(
+    () => getCityOptionsFromFilialsSource(filialsSource),
+    [filialsSource]
+  );
+  const coachOptions = useMemo(
+    () => getCoachOptionsFromFilialsSource(filialsSource),
+    [filialsSource]
+  );
+  const [, markers = []] = useMemo(
+    () => filterFilials(filialsSource, query),
+    [filialsSource, query]
+  );
+
+  return {
+    cityOptions,
+    coachOptions,
+    markers,
+  };
+};
+
+const useVisibleMapData = (
+  markers: ReturnType<typeof filterFilials>[1],
+  ymaps: ReturnType<typeof useYMaps>
+) => {
+  const [visibleMarkerIds, setVisibleMarkerIds] = useState<number[] | null>(
+    null
+  );
+  const hintLayout = useMemo(() => {
+    if (!ymaps?.templateLayoutFactory) {
+      return null;
+    }
+
+    return ymaps.templateLayoutFactory.createClass('$[properties.hintContent]');
+  }, [ymaps]);
+  const visibleMarkers = useMemo(() => {
+    if (!visibleMarkerIds) {
+      return markers;
+    }
+
+    const visibleIds = new Set(visibleMarkerIds);
+
+    return markers.filter((marker) => visibleIds.has(marker.id));
+  }, [markers, visibleMarkerIds]);
+
+  return {
+    hintLayout,
+    visibleMarkerIds,
+    visibleMarkers,
+    setVisibleMarkerIds,
+  };
+};
+
+const isPointWithinBounds = (
+  coords: number[],
+  bounds: number[][] | null | undefined
+) => {
+  if (!bounds) {
+    return true;
+  }
+
+  const [[firstLat, firstLng], [secondLat, secondLng]] = bounds;
+  const [lat, lng] = coords;
+  const minLat = Math.min(firstLat, secondLat);
+  const maxLat = Math.max(firstLat, secondLat);
+  const minLng = Math.min(firstLng, secondLng);
+  const maxLng = Math.max(firstLng, secondLng);
+
+  return lat >= minLat && lat <= maxLat && lng >= minLng && lng <= maxLng;
+};
 
 function CustomZoomControls({
   zoom,
@@ -55,6 +238,17 @@ function CustomZoomControls({
   );
 }
 export function FilialsPage() {
+  const ymapsApiKey = getYmapsApiKey();
+
+  return (
+    <YMaps query={ymapsApiKey ? { apikey: ymapsApiKey } : undefined}>
+      <FilialsPageContent />
+    </YMaps>
+  );
+}
+
+function FilialsPageContent() {
+  const ymaps = useYMaps(['templateLayoutFactory']);
   const [coaches, setCoaches] = useState<
     {
       name: string;
@@ -67,7 +261,7 @@ export function FilialsPage() {
   const [activeId, setActiveId] = useState<number | null>(null);
   const onModalSetState =
     (
-      coaches?: {
+      selectedCoaches?: {
         name: string;
         phone: string;
       }[],
@@ -75,32 +269,55 @@ export function FilialsPage() {
     ) =>
     (state: boolean, type: string) =>
     () => {
-      if (coaches) {
-        setCoaches(coaches);
+      if (selectedCoaches) {
+        setCoaches(selectedCoaches);
       }
       $setModalState({ type, isOpen: state, address });
     };
   const mapRef = useRef<ymaps.Map | null>(null);
+  const mapWrapRef = useRef<HTMLDivElement | null>(null);
   // eslint-disable-next-line @typescript-eslint/no-empty-object-type
   const listRef = useRef<Record<number, HTMLDivElement | null>>({});
   const { query } = useUrl();
-  const isModalOpen = useSelector(
+  const { isModalOpen, isModalContactOpen, isModalFiterOpen } = useSelector(
     ModalStore,
-    ({ modals }) => modals.signUp?.isOpen
+    ({ modals }) => ({
+      isModalOpen: modals.signUp?.isOpen,
+      isModalContactOpen: modals.contacts?.isOpen,
+      isModalFiterOpen: modals.filter?.isOpen,
+    })
   );
-  const isModalContactOpen = useSelector(
-    ModalStore,
-    ({ modals }) => modals.contacts?.isOpen
+  const [filialsSource, setFilialsSource] = useState(getFallbackFilialsSource);
+  const { cityOptions, coachOptions, markers } = useFilialsCatalogData(
+    filialsSource,
+    query as TQuery
   );
-  const isModalFiterOpen = useSelector(
-    ModalStore,
-    ({ modals }) => modals.filter?.isOpen
+  const { hintLayout, visibleMarkers, setVisibleMarkerIds } = useVisibleMapData(
+    markers,
+    ymaps
   );
-  const [filials = [], markers = []] = useMemo(
-    // @ts-ignore
-    () => filterFilials(FILIALS_MOCK, query),
-    [query]
-  );
+
+  const syncVisibleMarkersWithMap = (bounds?: number[][] | null) => {
+    const nextBounds = bounds || mapRef.current?.getBounds?.();
+
+    if (!nextBounds) {
+      setVisibleMarkerIds(null);
+
+      return;
+    }
+
+    const nextVisibleMarkerIds = markers
+      .filter((marker) => isPointWithinBounds(marker.coords, nextBounds))
+      .map((marker) => marker.id);
+
+    setVisibleMarkerIds(nextVisibleMarkerIds);
+    setActiveId((currentActiveId) =>
+      currentActiveId !== null &&
+      !nextVisibleMarkerIds.includes(currentActiveId)
+        ? null
+        : currentActiveId
+    );
+  };
 
   const moveToPin = (coords: number[]) => {
     mapRef.current?.panTo(coords, { flying: true });
@@ -121,12 +338,38 @@ export function FilialsPage() {
   };
 
   const handleFilialClick = (id: number, coords: number[]) => () => {
+    setActiveId(id);
     moveToPin(coords);
+
+    if (window.matchMedia('(max-width: 1280px)').matches) {
+      mapWrapRef.current?.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start',
+      });
+    }
   };
 
   const position = useStickyFilter();
   const getCounterStyles = () =>
     cn(styles[`Counter${position}`], styles.Counter);
+
+  useEffect(() => {
+    let cancelled = false;
+
+    const loadFilials = async () => {
+      const nextSource = await loadFilialsSourceWithFallback();
+
+      if (!cancelled) {
+        setFilialsSource(nextSource);
+      }
+    };
+
+    loadFilials();
+
+    return () => {
+      cancelled = true;
+    };
+  }, []);
 
   useEffect(() => {
     const isMobile = window.matchMedia('(max-width: 1280px)').matches;
@@ -148,6 +391,8 @@ export function FilialsPage() {
   }, []);
 
   useEffect(() => {
+    setVisibleMarkerIds(null);
+
     if (mapRef.current && markers.length > 0) {
       const bounds = markers.reduce(
         (acc, { coords }) => {
@@ -166,135 +411,141 @@ export function FilialsPage() {
         zoomMargin: [15],
       });
     }
-  }, [markers, query]);
+  }, [markers, query, setVisibleMarkerIds]);
 
   return (
-    <YMaps query={{ apikey: 'fcf49c8d-b16f-4277-ab7a-d08242e838b8' }}>
-      <main className={styles.Wrap}>
-        <div className={styles.InfoWrap} draggable="true" id="#infoWrap">
-          <div className={styles.Filter}>
-            <Filter />
-          </div>
-          <div className={getCounterStyles()}>
-            {markers?.length ? `Найдено ${markers?.length} филиалов` : ''}
-            <FilterIcon
-              className={styles.FilterIcon}
-              onClick={onModalSetState()(true, 'filter')}
-            />
-          </div>
-          {!markers?.length && <EmptyCard />}
-          <div className={styles.FilialsList} id="#filterScrollMarker">
-            {markers.map((item) => (
-              <FilialCard
-                {...item}
-                activeId={activeId}
-                key={item.id}
-                ref={(el) => (listRef.current[item.id] = el)}
-                onButtonClick={onModalSetState(
-                  item.coaches,
-                  `${item.city} ${item.address.metro ? item.address.metro.name : item.address.street}`
-                )}
-                onCardClick={handleFilialClick(item.id, item.coords)}
-              />
-            ))}
-          </div>
-          {isVisible ? (
-            <div className={styles.WrapperToMapButton}>
-              <Button
-                className={styles.Button}
-                onClick={() => window.scrollTo(0, 0)}
-              >
-                <Typography
-                  className={styles.ButtonText}
-                  weight="medium"
-                  color="white"
-                >
-                  На карту
-                </Typography>
-              </Button>
-            </div>
-          ) : null}
+    <main className={styles.Wrap}>
+      <div className={styles.InfoWrap} draggable="true" id="#infoWrap">
+        <div className={styles.Filter}>
+          <Filter cityOptions={cityOptions} coachOptions={coachOptions} />
         </div>
-        <div className={styles.MapWrap}>
-          <CustomZoomControls zoom={zoom} setZoom={setZoom} />
-          <Map
-            className={styles.Map}
-            instanceRef={(ref) => (mapRef.current = ref)}
-            modules={['geoObject.addon.hint']}
-            state={{
-              zoom,
-              center: markers[0]?.coords || [55.793698, 37.708868],
+        <div className={getCounterStyles()}>
+          {visibleMarkers.length
+            ? `Найдено ${visibleMarkers.length} филиалов`
+            : ''}
+          <FilterIcon
+            className={styles.FilterIcon}
+            onClick={onModalSetState()(true, 'filter')}
+          />
+        </div>
+        {!visibleMarkers.length && <EmptyCard />}
+        <div className={styles.FilialsList} id="#filterScrollMarker">
+          {visibleMarkers.map((item) => (
+            <FilialCard
+              {...item}
+              activeId={activeId}
+              key={item.id}
+              ref={(el) => (listRef.current[item.id] = el)}
+              onButtonClick={onModalSetState(
+                item.coaches,
+                getSignUpFilialValue(item)
+              )}
+              onCardClick={handleFilialClick(item.id, item.coords)}
+            />
+          ))}
+        </div>
+        {isVisible ? (
+          <div className={styles.WrapperToMapButton}>
+            <Button
+              className={styles.Button}
+              onClick={() => window.scrollTo(0, 0)}
+            >
+              <Typography
+                className={styles.ButtonText}
+                weight="medium"
+                color="white"
+              >
+                На карту
+              </Typography>
+            </Button>
+          </div>
+        ) : null}
+      </div>
+      <div ref={mapWrapRef} className={styles.MapWrap}>
+        <CustomZoomControls zoom={zoom} setZoom={setZoom} />
+        <Map
+          className={styles.Map}
+          instanceRef={(ref) => (mapRef.current = ref)}
+          modules={['geoObject.addon.hint', 'templateLayoutFactory']}
+          onBoundsChange={() => syncVisibleMarkersWithMap()}
+          state={{
+            zoom,
+            center: markers[0]?.coords || [55.793698, 37.708868],
+          }}
+        >
+          <Clusterer
+            options={{
+              preset: 'islands#blackClusterIcons',
+              groupByCoordinates: false,
             }}
           >
-            <Clusterer
-              options={{
-                preset: 'islands#blackClusterIcons',
-                groupByCoordinates: false,
-              }}
-            >
-              {markers.map((marker) => (
-                <Placemark
-                  key={marker.id}
-                  geometry={marker.coords}
-                  options={{
-                    iconLayout: 'default#image',
-                    iconImageSize: [40, 40],
-                    preset: 'islands#icon',
-                    iconImageHref: activeId === marker.id ? PinActive : Pin,
-                  }}
-                  onClick={handleMarkerClick(marker.id, marker.coords)}
-                  properties={{
-                    hintContent: getHintData(
-                      marker.city,
-                      marker.metro,
-                      marker.street
-                    ),
-                  }}
-                />
-              ))}
-            </Clusterer>
-          </Map>
-        </div>
-        <SignUpModal
-          isOpen={isModalOpen}
-          closeModal={onModalSetState()(false, 'signUp')}
-          fullTitle="Запишитесь за пару минут"
-        >
-          <SignUpFormGroup
-            description="Позвоните или оставьте заявку — тренер ответит на все вопросы и подберет подходящую группу для вас или ребенка"
-            phone="+7 (925) 555 00 77"
-            title=""
-            theme="white"
-            className={styles.ModalForm}
-          />
-        </SignUpModal>
-        <ContactsModal
-          isOpen={isModalContactOpen}
-          closeModal={onModalSetState()(false, 'contacts')}
-          fullTitle="Контакты"
-        >
-          <Typography>
-            Позвоните, чтобы задать интересующие вопросы и записаться на
-            тренировку
-          </Typography>
-          {coaches.map((coach) => (
-            <div key={coach.phone} className={styles.ContactsModalWrap}>
-              <div className={styles.ContactsModalName}>{coach.name}</div>
-              <a
-                href={`tel: ${coach.phone}`}
-                className={styles.ContactsModalPhone}
-              >
-                <CallButton className={styles.IconCallButton} />
-              </a>
-            </div>
-          ))}
-        </ContactsModal>
-        <FilterModal
-          isOpen={isModalFiterOpen}
-          closeModal={onModalSetState()(false, 'filter')}
+            {markers.map((marker) => (
+              <Placemark
+                key={marker.id}
+                geometry={marker.coords}
+                options={{
+                  iconLayout: 'default#image',
+                  iconImageSize: [40, 40],
+                  preset: 'islands#icon',
+                  iconImageHref: activeId === marker.id ? PinActive : Pin,
+                  hintLayout: hintLayout || undefined,
+                  hintPanelMaxMapArea: 0,
+                }}
+                onClick={handleMarkerClick(marker.id, marker.coords)}
+                properties={{
+                  hintContent: getHintData({
+                    title: marker.title,
+                    city: marker.city,
+                    metro: marker.metro,
+                    street: marker.street,
+                  }),
+                }}
+              />
+            ))}
+          </Clusterer>
+        </Map>
+      </div>
+      <SignUpModal
+        isOpen={isModalOpen}
+        closeModal={onModalSetState()(false, 'signUp')}
+        fullTitle="Запишитесь за пару минут"
+      >
+        <SignUpFormGroup
+          description="Позвоните или оставьте заявку — тренер ответит на все вопросы и подберет подходящую группу для вас или ребенка"
+          phone="+7 (925) 555 00 77"
+          title=""
+          theme="white"
+          className={styles.ModalForm}
         />
-      </main>
-    </YMaps>
+      </SignUpModal>
+      <ContactsModal
+        isOpen={isModalContactOpen}
+        closeModal={onModalSetState()(false, 'contacts')}
+        fullTitle="Контакты"
+      >
+        <Typography>
+          Позвоните, чтобы задать интересующие вопросы и записаться на
+          тренировку
+        </Typography>
+        {coaches.map((coach) => (
+          <div key={coach.phone} className={styles.ContactsModalWrap}>
+            <div className={styles.ContactsModalName}>{coach.name}</div>
+            <a
+              href={`tel: ${coach.phone}`}
+              className={styles.ContactsModalPhone}
+            >
+              <CallButton className={styles.IconCallButton} />
+            </a>
+          </div>
+        ))}
+      </ContactsModal>
+      <FilterModal
+        isOpen={isModalFiterOpen}
+        closeModal={onModalSetState()(false, 'filter')}
+        cityOptions={cityOptions}
+        coachOptions={coachOptions}
+      />
+    </main>
   );
 }
 

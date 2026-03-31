@@ -1,12 +1,23 @@
 .Tabs {
   display: block;
+
+  @media (max-width: 1024px) {
+    padding-top: 28px;
+  }
 }
 
 .TabItem {
+  width: 100%;
   position: relative;
+  display: flex;
+  align-items: center;
   padding: 16px 0;
   padding-right: 24px;
+  background: transparent;
+  border: none;
   border-bottom: 1px solid #ECECEC;
+  text-align: left;
+  cursor: pointer;
 
   &::after {
     content: '';
@@ -22,9 +33,12 @@
 }
 
 .TabText {
+  display: block;
+  flex: 1 1 auto;
+  min-width: 0;
   font-size: 18px;
+  line-height: 1;
   white-space: nowrap;
-  max-width: 100%;
   overflow: hidden;
   text-overflow: ellipsis;
 }

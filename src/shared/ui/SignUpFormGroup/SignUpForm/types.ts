@@ -1,6 +1,11 @@
+import type { TypeOption } from '~shared/types/filials';
+
 export type TSignUpFormProps = {
   contactsVariant?: boolean;
   theme?: string;
+  defaultFilial?: string;
+  filialOptions?: TypeOption[];
+  preferredCoachSlug?: string;
 };
 
 export type TSignUpFormValues = {

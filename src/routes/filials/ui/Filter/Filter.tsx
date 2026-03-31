@@ -1,15 +1,22 @@
-import { useEffect, useState } from 'react';
-import { useUrl } from '@tramvai/module-router';
-import type { MultiValue, OptionProps, SingleValue } from 'react-select';
+import type { OptionProps } from 'react-select';
 import Select, { components } from 'react-select';
+import {
+  getAgeGroupOptions,
+  type TypeOptionGroup,
+} from '~shared/content/catalogs';
+import { useQueryParams } from '~shared/hooks/useQueryParams';
 import { Checkbox } from '~shared/ui/Checkbox/Checkbox';
 import { Radio } from '~shared/ui/Radio/Radio';
-import { AGE_GROUPS, COACHES, GROUPED_PLACES } from '~shared/mocks';
 import { customStyles } from '~shared/ui/SignUpFormGroup/SignUpForm';
 
 import styles from './Filter.module.css';
 
 import type { TypeOption } from './types';
+
+type FilterProps = {
+  cityOptions: TypeOptionGroup[];
+  coachOptions: TypeOption[];
+};
 
 function CheckboxOption(props: OptionProps) {
   return (
@@ -18,7 +25,7 @@ function CheckboxOption(props: OptionProps) {
         <Checkbox
           checked={props.isSelected}
           text={props.label}
-          onChange={() => null} // onChange обязателен, но обработку делает react-select
+          onChange={() => null}
         />
       </div>
     </components.Option>
@@ -32,69 +39,33 @@ function RadioOption(props: OptionProps) {
         <Radio
           checked={props.isSelected}
           text={props.label}
-          onChange={() => null} // onChange обязателен, но обработку делает react-select
+          onChange={() => null}
         />
       </div>
     </components.Option>
   );
 }
 
-export function Filter() {
-  const [selectedAgeGroup, setSelectedAgeGroup] =
-    useState<MultiValue<TypeOption> | null>(null);
-  const [selectedCoach, setSelectedCoach] =
-    useState<MultiValue<TypeOption> | null>(null);
-  const [selectedCity, setSelectedCity] = useState<SingleValue<TypeOption>>();
-  const { query } = useUrl();
-  const setQueryParam =
-    (name: string, cb: () => null) => (value: TypeOption | TypeOption[]) => {
-      const val = value?.label
-        ? value.value
-        : value?.map((e: TypeOption) => e.value).join(',');
-      if (!val) {
-        delete query[name];
-      } else {
-        query[name] = val;
-      }
-
-      window.history.pushState(
-        {},
-        '',
-        `/filials/?${new URLSearchParams(query).toString()}`
-      );
-      // @ts-ignore
-      cb(value);
-    };
-
-  useEffect(() => {
-    if (query.city) {
-      const selected = GROUPED_PLACES.map((item) => item.options)
-        .flat()
-        .filter((e) => e.value === query.city);
-      setSelectedCity(selected);
-    }
-    if (query.group) {
-      const selected = AGE_GROUPS.filter((e) => query.group.includes(e.value));
-      setSelectedAgeGroup(selected);
-    }
-    if (query.coach) {
-      const selected = COACHES.filter((e) => query.coach.includes(e.id));
-      setSelectedCoach(selected);
-    }
-  }, [query]);
+export function Filter({ cityOptions, coachOptions }: FilterProps) {
+  const [selectedAgeGroup, selectedCoach, selectedCity, setQueryParam] =
+    useQueryParams({
+      pathname: '/filials',
+      cityOptions,
+      ageGroupOptions: getAgeGroupOptions(),
+      coachOptions,
+    });
 
   return (
     <div className={styles.Filter}>
       <div className={styles.FilterItem}>
         <Select
           name="city"
-          options={GROUPED_PLACES}
+          options={cityOptions}
           closeMenuOnSelect={false}
           hideSelectedOptions={false}
           components={{ Option: RadioOption }}
-          // @ts-ignore
-          onChange={setQueryParam('city', setSelectedCity)}
-          value={selectedCity}
+          onChange={setQueryParam('city')}
+          value={selectedCity?.[0] || null}
           styles={customStyles}
           isSearchable={false}
           placeholder="Город"
@@ -104,13 +75,12 @@ export function Filter() {
       <div className={styles.FilterItem}>
         <Select
           name="group"
-          options={AGE_GROUPS}
+          options={getAgeGroupOptions()}
           isMulti
           closeMenuOnSelect={false}
           hideSelectedOptions={false}
           components={{ Option: CheckboxOption }}
-          // @ts-ignore
-          onChange={setQueryParam('group', setSelectedAgeGroup)}
+          onChange={setQueryParam('group')}
           value={selectedAgeGroup}
           styles={customStyles}
           controlShouldRenderValue={false}
@@ -121,13 +91,12 @@ export function Filter() {
       <div className={styles.FilterItem}>
         <Select
           name="coach"
-          options={COACHES}
+          options={coachOptions}
           isMulti
           closeMenuOnSelect={false}
           hideSelectedOptions={false}
           components={{ Option: CheckboxOption }}
-          // @ts-ignore
-          onChange={setQueryParam('coach', setSelectedCoach)}
+          onChange={setQueryParam('coach')}
           value={selectedCoach}
           styles={customStyles}
           controlShouldRenderValue={false}

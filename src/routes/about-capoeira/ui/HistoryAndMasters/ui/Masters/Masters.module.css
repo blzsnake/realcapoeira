@@ -65,3 +65,15 @@
     display: none;
   }
 }
+
+@media (min-width: 1025px) {
+  .Slider {
+    scroll-snap-type: x mandatory;
+    scroll-padding-left: 0;
+  }
+
+  .Slider > [data-master-card='true'] {
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+  }
+}
