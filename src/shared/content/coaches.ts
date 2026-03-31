@@ -27,6 +27,9 @@ const COACH_LEVEL_ALIASES: Record<string, (typeof COACH_LEVEL_ORDER)[number]> =
   };
 
 let cachedCoaches: Coach[] | null = null;
+let cachedCoachesFetchedAt: number | null = null;
+const COACHES_CACHE_TTL =
+  process.env.NODE_ENV === 'development' ? 1000 * 60 * 3 : 1000 * 60 * 15;
 
 export const normalizeCoachSlug = (value: string) => value.replace(/\./g, '_');
 
@@ -129,22 +132,36 @@ export const getFallbackCoaches = () => FALLBACK_COACHES;
 
 export const getCachedCoaches = () => cachedCoaches;
 
-export const setCoachesCacheFromApiRecords = (
-  coaches: CoachApiRecord[] | null | undefined
-) => {
-  if (!Array.isArray(coaches) || coaches.length === 0) {
-    cachedCoaches = getFallbackCoaches();
-
-    return cachedCoaches;
-  }
-
-  cachedCoaches = mergeApiCoachesWithFallback(coaches);
+const setCoachesCache = (coaches: Coach[]) => {
+  cachedCoaches = coaches;
+  cachedCoachesFetchedAt = Date.now();
 
   return cachedCoaches;
 };
 
-export async function loadCoachesWithFallback() {
-  if (cachedCoaches) {
+const hasFreshCoachesCache = () =>
+  Boolean(
+    cachedCoaches &&
+      cachedCoachesFetchedAt &&
+      Date.now() - cachedCoachesFetchedAt < COACHES_CACHE_TTL
+  );
+
+export const setCoachesCacheFromApiRecords = (
+  coaches: CoachApiRecord[] | null | undefined
+) => {
+  if (!Array.isArray(coaches) || coaches.length === 0) {
+    return setCoachesCache(getFallbackCoaches());
+  }
+
+  return setCoachesCache(mergeApiCoachesWithFallback(coaches));
+};
+
+export async function loadCoachesWithFallback({
+  forceRefresh = false,
+}: {
+  forceRefresh?: boolean;
+} = {}) {
+  if (!forceRefresh && hasFreshCoachesCache()) {
     return cachedCoaches;
   }
 
@@ -154,17 +171,11 @@ export async function loadCoachesWithFallback() {
     });
 
     if (!Array.isArray(data.allCoaches) || data.allCoaches.length === 0) {
-      cachedCoaches = getFallbackCoaches();
-
-      return cachedCoaches;
+      return setCoachesCache(getFallbackCoaches());
     }
 
-    cachedCoaches = setCoachesCacheFromApiRecords(data.allCoaches);
-
-    return cachedCoaches;
+    return setCoachesCacheFromApiRecords(data.allCoaches);
   } catch {
-    cachedCoaches = getFallbackCoaches();
-
-    return cachedCoaches;
+    return setCoachesCache(getFallbackCoaches());
   }
 }

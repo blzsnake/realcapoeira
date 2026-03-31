@@ -27,13 +27,17 @@ const fetchCoachesAction = declareAction({
   name: 'fetchCoaches',
   async fn() {
     const currentCoaches = this.getState(CoachesStore);
+    const shouldRefreshInBrowser = typeof window !== 'undefined';
 
-    // Если данные уже загружены — не запрашиваем повторно
-    if (currentCoaches.length > 0) {
+    // На сервере можно использовать уже загруженные данные,
+    // а в браузере всегда делаем revalidate поверх snapshot/stale state.
+    if (currentCoaches.length > 0 && !shouldRefreshInBrowser) {
       return;
     }
 
-    const coaches = await loadCoachesWithFallback();
+    const coaches = await loadCoachesWithFallback({
+      forceRefresh: shouldRefreshInBrowser,
+    });
 
     this.dispatch(setCoaches(coaches));
   },

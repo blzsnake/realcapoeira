@@ -25,12 +25,15 @@ const fetchCoachesAction = declareAction({
   name: 'fetchCoachesForDetail',
   async fn() {
     const currentCoaches = this.getState(CoachesStore);
+    const shouldRefreshInBrowser = typeof window !== 'undefined';
 
-    if (currentCoaches.length > 0) {
+    if (currentCoaches.length > 0 && !shouldRefreshInBrowser) {
       return;
     }
 
-    const coaches = await loadCoachesWithFallback();
+    const coaches = await loadCoachesWithFallback({
+      forceRefresh: shouldRefreshInBrowser,
+    });
 
     this.dispatch(setCoaches(coaches));
   },

@@ -38,6 +38,13 @@
   line-height: 150%;
 }
 
+.Link {
+  color: var(--color-blue);
+  text-decoration: underline;
+  text-underline-offset: 0.12em;
+  word-break: break-word;
+}
+
 .List {
   display: flex;
   flex-direction: column;

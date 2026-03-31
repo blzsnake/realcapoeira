@@ -1,3 +1,4 @@
+import type { ReactNode } from 'react';
 import { Typography } from '~shared/ui/typography';
 import type { HomeNewsItem } from '~shared/content/news';
 import styles from './LatestNews.module.css';
@@ -31,6 +32,7 @@ const BOLD_HEADING_PATTERN = /^\*\*(.+?)\*\*$/;
 const HASH_HEADING_PATTERN = /^#\s+(.+)$/;
 const BULLET_PATTERN = /^\*\s+(.+)$/;
 const ORDERED_LIST_PATTERN = /^\d+\.\s+(.+)$/;
+const INLINE_LINK_PATTERN = /\[([^\]]+)\]\((https?:\/\/[^\s)]+)\)/g;
 
 const createUniqueKeyFactory = () => {
   const counts = new Map<string, number>();
@@ -46,13 +48,66 @@ const createUniqueKeyFactory = () => {
   };
 };
 
+const renderInlineText = (text: string): ReactNode[] => {
+  const nodes: ReactNode[] = [];
+  const getNodeKey = createUniqueKeyFactory();
+  let lastIndex = 0;
+  let match = INLINE_LINK_PATTERN.exec(text);
+
+  while (match) {
+    const [fullMatch, label, href] = match;
+    const matchIndex = match.index;
+
+    if (matchIndex > lastIndex) {
+      const plainText = text.slice(lastIndex, matchIndex);
+
+      nodes.push(
+        <span key={getNodeKey('text', `${plainText}-${lastIndex}`)}>
+          {plainText}
+        </span>
+      );
+    }
+
+    nodes.push(
+      <a
+        key={getNodeKey('link', `${label}-${href}-${matchIndex}`)}
+        href={href}
+        target="_blank"
+        rel="noopener noreferrer"
+        className={styles.Link}
+      >
+        {label}
+      </a>
+    );
+
+    lastIndex = matchIndex + fullMatch.length;
+    match = INLINE_LINK_PATTERN.exec(text);
+  }
+
+  if (lastIndex < text.length) {
+    const plainText = text.slice(lastIndex);
+
+    nodes.push(
+      <span key={getNodeKey('text', `${plainText}-${lastIndex}`)}>
+        {plainText}
+      </span>
+    );
+  }
+
+  if (!nodes.length) {
+    nodes.push(<span key={getNodeKey('text', text)}>{text}</span>);
+  }
+
+  return nodes;
+};
+
 const renderTextWithBreaks = (text: string) => {
   const lines = text.split('\n');
   const getLineKey = createUniqueKeyFactory();
 
   return lines.map((line) => (
     <span key={getLineKey('line', line)}>
-      {line}
+      {renderInlineText(line)}
       {line !== lines[lines.length - 1] ? <br /> : null}
     </span>
   ));
@@ -296,7 +351,7 @@ export function CmsNewsContent({ item }: { item: HomeNewsItem }) {
               >
                 {block.items.map((listItem) => (
                   <li key={`${item.id}-${block.key}-${listItem}`}>
-                    {listItem}
+                    {renderInlineText(listItem)}
                   </li>
                 ))}
               </ListTag>
