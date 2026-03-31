@@ -1,25 +1,13 @@
-import { useMemo } from 'react';
-import { useRoute } from '@tramvai/module-router';
-import { useSelector } from '@tramvai/state';
+import type { Coach } from '~shared/api/types/coach';
 import { Typography } from '~shared/ui/typography';
 import { Button } from '~shared/ui/button/Button';
 import { CoachAvatar } from 'src/routes/coaches/ui/CoachAvatar';
-import { CoachesStore } from '~shared/stores/coaches';
 import Telegram from '~app/assets/socialIcons/Telegram.svg?react';
 import Whatsapp from '~app/assets/socialIcons/Whatsapp.svg?react';
 import Vk from '~app/assets/socialIcons/Vk.svg?react';
 import styles from './HeaderPart.module.css';
 
-export function HeaderPart() {
-  const route = useRoute();
-  const { id } = route.params;
-  const coaches = useSelector(CoachesStore, (state) => state.coaches);
-
-  const coach = useMemo(
-    () => coaches?.find((c) => c.slug === id),
-    [coaches, id]
-  );
-
+export function HeaderPart({ coach }: { coach: Coach }) {
   if (!coach) return null;
 
   const { level, photo, nick, name, slug } = coach;

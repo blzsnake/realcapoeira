@@ -28,6 +28,7 @@ const COACH_LEVEL_ALIASES: Record<string, (typeof COACH_LEVEL_ORDER)[number]> =
 
 let cachedCoaches: Coach[] | null = null;
 let cachedCoachesFetchedAt: number | null = null;
+let pendingCoachesRequest: Promise<Coach[]> | null = null;
 const COACHES_CACHE_TTL =
   process.env.NODE_ENV === 'development' ? 1000 * 60 * 3 : 1000 * 60 * 15;
 
@@ -113,20 +114,10 @@ export const buildFallbackCoaches = (coaches: Coach[]) =>
 
 const FALLBACK_COACHES = buildFallbackCoaches(CMS_FALLBACK.coaches);
 
-const mergeApiCoachesWithFallback = (coaches: CoachApiRecord[]) => {
-  const coachMap = new Map(
-    FALLBACK_COACHES.map((coach) => [coach.slug, coach])
+const buildApiCoaches = (coaches: CoachApiRecord[]) =>
+  sortCoachesByName(
+    coaches.map(normalizeCoachRecord).filter(isCoachRecordValid)
   );
-
-  coaches
-    .map(normalizeCoachRecord)
-    .filter(isCoachRecordValid)
-    .forEach((coach) => {
-      coachMap.set(coach.slug, coach);
-    });
-
-  return sortCoachesByName(Array.from(coachMap.values()));
-};
 
 export const getFallbackCoaches = () => FALLBACK_COACHES;
 
@@ -149,11 +140,11 @@ const hasFreshCoachesCache = () =>
 export const setCoachesCacheFromApiRecords = (
   coaches: CoachApiRecord[] | null | undefined
 ) => {
-  if (!Array.isArray(coaches) || coaches.length === 0) {
+  if (!Array.isArray(coaches)) {
     return setCoachesCache(getFallbackCoaches());
   }
 
-  return setCoachesCache(mergeApiCoachesWithFallback(coaches));
+  return setCoachesCache(buildApiCoaches(coaches));
 };
 
 export async function loadCoachesWithFallback({
@@ -165,17 +156,27 @@ export async function loadCoachesWithFallback({
     return cachedCoaches;
   }
 
-  try {
-    const data = await datocmsRequest<AllCoachesResponse>({
-      query: ALL_COACHES_QUERY,
-    });
-
-    if (!Array.isArray(data.allCoaches) || data.allCoaches.length === 0) {
-      return setCoachesCache(getFallbackCoaches());
-    }
-
-    return setCoachesCacheFromApiRecords(data.allCoaches);
-  } catch {
-    return setCoachesCache(getFallbackCoaches());
+  if (pendingCoachesRequest) {
+    return pendingCoachesRequest;
   }
+
+  pendingCoachesRequest = (async () => {
+    try {
+      const data = await datocmsRequest<AllCoachesResponse>({
+        query: ALL_COACHES_QUERY,
+      });
+
+      if (!Array.isArray(data.allCoaches)) {
+        return setCoachesCache(getFallbackCoaches());
+      }
+
+      return setCoachesCacheFromApiRecords(data.allCoaches);
+    } catch {
+      return setCoachesCache(getFallbackCoaches());
+    } finally {
+      pendingCoachesRequest = null;
+    }
+  })();
+
+  return pendingCoachesRequest;
 }

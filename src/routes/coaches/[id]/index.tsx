@@ -25,17 +25,16 @@ const fetchCoachesAction = declareAction({
   name: 'fetchCoachesForDetail',
   async fn() {
     const currentCoaches = this.getState(CoachesStore);
-    const shouldRefreshInBrowser = typeof window !== 'undefined';
 
-    if (currentCoaches.length > 0 && !shouldRefreshInBrowser) {
+    if (typeof window === 'undefined' && currentCoaches.length > 0) {
       return;
     }
 
-    const coaches = await loadCoachesWithFallback({
-      forceRefresh: shouldRefreshInBrowser,
-    });
+    const coaches = await loadCoachesWithFallback();
 
-    this.dispatch(setCoaches(coaches));
+    if (coaches !== currentCoaches) {
+      this.dispatch(setCoaches(coaches));
+    }
   },
 });
 
@@ -44,7 +43,6 @@ function CoachPage() {
   const { id } = route.params;
   const coaches = useSelector(CoachesStore, (state) => state.coaches);
   const initialPayload = useMemo(() => getCoachPagePayload(id), [id]);
-
   const coach = useMemo(
     () =>
       coaches.find(
@@ -67,7 +65,7 @@ function CoachPage() {
 
   return (
     <main className={styles.PageWrap}>
-      <HeaderPart />
+      <HeaderPart coach={coach} />
       <Numbers
         city={coach.city}
         incapoeira={coach.incapoeira}

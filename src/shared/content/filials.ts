@@ -306,12 +306,8 @@ const setFilialsCaches = (filials: Filial[]) => {
   const validFilials = filials.filter(isFilialRecordValid);
   const nextSource = buildFilialsSource(validFilials);
 
-  cachedFilialsSource = Object.keys(nextSource).length
-    ? nextSource
-    : getFallbackFilialsSource();
-  cachedFilialDetails = Object.keys(nextSource).length
-    ? buildFilialDetailsMap(validFilials)
-    : getFallbackFilialDetails();
+  cachedFilialsSource = nextSource;
+  cachedFilialDetails = buildFilialDetailsMap(validFilials);
 };
 
 export const getFallbackFilialDetail = (slug: string) =>
@@ -332,7 +328,7 @@ export async function loadFilialsSourceWithFallback() {
         query: ALL_FILIALS_QUERY,
       });
 
-      if (!Array.isArray(data.allFilials) || data.allFilials.length === 0) {
+      if (!Array.isArray(data.allFilials)) {
         cachedFilialsSource = getFallbackFilialsSource();
         cachedFilialDetails = getFallbackFilialDetails();
 
@@ -378,7 +374,7 @@ export async function loadFilialDetailWithFallback(slug: string) {
       query: ALL_FILIALS_QUERY,
     });
 
-    if (!Array.isArray(data.allFilials) || data.allFilials.length === 0) {
+    if (!Array.isArray(data.allFilials)) {
       cachedFilialDetails = getFallbackFilialDetails();
 
       return cachedFilialDetails[slug] || null;
@@ -386,7 +382,7 @@ export async function loadFilialDetailWithFallback(slug: string) {
 
     setFilialsCaches(data.allFilials);
 
-    return cachedFilialDetails?.[slug] || getFallbackFilialDetail(slug);
+    return cachedFilialDetails?.[slug] || null;
   } catch {
     cachedFilialDetails = getFallbackFilialDetails();
 
@@ -419,7 +415,7 @@ export async function loadFilialPageDataWithFallback(slug: string) {
         query: FILIALS_AND_COACHES_QUERY,
       });
 
-      if (Array.isArray(data.allFilials) && data.allFilials.length > 0) {
+      if (Array.isArray(data.allFilials)) {
         setFilialsCaches(data.allFilials);
       } else {
         cachedFilialsSource = getFallbackFilialsSource();
@@ -429,7 +425,7 @@ export async function loadFilialPageDataWithFallback(slug: string) {
       const coaches = setCoachesCacheFromApiRecords(data.allCoaches);
 
       return {
-        filial: cachedFilialDetails?.[slug] || getFallbackFilialDetail(slug),
+        filial: cachedFilialDetails?.[slug] || null,
         coaches,
       };
     } catch {

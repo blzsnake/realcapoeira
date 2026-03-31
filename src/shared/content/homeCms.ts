@@ -401,16 +401,22 @@ function getSnapshotHomeWorldwideCities(): HomeWorldwideCity[] {
 }
 
 const buildHomeCmsData = (data: HomeCmsResponse): HomeCmsData => {
-  const items = (data.allNews || [])
-    .map(mapNewsRecord)
-    .filter((item): item is HomeNewsItem => Boolean(item));
+  const hasNewsArray = Array.isArray(data.allNews);
+  const items = hasNewsArray
+    ? data.allNews
+        .map(mapNewsRecord)
+        .filter((item): item is HomeNewsItem => Boolean(item))
+    : [];
   const normalizedStats = normalizeHomeStats(data.dataCommon);
-  const worldwideCities = (data.allCitiesLists || [])
-    .map(mapWorldwideCityRecord)
-    .filter((item): item is HomeWorldwideCity => Boolean(item));
+  const hasWorldwideCitiesArray = Array.isArray(data.allCitiesLists);
+  const worldwideCities = hasWorldwideCitiesArray
+    ? data.allCitiesLists
+        .map(mapWorldwideCityRecord)
+        .filter((item): item is HomeWorldwideCity => Boolean(item))
+    : [];
 
   return {
-    newsSection: items.length
+    newsSection: hasNewsArray
       ? {
           source: 'cms',
           title: 'События',
@@ -419,7 +425,7 @@ const buildHomeCmsData = (data: HomeCmsResponse): HomeCmsData => {
         }
       : getSnapshotHomeNewsSection(),
     stats: normalizedStats || getSnapshotHomeStats(),
-    worldwideCities: worldwideCities.length
+    worldwideCities: hasWorldwideCitiesArray
       ? worldwideCities
       : getSnapshotHomeWorldwideCities(),
   };
