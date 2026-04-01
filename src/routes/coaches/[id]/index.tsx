@@ -1,5 +1,5 @@
 import { useEffect, useMemo } from 'react';
-import { useRoute } from '@tramvai/module-router';
+import { Link, useRoute } from '@tramvai/module-router';
 import { useSelector } from '@tramvai/state';
 import { declareAction } from '@tramvai/core';
 import { StructuredText } from 'react-datocms/structured-text';
@@ -84,8 +84,9 @@ function CoachPage() {
                 <StructuredText data={coach.selfDescription} />
               )}
             </div>
-            <a
-              href={`/filials?coach=${coach.slug}`}
+            <Link
+              viewTransition
+              url={`/filials?coach=${coach.slug}`}
               className={styles.FilialsCard}
             >
               <img
@@ -101,7 +102,7 @@ function CoachPage() {
                 height={32}
                 className={styles.FilialsArrow}
               />
-            </a>
+            </Link>
           </div>
         </div>
         <div className={styles.ContentBlock}>
