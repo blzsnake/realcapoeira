@@ -173,8 +173,12 @@
   }
 }
 
-.RichText :global(p:not(:last-child)) {
-  margin-bottom: 24px;
+.RichText > :global(p) {
+  margin-block: 1em;
+}
+
+.RichText > :global(p:first-child) {
+  margin-top: 0;
 }
 
 .SectionHeading {

@@ -1,4 +1,5 @@
 import { useRef } from 'react';
+import { useScrollToTopOnMount } from '~shared/hooks/useScrollToTopOnMount';
 import { SchoolPhoto } from './ui/SchoolPhoto';
 import { Events } from './ui/Events';
 import { About } from './ui/About';
@@ -10,6 +11,7 @@ import { Worldwide } from './ui/Worldwide';
 import styles from './index.module.css';
 
 export function IndexPage() {
+  useScrollToTopOnMount();
   const eventsRef = useRef<HTMLDivElement | null>(null);
   const scrollToEventsHandler = () => {
     eventsRef.current?.scrollIntoView({ behavior: 'smooth' });
