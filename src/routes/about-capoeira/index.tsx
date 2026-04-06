@@ -1,3 +1,4 @@
+import { useScrollToTopOnMount } from '~shared/hooks/useScrollToTopOnMount';
 import { SignUpFormGroup } from '~shared/ui/SignUpFormGroup';
 import { HeaderPart } from './ui/HeaderPart';
 import { HistoryAndMasters } from './ui/HistoryAndMasters/HistoryAndMasters';
@@ -6,6 +7,8 @@ import { Quote } from './ui/Quote';
 import styles from './AboutCapoeira.module.css';
 
 export function AboutCapoeiraPage() {
+  useScrollToTopOnMount();
+
   return (
     <main className={styles.MainWrap}>
       <HeaderPart />

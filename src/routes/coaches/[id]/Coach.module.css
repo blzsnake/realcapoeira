@@ -124,6 +124,14 @@
   }
 }
 
+.Description > :global(p) {
+  margin-block: 1em;
+}
+
+.Description > :global(p:first-child) {
+  margin-top: 0;
+}
+
 .Classroom {
   width: 100%;
   font-size: 28px;
